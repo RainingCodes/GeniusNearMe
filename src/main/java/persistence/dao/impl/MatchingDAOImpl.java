@@ -7,7 +7,6 @@ import persistence.util.JDBCUtil;
 import service.dto.MatchingDTO;
 
 public class MatchingDAOImpl implements MatchingDAO{
-
 	private JDBCUtil jdbcUtil = null;
 	private static String query = "SELECT MATCHING.MATCHINGID AS MATCHINGID, "+
 			"MATCHING.TALENTID AS TALENTID, "+
