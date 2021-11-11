@@ -16,6 +16,7 @@ public class MatchingDAOImpl implements MatchingDAO{
 			"MATCHING.GROUPID AS GROUPID, "+
 			"MATCHING.USERID AS USERID ";
 	
+	
 	public MatchingDAOImpl() {
 		jdbcUtil = new JDBCUtil();
 	}

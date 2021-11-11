@@ -1,5 +1,4 @@
 package service.dto;
-
 public class MatchingDTO {
 //¸ÅÄª dto
 	
