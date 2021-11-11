@@ -45,6 +45,7 @@ public class MemberDAOImpl implements MemberDAO{
 			}return null;	
 		}
 		
+		
 		public int insertMember(MemberDTO member) {
 			int result = 0;
 			String insertQuery = "INSERT INTO MEMBERS (USERID, EMAIL, PW, PHONE, NICKNAME) " + 
