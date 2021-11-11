@@ -4,7 +4,37 @@ public class GroupDTO {
 	private int[] userId = null;
 	private int groupId = -1;
 	private int talentId = -1;
+	private int state = 0;
 	private int representativeId = -1;
+	private int membersCount = 0;
+	private int maximum = 0;
+	public int getState() {
+		return state;
+	}
+	public void setState(int state) {
+		this.state = state;
+	}
+	public int getMembersCount() {
+		return membersCount;
+	}
+	public void setMembersCount(int membersCount) {
+		this.membersCount = membersCount;
+	}
+	public int getMaximum() {
+		return maximum;
+	}
+	public void setMaximum(int maximum) {
+		this.maximum = maximum;
+	}
+	public int getCountMembers() {
+		return membersCount;
+	}
+	public void setCountMembers(int membersCount) {
+		this.membersCount = membersCount;
+	}
+	public int getGroupId() {
+		return groupId;
+	}
 	public int getRepresentativeId() {
 		return representativeId;
 	}
@@ -17,7 +47,7 @@ public class GroupDTO {
 	public void setUserId(int[] userId) {
 		this.userId = userId;
 	}
-	public int getGroupId() {
+	public int getGroupId(int talentId) {
 		return groupId;
 	}
 	public void setGroupId(int groupId) {
