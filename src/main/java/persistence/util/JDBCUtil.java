@@ -1,10 +1,3 @@
-// Java Project ¿ë JDBCUtil
-// Web Project ¿¡¼­ »ç¿ëÇÏ±â À§ÇØ¼± DBCP ºÎºĞÀÌ ¼öÁ¤µÇ¾î¾ß ÇÔ
-// DBCP °ü·Ã jar ÆÄÀÏÀ» ÇÁ·ÎÁ§Æ®¿¡ Æ÷ÇÔÇÏ¿©¾ß µ¿ÀÛÇÔ (properties ¿¡¼­ Ãß°¡ÇÒ °Í, »óÀ§ ¹öÀüµµ »ó°ü ¾øÀ½)
-// commons-collections-3.2.jar 
-// commons-dbcp-1.2.2.jar
-// commons-pool-1.3.jar
-
 package persistence.util;
 
 import java.sql.*;
@@ -12,41 +5,37 @@ import javax.sql.DataSource;
 import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
 
 public class JDBCUtil {
-	private String sql = null; // ½ÇÇàÇÒ query
-	private Object[] parameters = null;; // PreparedStatement ÀÇ ¸Å°³º¯¼ö °ªÀ» ÀúÀåÇÏ´Â ¹è¿­
-	private static DataSource ds = null; // DBCP DataSource
+	private String sql = null;
+	private Object[] parameters = null;;
+	private static DataSource ds = null;
 	private static Connection conn = null;
 	private PreparedStatement pstmt = null;
 	private CallableStatement cstmt = null;
 	private ResultSet rs = null;
 
-	// ±âº» »ı¼ºÀÚ
 	public JDBCUtil() {
 		initJDBCUtil();
 	}
 
-	// ¸Å°³º¯¼ö ¾ø´Â query¸¦ Àü´Ş¹Ş¾Æ query¸¦ ¼³Á¤ÇÏ´Â »ı¼ºÀÚ
 	public JDBCUtil(String sql) {
 		this.setSql(sql);
 		initJDBCUtil();
 	}
 
-	// ¸Å°³º¯¼öÀÇ ¹è¿­°ú ÇÔ²² query¸¦ Àü´Ş¹Ş¾Æ °¢°¢À» ¼³Á¤ÇÏ´Â »ı¼ºÀÚ
 	public JDBCUtil(String sql, Object[] parameters) {
 		this.setSql(sql);
 		this.setParameters(parameters);
 		initJDBCUtil();
 	}
 
-	// DBCP ¿¬°á ÃÊ±âÈ­ ¸Ş¼Òµå
 	private static void initJDBCUtil() {
 		try {
-			if (ds == null) { // DBCP ¼³Á¤
+			if (ds == null) {
 				BasicDataSource bds = new BasicDataSource();
-				bds.setDriverClassName("oracle.jdbc.driver.OracleDriver"); // Oracle ¿ë JDBC Driver Å¬·¡½º
-				bds.setUsername("dbp"); // DB Á¢¼Ó¿ë ID
-				bds.setPassword("dbp"); // DB Á¢¼Ó¿ë ÆĞ½º¿öµå
-				bds.setUrl("jdbc:oracle:thin:@202.20.119.117:1521:orcl"); // DBMS ¼­¹ö ÁÖ¼Ò
+				bds.setDriverClassName("oracle.jdbc.driver.OracleDriver");
+				bds.setUsername("dbp");
+				bds.setPassword("dbp");
+				bds.setUrl("jdbc:oracle:thin:@202.20.119.117:1521:orcl");
 				ds = bds;
 				// Context init = new InitialContext();
 				// ds = (DataSource)init.lookup("java:comp/env/jdbc/OracleDS");
@@ -55,35 +44,33 @@ public class JDBCUtil {
 			ex.printStackTrace();
 		}
 	}
+	public void setSqlAndParameters(String sql, Object[] parameters) {
+		this.sql = sql;
+		this.parameters = parameters;
+	}
 
-	// sql º¯¼ö getter
 	public String getSql() {
 		return this.sql;
 	}
 
-	// sql º¯¼ö setter
 	public void setSql(String sql) {
 		this.sql = sql;
 	}
 
-	// Object[] º¯¼ö setter
 	public void setParameters(Object[] parameters) {
 		this.parameters = parameters;
 	}
 
-	// ¸Å°³º¯¼ö ¹è¿­¿¡¼­ Æ¯Á¤À§Ä¡ÀÇ ¸Å°³º¯¼ö¸¦ ¹İÈ¯ÇÏ´Â ¸Ş¼Òµå
 	private Object getParameter(int index) throws Exception {
 		if (index >= getParameterSize())
-			throw new Exception("INDEX °ªÀÌ ÆÄ¶ó¹ÌÅÍÀÇ °¹¼öº¸´Ù ¸¹½À´Ï´Ù.");
+			throw new Exception("INDEX ê°’ì´ íŒŒë¼ë¯¸í„° ê°¯ìˆ˜ë³´ë‹¤ ë§ìŠµë‹ˆë‹¤.");
 		return parameters[index];
 	}
 
-	// ¸Å°³º¯¼öÀÇ °³¼ö¸¦ ¹İÈ¯ÇÏ´Â ¸Ş¼Òµå
 	private int getParameterSize() {
 		return parameters == null ? 0 : parameters.length;
 	}
 
-	// ÇöÀçÀÇ PreparedStatement ¸¦ ¹İÈ¯
 	private PreparedStatement getPreparedStatement() throws SQLException {
 		if (conn == null) {
 			conn = ds.getConnection();
@@ -95,7 +82,6 @@ public class JDBCUtil {
 		return pstmt;
 	}
 
-	// JDBCUtil ÀÇ Äõ¸®¿Í ¸Å°³º¯¼ö¸¦ ÀÌ¿ëÇØ executeQuery ¸¦ ¼öÇàÇÏ´Â ¸Ş¼Òµå
 	public ResultSet executeQuery() {
 		try {
 			pstmt = getPreparedStatement();
@@ -110,12 +96,11 @@ public class JDBCUtil {
 		return null;
 	}
 
-	// JDBCUtil ÀÇ Äõ¸®¿Í ¸Å°³º¯¼ö¸¦ ÀÌ¿ëÇØ executeUpdate ¸¦ ¼öÇàÇÏ´Â ¸Ş¼Òµå
 	public int executeUpdate() throws SQLException, Exception {
 		pstmt = getPreparedStatement();
 		int parameterSize = getParameterSize();
 		for (int i = 0; i < parameterSize; i++) {
-			if (getParameter(i) == null) { // ¸Å°³º¯¼ö °ªÀÌ ³ÎÀÌ ºÎºĞÀÌ ÀÖÀ» °æ¿ì
+			if (getParameter(i) == null) {
 				pstmt.setString(i + 1, null);
 			} else {
 				pstmt.setObject(i + 1, getParameter(i));
@@ -124,7 +109,6 @@ public class JDBCUtil {
 		return pstmt.executeUpdate();
 	}
 
-	// ÇöÀçÀÇ CallableStatement ¸¦ ¹İÈ¯
 	private CallableStatement getCallableStatement() throws SQLException {
 		if (conn == null) {
 			conn = ds.getConnection();
@@ -135,7 +119,6 @@ public class JDBCUtil {
 		return cstmt;
 	}
 
-	// JDBCUtil ÀÇ Äõ¸®¿Í ¸Å°³º¯¼ö¸¦ ÀÌ¿ëÇØ CallableStatement ÀÇ execute ¸¦ ¼öÇàÇÏ´Â ¸Ş¼Òµå
 	public boolean execute(JDBCUtil source) throws SQLException, Exception {
 		cstmt = getCallableStatement();
 		for (int i = 0; i < source.getParameterSize(); i++) {
@@ -144,7 +127,6 @@ public class JDBCUtil {
 		return cstmt.execute();
 	}
 
-	// ÀÚ¿ø ¹İÈ¯
 	public void close() {
 		if (rs != null) {
 			try {
@@ -196,7 +178,6 @@ public class JDBCUtil {
 		}
 	}
 
-	// DBCP Pool À» Á¾·á
 	public void shutdownPool() {
 		this.close();
 		BasicDataSource bds = (BasicDataSource) ds;
@@ -207,7 +188,6 @@ public class JDBCUtil {
 		}
 	}
 
-	// ÇöÀç È°¼ºÈ­ »óÅÂÀÎ Connection ÀÇ °³¼ö¿Í ºñÈ°¼ºÈ­ »óÅÂÀÎ Connection °³¼ö Ãâ·Â
 	public void printDataSourceStats(DataSource ds) throws SQLException {
 		BasicDataSource bds = (BasicDataSource) ds;
 		System.out.println("NumActive: " + bds.getNumActive());
