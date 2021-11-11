@@ -10,6 +10,9 @@ public class DAOFactory {
 	public MemberDAO getMemberDAO() {
 		return new MemberDAOImpl();
 	}
+	public TalentDAO getTalentDAO() {
+		return new TalentDAOImpl(); 
+	}
 	
 	public MatchingDAO getMatchingDAO() {
 		return new MatchingDAOImpl();		
