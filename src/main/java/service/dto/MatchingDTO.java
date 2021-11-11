@@ -2,11 +2,13 @@ package service.dto;
 
 public class MatchingDTO {
 //매칭 dto
+	
 	private int matchingId = -1;
 	private int matchingState = -1;
 	private int talentId = -1;
 	private int groupId = -1;
 	private int userId = -1;
+<<<<<<< HEAD
 	private int isGroupMatching = -1; //그룹매칭인지 아닌지 알려주는 변수
 	
 	public int getIsGroupMatching() {
@@ -16,6 +18,8 @@ public class MatchingDTO {
 		this.isGroupMatching = isGroupMatching;
 	}
 	
+=======
+>>>>>>> branch 'master' of https://github.com/RainingCodes/GeniusNearMe.git
 	public int getTalentId() {
 		return talentId;
 	}
