@@ -8,6 +8,21 @@ public class MatchingDTO {
 	private int talentId = -1;
 	private int groupId = -1;
 	private int userId = -1;
+	private int isGroupMatching = -1; //그룹매칭인지 아닌지 알려주는 변수
+	private int choose = -1; //매칭이 진행되는지 안되는지 알려주는 변수
+	
+	public int getIsGroupMatching() {
+		return isGroupMatching;
+	}
+	public void setIsGroupMatching(int isGroupMatching) {
+		this.isGroupMatching = isGroupMatching;
+	}
+	public int getChoose() {
+		return choose;
+	}
+	public void setChoose(int choose) {
+		this.choose = choose;
+	}
 	public int getTalentId() {
 		return talentId;
 	}
