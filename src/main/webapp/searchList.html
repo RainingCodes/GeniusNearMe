@@ -66,6 +66,9 @@
 		margin: 15px;
 		float: left;
 	}
+	#priceRange{
+		width:100px;
+	}
 	p{
 		margin: 15px;
 	}
@@ -74,13 +77,6 @@
 <body>
 	<div class="container">
 		<div class="nav">
-		<!-- 
-			<ul class="nav-list">
-				<li class="nav-item">결과내 재검색</li>
-				<li class="nav-item">Menu-2</li>
-				<li class="nav-item">Menu-3</li>
-			</ul>
-		 -->
 			<p></p>
 			<input type="text" id="value" placeholder="결과내 재검색">
 			<p></p>
@@ -93,14 +89,14 @@
 			</div>
 			<p></p>
 			<strong>가격대</strong><p></p>
+			<input type="range" min="0" max="100000" step="1000" id="priceRange">
 			<p></p><p></p>
 			<strong>날짜</strong><br>
 			<input type="date" name="startDate">~<input type="date" name="endDate">			
 		</div>
-		
 		<div class="content">
-			<div id="sort" style="margin-left:615px;">
-					<button>최신순</button>|<button>매칭순</button>|<button>리뷰많은순</button>
+			<div id="sort" style="margin-left:680px;">
+					<button>최신순</button>|<button>매칭순</button><!-- | <button>리뷰많은순</button> -->
 			</div>
 			<div class="post">
 				<div id="imgSection1">
