@@ -5,14 +5,6 @@ public class GroupDTO {
 	private int groupId = -1;
 	private int talentId = -1;
 	private int representativeId = -1;
-	private int matchingId = -1;
-	
-	public int getMatchingId() {
-		return matchingId;
-	}
-	public void setMatchingId(int matchingId) {
-		this.matchingId = matchingId;
-	}
 	public int getRepresentativeId() {
 		return representativeId;
 	}
