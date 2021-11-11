@@ -2,7 +2,6 @@ package persistence.dao;
 //매칭 정보 DAO
 import java.util.List;
 import service.dto.MatchingDTO;
-
 public interface MatchingDAO {
 	//매징 리스트 반환  userId에 따른
 	public List<MatchingDTO> getMatchingListByUserId(int userId);

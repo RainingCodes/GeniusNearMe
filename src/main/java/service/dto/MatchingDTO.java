@@ -1,7 +1,7 @@
 package service.dto;
+
 public class MatchingDTO {
 //¸ÅÄª dto
-	
 	private int matchingId = -1;
 	private int matchingState = -1;
 	private int talentId = -1;
