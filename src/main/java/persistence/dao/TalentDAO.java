@@ -1,6 +1,7 @@
 package persistence.dao;
 
 import java.util.List;
+
 import service.dto.TalentDTO;
 
 public interface TalentDAO {
