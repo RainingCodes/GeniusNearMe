@@ -1,11 +1,12 @@
 package service.dto;
 
 public class MemberDTO {
-	private int userId = -1;			// 사용자id
-	private String email = null;		// 이메일
 	private String pw = null;			// 비밀번호 
+	private String email = null;		// 이메일
 	private String phone = null;	// 전화번호
+	private int userId = -1;			// 사용자id
 	private String nickname = null;	 // 닉네임
+	
 	public int getUserId() {
 		return userId;
 	}
