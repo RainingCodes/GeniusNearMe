@@ -1,7 +1,6 @@
 package persistence.dao;
 //¸ÅÄª Á¤º¸ DAO
 import java.util.List;
-
 import service.dto.MatchingDTO;
 
 public interface MatchingDAO {
