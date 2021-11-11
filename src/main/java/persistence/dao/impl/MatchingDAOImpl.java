@@ -146,8 +146,9 @@ public class MatchingDAOImpl implements MatchingDAO{
 			int result = 0;
 			String DeleteQuery = "DELETE FROM MATCHING WHERE MATCHINGID = ? ";
 			
+			Object[] param = new Object[] {matchingId};
 			try {
-				jdbcUtil.setSqlAndParameters(DeleteQuery, matchingId);
+				jdbcUtil.setSqlAndParameters(DeleteQuery, param);
 				result = 1;
 			}catch(Exception ex) {
 				ex.printStackTrace();
