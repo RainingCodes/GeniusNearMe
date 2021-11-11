@@ -154,6 +154,7 @@ public class MatchingDAOImpl implements MatchingDAO{
 			}finally {
 				jdbcUtil.close();
 			}
+			
 			return result;	
 		}
 }

@@ -7,7 +7,6 @@ public interface MatchingDAO {
 	public List<MatchingDTO> getMatchingListByUserId(int userId);
 	//매칭상세 보기
 	public MatchingDTO getMatchingByMatchingId(int matchingId);
-	
 	//매칭 결정
 	public int decideMatching(MatchingDTO matchingDto);
 	
