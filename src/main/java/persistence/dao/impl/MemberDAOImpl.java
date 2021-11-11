@@ -22,10 +22,38 @@ public class MemberDAOImpl implements MemberDAO{
 		jdbcUtil = new JDBCUtil();
 	}
 		public List<MemberDTO> getMemberList() {
-			
-			return null;	
+			jdbcUtil.setSql(query);
+			try {
+				ResultSet rs = jdbcUtil.executeQuery();
+				List<MemberDTO> list = new ArrayList<MemberDTO>();
+				
+				while(rs.next()) {
+					MemberDTO dto = new MemberDTO();
+					dto.setUserId(rs.getInt("USERID"));
+					dto.setEmail(rs.getString("EMAIL"));
+					dto.setPw(rs.getString("PW"));
+					dto.setPhone(rs.getString("PHONE"));
+					dto.setNickname(rs.getString("NICKNAME"));
+					
+					list.add(dto);
+				}
+				return list;
+			}catch(Exception ex) {
+				ex.printStackTrace();
+			}finally {
+				jdbcUtil.close();
+			}return null;	
 		}
+		
 		public int insertMember(MemberDTO member) {
+			int result = 0;
+			String insertQuery = "INSERT INTO MEMBERS (USERID, EMAIL, PW, PHONE, NICKNAME) " + 
+								"VALUES (?, ?, ?, ?, ?)";
+			
+			DAOFactory factory = new DAOFactory();
+			
+			Object[] param = new Object[] {member.getUserId(), member.getEmail(), member.getPw(), member.getPhone(), member.getNickname()};
+			//jdbcUtil.setSql(insertQuery, param);
 			return 0;
 		}
 		public int updateMember(MemberDTO member) {
