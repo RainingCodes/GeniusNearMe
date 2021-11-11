@@ -9,8 +9,14 @@ public interface MatchingDAO {
 	public MatchingDTO getMatchingByMatchingId(int matchingId);
 	
 	//¸ÅÄª °áÁ¤
-	public MatchingDTO decideMatching(MatchingDTO matchingDto);
+	public int decideMatching(MatchingDTO matchingDto);
+	
+	//¸ÅÄª°ÅÀý
+	public int denyMatching(MatchingDTO matchingDto);
 	
 	//¸ÅÄª apply
-	public MatchingDTO applyMatching(MatchingDTO matchingDto);
+	public int insertMatching(MatchingDTO matchingDto);
+	
+	//¸ÅÄª »èÁ¦
+	public int deleteMatching(int matchindId);
 }

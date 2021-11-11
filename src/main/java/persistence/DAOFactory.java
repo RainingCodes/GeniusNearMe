@@ -11,5 +11,7 @@ public class DAOFactory {
 		return new MemberDAOImpl();
 	}
 	
-	//...
+	public MatchingDAO getMatchingDAO() {
+		return new MatchingDAOImpl();		
+	}
 }
