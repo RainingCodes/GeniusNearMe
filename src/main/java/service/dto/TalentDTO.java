@@ -4,15 +4,14 @@ import java.util.Date;
 public class TalentDTO {
 	private int talentId = -1;
 	private String title = null;
-	private int postType = -1;
 	private String content = null;
 	private Date startDate = null;
 	private Date deadLine = null;
 	private Date writtenDate = null;
 	private int matchingCounts = -1;
 	private int writerId = -1;
-	private String TalentCategoryName = null; 
-	
+	private String TalentCategoryName = null;	
+	private int postType = -1;
 	
 	public int getTalentId() {
 		return talentId;
