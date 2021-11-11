@@ -11,15 +11,14 @@ import persistence.util.JDBCUtil;
 public class MemberDAOImpl implements MemberDAO {
 	private JDBCUtil jdbcUtil = null;
 
-	private static String query = "SELECT MEMBERS.PW AS PW, " + "MEMBERS.EMAIL AS EMAIL, " + "MEMBERS.PHONE AS PHONE, "
-			+ "MEMBERS.USERID AS USERID, " + "MEMBERS.NICKNAME AS NICKNAME, ";
+	private static String query = "SELECT PW, EMAIL, PHONE, USERID, NICKNAME ";
 
 	public MemberDAOImpl() {
 		jdbcUtil = new JDBCUtil();
 	}
 
 	public List<MemberDTO> getMemberList() {
-		String allQuery = query + ", " + "FROM MEMBERS ORDER BY MEMBERS.USERID ASC ";
+		String allQuery = query + ", " + "FROM MEMBERS ORDER BY USERID ASC ";
 
 		jdbcUtil.setSqlAndParameters(allQuery, null);
 		try {
@@ -111,7 +110,7 @@ public class MemberDAOImpl implements MemberDAO {
 
 	public int deleteMember(int userId) {
 		int result = 0;
-		String deleteQuery = "DELETE FROM MEMBERS WHERE USERID = ?";
+		String deleteQuery = "DELETE FROM MEMBERS WHERE USERID = ? ";
 
 		jdbcUtil.setSql(deleteQuery);
 		Object[] param = new Object[] { userId };
