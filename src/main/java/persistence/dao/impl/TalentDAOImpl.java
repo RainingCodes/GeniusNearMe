@@ -5,10 +5,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import persistence.dao.TalentDAO;
 import persistence.util.JDBCUtil;
 import service.dto.TalentDTO;
 
-public class TalentDAOImpl {
+public class TalentDAOImpl implements TalentDAO  {
 	private JDBCUtil jdbcUtil = null;
 	
 	private static String query = "SELECT TALENTID, TITLE, CONTENT, STARTDATE, DEADLINE, "
@@ -178,7 +179,7 @@ public class TalentDAOImpl {
 	}
 	
 
-	public int updateStudent(TalentDTO t) {
+	public int updateTalent(TalentDTO t) {
 		
 		String updateQuery = "UPDATE TALENT SET ";
 		int index = 0;
