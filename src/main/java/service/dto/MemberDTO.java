@@ -1,12 +1,11 @@
 package service.dto;
 
-//ÇĞ»ı°ú °ü·ÃÇÑ Á¤º¸¸¦ ÀúÀåÇÏ±â À§ÇÑ DTO(Data Transition Object)
 public class MemberDTO {
-	private int userId = -1;			// »ç¿ëÀÚid
-	private String email = null;		// ÀÌ¸ŞÀÏ
-	private String pw = null;			// ºñ¹Ğ¹øÈ£ 
-	private String phone = null;	// ¿¬¶ôÃ³
-	private String nickname = null;	 // ´Ğ³×ÀÓ
+	private int userId = -1;			// ì‚¬ìš©ìid
+	private String email = null;		// ì´ë©”ì¼
+	private String pw = null;			// ë¹„ë°€ë²ˆí˜¸ 
+	private String phone = null;	// ì „í™”ë²ˆí˜¸
+	private String nickname = null;	 // ë‹‰ë„¤ì„
 	public int getUserId() {
 		return userId;
 	}

@@ -12,15 +12,17 @@ import persistence.util.JDBCUtil;
 public class MemberDAOImpl implements MemberDAO{
 	private JDBCUtil jdbcUtil = null;
 	
-	// Member의 기본 정보를 포함하는 query문
-	private static String query = "";
+	private static String query = "SELECT MEMBERS.USERID AS USERID, "+
+									"MEMBERS.EMAIL AS EMAIL, "+
+									"MEMBERS.PW AS PW, "+
+									"MEMBERS.PHONE AS PHONE, "+
+									"MEMBERS.NICKNAME AS NICKNAME, ";
 	
-	// 생성자
 	public MemberDAOImpl() {
 		jdbcUtil = new JDBCUtil();
 	}
-	// 전체 멤버정보를 List 로 반환하는 메소드
-		public List<MemberDTO> getMemberList() {	
+		public List<MemberDTO> getMemberList() {
+			
 			return null;	
 		}
 		public int insertMember(MemberDTO member) {
@@ -33,6 +35,10 @@ public class MemberDAOImpl implements MemberDAO{
 			return 0;
 		}
 		public MemberDTO getMemberByNickname(String nickName) {
+			return null;
+		}
+		public MemberDTO getMemberByUserId(int userId) {
+			
 			return null;
 		}
 }
