@@ -130,7 +130,7 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 
 	public MemberDTO getMemberByNickname(String nickName) {
-		String searchQuery = query + ", " + "FROM MEMBERS " + "WHERE MEMBERS.NICKNAME = ? ";
+		String searchQuery = query + ", " + "FROM MEMBERS " + "WHERE NICKNAME = ? ";
 		jdbcUtil.setSql(searchQuery);
 		Object[] param = new Object[] { nickName };
 		jdbcUtil.setParameters(param);
@@ -157,7 +157,7 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 
 	public MemberDTO getMemberByUserId(int userId) {
-		String searchQuery = query + ", " + "FROM MEMBERS " + "WHERE MEMBERS.USERID = ? ";
+		String searchQuery = query + ", " + "FROM MEMBERS " + "WHERE USERID = ? ";
 		jdbcUtil.setSql(searchQuery);
 		Object[] param = new Object[] { userId };
 		jdbcUtil.setParameters(param);
