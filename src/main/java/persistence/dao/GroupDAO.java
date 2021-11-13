@@ -11,5 +11,5 @@ public interface GroupDAO {
 	public List<GroupDTO> getGroupList(int talentId);
 	public int deleteGroupMember(GroupDTO group, int userId);
 	public int deleteGroup(GroupDTO group);
-	public int countGroupMembers(int groupId);
+	public int countGroupMembers(GroupDTO group);
 }

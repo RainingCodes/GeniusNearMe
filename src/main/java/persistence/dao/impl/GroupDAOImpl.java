@@ -91,6 +91,12 @@ public class GroupDAOImpl implements GroupDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		jdbcUtil.close();						//이거 질문
+		new GroupDAOImpl();
+		group.setCountMembers(group.getCountMembers() + 1);
+		String updateMembersQuery = "UPDATE GROUP SET MEMBERSCOUNT=? WHERE GROUPID=? ";
+		param = new Object[] { group.getCountMembers(), group.getGroupId() };
+		jdbcUtil.setSqlAndParameters(updateMembersQuery, param);
 		try {
 			result = jdbcUtil.executeUpdate();
 		} catch (SQLException e) {
@@ -100,7 +106,9 @@ public class GroupDAOImpl implements GroupDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		jdbcUtil.close();
+		
+		
+		
 		return result;
 	}
 
@@ -184,9 +192,22 @@ public class GroupDAOImpl implements GroupDAO {
 	}
 
 	@Override
-	public int countGroupMembers(int groupId) {
+	public int countGroupMembers(GroupDTO group) {
 		// TODO Auto-generated method stub
-		return 0;
+		String countMembersQuery = "SELECT * FROM GROUPMEMBERS WHERE GROUPID=? ";
+		Object[] param = new Object[] { group.getGroupId() };
+		jdbcUtil.setSqlAndParameters(countMembersQuery, param);
+		ResultSet rs = jdbcUtil.executeQuery();
+		int count = 0;
+		try {
+			while(rs.next()) {
+				count++;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return count;
 	}
 
 	
