@@ -8,7 +8,7 @@ import persistence.dao.MatchingDAO;
 import persistence.util.JDBCUtil;
 import service.dto.MatchingDTO;
 
-public class MatchingDAOImpl implements MatchingDAO{
+public class MatchingDAOImpl implements MatchingDAO {
 	private JDBCUtil jdbcUtil = null;
 	private static String query = "SELECT MATCHINGID, "+
 			"TALENTID, "+
