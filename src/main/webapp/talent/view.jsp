@@ -2,10 +2,11 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="service.*"%>
 <%@ page import="service.dto.TalentDTO"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="java.util.List"%>
+<%@ page import="java.util.Iterator" %>
 <jsp:useBean id="talent" class="service.dto.TalentDTO" scope="page" />
 <jsp:setProperty name="talent" property="*" />
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -97,13 +98,19 @@ p {
 </style>
 </head>
 <body>
+	<%
+	TalentService talentService = new TalentServiceImpl();
+	MemberService memberService = new MemberServiceImpl();
+	List<TalentDTO> talentList = talentService.ListingTalents();
+	request.setAttribute("talentList", talentList);
+	%>
 	<div class="nav">
 		<p></p>
 		<input type="text" id="value" placeholder="결과내 재검색">
 		<p></p>
 		<strong>카테고리</strong><br>
 		<div class="category">
-			<input type="checkbox" value="all" checked>모든 재능<input type="checkbox" value="beauty">뷰티<br>
+			<input type="checkbox" value="all" checked>모든 재능<inputtype="checkbox" value="beauty">뷰티<br>
 			<input type="checkbox" value="sports">운동<input type="checkbox" value="foreignLanguage">외국어<br>
 			<input type="checkbox" value="cook">요리<input type="checkbox" value="law">법률<br>
 			<input type="checkbox" value="it">IT<input type="checkbox" value="art">예술<br>
@@ -119,16 +126,39 @@ p {
 		<input type="button" value="상세 검색" style="width: 150px;">
 	</div>
 	<div class="content">
-		<div id="sort" style="margin-left: 680px;">
-			<button>최신순</button>
-			|
-			<button>매칭순</button>
-			<!-- | <button>리뷰많은순</button> -->
+		<div id="sort" style="margin-left: 680px;"><!-- | <button>리뷰많은순</button> -->
 		</div>
+		
+		<c:forEach var="talent" items="${talentList}">
+			<div class="post">
+				<div id="imgSection1">
+					<img id="thumbnail1" src="img/loopy/img1.jpg" width="120" height="120">
+				</div>
+				<p>
+					<strong>${ talent.title }</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%{talent.writtenDate}
+				</p>
+				<p></p>
+				<p></p>
+				<p>${ talent.content }</p>
+			</div>
+		</c:forEach>
+		
 		<div class="post">
 			<div id="imgSection1">
-				<img id="thumbnail1" src="img/loopy/img1.jpg" width="120"
-					height="120">
+				<img id="thumbnail1" src="img/loopy/img1.jpg" width="120" height="120">
+			</div>
+			<p>
+				<strong><% out.print(talent.getTitle()); %></strong>
+			</p>
+			<p></p>
+			<p></p>
+			<p>
+				<%out.print(talent.getContent()); %>
+			</p>
+		</div> 
+		<%-- <div class="post">
+			<div id="imgSection1">
+				<img id="thumbnail1" src="img/loopy/img1.jpg" width="120" height="120">
 			</div>
 			<p>
 				<strong>석고방향제 원데이 클래스</strong>
@@ -139,8 +169,7 @@ p {
 		</div>
 		<div class="post">
 			<div id="imgSection1">
-				<img id="thumbnail1" src="img/loopy/img2.jpg" width="120"
-					height="120">
+				<img id="thumbnail1" src="img/loopy/img2.jpg" width="120" height="120">
 			</div>
 			<p>
 				<strong>석고방향제 주문제작</strong>
@@ -151,8 +180,7 @@ p {
 		</div>
 		<div class="post">
 			<div id="imgSection1">
-				<img id="thumbnail1" src="img/loopy/img3.jpg" width="120"
-					height="120">
+				<img id="thumbnail1" src="img/loopy/img3.jpg" width="120" height="120">
 			</div>
 			<p>
 				<strong>디퓨저/석고방향제/캔들 제작</strong>
@@ -162,11 +190,9 @@ p {
 			<p>향 관련 제품들 모두 주문가능하니 둘러보세요!궁금한 점이나 요청사항 있으시면 쪽지,댓글 주세요.제작일정 때문에
 				확인이 조금 느릴 수 있는 점 양해부탁드려요</p>
 		</div>
-
 		<div class="post">
 			<div id="imgSection1">
-				<img id="thumbnail1" src="img/loopy/img4.jpg" width="120"
-					height="120">
+				<img id="thumbnail1" src="img/loopy/img4.jpg" width="120" height="120">
 			</div>
 			<p>
 				<strong>석고방향제 원데이 클래스</strong>
@@ -174,31 +200,8 @@ p {
 			<p></p>
 			<p></p>
 			<p>나만의 특별한 향을 간직하고 있는 방향제를 만들고 싶다면 저의 수업을 들어보세요! 선물로도 딱이랍니다</p>
-		</div>
-		<!-- 
-			<div class="post">
-			   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit nam error ipsa commodi exercitationem fugiat praesentium tempore inventore voluptate dolore. Ipsa quisquam nemo enim explicabo aut accusantium ex ab perspiciatis.
-			</div>
-      		<div class="post">
-      			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit nam error ipsa commodi exercitationem fugiat praesentium tempore inventore voluptate dolore. Ipsa quisquam nemo enim explicabo aut accusantium ex ab perspiciatis.
-			</div>
-			 -->
+		</div> --%>
 	</div>
-	</div>
-	<%-- <%
-	TalentService talentService = new TalentServiceImpl();
-	List<TalentDTO> talentList = talentService.getTalent(talent.getTitle());
-
-	for (int i = 0; i < talentList.size(); i++) {
-		out.print("재능글 id: " + talent.getTitle() + "<br>");
-		out.print("재능글 제목: " + talent.getTitle() + "<br>");
-		out.print("재능글 카테고리: " + talent.getTitle() + "<br>");
-		out.print("타입: " + talent.getTitle() + "<br>");
-		out.print("작성자: " + talent.getTitle() + "<br>");
-		out.print("내용: " + talent.getTitle() + "<br>");
-		//...			
-	}
-	%> --%>
 	<br>
 	<!-- <a href="index.jsp">GO BACK</a>  -->
 </body>
