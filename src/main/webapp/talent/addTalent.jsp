@@ -39,7 +39,7 @@
         		form.content.focus();
         		return false;
         	} 
-        	
+        	form.submit();
         }
         </script>
         <style>
@@ -86,7 +86,7 @@
                    </td>
                </tr>
            </table>
-            <input type="submit" value="등록" onClick="talentCreate()">
+            <input type="button" value="등록" onClick="talentCreate()">
 
        </form>
     </body>
