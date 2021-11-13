@@ -32,7 +32,15 @@ public class GroupDAOImpl implements GroupDAO {
 		Object[] param = new Object[] { group.getTalentId(), group.getRepresentativeId(), group.getMaximum() };
 		jdbcUtil.setSqlAndParameters(insertGroupQuery, param);
 		
-		result = jdbcUtil.executeUpdate();
+		try {
+			result = jdbcUtil.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		jdbcUtil.close();
 		return result;
 	}
@@ -40,15 +48,22 @@ public class GroupDAOImpl implements GroupDAO {
 	@Override
 	public int[] getGroupMembers(GroupDTO group) {
 		// TODO Auto-generated method stub
-		String MemebersQuery = "SELECT GROUPMEMBERS.USERID "
+		String MembersQuery = "SELECT GROUPMEMBERS.USERID "
 				+ "WHERE GROUPID=? ";
-		ResultSet rs = jdbcUtil.setSqlAndParameters(MembersQuery, group.getGroupId());
+		Object[] param = new Object[] { group.getGroupId() };
+		jdbcUtil.setSqlAndParameters(MembersQuery, param);
+		ResultSet rs = jdbcUtil.executeQuery();
 		int count = group.getMembersCount();
 		if(count != 0) {
-			int[] memberList = new int[count)];
+			int[] memberList = new int[count];
 			int i = 0;
-			while(rs.next()) {
-				memberList[i++] = rs.getInt("USER_ID");
+			try {
+				while(rs.next()) {
+					memberList[i++] = rs.getInt("USER_ID");
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 			return memberList;
 		}
@@ -115,18 +130,13 @@ public class GroupDAOImpl implements GroupDAO {
 		String listQuery = "SELECT GROUP.GROUPID AS GROUP_ID, "
 				+ "GROUP.TALENTID AS TALENT_ID, "
 				+ "GROUP.REPRESENTATIVEID AS REPRESENTATIVE_ID "
+				+ "GROUP.MEMBERSCOUNT AS MEMBERS_COUNT"
 				+ "WHERE TALENTID=? ";
-		ResultSet rs = jdbcUtil.setSqlAndParameters(listQuery, talentId);
+		Object[] param = new Object[] { talentId };
+		jdbcUtil.setSqlAndParameters(listQuery, param);
+		ResultSet rs = jdbcUtil.executeQuery();
 		
 		
-		
-		while(rs.next()) {
-			GroupDTO dto = new GroupDTO();
-			dto.setGroupId(rs.getInt("GROUP_Id"));
-			dto.setRepresentativeId(rs.getInt("REPRESENTATIVE_ID"));
-			dto.setTalentId(rs.getInt("TALENT_ID"));
-			dto.setUserId(getGroupMembers(dto.getGroupId(talentId)));
-		}
 		jdbcUtil.executeQuery();
 		jdbcUtil.close();
 		
@@ -138,8 +148,17 @@ public class GroupDAOImpl implements GroupDAO {
 		// TODO Auto-generated method stub
 		int result = 0;
 		String deleteMemQuery = "DELETE FROM GROUPMEMBERS WHERE USERID=? ";
-		ResultSet rs = jdbcUtil.setSqlAndParameters(deleteMemQuery, userId);
-		result = jdbcUtil.executeUpdate();
+		Object[] param = new Object[] { userId };
+		jdbcUtil.setSqlAndParameters(deleteMemQuery, param);
+		try {
+			result = jdbcUtil.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		jdbcUtil.close();
 		return result;
 	}
@@ -149,30 +168,28 @@ public class GroupDAOImpl implements GroupDAO {
 		// TODO Auto-generated method stub
 		int result = 0;
 		String deleteGroupQuery = "DELETE FROM GROUPING WHERE GROUPID=? ";
-		ResultSet rs = jdbcUtil.setSqlAndParameters(deleteGroupQuery, group.getGroupId());
-		result = jdbcUtil.executeUpdate();
+		Object[] param = new Object[] { group.getGroupId() };
+		jdbcUtil.setSqlAndParameters(deleteGroupQuery, param);
+		try {
+			result = jdbcUtil.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		jdbcUtil.close();
 		return result;
 	}
 
-	
-
 	@Override
 	public int countGroupMembers(int groupId) {
 		// TODO Auto-generated method stub
-		int count = 0;
-		String CountQuery = "SELECT COUNT(*) AS MEMBERSCOUNT"
-				+ "FROM GROUPMEBMERS "
-				+ "WHERE GROUPID=? ";
-		ResultSet rs = jdbcUtil.setSqlAndParameters(CountQuery, groupId);
-		
-		if(rs.next()) {
-			count = rs.getInt("MEMBERS_NUM");
-			
-		jdbcUtil.executeQuery();
-		jdbcUtil.close();
-		return count;
+		return 0;
 	}
+
 	
+
 	
 }
