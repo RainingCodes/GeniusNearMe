@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -6,6 +6,8 @@
     <head>
     <meta charset="UTF-8">
         <title>게시글 화면</title>
+        <script>
+        </script>
         <style>
             table {
                 width: 100%;
@@ -16,7 +18,7 @@
     </head>
     
     <body>
-       
+    
         <table>
             <tr>
                 <td colspan="3">

@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -7,6 +7,41 @@
     <head>
     <meta charset="UTF-8">
         <title>게시글 추가</title>
+        <script>
+        function talentCreate(){
+        	if(from.title.value ==""){
+        		alert("제목를 입력하십시오.");
+        		form.title.focus();
+        		return false;
+        	} 
+        	if(from.student.value ==""){
+        		alert("학생 수를 입력하십시오.");
+        		form.student.focus();
+        		return false;
+        	} 
+        	if(from.cost.value ==""){
+        		alert("가격을 입력하십시오.");
+        		form.cost.focus();
+        		return false;
+        	} 
+        	if(from.startDate.value ==""){
+        		alert("모집 시작일을 입력하십시오.");
+        		form.startDate.focus();
+        		return false;
+        	} 
+        	if(from.deadline.value ==""){
+        		alert("모집마감일을 입력하십시오.");
+        		form.deadline.focus();
+        		return false;
+        	} 
+        	if(from.content.value ==""){
+        		alert("설명을 입력하십시오.");
+        		form.content.focus();
+        		return false;
+        	} 
+        	
+        }
+        </script>
         <style>
             table{
                 width: 100%;
@@ -15,7 +50,8 @@
         </style>
     </head>
     <body>
-       <form>
+    <!-- talent registration from -->
+       <from name = "from" method="POST" action="<c:url value='/talent/register' />">
            <h5>제목</h5>
            <input type="text" name="title">
            <hr/>
@@ -31,9 +67,10 @@
                         </select>
                    </td>
                    <td>
-                       <h5>수강생에 대한 가격 설정</h5>
-                      <input type="number" name="student"> &nbsp; 
-                      <input type="number" name="cost" >
+                       <h5>가격 </h5>
+                       <p>학생 수
+                       <input type="number" name="student"> &nbsp; 가격
+                      <input type="number" name="cost" ></p>
                    </td>
                </tr>
                <tr>
@@ -45,11 +82,11 @@
                    </td>
                    <td>
                         <h5>세부 설명 및 주의사항</h5>
-                        <textarea rows="10" cols="50"></textarea>
+                        <textarea rows="10" cols="50" name="content"></textarea>
                    </td>
                </tr>
            </table>
-            <input type="submit" value="등록">
+            <input type="submit" value="등록" onClick="talentCreate()">
 
        </form>
     </body>
