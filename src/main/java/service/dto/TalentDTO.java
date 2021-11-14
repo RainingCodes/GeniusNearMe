@@ -12,7 +12,22 @@ public class TalentDTO {
 	private int writerId = -1;
 	private String TalentCategoryName = null;	
 	private int postType = -1;
+	private int price;
 	
+	public TalentDTO(String title, String content, Date startDate, Date deadLine, Date writtenDate,
+			int writerId, int price) {
+		super();
+		this.title = title;
+		this.content = content;
+		this.startDate = startDate;
+		this.deadLine = deadLine;
+		this.writtenDate = writtenDate;
+		this.writerId = writerId;
+		this.price = price;
+	}
+	public TalentDTO() {
+		// TODO Auto-generated constructor stub
+	}
 	public int getTalentId() {
 		return talentId;
 	}
@@ -72,6 +87,12 @@ public class TalentDTO {
 	}
 	public void setTalentCategoryName(String talentCategoryName) {
 		TalentCategoryName = talentCategoryName;
+	}
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
 	}
 	
 	

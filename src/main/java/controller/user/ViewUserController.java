@@ -28,7 +28,7 @@ public class ViewUserController implements Controller {
 	        return "redirect:/user/list";
 		}	
 		
-    	request.setAttribute("user", member);		// 사용자 정보 저장				
-		return "/user/view.jsp";				// 사용자 보기 화면으로 이동
+    	request.setAttribute("member", member);		// 사용자 정보 저장				
+		return "/member/view.jsp";				// 사용자 보기 화면으로 이동
     }
 }

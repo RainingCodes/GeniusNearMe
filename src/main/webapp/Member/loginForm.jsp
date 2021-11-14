@@ -3,7 +3,7 @@
 
 <html>
 <head>
-<title>이웃집 솜솜이 로그인</title>
+<title>이웃집 똑똑이 로그인</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css">
 <script>
@@ -39,7 +39,7 @@ function userCreate(targetUri) {
 	  	<b>이웃집 솜솜이 로그인</b><br><br>
 	   	<table>
 	   	  <tr>
-		    <td class="title">&nbsp;&nbsp;사용자 관리 - 로그인&nbsp;&nbsp;</td>
+		    <td class="title">&nbsp;&nbsp;로그인&nbsp;&nbsp;</td>
 		  </tr>
 	    </table>  
 		
@@ -52,7 +52,7 @@ function userCreate(targetUri) {
 	  	  <tr height="40">
 			<td width="150" align="center" bgcolor="E6ECDE">이메일 ID</td>
 			<td width="250" bgcolor="ffffff" style="padding-left:10">
-				<input type="text" style="width:240" name="userId">
+				<input type="text" style="width:240" name="email">
 			</td>
 		  </tr>
 	  	  <tr height="40">
