@@ -40,7 +40,7 @@ function gotoUri(targetUri) {
 <body>
 <br>
 <!-- Update Form  -->
-<form name="form" method="POST" action="<c:url value='/user/update' />">
+<form name="form" method="POST" action="<c:url value='/member/update' />">
   <input type="hidden" name="email" value="${member.userId}"/>
   <input type="hidden" name="email" value="${member.email}"/>	  
   <table style="width: 100%">
@@ -91,7 +91,7 @@ function gotoUri(targetUri) {
 		  <tr>
 			<td align="left">
 			<input type="button" value="수정" onClick="userModify()"> &nbsp;
-			<input type="button" value="내 정보로 돌아가기" onClick="gotoUri('<c:url value='/user/view' />')">
+			<input type="button" value="내 정보로 돌아가기" onClick="gotoUri('<c:url value='/member/view' />')">
 			</td>
 		  </tr>
 	    </table>

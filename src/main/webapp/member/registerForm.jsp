@@ -48,7 +48,7 @@ function userList(targetUri) {
 <!-- 화면 로드 시 서버로부터 커뮤니티 목록을 가져와 commSelect 메뉴 생성 -->
 <br>
 <!-- registration form  -->
-<form name="form" method="POST" action="<c:url value='/user/register' />">
+<form name="form" method="POST" action="<c:url value='/member/register' />">
   <table style="width: 100%">
     <tr>
       <td width="20"></td>
@@ -103,7 +103,7 @@ function userList(targetUri) {
 		  <tr>
 			<td align="left">
 			<input type="button" value="회원 가입" onClick="userCreate()"> &nbsp;
-			<input type="button" value="목록" onClick="userList('<c:url value='/user/list' />')">
+			<input type="button" value="목록" onClick="userList('<c:url value='/member/list' />')">
 			</td>
 		  </tr>
 	    </table>
