@@ -11,4 +11,5 @@ public interface TalentService{
 	public int insertTalent(TalentDTO talent);
 	public int updateTalent(TalentDTO talent);
 	public int deleteTalent(int talentId);
+	public TalentDTO findTalent(int talentId);
 }

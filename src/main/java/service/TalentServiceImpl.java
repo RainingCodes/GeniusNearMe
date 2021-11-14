@@ -36,5 +36,7 @@ public class TalentServiceImpl implements TalentService {
 	public int deleteTalent(int talentId) {
 		return dao.deleteTalent(talentId);
 	}
-	
+	public TalentDTO findTalent(int talentId) {
+		return dao.getTalentView(talentId);
+	}
 }

@@ -15,7 +15,7 @@ public class ViewTalentController {
             return "redirect:/member/login/form";		// login form 요청으로 redirect
         }
     	
-		String talentId = request.getParameter("talentId");
+		int talentId = Integer.parseInt(request.getParameter("talentId"));
 		TalentService talentService = new TalentServiceImpl();
 		TalentDTO talent = talentService.findTalent(talentId);
 			
