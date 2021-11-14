@@ -4,8 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import controller.talent.RegisterTalentController;
 import controller.user.*;
 
 public class RequestMapping {
@@ -21,8 +19,9 @@ public class RequestMapping {
         mappings.put("/member/logout", new LogoutController());
 //        mappings.put("/user/list", new ListUserController());
         mappings.put("/member/view", new ViewMemberController());
+        mappings.put("/member/register", new RegisterMemberController());
         mappings.put("/member/register/form", new ForwardController("/member/registerForm.jsp"));
-        mappings.put("/talent/register", new RegisterTalentController());
+//        mappings.put("/talent/register", new RegisterTalentController());
         mappings.put("/member/update/form", new UpdateMemberController());
         mappings.put("/member/update", new UpdateMemberController());
         mappings.put("/member/delete", new DeleteMemberController());
