@@ -1,8 +1,16 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="service.dto.MemberDTO" %>
+<%
+	MemberDTO member = (MemberDTO)request.getAttribute("");
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>이웃집솜이</title>
+<title>이웃집 똑똑이</title>
 <script language="JavaScript">
 function talentTest() {
 	var url = "talentTest.jsp";
