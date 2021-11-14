@@ -97,16 +97,22 @@ p {
 </head>
 <body>
 	<%
-		// 체크박스값들을 모두 읽어옴
+		// 카테고리값(체크박스)들을 모두 읽어와서 저장
 		String[] selectedCategory = request.getParameterValues("category");
 		TalentService talentService = new TalentServiceImpl();
 		
 		List<TalentDTO> talentList = talentService.getTalentByTalentCategory(selectedCategory);
 		request.setAttribute("talentList", talentList);
 		
+		//price값 저장
+		String price = request.getParameter("price");
+		
+		//시작날짜, 종료날짜 저장
+		String startDate = request.getParameter("startDate");
+		String endDate = request.getParameter("endDate");
 	%>
 		<div class="nav">
-		<form name="reSearchForm" method="post" action="../detailedSearch/list.jsp">
+		<form method="post" action="../detailedSearch/list.jsp">
 		<p></p>
 		<input type="text" id="value" placeholder="결과내 재검색">
 		<p></p>
@@ -149,10 +155,10 @@ p {
 		<p></p>
 		<strong>가격대</strong>
 		<p></p>
-		<input type="range" min="0" max="100000" step="1000" id="priceRange">
+		<input type="range" min="0" max="100000" step="1000" id="priceRange" name="price" value=<%=price%>>
 		<p></p>
 		<p></p>
-		<strong>날짜</strong><br> <input type="date" name="startDate">~<input type="date" name="endDate">
+		<strong>날짜</strong><br> <input type="date" name="startDate" value=<%=startDate%>>~<input type="date" name="endDate" value=<%=endDate%>>
 		<p></p>
 		<input type="submit" value="상세 검색" style="width: 150px;">
 		</form>

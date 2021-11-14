@@ -105,21 +105,21 @@ p {
 	request.setAttribute("talentList", talentList);
 	%>
 	<div class="nav">
-		<form name="reSearchForm" method="post" action="../detailedSearch/list.jsp">
+		<form method="post" action="../detailedSearch/list.jsp">
 		<p></p>
-		<input type="text" id="value" placeholder="결과내 재검색">
+		<input type="text" id="value" name="reSearch" placeholder="결과내 재검색">
 		<p></p>
 		<strong>카테고리</strong><br>
 		<div class="category">
-			<input type="checkbox" name="category" value="all" checked>모든 재능<input type="checkbox" name="category" value="beauty">뷰티<br>
-			<input type="checkbox" name="category" value="sports">운동<input type="checkbox" name="category" value="foreignLanguage">외국어<br>
-			<input type="checkbox" name="category" value="cook">요리<input type="checkbox" name="category" value="law">법률<br>
-			<input type="checkbox" name="category" value="it">IT<input type="checkbox" name="category" value="art">예술<br>
+			<input type="checkbox" name="category" value="all" checked>모든 재능 <input type="checkbox" name="category" value="beauty">뷰티<br>
+			<input type="checkbox" name="category" value="sports">운동 <input type="checkbox" name="category" value="foreignLanguage">외국어<br>
+			<input type="checkbox" name="category" value="cook">요리 <input type="checkbox" name="category" value="law">법률<br>
+			<input type="checkbox" name="category" value="it">IT <input type="checkbox" name="category" value="art">예술<br>
 		</div>
 		<p></p>
 		<strong>가격대</strong>
 		<p></p>
-		<input type="range" min="0" max="100000" step="1000" id="priceRange">
+		<input type="range" min="0" max="100000" step="1000" id="priceRange" name="price" value="50000">
 		<p></p>
 		<p></p>
 		<strong>날짜</strong><br> <input type="date" name="startDate">~<input type="date" name="endDate">
