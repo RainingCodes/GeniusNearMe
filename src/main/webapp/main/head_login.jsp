@@ -3,7 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="service.dto.MemberDTO" %>
 <%
-	MemberDTO member = (MemberDTO)request.getAttribute("");
+	MemberDTO member = (MemberDTO)request.getAttribute("member");
 %>
 
 <!DOCTYPE html>
