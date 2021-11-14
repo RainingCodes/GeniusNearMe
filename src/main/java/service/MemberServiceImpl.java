@@ -1,5 +1,6 @@
 package service;
 
+import java.sql.SQLException;
 import java.util.List;
 import persistence.DAOFactory;
 import persistence.dao.MemberDAO;
@@ -27,5 +28,25 @@ public class MemberServiceImpl implements MemberService {
 	}
 	public int deleteMember(int userId) {
 		return dao.deleteMember(userId);
+	}
+	
+	public boolean login(String userId, String password)
+			throws SQLException, UserNotFoundException, PasswordMismatchException {
+			MemberDTO member = dao.getMemberByEmail(userId);
+
+			if (!member.matchPassword(password)) {
+				throw new PasswordMismatchException("비밀번호가 일치하지 않습니다.");
+			}
+			return true;
+	}
+	
+	public MemberDTO findUserByEmail(String userId)
+			throws SQLException, UserNotFoundException {
+			MemberDTO member = dao.getMemberByEmail(userId);
+
+			if (member == null) {
+				throw new UserNotFoundException("유저가 존재하지 않습니다.");
+			}
+			return member;
 	}
 }

@@ -182,4 +182,31 @@ public class MemberDAOImpl implements MemberDAO {
 		}
 		return null;
 	}
+	
+	public MemberDTO getMemberByEmail(String email) {
+		String searchQuery = query + ", " + "FROM MEMBERS " + "WHERE EMAIL = ? ";
+		jdbcUtil.setSql(searchQuery);
+		Object[] param = new Object[] { email };
+		jdbcUtil.setParameters(param);
+
+		try {
+			ResultSet rs = jdbcUtil.executeQuery();
+			MemberDTO member = null;
+
+			if (rs.next()) {
+				member = new MemberDTO();
+				member.setPw(rs.getString("PW"));
+				member.setEmail(rs.getString("EMAIL"));
+				member.setPhone(rs.getString("PHONE"));
+				member.setUserId(rs.getInt("USERID"));
+				member.setNickname(rs.getString("NICKNAME"));
+			}
+			return member;
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.close();
+		}
+		return null;
+	}
 }

@@ -11,4 +11,5 @@ public interface MemberDAO {
 		public int deleteMember(int userId);
 		public MemberDTO getMemberByNickname(String nickName);
 		public MemberDTO getMemberByUserId(int userId);
+		public MemberDTO getMemberByEmail(String email);
 }

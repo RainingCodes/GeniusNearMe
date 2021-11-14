@@ -37,4 +37,12 @@ public class MemberDTO {
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
 	}
+	
+	/* 비밀번호 검사 */
+	public boolean matchPassword(String password) {
+		if (password == null) {
+			return false;
+		}
+		return this.pw.equals(password);
+	}
 }
