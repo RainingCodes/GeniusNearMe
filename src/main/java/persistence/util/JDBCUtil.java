@@ -33,8 +33,8 @@ public class JDBCUtil {
 			if (ds == null) {
 				BasicDataSource bds = new BasicDataSource();
 				bds.setDriverClassName("oracle.jdbc.driver.OracleDriver");
-				bds.setUsername("dbp");
-				bds.setPassword("dbp");
+				bds.setUsername("dbpro0202");
+				bds.setPassword("Genius022");
 				bds.setUrl("jdbc:oracle:thin:@202.20.119.117:1521:orcl");
 				ds = bds;
 				// Context init = new InitialContext();

@@ -64,4 +64,13 @@ public class MemberDTO {
 		}
 		return this.pw.equals(password);
 	}
+	
+	public String toString() {
+		String s = userId + "\n"
+				+ email + "\n"
+				+ pw + "\n"
+				+ nickname + "\n"
+				+ phone + "\n";
+		return s;
+	}
 }

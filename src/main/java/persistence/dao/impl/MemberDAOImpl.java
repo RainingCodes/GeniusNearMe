@@ -18,7 +18,7 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 
 	public List<MemberDTO> getMemberList() {
-		String allQuery = query + ", " + "FROM MEMBERS ORDER BY USERID ASC ";
+		String allQuery = query + "FROM MEMBERS ORDER BY USERID ASC ";
 
 		jdbcUtil.setSqlAndParameters(allQuery, null);
 		try {
@@ -130,7 +130,7 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 
 	public MemberDTO getMemberByNickname(String nickName) {
-		String searchQuery = query + ", " + "FROM MEMBERS " + "WHERE NICKNAME = ? ";
+		String searchQuery = query + "FROM MEMBERS " + "WHERE NICKNAME = ? ";
 		jdbcUtil.setSql(searchQuery);
 		Object[] param = new Object[] { nickName };
 		jdbcUtil.setParameters(param);
@@ -157,7 +157,7 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 
 	public MemberDTO getMemberByUserId(int userId) {
-		String searchQuery = query + ", " + "FROM MEMBERS " + "WHERE USERID = ? ";
+		String searchQuery = query + "FROM MEMBERS " + "WHERE USERID = ? ";
 		jdbcUtil.setSql(searchQuery);
 		Object[] param = new Object[] { userId };
 		jdbcUtil.setParameters(param);
@@ -184,7 +184,7 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 	
 	public MemberDTO getMemberByEmail(String email) {
-		String searchQuery = query + ", " + "FROM MEMBERS " + "WHERE EMAIL = ? ";
+		String searchQuery = query + "FROM MEMBERS " + "WHERE EMAIL = ? ";
 		jdbcUtil.setSql(searchQuery);
 		Object[] param = new Object[] { email };
 		jdbcUtil.setParameters(param);
@@ -211,7 +211,7 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 	
 	public int getUserIdByEmail(String email) {
-		String searchQuery = "SELECT USERID, FROM MEMBERS WHERE EMAIL = ? ";
+		String searchQuery = "SELECT USERID FROM MEMBERS WHERE EMAIL = ? ";
 		jdbcUtil.setSql(searchQuery);
 		Object[] param = new Object[] { email };
 		jdbcUtil.setParameters(param);
@@ -234,8 +234,11 @@ public class MemberDAOImpl implements MemberDAO {
 	
 	//주어진 이메일 ID에 해당하는 사용자가 존재하는지 검사 
 	public boolean existingEmail(String email) throws SQLException {
-		String sql = "SELECT count(*) FROM MEMBERS WHERE EMAIL = ?";      
-		jdbcUtil.setSqlAndParameters(sql, new Object[] {email});	// JDBCUtil에 query문과 매개 변수 설정
+		String sql = "SELECT count(*) FROM MEMBERS WHERE EMAIL = ?";     
+		
+		System.out.println(email);
+		Object[] param = new Object[] { email };
+		jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil에 query문과 매개 변수 설정
 
 		try {
 			ResultSet rs = jdbcUtil.executeQuery();		// query 실행
