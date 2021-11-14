@@ -94,9 +94,6 @@ p {
 	margin: 15px;
 }
 </style>
-<script>
-	document.getElementByName("category").value;
-</script>
 </head>
 <body>
 	<%
@@ -106,6 +103,7 @@ p {
 		
 		List<TalentDTO> talentList = talentService.getTalentByTalentCategory(selectedCategory);
 		request.setAttribute("talentList", talentList);
+		
 	%>
 		<div class="nav">
 		<form name="reSearchForm" method="post" action="../detailedSearch/list.jsp">
@@ -114,9 +112,14 @@ p {
 		<p></p>
 		<strong>카테고리</strong><br>
 		<div class="category">
-			<input type="checkbox" name="category" value="all" checked=<% Arrays.asList(selectedCategory).contains("all"); %>>모든 재능<input type="checkbox" name="category" value="beauty">뷰티<br>
-			<input type="checkbox" name="category" value="sports" checked=<% Arrays.asList(selectedCategory).contains("sports"); %>>운동<input type="checkbox" name="category" value="foreignLanguage">외국어<br>
-			<input type="checkbox" name="category" value="cook" checked=<% Arrays.asList(selectedCategory).contains("cook");%>>요리<input type="checkbox" name="category" value="law">법률<br>
+			<input type="checkbox" name="category" value="all"
+				<% if (Arrays.asList(selectedCategory).contains("all")==true){
+					out.print(" checked");
+				}
+				%>>모든 재능
+			<input type="checkbox" name="category" value="beauty">뷰티<br>
+			<input type="checkbox" name="category" value="sports">운동<input type="checkbox" name="category" value="foreignLanguage">외국어<br>
+			<input type="checkbox" name="category" value="cook">요리<input type="checkbox" name="category" value="law">법률<br>
 			<input type="checkbox" name="category" value="it">IT<input type="checkbox" name="category" value="art">예술<br>
 		</div>
 		<p></p>
