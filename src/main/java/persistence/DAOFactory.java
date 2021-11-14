@@ -3,10 +3,10 @@ package persistence;
 import persistence.dao.*;
 import persistence.dao.impl.*;
 
-// DAO ¸¦ ±¸ÇöÇÑ Implementation °´Ã¼¸¦ »ý¼ºÇÏ´Â Å¬·¡½º
+// DAO ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Implementation ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½
 public class DAOFactory {
 	
-	// MemberDAO ¸¦ À§ÇÑ RDB ¿ë DAO Implementation °´Ã¼¸¦ ¹ÝÈ¯
+	// MemberDAO ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ RDB ï¿½ï¿½ DAO Implementation ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½È¯
 	public MemberDAO getMemberDAO() {
 		return new MemberDAOImpl();
 	}
@@ -16,5 +16,8 @@ public class DAOFactory {
 	
 	public MatchingDAO getMatchingDAO() {
 		return new MatchingDAOImpl();		
+	}
+	public GroupDAO getGroupDAO() {
+		return new GroupDAOImpl();
 	}
 }

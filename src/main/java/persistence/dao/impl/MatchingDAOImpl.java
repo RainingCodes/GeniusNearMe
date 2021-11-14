@@ -8,7 +8,7 @@ import persistence.dao.MatchingDAO;
 import persistence.util.JDBCUtil;
 import service.dto.MatchingDTO;
 
-public class MatchingDAOImpl implements MatchingDAO{
+public class MatchingDAOImpl implements MatchingDAO {
 	private JDBCUtil jdbcUtil = null;
 	private static String query = "SELECT MATCHINGID, "+
 			"TALENTID, "+
@@ -146,8 +146,9 @@ public class MatchingDAOImpl implements MatchingDAO{
 			int result = 0;
 			String DeleteQuery = "DELETE FROM MATCHING WHERE MATCHINGID = ? ";
 			
+			Object[] param = new Object[] {matchingId};
 			try {
-				jdbcUtil.setSqlAndParameters(DeleteQuery, matchingId);
+				jdbcUtil.setSqlAndParameters(DeleteQuery, param);
 				result = 1;
 			}catch(Exception ex) {
 				ex.printStackTrace();
