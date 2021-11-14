@@ -108,7 +108,6 @@ public class GroupDAOImpl implements GroupDAO {
 		}
 		
 		
-		
 		return result;
 	}
 
@@ -168,7 +167,24 @@ public class GroupDAOImpl implements GroupDAO {
 			e.printStackTrace();
 		}
 		jdbcUtil.close();
+		new GroupDAOImpl();
+		group.setCountMembers(group.getCountMembers() - 1);
+		String updateMembersQuery = "UPDATE GROUP SET MEMBERSCOUNT=? WHERE GROUPID=? ";
+		param = new Object[] { group.getCountMembers(), group.getGroupId() };
+		jdbcUtil.setSqlAndParameters(updateMembersQuery, param);
+		try {
+			result = jdbcUtil.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
 		return result;
+		
 	}
 
 	@Override
