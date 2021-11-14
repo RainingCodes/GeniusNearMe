@@ -47,7 +47,7 @@
                     <p>가격</p>
                     <ul>
                         <li>
-                            1:? 얼마
+                            1:?  ${talent.price }
                         </li>
              
                     </ul>

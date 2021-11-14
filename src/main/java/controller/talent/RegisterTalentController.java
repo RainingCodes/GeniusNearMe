@@ -25,7 +25,7 @@ public class RegisterTalentController implements Controller{
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
 		if (!UserSessionUtils.hasLogined(request.getSession())) {
-            return "redirect:/user/login/form";	
+            return "redirect:/member/login/form";	
         }
 		Date start = format1.parse(request.getParameter("startDate"));
 		Date deadline = format1.parse(request.getParameter("deadline"));
