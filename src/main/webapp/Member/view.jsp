@@ -6,7 +6,7 @@
 %>
 <html>
 <head>
-<title>사용자 관리</title>
+<title>이웃집 똑똑이 멤버 마이페이지</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css">
 <script>
@@ -23,7 +23,7 @@ function userRemove() {
 	  <td>
 	    <table>
 		  <tr>
-			<td class="title">&nbsp;&nbsp;<b>이웃집 솜솜이 멤버 마이페이지</b>&nbsp;&nbsp;</td>
+			<td class="title">&nbsp;&nbsp;<b>이웃집 똑똑이 멤버 마이페이지</b>&nbsp;&nbsp;</td>
 		  </tr>
 	    </table>  
 	    <br>	  	    
@@ -49,10 +49,10 @@ function userRemove() {
 	 	</table>
 	    <br>
 	    <a href="<c:url value='/member/update'>
-	     		   <c:param name='userId' value='<%=member.getUserId()%>'/>
+	     		   <c:param name='userEmail' value='<%=member.getEmail()%>'/>
 			 	 </c:url>">회원 정보 수정</a> &nbsp;
  	    <a href="<c:url value='/member/delete'>
-				   <c:param name='userId' value='<%=member.getUserId()%>'/>
+				   <c:param name='userEmail' value='<%=member.getEmail()%>'/>
 			 	 </c:url>" onclick="return userRemove();">회원 탈퇴</a> &nbsp;
  	    <a href="<c:url value='/' />">이웃집 솜솜이 메인페이지</a> 	    
  	    <br><br>	   

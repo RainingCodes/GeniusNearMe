@@ -13,5 +13,6 @@ public interface MemberDAO {
 		public MemberDTO getMemberByNickname(String nickName);
 		public MemberDTO getMemberByUserId(int userId);
 		public MemberDTO getMemberByEmail(String email);
-		public boolean existingMember(String email) throws SQLException;
+		public boolean existingEmail(String email) throws SQLException;
+		public boolean existingNickname(String nickname) throws SQLException;
 }

@@ -211,9 +211,27 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 	
 	//주어진 이메일 ID에 해당하는 사용자가 존재하는지 검사 
-	public boolean existingMember(String email) throws SQLException {
+	public boolean existingEmail(String email) throws SQLException {
 		String sql = "SELECT count(*) FROM MEMBERS WHERE EMAIL = ?";      
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {email});	// JDBCUtil에 query문과 매개 변수 설정
+
+		try {
+			ResultSet rs = jdbcUtil.executeQuery();		// query 실행
+			if (rs.next()) {
+				int count = rs.getInt(1);
+				return (count == 1 ? true : false);
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.close();		// resource 반환
+		}
+		return false;
+	}
+	
+	public boolean existingNickname(String nickname) throws SQLException {
+		String sql = "SELECT count(*) FROM MEMBERS WHERE NICKNAME = ?";      
+		jdbcUtil.setSqlAndParameters(sql, new Object[] {nickname});	// JDBCUtil에 query문과 매개 변수 설정
 
 		try {
 			ResultSet rs = jdbcUtil.executeQuery();		// query 실행

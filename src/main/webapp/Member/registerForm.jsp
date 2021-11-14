@@ -7,7 +7,7 @@
 <link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css">
 <script>
 function userCreate() {
-		if (form.password.value == "") {
+	if (form.password.value == "") {
 		alert("비밀번호를 입력하십시오.");
 		form.password.focus();
 		return false;
@@ -55,7 +55,7 @@ function userList(targetUri) {
 	  <td>
 	    <table>
 		  <tr>
-		    <td class="title">&nbsp;&nbsp;<b>사용자 관리 - 회원 가입</b>&nbsp;&nbsp;</td>
+		    <td class="title">&nbsp;&nbsp;<b>이웃집 똑똑이 회원가입</b>&nbsp;&nbsp;</td>
 		  </tr>
 	    </table>  	 
 	    <!-- 회원가입이 실패한 경우 exception 객체에 저장된 오류 메시지를 출력 -->
