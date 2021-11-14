@@ -68,7 +68,7 @@ function userList(targetUri) {
 			<td width="150" align="center" bgcolor="E6ECDE">이메일 ID</td>
 			<td width="250" bgcolor="ffffff" style="padding-left: 10">
 				<input type="text" style="width: 240;" name="email">
-					<c:if test="${registerFailed}">value="${member.email}"</c:if>>
+					<c:if test="${registerFailed}">value="${member.email}"</c:if>
 			</td>
 		  </tr>
 	  	  <tr height="40">
