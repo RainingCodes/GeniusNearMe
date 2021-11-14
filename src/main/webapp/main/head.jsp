@@ -1,8 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>이웃집솜솜이</title>
+<title>이웃집 똑똑이</title>
 <style type="text/css">
 	table {
 		width : 100%;
