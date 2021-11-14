@@ -37,7 +37,7 @@
 			</a>
 		</td>
 		<td class="login" valign="bottom">
-			<a>로그인</a>
+			<a herf="<c:url value='member/login' />">로그인</a>
 		</td>
 		<td class="join" valign="bottom">
 			<a>회원가입</a>
