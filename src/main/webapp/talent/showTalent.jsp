@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="service.dto.TalentDTO" %>
 <%
 	TalentDTO talent = (TalentDTO)request.getAttribute("talent");
 %>
@@ -72,7 +73,7 @@
                 <td>
                      <button type="button" onclick="찜하기">🖤찜하기</button>
                      <a href="<c:url value='/talent/matching'>
-                     	  <c:param name='talentId' value='<%=talent.gettalentId()%>'/>
+                     	   <c:param name='talentId' value='${talent.talentId}'/>
                      	  </c:url>">1:1 매칭</a> &nbsp;
                 </td>
             </tr>
