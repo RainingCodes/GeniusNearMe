@@ -13,8 +13,8 @@ import service.ExistingUserException;
 import service.MemberService;
 import service.MemberServiceImpl;
 
-public class RegisterUserController implements Controller {
-    private static final Logger log = LoggerFactory.getLogger(RegisterUserController.class);
+public class RegisterMemberController implements Controller {
+    private static final Logger log = LoggerFactory.getLogger(RegisterMemberController.class);
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {

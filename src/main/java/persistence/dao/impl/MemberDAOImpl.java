@@ -210,6 +210,28 @@ public class MemberDAOImpl implements MemberDAO {
 		return null;
 	}
 	
+	public int getUserIdByEmail(String email) {
+		String searchQuery = "SELECT USERID, FROM MEMBERS WHERE EMAIL = ? ";
+		jdbcUtil.setSql(searchQuery);
+		Object[] param = new Object[] { email };
+		jdbcUtil.setParameters(param);
+
+		try {
+			ResultSet rs = jdbcUtil.executeQuery();
+			int userId = -1;
+
+			if (rs.next()) {
+				userId = rs.getInt("USERID");
+			}
+			return userId;
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.close();
+		}
+		return -1;
+	}
+	
 	//주어진 이메일 ID에 해당하는 사용자가 존재하는지 검사 
 	public boolean existingEmail(String email) throws SQLException {
 		String sql = "SELECT count(*) FROM MEMBERS WHERE EMAIL = ?";      

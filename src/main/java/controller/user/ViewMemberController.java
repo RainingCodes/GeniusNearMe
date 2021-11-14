@@ -9,7 +9,7 @@ import service.dto.MemberDTO;
 import service.MemberService;
 import service.MemberServiceImpl;
 
-public class ViewUserController implements Controller {
+public class ViewMemberController implements Controller {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {			
     	// 로그인 여부 확인
