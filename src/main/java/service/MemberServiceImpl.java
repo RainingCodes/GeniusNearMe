@@ -32,9 +32,13 @@ public class MemberServiceImpl implements MemberService {
 		}
 		return dao.insertMember(member);
 	}
-	public int updateMember(MemberDTO member) {
+	public int updateMember(MemberDTO member) throws SQLException, ExistingUserException {
+		if (dao.existingNickname(member.getNickname()) == true) {
+			throw new ExistingUserException(member.getEmail() + "는(은) 존재하는 닉네임입니다.");
+		}
 		return dao.updateMember(member);
 	}
+	
 	public int deleteMember(int userId) {
 		return dao.deleteMember(userId);
 	}

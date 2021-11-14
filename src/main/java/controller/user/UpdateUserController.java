@@ -1,7 +1,5 @@
 package controller.user;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -20,7 +18,6 @@ public class UpdateUserController implements Controller {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response)	throws Exception {
-    	int userId = -1;
     	
     	if (request.getMethod().equals("GET")) {	
     		// GET request: 회원정보 수정 form 요청	
@@ -38,7 +35,6 @@ public class UpdateUserController implements Controller {
 			if (UserSessionUtils.isLoginUser(updateEmail, session) ||
 				UserSessionUtils.isLoginUser("admin", session)) {
 				// 현재 로그인한 사용자가 수정 대상 사용자이거나 관리자인 경우 -> 수정 가능
-				userId = member.getUserId();
 				return "/user/updateForm.jsp";   // 검색한 사용자 정보를 update form으로 전송     
 			}    
 			
@@ -49,19 +45,33 @@ public class UpdateUserController implements Controller {
 			return "/user/view.jsp";	// 사용자 보기 화면으로 이동 (forwarding)
 	    }
     	
+    	
     	// POST request (회원정보가 parameter로 전송됨)
+    	
     	MemberDTO updateMember = new MemberDTO(
-    		request.getParameter("userId"),
-    		request.getParameter("password"),
-    		request.getParameter("name"),
-    		request.getParameter("email"),
-    		request.getParameter("phone")
-		);
+   	    	Integer.parseInt(request.getParameter("userId")),
+   	    	request.getParameter("email"),
+   	    	request.getParameter("password"),
+   	    	request.getParameter("nickname"),
+   	    	request.getParameter("phone")
+   		);
 
-    	log.debug("Update User : {}", updateUser);
-
-		UserManager manager = UserManager.getInstance();
-		manager.update(updateUser);			
-        return "redirect:/user/list";			
+    	
+    	try {    		
+    	    log.debug("Update User : {}", updateMember);
+    	    	
+    	    MemberService manager = new MemberServiceImpl();
+    		manager.updateMember(updateMember);		
+    		return "redirect:/user/view";
+	        
+		} catch (ExistingUserException e) {	// 예외 발생 시 수정 form으로 forwarding
+            request.setAttribute("registerFailed", true);
+			request.setAttribute("exception", e);
+			request.setAttribute("member", updateMember);
+			return "/user/updateForm.jsp";
+		}
+    	
+    	
+    		
     }
 }

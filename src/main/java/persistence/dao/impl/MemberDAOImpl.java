@@ -48,7 +48,7 @@ public class MemberDAOImpl implements MemberDAO {
 		int result = 0;
 		String insertQuery = "INSERT INTO MEMBERS (PW, EMAIL, PHONE, NICKNAME) " + "VALUES (?, ?, ?, ?)";
 
-		Object[] param = new Object[] { member };
+		Object[] param = new Object[] { member.getPw(), member.getEmail(), member.getPhone(), member.getNickname() };
 		jdbcUtil.setSqlAndParameters(insertQuery, param);
 
 		try {

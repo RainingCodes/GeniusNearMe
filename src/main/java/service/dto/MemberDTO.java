@@ -14,7 +14,16 @@ public class MemberDTO {
 		this.phone = phone;
 	}
 	
+	public MemberDTO(int userId, String email, String pw, String nickname, String phone) {
+		this.userId = userId;
+		this.email = email;
+		this.pw = pw;
+		this.nickname = nickname;
+		this.phone = phone;
+	}
+	
 	public MemberDTO() {
+		
 	}
 	
 	public int getUserId() {

@@ -11,7 +11,7 @@
 <link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css">
 <script>
 function userRemove() {
-	return confirm("정말 삭제하시겠습니까?");		
+	return confirm("정말 탈퇴하시겠습니까? 복구 할 수 없습니다.");		
 }
 </script>
 </head>

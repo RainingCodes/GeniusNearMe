@@ -31,7 +31,7 @@ function userModify() {
 	form.submit();
 }
 
-function userList(targetUri) {
+function gotoUri(targetUri) {
 	form.action = targetUri;
 	form.submit();
 }
@@ -41,7 +41,8 @@ function userList(targetUri) {
 <br>
 <!-- Update Form  -->
 <form name="form" method="POST" action="<c:url value='/user/update' />">
-  <input type="hidden" name="userId" value="${user.userId}"/>	  
+  <input type="hidden" name="email" value="${member.userId}"/>
+  <input type="hidden" name="email" value="${member.email}"/>	  
   <table style="width: 100%">
 	<tr>
 	  <td width="20"></td>
@@ -62,19 +63,20 @@ function userList(targetUri) {
 		  <tr height="40">
 			<td width="150" align="center" bgcolor="E6ECDE">비밀번호</td>
 			<td width="250" bgcolor="ffffff" style="padding-left: 10">
-				<input type="password" style="width: 240" name="password" value="${member.pw}">
+				<input type="password" style="width: 240" name="password">
 			</td>
 		  </tr>
 		  <tr height="40">
 			<td width="150" align="center" bgcolor="E6ECDE">비밀번호 확인</td>
 			<td width="250" bgcolor="ffffff" style="padding-left: 10">
-				<input type="password" style="width: 240" name="password2" value="${member.pw}">
+				<input type="password" style="width: 240" name="password2">
 			</td>
 		  </tr>
 		  <tr height="40">
 			<td width="150" align="center" bgcolor="E6ECDE">닉네임</td>
 			<td width="250" bgcolor="ffffff" style="padding-left: 10">
-				<input type="text" style="width: 240" name="name" value="${member.nickname}">
+				<input type="text" style="width: 240" name="name" value="${member.nickname}"
+					<c:if test="${registerFailed}">value="${member.nickname}"</c:if>>
 			</td>
 		  </tr>
 		  <tr height="40">
@@ -89,7 +91,7 @@ function userList(targetUri) {
 		  <tr>
 			<td align="left">
 			<input type="button" value="수정" onClick="userModify()"> &nbsp;
-			<input type="button" value="내 정보로 돌아가기" onClick="userList('<c:url value='/user/view' />')">
+			<input type="button" value="내 정보로 돌아가기" onClick="gotoUri('<c:url value='/user/view' />')">
 			</td>
 		  </tr>
 	    </table>
