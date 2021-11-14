@@ -59,14 +59,10 @@ public class GroupDTO {
 	public void setTalentId(int talentId) {
 		this.talentId = talentId;
 	}
-	public GroupDTO(int[] userId, int talentId, int state, int representativeId, int membersCount, int maximum) {
+	
+	public GroupDTO(int talentId) {
 		super();
-		this.userId = userId;
 		this.talentId = talentId;
-		this.state = state;
-		this.representativeId = representativeId;
-		this.membersCount = membersCount;
-		this.maximum = maximum;
 	}
 	public GroupDTO() {
 		
