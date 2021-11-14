@@ -14,17 +14,17 @@ public class RequestMapping {
     private Map<String, Controller> mappings = new HashMap<String, Controller>();
 
     public void initMapping() {
-//        mappings.put("/", new ForwardController("index.jsp"));
-        mappings.put("/user/login/form", new ForwardController("/user/loginForm.jsp"));
-        mappings.put("/user/login", new LoginController());
-        mappings.put("/user/logout", new LogoutController());
+        mappings.put("/", new ForwardController("index.jsp"));
+        mappings.put("/member/login/form", new ForwardController("/member/loginForm.jsp"));
+        mappings.put("/member/login", new LoginController());
+        mappings.put("/member/logout", new LogoutController());
 //        mappings.put("/user/list", new ListUserController());
-        mappings.put("/user/view", new ViewMemberController());
-        mappings.put("/user/register/form", new ForwardController("/user/registerForm.jsp"));
+        mappings.put("/member/view", new ViewMemberController());
+        mappings.put("/member/register/form", new ForwardController("/member/registerForm.jsp"));
         mappings.put("/talent/register", new RegisterTalentController());
-        mappings.put("/user/update/form", new UpdateMemberController());
-        mappings.put("/user/update", new UpdateMemberController());
-        mappings.put("/user/delete", new DeleteMemberController());
+        mappings.put("/member/update/form", new UpdateMemberController());
+        mappings.put("/member/update", new UpdateMemberController());
+        mappings.put("/member/delete", new DeleteMemberController());
         
         logger.info("Initialized Request Mapping!");
     }

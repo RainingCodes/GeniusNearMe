@@ -32,9 +32,9 @@ public class DeleteMemberController implements Controller {
 			
 			manager.deleteMember(manager.getuserIdByEmail(deleteEmail)); // 사용자 정보 삭제
 			if (UserSessionUtils.isLoginUser("admin", session))	// 로그인한 사용자가 관리자 	
-				return "redirect:/user/list";		// 사용자 리스트로 이동
+				return "redirect:/member/list";		// 사용자 리스트로 이동
 			else 									// 로그인한 사용자는 이미 삭제됨
-				return "redirect:/user/logout";		// logout 처리
+				return "redirect:/member/logout";		// logout 처리
 		}
 		
 		/* 삭제가 불가능한 경우 */
@@ -45,6 +45,6 @@ public class DeleteMemberController implements Controller {
 				   ? "시스템 관리자 정보는 삭제할 수 없습니다."		
 				   : "타인의 정보는 삭제할 수 없습니다.";													
 		request.setAttribute("exception", new IllegalStateException(msg));            
-		return "/user/view.jsp";		// 사용자 보기 화면으로 이동 (forwarding)	
+		return "/member/view.jsp";		// 사용자 보기 화면으로 이동 (forwarding)	
 	}
 }

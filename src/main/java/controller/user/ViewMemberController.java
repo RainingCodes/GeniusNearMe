@@ -14,7 +14,7 @@ public class ViewMemberController implements Controller {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {			
     	// 로그인 여부 확인
     	if (!UserSessionUtils.hasLogined(request.getSession())) {
-            return "redirect:/user/login/form";		// login form 요청으로 redirect
+            return "redirect:/member/login/form";		// login form 요청으로 redirect
         }
     	
     	MemberService manager = new MemberServiceImpl();
@@ -25,7 +25,7 @@ public class ViewMemberController implements Controller {
     	try {
     		member = manager.findUserByEmail(userId);	// 사용자 정보 검색
 		} catch (UserNotFoundException e) {				
-	        return "redirect:/user/list";
+	        return "redirect:/member/list";
 		}	
 		
     	request.setAttribute("member", member);		// 사용자 정보 저장				

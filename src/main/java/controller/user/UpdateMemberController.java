@@ -35,14 +35,14 @@ public class UpdateMemberController implements Controller {
 			if (UserSessionUtils.isLoginUser(updateEmail, session) ||
 				UserSessionUtils.isLoginUser("admin", session)) {
 				// 현재 로그인한 사용자가 수정 대상 사용자이거나 관리자인 경우 -> 수정 가능
-				return "/user/updateForm.jsp";   // 검색한 사용자 정보를 update form으로 전송     
+				return "/member/updateForm.jsp";   // 검색한 사용자 정보를 update form으로 전송     
 			}    
 			
 			// else (수정 불가능한 경우) 사용자 보기 화면으로 오류 메세지를 전달
 			request.setAttribute("updateFailed", true);
 			request.setAttribute("exception", 
 					new IllegalStateException("수정 권한이 없습니다."));            
-			return "/user/view.jsp";	// 사용자 보기 화면으로 이동 (forwarding)
+			return "/member/view.jsp";	// 사용자 보기 화면으로 이동 (forwarding)
 	    }
     	
     	
@@ -62,13 +62,13 @@ public class UpdateMemberController implements Controller {
     	    	
     	    MemberService manager = new MemberServiceImpl();
     		manager.updateMember(updateMember);		
-    		return "redirect:/user/view";
+    		return "redirect:/member/view";
 	        
 		} catch (ExistingUserException e) {	// 예외 발생 시 수정 form으로 forwarding
             request.setAttribute("registerFailed", true);
 			request.setAttribute("exception", e);
 			request.setAttribute("member", updateMember);
-			return "/user/updateForm.jsp";
+			return "/member/updateForm.jsp";
 		}
     	
     	

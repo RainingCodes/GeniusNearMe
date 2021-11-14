@@ -21,7 +21,7 @@ public class RegisterMemberController implements Controller {
        	if (request.getMethod().equals("GET")) {	
     		// GET request: 회원정보 등록 form 요청	
     		log.debug("RegisterForm Request");		
-			return "/user/registerForm.jsp";   // 검색한 사용자 정보를 update form으로 전송     	
+			return "/member/registerForm.jsp";   // 검색한 사용자 정보를 update form으로 전송     	
 	    }	
 
     	// POST request (회원정보가 parameter로 전송됨)
@@ -36,13 +36,13 @@ public class RegisterMemberController implements Controller {
 		try {
 			MemberService manager = new MemberServiceImpl();
 			manager.insertMember(member);
-	        return "redirect:/user/view";	// 성공 시 사용자 상세 화면으로 redirect
+	        return "redirect:/member/view";	// 성공 시 사용자 상세 화면으로 redirect
 	        
 		} catch (ExistingUserException e) {	// 예외 발생 시 회원가입 form으로 forwarding
             request.setAttribute("registerFailed", true);
 			request.setAttribute("exception", e);
 			request.setAttribute("member", member);
-			return "/user/registerForm.jsp";
+			return "/member/registerForm.jsp";
 		}
     }
 }
