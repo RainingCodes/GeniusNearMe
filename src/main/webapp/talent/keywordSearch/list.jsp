@@ -76,7 +76,7 @@ button {
 	border-radius: 30px;
 }
 
-#thumbnail1 {
+#thumbnail {
 	border-radius: 30px;
 	margin: 15px 30px 10px 30px;
 	float: left;
@@ -103,14 +103,11 @@ p {
 	MemberService memberService = new MemberServiceImpl();
 	List<TalentDTO> talentList = talentService.ListingTalents();
 	request.setAttribute("talentList", talentList);
-	
-	// 체크박스값들을 모두 읽어옴
-	String selectedCategory[] = request.getParameterValues("category");
 	%>
 	<div class="nav">
-		<form name="reSearchForm" method="post"> <!-- 상세검색/재검색 -->
+		<form name="reSearchForm" method="post" action="../detailedSearch/list.jsp">
 		<p></p>
-		<input type="text" id="value" placeholder="결과내 재검색" style="width:100px"> <input type="submit" value="검색">
+		<input type="text" id="value" placeholder="결과내 재검색">
 		<p></p>
 		<strong>카테고리</strong><br>
 		<div class="category">
@@ -137,7 +134,7 @@ p {
 		<c:forEach var="talent" items="${talentList}">
 			<div class="post">
 				<div id="imgSection1">
-					<img id="thumbnail1" src="img/loopy/img1.jpg" width="120" height="120">
+					<img id="thumbnail" src="img/loopy/img1.jpg" width="120" height="120">
 				</div>
 				<p>
 					<a href="<c:url value='showTalent.jsp'>
@@ -165,8 +162,8 @@ p {
 			<p>
 				<%out.print(talent.getContent()); %>
 			</p>
-		</div>  --%>
-		
+		</div>
+		 --%>
 		
 		<%-- <div class="post">
 			<div id="imgSection1">

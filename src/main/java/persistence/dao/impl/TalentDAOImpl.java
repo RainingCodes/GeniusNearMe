@@ -48,7 +48,7 @@ public class TalentDAOImpl implements TalentDAO  {
 		} return null;
 	}
 	
-	public List<TalentDTO> getTalentListByCategory(String category) {
+	public List<TalentDTO> getTalentListByCategory(String[] category) {
 		String getByCategoryQuery = query + "FROM TALENT WHERE TALENTCATEGORYNAME = ? ";
 		
 		Object[] param = new Object[] { category };

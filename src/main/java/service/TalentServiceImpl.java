@@ -21,6 +21,10 @@ public class TalentServiceImpl implements TalentService {
 		return dao.getTalentListByTitle(title);
 	}
 
+	public List<TalentDTO> getTalentByTalentCategory(String[] category) {
+		return dao.getTalentListByCategory(category);
+	}
+	
 	public int insertTalent(TalentDTO talent) {
 		return dao.insertTalent(talent);
 	}
