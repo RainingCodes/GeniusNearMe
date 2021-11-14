@@ -1,1 +1,1 @@
-<% response.sendRedirect(request.getContextPath() + "/member/loginForm"); %>
+<% response.sendRedirect(request.getContextPath() + "/main/main.jsp"); %>
