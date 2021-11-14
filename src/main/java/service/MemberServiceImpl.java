@@ -19,7 +19,7 @@ public class MemberServiceImpl implements MemberService {
 	public MemberDTO getMember(int userId) { // userId에 해당하는 유저 정보 반환
 		return dao.getMemberByUserId(userId);
 	}
-	public int insertMemver(MemberDTO member) {
+	public int insertMember(MemberDTO member) {
 		return dao.insertMember(member);
 	}
 	public int updateMember(MemberDTO member) {
