@@ -28,7 +28,7 @@
 <br>
 <h2>회원 가입</h2>
 <form method="post" action="setStudent.jsp">
-이메일:	<input type="text" name="email" value="a@a.com" /><br>
+이메d일:	<input type="text" name="email" value="a@a.com" /><br>
 비밀번호:	<input type="text" name="password" value="asdf" /><br>
 닉네임 :	<input type="text" name="nickname" value="nickname" /><br>
 휴대전화 :	<input type="text" name="phone" value="010-3456-7890" /><br>
