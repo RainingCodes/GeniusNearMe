@@ -3,6 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <title>이웃집솜솜이</title>
+<script language="JavaScript">
+function talentTest() {
+	var url = "talentTest.jsp";
+	var name = "talent test"
+	var option = "width = 500, height = 500, top = 100, left = 200, location = no"
+	window.open(url, name, option);
+	}
+function goHome() {
+	location.herf="/";
+}
+</script>
 <style type="text/css">
 	table {
 		width : 100%;
@@ -26,7 +37,7 @@
 <table>
 	<tr>
 		<td class="talent_test" valign="bottom">
-			<button type="button" class="btn_talent_test">관심 재능 검사<img alt="돋보기" src="img/search.png" class="search_icon"></button>
+			<button type="button" class="btn_talent_test" onclick="talentTest()">관심 재능 검사<img alt="돋보기" src="img/search.png" class="search_icon"></button>
 		</td>
 		<td class="logo" align="center">
 			<a>
