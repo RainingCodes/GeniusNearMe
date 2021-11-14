@@ -17,4 +17,7 @@ public class DAOFactory {
 	public MatchingDAO getMatchingDAO() {
 		return new MatchingDAOImpl();		
 	}
+	public GroupDAO getGroupDAO() {
+		return new GroupDAOImpl();
+	}
 }
