@@ -7,8 +7,8 @@ public class UserSessionUtils {
 
     /* 현재 로그인한 사용자의 ID를 구함 */
     public static String getLoginUserId(HttpSession session) {
-        String userId = (String)session.getAttribute(USER_SESSION_KEY);
-        return userId;
+        String email = (String)session.getAttribute(USER_SESSION_KEY);
+        return email;
     }
 
     /* 로그인한 상태인지를 검사 */
@@ -20,11 +20,11 @@ public class UserSessionUtils {
     }
 
     /* 현재 로그인한 사용자의 ID가 userId인지 검사 */
-    public static boolean isLoginUser(String userId, HttpSession session) {
+    public static boolean isLoginUser(String email, HttpSession session) {
         String loginUser = getLoginUserId(session);
         if (loginUser == null) {
             return false;
         }
-        return loginUser.equals(userId);
+        return loginUser.equals(email);
     }
 }

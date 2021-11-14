@@ -20,7 +20,10 @@ public class MemberServiceImpl implements MemberService {
 	public MemberDTO getMember(int userId) { // userId에 해당하는 유저 정보 반환
 		return dao.getMemberByUserId(userId);
 	}
-	public int insertMember(MemberDTO member) {
+	public int insertMember(MemberDTO member) throws SQLException, ExistingUserException {
+		if (dao.existingMember(member.getEmail()) == true) {
+			throw new ExistingUserException(member.getEmail() + "는 존재하는 아이디입니다.");
+		}
 		return dao.insertMember(member);
 	}
 	public int updateMember(MemberDTO member) {

@@ -2,17 +2,12 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-<title>이웃집 솜솜이 회원가입</title>
+<title>이웃집 똑똑이 회원가입</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css">
 <script>
 function userCreate() {
-	if (form.userId.value == "") {
-		alert("사용자 ID를 입력하십시오.");
-		form.userId.focus();
-		return false;
-	} 
-	if (form.password.value == "") {
+		if (form.password.value == "") {
 		alert("비밀번호를 입력하십시오.");
 		form.password.focus();
 		return false;
@@ -22,8 +17,8 @@ function userCreate() {
 		form.name.focus();
 		return false;
 	}
-	if (form.name.value == "") {
-		alert("이름을 입력하십시오.");
+	if (form.nickname.value == "") {
+		alert("닉네임을 입력하십시오.");
 		form.name.focus();
 		return false;
 	}
@@ -72,8 +67,8 @@ function userList(targetUri) {
 	  	  <tr height="40">
 			<td width="150" align="center" bgcolor="E6ECDE">이메일 ID</td>
 			<td width="250" bgcolor="ffffff" style="padding-left: 10">
-				<input type="text" style="width: 240;" name="userId">
-					<c:if test="${registerFailed}">value="${user.email}"</c:if>>
+				<input type="text" style="width: 240;" name="email">
+					<c:if test="${registerFailed}">value="${member.email}"</c:if>>
 			</td>
 		  </tr>
 	  	  <tr height="40">
@@ -89,39 +84,19 @@ function userList(targetUri) {
 			</td>
 		  </tr>
 	  	  <tr height="40">
-			<td width="150" align="center" bgcolor="E6ECDE">이름</td>
+			<td width="150" align="center" bgcolor="E6ECDE">닉네임</td>
 			<td width="250" bgcolor="ffffff" style="padding-left: 10">
 				<input type="text" style="width: 240" name="name" 
-				 	<c:if test="${registerFailed}">value="${user.name}"</c:if>>
+				 	<c:if test="${registerFailed}">value="${member.nickname}"</c:if>>
 			</td>
 		  </tr>
-	  	  <tr height="40">
-			<td width="150" align="center" bgcolor="E6ECDE">이메일 주소</td>
-			<td width="250" bgcolor="ffffff" style="padding-left: 10">
-				<input type="text" style="width: 240" name="email" 
-					<c:if test="${registerFailed}">value="${user.email}"</c:if>>
-			</td>
-		  </tr>	
 	  	  <tr height="40">
 			<td width="150" align="center" bgcolor="E6ECDE">전화번호</td>
 			<td width="250" bgcolor="ffffff" style="padding-left: 10">
 				<input type="text" style="width: 240" name="phone" 
-					<c:if test="${registerFailed}">value="${user.phone}"</c:if>>
+					<c:if test="${registerFailed}">value="${member.phone}"</c:if>>
 			</td>
-		  </tr>
-		  <tr height="40">
-			<td width="150" align="center" bgcolor="E6ECDE">커뮤니티</td>
-			<td width="250" bgcolor="ffffff" style="padding-left: 10">
-				<select name="commId" style="width: 240">
-					<option value="0">없음</option>
-					<c:forEach var="comm" items="${commList}">
-						<option value="${comm.id}"
-							<c:if test="${comm.id eq user.commId}">selected="selected"</c:if>
-							>${comm.name}</option>
-					</c:forEach>
-				</select>			
-			</td>
-		  </tr>		  
+		  </tr>	  
 	    </table>
 	    <br>
 	    <table style="width: 100%">
