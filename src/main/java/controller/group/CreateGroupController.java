@@ -1,5 +1,5 @@
 package controller.group;
 
-public class GroupController {
+public class CreateGroupController {
 
 }
