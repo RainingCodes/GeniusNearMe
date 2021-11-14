@@ -26,15 +26,12 @@
 		</c:url>">삭제</a><br>		  	
 </c:forEach>
 <br>
-<h2>등록</h2>
+<h2>회원 가입</h2>
 <form method="post" action="setStudent.jsp">
-학번:	<input type="text" name="stuNo" value="20150003" /><br>
-이름:	<input type="text" name="stuName" value="Jain" /><br>
-비밀번호:	<input type="text" name="pwd" value="1111" /><br>
-연락처:	<input type="text" name="stuPhoneNo" value="010-3456-7890" /><br>
-학년:	<input type="text" name="year" value="3" /><br>
-학과:	<input type="text" name="dept" value="Computer" /><br>
-지도교수:	<input type="text" name="profName" value="Andy" /><br>
+이메일:	<input type="text" name="email" value="a@a.com" /><br>
+비밀번호:	<input type="text" name="password" value="asdf" /><br>
+닉네임 :	<input type="text" name="nickname" value="nickname" /><br>
+휴대전화 :	<input type="text" name="phone" value="010-3456-7890" /><br>
 <input type="submit" value="등록" />
 </form>
 <br>
