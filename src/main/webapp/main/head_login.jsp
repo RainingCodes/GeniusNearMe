@@ -53,7 +53,7 @@ function goHome() {
 			</a>
 		</td>
 		<td class="user" valign="bottom">
-			<button type="button" class="btn_user"><img alt="회원" src="img/user.png" class="img_user">user_id님</button>
+			<button type="button" class="btn_user"><img alt="회원" src="img/user.png" class="img_user">{member.getUserId()}님</button>
 		</td>
 		<td class="" valign="bottom">
 			<button type="button" class="btn_chat"><img alt="채팅" src="img/chat.png" class="img_chat"></button>

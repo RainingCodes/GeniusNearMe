@@ -12,6 +12,7 @@ public class CreateGroupController implements Controller {
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
 		GroupDTO group = new GroupDTO();
+		
 		return null;
 	}
 
