@@ -14,6 +14,7 @@ function categorySearch() {
 	categorySearch.action = "categorySearch/list.jsp";
 	categorySearch.submit();
 }
+</script>
 <style type="text/css">
 	img {
 		width : 2vh;
