@@ -117,10 +117,34 @@ p {
 					out.print(" checked");
 				}
 				%>>모든 재능
-			<input type="checkbox" name="category" value="beauty">뷰티<br>
-			<input type="checkbox" name="category" value="sports">운동<input type="checkbox" name="category" value="foreignLanguage">외국어<br>
-			<input type="checkbox" name="category" value="cook">요리<input type="checkbox" name="category" value="law">법률<br>
-			<input type="checkbox" name="category" value="it">IT<input type="checkbox" name="category" value="art">예술<br>
+			<input type="checkbox" name="category" value="beauty"
+				<% if (Arrays.asList(selectedCategory).contains("beauty")==true){
+					out.print(" checked");
+				}%>>뷰티<br>
+			<input type="checkbox" name="category" value="sports"
+				<% if (Arrays.asList(selectedCategory).contains("sports")==true){
+					out.print(" checked");
+				}%>>운동
+			<input type="checkbox" name="category" value="foreignLanguage"
+				<% if (Arrays.asList(selectedCategory).contains("foreignLanguage")==true){
+					out.print(" checked");
+				}%>>외국어<br>
+			<input type="checkbox" name="category" value="cook"
+				<% if (Arrays.asList(selectedCategory).contains("cook")==true){
+					out.print(" checked");
+				}%>>요리
+			<input type="checkbox" name="category" value="law"
+				<% if (Arrays.asList(selectedCategory).contains("law")==true){
+					out.print(" checked");
+				}%>>법률<br>
+			<input type="checkbox" name="category" value="it"
+				<% if (Arrays.asList(selectedCategory).contains("it")==true){
+					out.print(" checked");
+				}%>>IT
+			<input type="checkbox" name="category" value="art"
+				<% if (Arrays.asList(selectedCategory).contains("art")==true){
+					out.print(" checked");
+				}%>>예술<br>
 		</div>
 		<p></p>
 		<strong>가격대</strong>
