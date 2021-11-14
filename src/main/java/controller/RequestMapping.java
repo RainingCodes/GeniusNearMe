@@ -14,7 +14,7 @@ public class RequestMapping {
     private Map<String, Controller> mappings = new HashMap<String, Controller>();
 
     public void initMapping() {
-        mappings.put("/", new ForwardController("index.jsp"));
+        mappings.put("/", new ForwardController("/main/main.jsp"));
         mappings.put("/member/login/form", new ForwardController("/member/loginForm.jsp"));
         mappings.put("/member/login", new LoginController());
         mappings.put("/member/logout", new LogoutController());

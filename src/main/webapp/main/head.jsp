@@ -38,10 +38,10 @@
 			</a>
 		</td>
 		<td class="login" valign="bottom">
-			<a href="<c:url value='../member/loginForm.jsp' />">로그인</a>
+			<a href="<c:url value='../member/login/form' />">로그인</a>
 		</td>
 		<td class="join" valign="bottom">
-			<a href="<c:url value='../member/registerForm.jsp' />">회원가입</a>
+			<a href="<c:url value='../member/register/form' />">회원가입</a>
 		</td>
 	</tr>
 </table>
