@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<%@ include file="head.jsp"  %>
+<%@ include file="head_login.jsp"  %>
 <%@ include file="talentList.jsp" %>
 </body>
 </html>
