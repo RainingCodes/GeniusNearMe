@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
         <title>게시글 추가</title>
         <script>
-        function talentCreate(){
+        function talentUpdate(){
         	if(from.title.value ==""){
         		alert("제목를 입력하십시오.");
         		form.title.focus();
@@ -39,6 +39,11 @@
         	} 
         	form.submit();
         }
+        
+        function talentList(targetUri) {
+        	form.action = targetUri;
+        	form.submit();
+        }
         </script>
         <style>
             table{
@@ -49,9 +54,10 @@
     </head>
     <body>
     <!-- talent update from -->
-       <from name = "from" method="POST" action="<c:url value='/talent/update' />">
+     <input type="hidden" name="talentId" value="${talent.talentId}"/>	  
+       <form name = "from" method="POST" action="<c:url value='/talent/update' />">
            <h5>제목</h5>
-           <input type="hidden" name="title">
+           <p>${talent.title }</p>
            <hr/>
            <table>
                <tr>
@@ -67,24 +73,24 @@
                    <td>
                        <h5>가격 </h5>
                        <p>학생 수 1:1 &nbsp; 가격
-                      <input type="number" name="cost" ></p>
+                      <input type="number" name="cost" value="${talent.price }"></p>
                    </td>
                </tr>
                <tr>
                    <td>
                     <h5>모집 시작일</h5>
-                    <input type="date" name="startDate" >
+                    <input type="date" name="startDate" value="${talent.startDate }">
                     <h5>모집 마감일</h5>
-                    <input type="date" name="deadline" >
+                    <input type="date" name="deadline" value="${talent.deadline }">
                    </td>
                    <td>
                         <h5>세부 설명 및 주의사항</h5>
-                        <textarea rows="10" cols="50" name="content"></textarea>
+                        <textarea rows="10" cols="50" name="content" >${talent.content }</textarea>
                    </td>
                </tr>
            </table>
-            <input type="button" value="등록" onClick="talentCreate()">
-
+            <input type="button" value="등록" onClick="talentUpdate()"> &nbsp;
+			<input type="button" value="목록" onClick="talentList('<c:url value='/talent/list' />')">
        </form>
     </body>
 </html>

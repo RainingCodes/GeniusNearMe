@@ -11,7 +11,10 @@
     <meta charset="UTF-8">
         <title>${talent.title }</title>
         <script>
-        
+        function userList(targetUri) {
+        	form.action = targetUri;
+        	form.submit();
+        }
         </script>
         <style>
             table {
@@ -78,7 +81,11 @@
                 </td>
             </tr>
         </table>
-
+        <a href="<c:url value='/talent/update'>
+                     	   <c:param name='talentId' value='${talent.talentId}'/>
+                     	   <c:param name='userId' value='${talent.writerId }'/>
+                     	  </c:url>">수정</a>&nbsp;
+		<input type="button" value="목록" onClick="talentList('<c:url value='/talent/list' />')">
         <hr/>
         <table>
             <tr>

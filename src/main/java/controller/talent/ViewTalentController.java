@@ -17,7 +17,7 @@ public class ViewTalentController implements Controller{
 		TalentDTO talent = talentService.findTalent(talentId);
 			
 		request.setAttribute("talent", talent);		// 사용자 정보 저장				
-		return "/talent/showTalent.jsp";				// 사용자 보기 화면으로 이동
+		return "/talent/view.jsp";				// 사용자 보기 화면으로 이동
     }
 
 }

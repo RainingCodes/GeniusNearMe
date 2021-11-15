@@ -2,12 +2,17 @@ package controller.talent;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import controller.Controller;
 import controller.user.UpdateMemberController;
+import controller.user.UserSessionUtils;
+import service.TalentService;
+import service.TalentServiceImpl;
+import service.dto.TalentDTO;
 
 public class UpdateTalentController implements Controller {
 
@@ -15,25 +20,28 @@ public class UpdateTalentController implements Controller {
 	
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {	
 		
-		
-		
-		
 		if (request.getMethod().equals("GET")) {	
     		// GET request: 회원정보 수정 form 요청	
-    		// 원래는 UpdateUserFormController가 처리하던 작업을 여기서 수행
-    		String talentId = request.getParameter("talentId");
-
-    		log.debug("UpdateForm Request : {}", updateId);
+    		int talentId = Integer.parseInt(request.getParameter("talentId"));
+    		int userId = Integer.parseInt(request.getParameter("userId"));
     		
-    		UserManager manager = UserManager.getInstance();
-			User user = manager.findUser(updateId);	// 수정하려는 사용자 정보 검색
-			request.setAttribute("user", user);			
+    		
+
+    		log.debug("UpdateForm Request : {}", userId);
+    		
+    		TalentService talentService = new TalentServiceImpl();
+    		TalentDTO talent = talentService.findTalent(talentId);
+			request.setAttribute("talent", talent);			
 
 			HttpSession session = request.getSession();
-			if (UserSessionUtils.isLoginUser(updateId, session) ||
+			if (UserSessionUtils.isLoginUser(userId, session) ||
 				UserSessionUtils.isLoginUser("admin", session)) {
 				// 현재 로그인한 사용자가 수정 대상 사용자이거나 관리자인 경우 -> 수정 가능
 								
+				
+				
+				
+				
 				List<Community> commList = manager.findCommunityList();	// 커뮤니티 리스트 검색
 				request.setAttribute("commList", commList);	
 				
