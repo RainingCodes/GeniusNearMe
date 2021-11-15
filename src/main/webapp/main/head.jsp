@@ -6,35 +6,16 @@
 <head>
 <meta charset="UTF-8">
 <title>이웃집 똑똑이</title>
-<style type="text/css">
-	table {
-		width : 100%;
-	}
-	
-	.search_icon {
-		height : 15px;
-		width : 15px;
-	}
-	.btn_talent_test {
-		background-color : transparent;
-		border : none;
-	}
-	img {
-		width : 250px;
-		height : 110px;
-	}
-	
-</style>
 </head>
 <body>
-<table>
+<table class="head_table">
 	<tr>
 		<td class="talent_test" valign="bottom">
-			<button type="button" class="btn_talent_test">관심 재능 검사<img alt="돋보기" src="../img/search.png" class="search_icon"></button>
+			<button type="button" class="btn_talent_test">관심 재능 검사<img alt="돋보기" src="/img/search.png" class="search_icon"></button>
 		</td> 
 		<td class="logo" align="center">
 			<a>
-				<img alt="로고" src="<c:url value='img/logo.png' />">
+				<img alt="로고" src="<c:url value='/img/logo.png' />">
 			</a>
 		</td>
 		<td class="login" valign="bottom">

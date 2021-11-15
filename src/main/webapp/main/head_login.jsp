@@ -22,26 +22,10 @@ function goHome() {
 	location.herf="/";
 }
 </script>
-<style type="text/css">
-	table {
-		width : 100%;
-	}
-	.search_icon, img_user {
-		height : 15px;
-		width : 15px;
-	}
-	.btn_talent_test {
-		background-color : transparent;
-		border : none;
-	}
-	button {
-		background-color : transparent;
-		border : none;
-	}
-</style>
+<link rel=stylesheet href="<c:url value='/css/head.css' />" type="text/css">
 </head>
 <body>
-<table>
+<table class="head_table">
 	<tr>
 		<td class="talent_test" valign="bottom">
 			<button type="button" class="btn_talent_test" onclick="talentTest()">관심 재능 검사<img alt="돋보기" src="../img/logo.png" class="search_icon"></button>

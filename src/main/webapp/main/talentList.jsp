@@ -15,29 +15,7 @@ function categorySearch() {
 	categorySearch.submit();
 }
 </script>
-<style type="text/css">
-	img {
-		width : 2vh;
-		height : 2vh;
-		margin-top : 1vh;
-	}
-	table {
-		width : 50%;
-		border-collapse : collapse;
-		text-align : center;
-		margin : auto;
-	}
-	td {
-		border : 1px solid;
-	}
-	.search td {
-		border : none;
-	}
-	button {
-		background-color : transparent;
-		border : none;
-	}
-</style>
+<link rel=stylesheet href="<c:url value='/css/mainTalentList.css' />" type="text/css">
 </head>
 <body>
 	<table>

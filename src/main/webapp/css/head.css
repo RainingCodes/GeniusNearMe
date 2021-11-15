@@ -1,0 +1,21 @@
+table {
+		width : 100%;
+	}
+	
+	.search_icon {
+		height : 15px;
+		width : 15px;
+	}
+	.btn_talent_test {
+		background-color : transparent;
+		border : none;
+	}
+	img {
+		width : 250px;
+		height : 110px;
+	}
+	
+	button {
+		background-color : transparent;
+		border : none;
+	}
