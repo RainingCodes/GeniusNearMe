@@ -28,6 +28,7 @@ public class RequestMapping {
         mappings.put("/member/update/form", new UpdateMemberController());
         mappings.put("/member/update", new UpdateMemberController());
         mappings.put("/member/delete", new DeleteMemberController());    
+        mappings.put("/member/matching", new MyMatchingListController());    
         
       mappings.put("/talent/register", new RegisterTalentController());
       mappings.put("/talent/view", new ViewTalentController());
