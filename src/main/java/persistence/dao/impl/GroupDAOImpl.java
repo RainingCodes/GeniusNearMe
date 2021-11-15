@@ -25,7 +25,7 @@ public class GroupDAOImpl implements GroupDAO {
 	}
 	
 	@Override
-	public int insertGroup(GroupDTO group) {
+	public int insertGroup(GroupDTO group, int talentId) {
 		// TODO Auto-generated method stub
 		int result = 0;
 		String insertGroupQuery = "INSERT INTO GROUPING "
@@ -44,7 +44,12 @@ public class GroupDAOImpl implements GroupDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		String insertMatchingQuery = "INSERT INTO MATCHING (MATCHINGID, TALENTID, "
+				+ "MATCHINGSTATE, GROUPID, USERID) "
+				+ "VALUES (matching_seq.nextval, ?, DEFAULT, ?, ?) ";
 		jdbcUtil.close();
+		
 		return result;
 	}
 
@@ -268,6 +273,27 @@ public class GroupDAOImpl implements GroupDAO {
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	@Override
+	public int groupMatching(GroupDTO group) {
+		int result = 0;
+		
+		
+		jdbcUtil.setSqlAndParameters(groupMatchingQuery, param);
+		try {
+			result = jdbcUtil.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		jdbcUtil.close();
+		jdbcUtil = new JDBCUtil();
+		String stateUpdateQuery = "UPDATE MATCHING SET STATE=matching_seq.nextval WHERE TALENTID=? ";
+		return 0;
 	}
 
 	

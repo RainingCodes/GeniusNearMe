@@ -33,9 +33,9 @@ public class GroupServiceImpl implements GroupService {
 	}
 
 	@Override
-	public int insertGroup(GroupDTO group, int talentId) {
+	public int insertGroup(GroupDTO group) {
 		// TODO Auto-generated method stub
-		return groupDao.insertGroup(group, talentId);
+		return groupDao.insertGroup(group);
 	}
 
 	@Override

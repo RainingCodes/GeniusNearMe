@@ -10,6 +10,7 @@ import controller.Controller;
 import service.GroupService;
 import service.GroupServiceImpl;
 import service.dto.GroupDTO;
+import service.dto.TalentDTO;
 
 public class CreateGroupController implements Controller {
 	private static final Logger log = LoggerFactory.getLogger(CreateGroupController.class);
@@ -17,12 +18,12 @@ public class CreateGroupController implements Controller {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
-		int talentId = Integer.valueOf(request.getParameter("talentId"));
-		GroupDTO group = new GroupDTO(talentId);
+		TalentDTO talent = (TalentDTO)request.getAttribute("talent");
+		GroupDTO group = new GroupDTO();
 		log.debug("Create group : {}", group);
 		
 		GroupService manager = new GroupServiceImpl();
-		manager.insertGroup(group, talentId);
+		manager.insertGroup(group, talent.getTalentId());
 	    return "redirect:/talent/group";	
 	}
 

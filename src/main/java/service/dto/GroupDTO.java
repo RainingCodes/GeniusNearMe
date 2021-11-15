@@ -60,5 +60,14 @@ public class GroupDTO {
 	public GroupDTO() {
 		
 	}
+	public GroupDTO(int[] userId, int groupId, int talentId, int representativeId, int membersCount, int maximum) {
+		super();
+		this.userId = userId;
+		this.groupId = groupId;
+		this.talentId = talentId;
+		this.representativeId = representativeId;
+		this.membersCount = membersCount;
+		this.maximum = maximum;
+	}
 	
 }

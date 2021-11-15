@@ -1,21 +1,14 @@
 package service.dto;
 
 public class MatchingDTO {
-//¸ÅÄª dto
+//ï¿½ï¿½Äª dto
 	
 	private int matchingId = -1;
 	private int matchingState = -1;
 	private int talentId = -1;
 	private int groupId = -1;
 	private int userId = -1;
-	private int isGroupMatching = -1; //±×·ì¸ÅÄªÀÎÁö ¾Æ´ÑÁö ¾Ë·ÁÁÖ´Â º¯¼ö
 	
-	public int getIsGroupMatching() {
-		return isGroupMatching;
-	}
-	public void setIsGroupMatching(int isGroupMatching) {
-		this.isGroupMatching = isGroupMatching;
-	}
 	public int getTalentId() {
 		return talentId;
 	}
