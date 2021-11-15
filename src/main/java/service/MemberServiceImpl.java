@@ -60,9 +60,9 @@ public class MemberServiceImpl implements MemberService {
 			return true;
 	}
 	
-	public MemberDTO findUserByEmail(String userId)
+	public MemberDTO findUserByEmail(String email)
 			throws SQLException, UserNotFoundException {
-			MemberDTO member = dao.getMemberByEmail(userId);
+			MemberDTO member = dao.getMemberByEmail(email);
 
 			if (member == null) {
 				throw new UserNotFoundException("유저가 존재하지 않습니다.");
