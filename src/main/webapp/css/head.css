@@ -1,7 +1,7 @@
 .head_table {
 		width : 100%;
+		border : none;
 	}
-	
 	.search_icon {
 		height : 15px;
 		width : 15px;
@@ -10,11 +10,24 @@
 		background-color : transparent;
 		border : none;
 	}
-	img {
-		width : 250px;
-		height : 110px;
+	.logo {
+		width : 280px;
+		height : 130px;
 	}
-	
+	.talentList {
+		width : 50%;
+		border-collapse : collapse;
+		text-align : center;
+		margin : auto;
+	}
+	.talentList td {
+		height : 200px;
+		width : 200px;
+		border : 1px solid;
+	}
+	.search td {
+		border : none;
+	}
 	button {
 		background-color : transparent;
 		border : none;

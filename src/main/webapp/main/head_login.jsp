@@ -32,7 +32,7 @@ function goHome() {
 		</td>
 		<td class="logo" align="center">
 			<a>
-				<img alt="로고" src="img/logo.png">
+				<img alt="로고" src="img/logo.png" class="logo">
 			</a>
 		</td>
 		<td class="user" valign="bottom">
@@ -40,6 +40,9 @@ function goHome() {
 		</td>
 		<td>
 			<a href="<c:url value='../member/logout' />">로그아웃</a>
+		</td>
+		<td>
+			<a href="<c:url value='../talent/registerForm' />">재능 글 작성</a>
 		</td>
 		<td class="" valign="bottom">
 			<button type="button" class="btn_chat"><img alt="채팅" src="img/chat.png" class="img_chat"></button>

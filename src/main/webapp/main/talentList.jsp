@@ -18,7 +18,7 @@ function categorySearch() {
 <link rel=stylesheet href="<c:url value='/css/mainTalentList.css' />" type="text/css">
 </head>
 <body>
-	<table>
+	<table class="talentList">
 		<form name="keywordSearch" method="post">
 			<tr class="search">
 				<td colspan="5">

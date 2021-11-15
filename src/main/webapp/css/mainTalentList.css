@@ -1,15 +1,16 @@
-img {
+.talentList img {
 		width : 2vh;
 		height : 2vh;
 		margin-top : 1vh;
 	}
-	table {
+	.talentList {
 		width : 50%;
+		height : 50%;
 		border-collapse : collapse;
 		text-align : center;
 		margin : auto;
 	}
-	td {
+	.talentList td {
 		border : 1px solid;
 	}
 	.search td {

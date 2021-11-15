@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>이웃집 똑똑이</title>
+<link rel=stylesheet href="<c:url value='/css/head.css' />" type="text/css">
 </head>
 <body>
 <table class="head_table">
@@ -15,7 +16,7 @@
 		</td> 
 		<td class="logo" align="center">
 			<a>
-				<img alt="로고" src="<c:url value='/img/logo.png' />">
+				<img alt="로고" src="<c:url value='/img/logo.png' />" class="logo">
 			</a>
 		</td>
 		<td class="login" valign="bottom">
