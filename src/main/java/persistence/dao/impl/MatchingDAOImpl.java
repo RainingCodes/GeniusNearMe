@@ -124,8 +124,8 @@ public class MatchingDAOImpl implements MatchingDAO {
 					+ "MATCHINGSTATE, GROUPID, USERID) "
 					+ "VALUES (matching_seq.nextval, ?, ?, ?, ?) ";
 			
-			Object[] param = new Object[] { matchingDto.getMatchingId(), matchingDto.getTalentId(),
-					matchingDto.getMatchingState(), matchingDto.getGroupId(), matchingDto.getUserId()};
+			Object[] param = new Object[] { matchingDto.getTalentId(), matchingDto.getMatchingState(), 
+					matchingDto.getGroupId(), matchingDto.getUserId()};
 			
 			jdbcUtil.setSql(insertQuery);
 			jdbcUtil.setParameters(param);

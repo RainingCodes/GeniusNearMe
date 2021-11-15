@@ -1,5 +1,6 @@
 package controller.talent;
 
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
@@ -42,10 +43,20 @@ public class RegisterTalentController implements Controller{
 				request.getParameter("category"),
 				Integer.parseInt(request.getParameter("postType")),
 				Integer.parseInt(request.getParameter("price")));
+		System.out.println(dto);
 		
-		TalentService talentService = new TalentServiceImpl();
-		talentService.insertTalent(dto);
-		return "redirect:/talent/view";
+		log.debug("Create Talent : {}", dto.getTitle());
+		
+		try {
+			System.out.println("재능 추가");
+			TalentService talentService = new TalentServiceImpl();
+			int i = talentService.insertTalent(dto);
+			System.out.println(i+ "완료");
+		
+			return "redirect:/talent/view";
+		}catch(SQLException e) {
+			return "/talent/registerForm.jsp";
+		}
 	}
 
 }
