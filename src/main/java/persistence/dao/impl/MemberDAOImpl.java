@@ -185,6 +185,8 @@ public class MemberDAOImpl implements MemberDAO {
 	
 	public MemberDTO getMemberByEmail(String email) {
 		String searchQuery = query + "FROM MEMBERS " + "WHERE EMAIL = ? ";
+		System.out.println(searchQuery);
+		
 		jdbcUtil.setSqlAndParameters(searchQuery, new Object[] { email });
 
 		try {

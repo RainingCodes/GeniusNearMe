@@ -12,6 +12,7 @@ public class MemberDTO {
 		this.pw = pw;
 		this.nickname = nickname;
 		this.phone = phone;
+		userId = -1;
 	}
 	
 	public MemberDTO(int userId, String email, String pw, String nickname, String phone) {
@@ -23,7 +24,11 @@ public class MemberDTO {
 	}
 	
 	public MemberDTO() {
-		
+		this.userId = -1;
+		this.email = null;
+		this.pw = null;
+		this.nickname = null;
+		this.phone = null;
 	}
 	
 	public int getUserId() {

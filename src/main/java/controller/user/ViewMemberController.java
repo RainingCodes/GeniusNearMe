@@ -18,7 +18,7 @@ public class ViewMemberController implements Controller {
         }
     	
     	MemberService manager = new MemberServiceImpl();
-		String userId = request.getParameter("userId");
+		String userId = request.getParameter("email");
 
     	MemberDTO member = null;
     	
