@@ -13,7 +13,7 @@
 <%
 	if(UserSessionUtils.hasLogined(request.getSession())) {
 %>
-<%@ include file="head.jsp"  %>
+<%@ include file="head_login.jsp"  %>
 <%
 	} else {
 %>
