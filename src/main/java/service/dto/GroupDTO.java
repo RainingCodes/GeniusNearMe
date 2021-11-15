@@ -4,16 +4,9 @@ public class GroupDTO {
 	private int[] userId = null;
 	private int groupId = -1;
 	private int talentId = -1;
-	private int state = 0;
 	private int representativeId = -1;
 	private int membersCount = 0;
 	private int maximum = 0;
-	public int getState() {
-		return state;
-	}
-	public void setState(int state) {
-		this.state = state;
-	}
 	public int getMembersCount() {
 		return membersCount;
 	}

@@ -18,21 +18,21 @@ public class GroupDAOImpl implements GroupDAO {
 			+ "GROUPING.TALENTID AS TALENT_ID, "
 			+ "GROUPING.REPRESENTATIVEID AS REPRESENTATIVE_ID "
 			+ "GROUPING.MAXIMUM AS MAXIMUM "
-			+ "GROUPING.MEMBERSCOUNT AS MEMBERS_COUNT "
-			+ "GROUPING.STATE AS STATE ";
+			+ "GROUPING.MEMBERSCOUNT AS MEMBERS_COUNT ";
 	
 	public GroupDAOImpl() {
 		jdbcUtil = new JDBCUtil();
 	}
 	
 	@Override
-	public int insertGroup(GroupDTO group, int talentId) {
+	public int insertGroup(GroupDTO group) {
 		// TODO Auto-generated method stub
 		int result = 0;
-		String insertGroupQuery = "INSERT INTO GROUPING (TALENT_ID, REPSENTATIVE_ID, MAXIMUM) "
-				+ "Values (?, ?, ?) ";
+		String insertGroupQuery = "INSERT INTO GROUPING "
+				+ "(GROUPID, TALENTID, REPSENTATIVEID, MAXIMUM, MEMBERSCOUNT) "
+				+ "Values (group_seq.nextqal, ?, null, ?, ?) ";
 		
-		Object[] param = new Object[] { talentId, group.getRepresentativeId(), group.getMaximum() };
+		Object[] param = new Object[] { group.getTalentId(), group.getMaximum(), group.getCountMembers() };
 		jdbcUtil.setSqlAndParameters(insertGroupQuery, param);
 		
 		try {
@@ -52,7 +52,7 @@ public class GroupDAOImpl implements GroupDAO {
 	public int[] getGroupMembers(int groupId, int talentId) {
 		// TODO Auto-generated method stub
 		String MembersQuery = "SELECT GROUPMEMBERS.USERID "
-				+ "FROM GROUPMEMBERS"
+				+ "FROM GROUPMEMBERS "
 				+ "WHERE GROUPID=? AND TALENTID=?";
 		Object[] param = new Object[] { groupId, talentId };
 		jdbcUtil.setSqlAndParameters(MembersQuery, param);
@@ -85,7 +85,7 @@ public class GroupDAOImpl implements GroupDAO {
 				+ "VALUES (?, ?, ?) ";
 		
 		Object[] param = new Object[] { userId, group.getGroupId(), group.getTalentId()};
-		
+		jdbcUtil.setSqlAndParameters(insertMemberQuery, param);
 		try {
 			result = jdbcUtil.executeUpdate();
 		} catch (SQLException e) {
@@ -95,23 +95,24 @@ public class GroupDAOImpl implements GroupDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		jdbcUtil.close();						//이거 질문
-		new GroupDAOImpl();
-		group.setCountMembers(group.getCountMembers() + 1);
-		String updateMembersQuery = "UPDATE GROUP SET MEMBERSCOUNT=? WHERE GROUPID=? ";
-		param = new Object[] { group.getCountMembers(), group.getGroupId() };
-		jdbcUtil.setSqlAndParameters(updateMembersQuery, param);
-		try {
-			result = jdbcUtil.executeUpdate();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		jdbcUtil.close();				
+		jdbcUtil = new JDBCUtil();
+		if(result > 0) {
+			group.setCountMembers(group.getCountMembers() + 1);
+			String updateMembersQuery = "UPDATE GROUP SET MEMBERSCOUNT=? WHERE GROUPID=? ";
+			param = new Object[] { group.getCountMembers(), group.getGroupId() };
+			jdbcUtil.setSqlAndParameters(updateMembersQuery, param);
+			try {
+				jdbcUtil.executeUpdate();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			jdbcUtil.close();
 		}
-		
-		
 		return result;
 	}
 
@@ -121,7 +122,8 @@ public class GroupDAOImpl implements GroupDAO {
 		// TODO Auto-generated method stub
 		int result = 0;
 		String setRepreQuery = "UPDATE GROUPING SET REPRESENTATIVEID=? WHERE GROUPID=? ";
-		Object[] params = new Object[] { userId, group.getGroupId() };
+		Object[] param = new Object[] { userId, group.getGroupId() };
+		jdbcUtil.setSqlAndParameters(setRepreQuery, param);
 		try {
 			result = jdbcUtil.executeUpdate();
 		} catch (SQLException e) {
@@ -151,7 +153,6 @@ public class GroupDAOImpl implements GroupDAO {
 				dto.setTalentId(talentId);
 				dto.setRepresentativeId(rs.getInt("REPRESENTATIVE_ID"));
 				dto.setMembersCount(rs.getInt("MEMBERS_COUNT"));
-				dto.setState(rs.getInt("STATE"));
 				dto.setMaximum(rs.getInt("MAXIMUM"));
 				dto.setUserId(getGroupMembers(dto.getGroupId(), talentId));
 
@@ -183,21 +184,23 @@ public class GroupDAOImpl implements GroupDAO {
 			e.printStackTrace();
 		}
 		jdbcUtil.close();
-		new GroupDAOImpl();
-		group.setCountMembers(group.getCountMembers() - 1);
-		String updateMembersQuery = "UPDATE GROUP SET MEMBERSCOUNT=? WHERE GROUPID=? ";
-		param = new Object[] { group.getCountMembers(), group.getGroupId() };
-		jdbcUtil.setSqlAndParameters(updateMembersQuery, param);
-		try {
-			result = jdbcUtil.executeUpdate();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		if(result > 0) {
+			jdbcUtil = new JDBCUtil();
+			group.setCountMembers(group.getCountMembers() - 1);
+			String updateMembersQuery = "UPDATE GROUP SET MEMBERSCOUNT=? WHERE GROUPID=? ";
+			param = new Object[] { group.getCountMembers(), group.getGroupId() };
+			jdbcUtil.setSqlAndParameters(updateMembersQuery, param);
+			try {
+				jdbcUtil.executeUpdate();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			jdbcUtil.close();
 		}
-		
 		
 		return result;
 		
@@ -256,7 +259,6 @@ public class GroupDAOImpl implements GroupDAO {
 				group.setMaximum(rs.getInt("MAXIMUM"));
 				group.setCountMembers(rs.getInt("MEMBERS_COUNT"));
 				group.setRepresentativeId(rs.getInt("REPRESENTATIVE_ID"));
-				group.setState(rs.getInt("STATE"));
 				group.setTalentId(talentId);
 				group.setUserId(getGroupMembers(groupId, talentId));
 				return group;
