@@ -21,6 +21,11 @@ public class TalentServiceImpl implements TalentService {
 		return dao.getTalentListByTitle(title);
 	}
 
+	public List<TalentDTO> getTalent(String[] options) {
+		return dao.getTalentListBy
+		return null;
+	}
+	
 	public List<TalentDTO> getTalentByTalentCategory(String[] category) {
 		return dao.getTalentListByCategory(category);
 	}
@@ -39,4 +44,5 @@ public class TalentServiceImpl implements TalentService {
 	public TalentDTO findTalent(int talentId) {
 		return dao.getTalentView(talentId);
 	}
+
 }

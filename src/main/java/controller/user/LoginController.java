@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import controller.Controller;
 import service.MemberService;
 import service.MemberServiceImpl;
+import service.dto.MemberDTO;
 
 public class LoginController implements Controller {
     @Override
@@ -23,8 +24,11 @@ public class LoginController implements Controller {
 			// 세션에 사용자 이이디 저장
 			HttpSession session = request.getSession();
             session.setAttribute(UserSessionUtils.USER_SESSION_KEY, email);
+  
+        	MemberDTO member = manager.findUserByEmail(email);          
+            session.setAttribute("nickname", member.getNickname());
             
-            return "redirect:/member/view"; // 멤버페이지로 이동		
+            return "redirect:/main/login"; // 멤버페이지로 이동		
 		} catch (Exception e) {
 			/* UserNotFoundException이나 PasswordMismatchException 발생 시
 			 * 다시 login form을 사용자에게 전송하고 오류 메세지도 출력
