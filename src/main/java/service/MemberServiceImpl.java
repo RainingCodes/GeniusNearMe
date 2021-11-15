@@ -49,7 +49,10 @@ public class MemberServiceImpl implements MemberService {
 	
 	public boolean login(String userId, String password)
 			throws SQLException, UserNotFoundException, PasswordMismatchException {
+		
+			System.out.println(userId +","+ password);
 			MemberDTO member = dao.getMemberByEmail(userId);
+			System.out.println(member);
 
 			if (!member.matchPassword(password)) {
 				throw new PasswordMismatchException("비밀번호가 일치하지 않습니다.");

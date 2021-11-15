@@ -16,6 +16,7 @@ public class LoginController implements Controller {
 		
 		try {
 			// 모델에 로그인 처리를 위임
+			System.out.println(email+","+password);
 			MemberService manager = new MemberServiceImpl();
 			manager.login(email, password);
 	

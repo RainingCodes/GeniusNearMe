@@ -185,9 +185,7 @@ public class MemberDAOImpl implements MemberDAO {
 	
 	public MemberDTO getMemberByEmail(String email) {
 		String searchQuery = query + "FROM MEMBERS " + "WHERE EMAIL = ? ";
-		jdbcUtil.setSql(searchQuery);
-		Object[] param = new Object[] { email };
-		jdbcUtil.setParameters(param);
+		jdbcUtil.setSqlAndParameters(searchQuery, new Object[] { email });
 
 		try {
 			ResultSet rs = jdbcUtil.executeQuery();
@@ -199,9 +197,13 @@ public class MemberDAOImpl implements MemberDAO {
 				member.setEmail(rs.getString("EMAIL"));
 				member.setPhone(rs.getString("PHONE"));
 				member.setUserId(rs.getInt("USERID"));
-				member.setNickname(rs.getString("NICKNAME"));
+				member.setNickname(rs.getString("PW"));
+				System.out.println(rs.getString("EMAIL"));
+				System.out.println(rs.getString("EMAIL"));
+				System.out.println(member);
 			}
 			return member;
+			
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {
