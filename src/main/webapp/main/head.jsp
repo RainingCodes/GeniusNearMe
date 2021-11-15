@@ -34,7 +34,7 @@
 		</td>
 		<td class="logo" align="center">
 			<a>
-				<img alt="로고" src="img/logo.png">
+				<img alt="로고" src="<c:url value='img/logo.png' />">
 			</a>
 		</td>
 		<td class="login" valign="bottom">

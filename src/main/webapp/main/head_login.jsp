@@ -44,7 +44,7 @@ function goHome() {
 <table>
 	<tr>
 		<td class="talent_test" valign="bottom">
-			<button type="button" class="btn_talent_test" onclick="talentTest()">관심 재능 검사<img alt="돋보기" src="img/search.png" class="search_icon"></button>
+			<button type="button" class="btn_talent_test" onclick="talentTest()">관심 재능 검사<img alt="돋보기" src="${pageContext.request.contextPath }/img/logo.png" class="search_icon"></button>
 		</td>
 		<td class="logo" align="center">
 			<a>
@@ -53,6 +53,9 @@ function goHome() {
 		</td>
 		<td class="user" valign="bottom">
 			<a href="<c:url value='../member/view' />"><%=nickname %>님</a>
+		</td>
+		<td>
+			<a href="<c:url value='../member/logout' />">로그아웃</a>
 		</td>
 		<td class="" valign="bottom">
 			<button type="button" class="btn_chat"><img alt="채팅" src="img/chat.png" class="img_chat"></button>
