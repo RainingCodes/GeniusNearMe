@@ -31,7 +31,7 @@
 	<tr>
 		<td class="talent_test" valign="bottom">
 			<button type="button" class="btn_talent_test">관심 재능 검사<img alt="돋보기" src="img/search.png" class="search_icon"></button>
-		</td>
+		</td> 
 		<td class="logo" align="center">
 			<a>
 				<img alt="로고" src="<c:url value='img/logo.png' />">
