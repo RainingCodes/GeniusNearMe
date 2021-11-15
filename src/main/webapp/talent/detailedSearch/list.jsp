@@ -10,7 +10,7 @@
 <head>
 <meta charset="UTF-8">
 <title>상세검색 결과페이지</title>
-<link rel="stylesheet" href="../css/talent.css" type="text/css">
+<link rel="stylesheet" href="../../css/talent.css" type="text/css">
 </head>
 <body>
 	<%
@@ -66,6 +66,14 @@
 				}%>>IT
 			<input type="checkbox" name="category" value="art"
 				<% if (Arrays.asList(selectedCategory).contains("art")==true){
+					out.print(" checked");
+				}%>>예술<br>
+			<input type="checkbox" name="category" value="game"
+				<% if (Arrays.asList(selectedCategory).contains("game")==true){
+					out.print(" checked");
+				}%>>예술<br>
+			<input type="checkbox" name="category" value="mechanic"
+				<% if (Arrays.asList(selectedCategory).contains("mechanic")==true){
 					out.print(" checked");
 				}%>>예술<br>
 		</div>

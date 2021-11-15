@@ -15,7 +15,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>재능글 검색결과</title>
-<link rel="stylesheet" href="../css/talent.css" type="text/css">
+<link rel="stylesheet" href="../../css/talent.css" type="text/css">
 </head>
 <body>
 	<div class="nav">
@@ -29,6 +29,7 @@
 			<input type="checkbox" name="category" value="sports">운동 <input type="checkbox" name="category" value="foreignLanguage">외국어<br>
 			<input type="checkbox" name="category" value="cook">요리 <input type="checkbox" name="category" value="law">법률<br>
 			<input type="checkbox" name="category" value="it">IT <input type="checkbox" name="category" value="art">예술<br>
+			<input type="checkbox" name="category" value="game">Game <input type="checkbox" name="category" value="mechanic">수리<br>
 		</div>
 		<p></p>
 		<strong>가격대</strong>
