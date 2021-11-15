@@ -21,6 +21,7 @@ public class RegisterTalentController implements Controller{
 	 SimpleDateFormat format1 = new SimpleDateFormat ("yyyy-MM-dd");
 	 long miliseconds = System.currentTimeMillis();
      Date date = new Date(miliseconds);
+     
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
