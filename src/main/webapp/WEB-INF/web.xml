@@ -7,7 +7,10 @@
 	<display-name>GeniusNearMe</display-name>
 	<description>이웃집솜솜이</description>
 	<distributable />
-	
+	<filter>
+		<filter-name>Resource Filter</filter-name>
+		<filter-class>filter.ResourceFilter</filter-class>
+	</filter>
 	<servlet>
 		<servlet-name>DispatcherServlet</servlet-name>
 		<servlet-class>controller.DispatcherServlet</servlet-class>
