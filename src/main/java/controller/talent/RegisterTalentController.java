@@ -45,7 +45,7 @@ public class RegisterTalentController implements Controller{
 		
 		TalentService talentService = new TalentServiceImpl();
 		talentService.insertTalent(dto);
-		return "redirect:/talent/list";
+		return "redirect:/talent/view";
 	}
 
 }
