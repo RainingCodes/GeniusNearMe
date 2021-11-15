@@ -22,7 +22,7 @@ public class TalentServiceImpl implements TalentService {
 	}
 
 	public List<TalentDTO> getTalent(String[] options) {
-		return dao.getTalentListBy
+		
 		return null;
 	}
 	

@@ -13,7 +13,7 @@ public class TalentDAOImpl implements TalentDAO  {
 	private JDBCUtil jdbcUtil = null;
 	
 	private static String query = "SELECT TALENTID, TITLE, CONTENT, STARTDATE, DEADLINE, "
-			+ "WRITTENDATE, MATCHINGCOUNTS, WRITERID, TALENTCATEGORYNAME, POSTTYPE ";
+			+ "WRITTENDATE, MATCHINGCOUNTS, WRITERID, TALENTCATEGORYNAME, POSTTYPE, PRICE ";
 
 	public TalentDAOImpl() {
 		jdbcUtil = new JDBCUtil();
@@ -39,6 +39,7 @@ public class TalentDAOImpl implements TalentDAO  {
 				dto.setWriterId(rs.getInt("WRITERID"));
 				dto.setTalentCategoryName(rs.getString("TALENTCATEGORYNAME"));
 				dto.setPostType(rs.getInt("POSTTYPE"));
+				dto.setPrice(rs.getInt("PRICE"));
 			}
 			return list;
 		} catch (Exception ex) {
@@ -72,6 +73,7 @@ public class TalentDAOImpl implements TalentDAO  {
 				dto.setWriterId(rs.getInt("WRITERID"));
 				dto.setTalentCategoryName(rs.getString("TALENTCATEGORYNAME"));
 				dto.setPostType(rs.getInt("POSTTYPE"));
+				dto.setPrice(rs.getInt("PRICE"));
 			}
 			return list;
 		} catch (Exception ex) {
@@ -105,6 +107,41 @@ public class TalentDAOImpl implements TalentDAO  {
 				dto.setWriterId(rs.getInt("WRITERID"));
 				dto.setTalentCategoryName(rs.getString("TALENTCATEGORYNAME"));
 				dto.setPostType(rs.getInt("POSTTYPE"));
+				dto.setPrice(rs.getInt("PRICE"));
+			}
+			return list;
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.close();
+		} return null;
+	}
+	
+	public List<TalentDTO> getTalentListBypriceRange(int high) {
+		String getByPriceQuery = query + "FROM TALENT WHERE PRICE <= ? ";
+		
+		Object[] param = new Object[] { high };
+		
+		jdbcUtil.setSql(getByPriceQuery);
+		jdbcUtil.setParameters(param);
+		
+		try {
+			ResultSet rs = jdbcUtil.executeQuery();
+			List<TalentDTO> list = new ArrayList<TalentDTO>();
+			
+			while (rs.next()) {
+				TalentDTO dto = new TalentDTO();
+				dto.setTalentId(rs.getInt("TALENTID"));
+				dto.setTitle(rs.getString("TITLE"));
+				dto.setContent(rs.getString("CONTENT"));
+				dto.setStartDate(rs.getDate("STARTDATE"));
+				dto.setDeadLine(rs.getDate("DEADLINE"));
+				dto.setWrittenDate(rs.getDate("WRITTENDATE"));
+				dto.setMatchingCounts(rs.getInt("MATCHINGCOUNTS"));
+				dto.setWriterId(rs.getInt("WRITERID"));
+				dto.setTalentCategoryName(rs.getString("TALENTCATEGORYNAME"));
+				dto.setPostType(rs.getInt("POSTTYPE"));
+				dto.setPrice(rs.getInt("PRICE"));
 			}
 			return list;
 		} catch (Exception ex) {
@@ -138,6 +175,7 @@ public class TalentDAOImpl implements TalentDAO  {
 				dto.setWriterId(rs.getInt("WRITERID"));
 				dto.setTalentCategoryName(rs.getString("TALENTCATEGORYNAME"));
 				dto.setPostType(rs.getInt("POSTTYPE"));
+				dto.setPrice(rs.getInt("PRICE"));
 			}
 			return dto;
 		} catch (Exception ex) {
@@ -151,13 +189,13 @@ public class TalentDAOImpl implements TalentDAO  {
 		int result = 0;
 		String insertQuery = "INSERT INTO TALENT (TALENTID, TITLE, CONTENT, STARTDATE, DEADLINE, " +
 				"WRITTENDATE, MATCHINGCOUNTS, WRITERID, TALENTCATEGORYNAME, POSTTYPE, PRICE) " +
-				"VALUES (talent_seq.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
+				"VALUES (talent_seq.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
 		
 		//카테고리는 무조건 정해진 내용으로만 전달이 될거니까 (왜냐면 jsp에서 그렇게 구성하겠지?... 굳이 뭐 제약조건 안둠)
 		//그리고 writerId는 지금 글쓰고 있는 user꺼 무조건 전달되니까... 오류 안뜨겠지?.......
 		
 		Object[] param = new Object[] { t.getTitle(), t.getContent(), t.getStartDate(), t.getDeadLine(), 
-				t.getWrittenDate(), t.getMatchingCounts(), t.getWriterId(), t.getTalentCategoryName(), t.getPostType() };
+				t.getWrittenDate(), t.getMatchingCounts(), t.getWriterId(), t.getTalentCategoryName(), t.getPostType(), t.getPrice() };
 		jdbcUtil.setSql(insertQuery);
 		jdbcUtil.setParameters(param);
 		
@@ -218,10 +256,13 @@ public class TalentDAOImpl implements TalentDAO  {
 			tempParam[index++] = t.getTalentCategoryName();	
 		}
 		if (t.getPostType() != -1) {		
-			updateQuery += "POSTTYPE = ? ";	
+			updateQuery += "POSTTYPE = ?, ";	
 			tempParam[index++] = t.getPostType();	
 		}
-		
+		if (t.getPostType() != -1) {		
+			updateQuery += "PRICE = ? ";	
+			tempParam[index++] = t.getPrice();	
+		}
 	
 		
 		updateQuery += "WHERE TALENTID = ? ";		// update 문에 조건 지정
