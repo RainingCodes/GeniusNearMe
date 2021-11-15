@@ -25,9 +25,7 @@ public class RequestMapping {
         mappings.put("/member/update/form", new UpdateMemberController());
         mappings.put("/member/update", new UpdateMemberController());
         mappings.put("/member/delete", new DeleteMemberController());
-        mappings.put("/member/myPage", new ViewMemberController());
-        mappings.put("/main/login", new ForwardController("/main/main_login.jsp"));
-        
+        mappings.put("/member/myPage", new ViewMemberController());        
         
         logger.info("Initialized Request Mapping!");
     }

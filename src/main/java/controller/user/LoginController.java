@@ -28,7 +28,7 @@ public class LoginController implements Controller {
         	MemberDTO member = manager.findUserByEmail(email);          
             session.setAttribute("nickname", member.getNickname());
             
-            return "redirect:/main/login"; // 멤버페이지로 이동		
+            return "redirect:/main"; // 홈으로 재이동		
 		} catch (Exception e) {
 			/* UserNotFoundException이나 PasswordMismatchException 발생 시
 			 * 다시 login form을 사용자에게 전송하고 오류 메세지도 출력
