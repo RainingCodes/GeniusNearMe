@@ -26,7 +26,6 @@ public class ViewMemberController implements Controller {
     	
     	try {
     		member = manager.findUserByEmail(email);	// 사용자 정보 검색
-    		System.out.println(member);
 		} catch (UserNotFoundException e) {				
 	        return "redirect:/member/login/form";
 		}	

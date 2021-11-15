@@ -4,7 +4,6 @@
 <head>
 <title>이웃집 똑똑이 회원정보 수정</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css">
 <script>
 function userModify() {
 	if (form.password.value == "") {
@@ -41,7 +40,7 @@ function gotoUri(targetUri) {
 <br>
 <!-- Update Form  -->
 <form name="form" method="POST" action="<c:url value='/member/update' />">
-  <input type="hidden" name="email" value="${member.userId}"/>
+  <input type="hidden" name="userId" value="${member.userId}"/>
   <input type="hidden" name="email" value="${member.email}"/>	  
   <table style="width: 100%">
 	<tr>
@@ -57,7 +56,7 @@ function gotoUri(targetUri) {
 	  	  <tr height="40">
 			<td width="150" align="center" bgcolor="E6ECDE">이메일 ID</td>
 			<td width="250" bgcolor="ffffff" style="padding-left: 10">
-				${member.userId}
+				${member.email}
 			</td>
 		  </tr>
 		  <tr height="40">
@@ -75,7 +74,7 @@ function gotoUri(targetUri) {
 		  <tr height="40">
 			<td width="150" align="center" bgcolor="E6ECDE">닉네임</td>
 			<td width="250" bgcolor="ffffff" style="padding-left: 10">
-				<input type="text" style="width: 240" name="name" value="${member.nickname}"
+				<input type="text" style="width: 240" name="nickname" value="${member.nickname}"
 					<c:if test="${registerFailed}">value="${member.nickname}"</c:if>>
 			</td>
 		  </tr>

@@ -8,7 +8,6 @@
 <head>
 <title>이웃집 똑똑이 멤버 마이페이지</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css">
 <script>
 function userRemove() {
 	return confirm("정말 탈퇴하시겠습니까? 복구 할 수 없습니다.");		
@@ -35,7 +34,7 @@ function userRemove() {
 			</td>
 		  </tr>
 		  <tr>
-			<td width="120" align="center" bgcolor="E6ECDE" height="22">이름</td>
+			<td width="120" align="center" bgcolor="E6ECDE" height="22">닉네임</td>
 			<td width="470" bgcolor="ffffff" style="padding-left: 10">
 				<%=member.getNickname()%>
 			</td>

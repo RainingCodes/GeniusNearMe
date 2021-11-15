@@ -3,6 +3,7 @@ package controller.user;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,9 +41,11 @@ public class RegisterMemberController implements Controller {
 			int i = manager.insertMember(member);
 			System.out.println(i+"완료");
 			
-			request.setAttribute("email", member.getEmail());
-			request.setAttribute("password", member.getPw());
-	        return "redirect:/member/login";	// 성공 시 로그인으로 연결
+			// 세션에 사용자 이이디 저장
+			HttpSession session = request.getSession();
+			session.setAttribute(UserSessionUtils.USER_SESSION_KEY, member.getEmail());
+			session.setAttribute("nickname", member.getNickname());
+			return "redirect:/main"; // 홈으로 재이동	
 	        
 		} catch (ExistingUserException e) {	// 예외 발생 시 회원가입 form으로 forwarding
 			System.out.println("멤버 추가 실패");

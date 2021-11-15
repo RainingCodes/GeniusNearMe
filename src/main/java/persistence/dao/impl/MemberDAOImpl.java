@@ -76,10 +76,6 @@ public class MemberDAOImpl implements MemberDAO {
 			updateQuery += "PW = ?, ";
 			tempParam[index++] = member.getPw();
 		}
-		if (member.getEmail() != null) {
-			updateQuery += "EMAIL = ?, ";
-			tempParam[index++] = member.getEmail();
-		}
 		if (member.getPhone() != null) {
 			updateQuery += "PHONE = ?, ";
 			tempParam[index++] = member.getPhone();
@@ -90,7 +86,9 @@ public class MemberDAOImpl implements MemberDAO {
 		}
 		updateQuery += "WHERE USERID = ? ";
 		updateQuery = updateQuery.replace(", WHERE", " WHERE");
-
+		
+		System.out.println(updateQuery);
+		
 		tempParam[index++] = member.getUserId();
 
 		Object[] newParam = new Object[index];

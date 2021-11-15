@@ -55,13 +55,16 @@ public class UpdateMemberController implements Controller {
    	    	request.getParameter("nickname"),
    	    	request.getParameter("phone")
    		);
+    	
+    	System.out.println(updateMember);
 
     	
     	try {    		
-    	    log.debug("Update User : {}", updateMember);
+    	    log.debug("Update User : {}", updateMember.getEmail());
     	    	
     	    MemberService manager = new MemberServiceImpl();
-    		manager.updateMember(updateMember);		
+    		int i = manager.updateMember(updateMember);		
+    		System.out.println("수정결과:"+i);
     		return "redirect:/member/view";
 	        
 		} catch (ExistingUserException e) {	// 예외 발생 시 수정 form으로 forwarding
