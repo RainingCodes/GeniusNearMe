@@ -32,6 +32,7 @@ public class RegisterTalentController implements Controller{
         }
 		Date start = format1.parse(request.getParameter("startDate"));
 		Date deadline = format1.parse(request.getParameter("deadline"));
+		System.out.print(date);
 		
 		TalentDTO dto = new TalentDTO(
 				request.getParameter("title"),
@@ -42,7 +43,7 @@ public class RegisterTalentController implements Controller{
 				0,
 				Integer.parseInt(request.getParameter("userId")),
 				request.getParameter("category"),
-				Integer.parseInt(request.getParameter("postType")),
+				Integer.parseInt(request.getParameter("postType")),//일단 모두 0 판매
 				Integer.parseInt(request.getParameter("price")));
 		System.out.println(dto);
 		

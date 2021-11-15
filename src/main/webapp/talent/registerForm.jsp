@@ -14,11 +14,7 @@
         		form.title.focus();
         		return false;
         	} 
-        	if(form.student.value ==""){
-        		alert("학생 수를 입력하십시오.");
-        		form.student.focus();
-        		return false;
-        	} 
+        	
         	if(form.cost.value ==""){
         		alert("가격을 입력하십시오.");
         		form.cost.focus();
@@ -52,6 +48,7 @@
     <body>
     <!-- talent registration form -->
        <form name = "form" method="POST" action="<c:url value='/talent/register' />">
+       <input type="hidden" name="postType" value=0>
            <h5>제목</h5>
            <input type="text" name="title">
            <hr/>
