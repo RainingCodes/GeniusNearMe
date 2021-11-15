@@ -96,8 +96,8 @@ function userCreate() {
 	    <table style="width: 100%">
 		  <tr>
 			<td align="left">
-			<input type="button" value="회원 가입" onClick="userCreate()"> &nbsp;
-			<input type="button" value="로그인으로 돌아가기" onClick="<c:url value='/member/login/form' />">
+			<input type="button" value="가입하기" onClick="userCreate()"> &nbsp;
+			<input type="button" value="이전 페이지" onClick="history.go(-1)">
 			</td>
 		  </tr>
 	    </table>

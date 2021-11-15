@@ -39,7 +39,10 @@ public class RegisterMemberController implements Controller {
 			MemberService manager = new MemberServiceImpl();
 			int i = manager.insertMember(member);
 			System.out.println(i+"완료");
-	        return "redirect:/member/login/form";	// 성공 시 다시 로그인화면으로
+			
+			request.setAttribute("email", member.getEmail());
+			request.setAttribute("password", member.getPw());
+	        return "redirect:/member/login";	// 성공 시 로그인으로 연결
 	        
 		} catch (ExistingUserException e) {	// 예외 발생 시 회원가입 form으로 forwarding
 			System.out.println("멤버 추가 실패");

@@ -32,7 +32,7 @@ public class DeleteMemberController implements Controller {
 			
 			manager.deleteMember(manager.getuserIdByEmail(deleteEmail)); // 사용자 정보 삭제
 			if (UserSessionUtils.isLoginUser("admin", session))	// 로그인한 사용자가 관리자 	
-				return "redirect:/member/list";		// 사용자 리스트로 이동
+				return "redirect:/main";		// 사용자 리스트로 이동
 			else 									// 로그인한 사용자는 이미 삭제됨
 				return "redirect:/member/logout";		// logout 처리
 		}

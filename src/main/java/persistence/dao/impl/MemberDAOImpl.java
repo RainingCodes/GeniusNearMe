@@ -37,8 +37,10 @@ public class MemberDAOImpl implements MemberDAO {
 			}
 			return list;
 		} catch (Exception ex) {
+			jdbcUtil.rollback();
 			ex.printStackTrace();
 		} finally {
+			jdbcUtil.commit();
 			jdbcUtil.close();
 		}
 		return null;
@@ -151,8 +153,10 @@ public class MemberDAOImpl implements MemberDAO {
 			}
 			return member;
 		} catch (Exception ex) {
+			jdbcUtil.rollback();
 			ex.printStackTrace();
 		} finally {
+			jdbcUtil.commit();
 			jdbcUtil.close();
 		}
 		return null;
@@ -178,8 +182,10 @@ public class MemberDAOImpl implements MemberDAO {
 			}
 			return member;
 		} catch (Exception ex) {
+			jdbcUtil.rollback();
 			ex.printStackTrace();
 		} finally {
+			jdbcUtil.commit();
 			jdbcUtil.close();
 		}
 		return null;
@@ -187,7 +193,6 @@ public class MemberDAOImpl implements MemberDAO {
 	
 	public MemberDTO getMemberByEmail(String email) {
 		String searchQuery = query + "FROM MEMBERS " + "WHERE EMAIL = ? ";
-		System.out.println(searchQuery);
 		
 		jdbcUtil.setSqlAndParameters(searchQuery, new Object[] { email });
 
@@ -202,15 +207,15 @@ public class MemberDAOImpl implements MemberDAO {
 				member.setPhone(rs.getString("PHONE"));
 				member.setUserId(rs.getInt("USERID"));
 				member.setNickname(rs.getString("PW"));
-				System.out.println(rs.getString("EMAIL"));
-				System.out.println(rs.getString("EMAIL"));
-				System.out.println(member);
 			}
 			return member;
 			
 		} catch (Exception ex) {
+			jdbcUtil.rollback();
 			ex.printStackTrace();
-		} finally {			
+			
+		} finally {
+			jdbcUtil.commit();
 			jdbcUtil.close();
 		}
 		return null;
@@ -231,8 +236,10 @@ public class MemberDAOImpl implements MemberDAO {
 			}
 			return userId;
 		} catch (Exception ex) {
+			jdbcUtil.rollback();
 			ex.printStackTrace();
 		} finally {
+			jdbcUtil.commit();
 			jdbcUtil.close();
 		}
 		return -1;
@@ -253,8 +260,10 @@ public class MemberDAOImpl implements MemberDAO {
 				return (count == 1 ? true : false);
 			}
 		} catch (Exception ex) {
+			jdbcUtil.rollback();
 			ex.printStackTrace();
 		} finally {
+			jdbcUtil.commit();
 			jdbcUtil.close();		// resource 반환
 		}
 		return false;
@@ -271,8 +280,10 @@ public class MemberDAOImpl implements MemberDAO {
 				return (count == 1 ? true : false);
 			}
 		} catch (Exception ex) {
+			jdbcUtil.rollback();
 			ex.printStackTrace();
 		} finally {
+			jdbcUtil.commit();
 			jdbcUtil.close();		// resource 반환
 		}
 		return false;
