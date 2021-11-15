@@ -11,6 +11,7 @@ import controller.Controller;
 import controller.user.UpdateMemberController;
 import controller.user.UserSessionUtils;
 import service.MemberService;
+import service.MemberServiceImpl;
 import service.TalentService;
 import service.TalentServiceImpl;
 import service.dto.TalentDTO;
@@ -27,22 +28,22 @@ public class UpdateTalentController implements Controller {
     		int userId = Integer.parseInt(request.getParameter("userId"));
     		
     		MemberService member = new MemberServiceImpl();
-    		member.get
+    		String email = member.getEmailByUserId(userId);
 
-    		log.debug("UpdateForm Request : {}", userId);
+    		log.debug("UpdateForm Request : {}", email);
     		
     		TalentService talentService = new TalentServiceImpl();
     		TalentDTO talent = talentService.findTalent(talentId);
 			request.setAttribute("talent", talent);			
 
 			HttpSession session = request.getSession();
-			if (UserSessionUtils.isLoginUser(userId, session) ||
+			if (UserSessionUtils.isLoginUser(email, session) ||
 				UserSessionUtils.isLoginUser("admin", session)) {
 				// 현재 로그인한 사용자가 수정 대상 사용자이거나 관리자인 경우 -> 수정 가능
-								
+							
 				
 				
-				
+				//////////////////////
 				
 				List<Community> commList = manager.findCommunityList();	// 커뮤니티 리스트 검색
 				request.setAttribute("commList", commList);	
