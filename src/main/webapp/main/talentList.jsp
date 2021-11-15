@@ -28,7 +28,7 @@ function categorySearch() {
 						<option value="2">재능 주제</option>
 					</select>
 					<span><input name="search_bar" size="50"></span>
-					<span><button type="button" class="btn_search" onClick="keywordSearch()"><img alt="돋보기" src="img/search.png"></button></span>
+					<span><button type="button" class="btn_search" onClick="keywordSearch()"><img alt="돋보기" src="img/search.png" class="search_icon"></button></span>
 				</td>
 			</tr>
 		</form>	
@@ -42,7 +42,7 @@ function categorySearch() {
 				</td>
 				<td>
 					<button type="button" class="btn_IT">
-						<img alt="IT" src="img/talent.png">
+						<img alt="IT" src="img/it.png">
 						<div>IT</div>
 					</button>
 				</td>
