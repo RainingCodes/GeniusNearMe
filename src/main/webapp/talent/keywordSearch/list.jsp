@@ -5,8 +5,11 @@
 <%@ page import="java.util.List"%>
 <%@ page import="java.util.Iterator" %>
 <% request.setCharacterEncoding("UTF-8"); %>
-<jsp:useBean id="talent" class="service.dto.TalentDTO" scope="page" />
-<jsp:setProperty name="talent" property="*" />
+<%-- <%
+	TalentService talentService = new TalentServiceImpl();
+	MemberService memberService = new MemberServiceImpl();
+	List<TalentDTO> talentList = (List<TalentDTO>)request.getAttribute("talentList");
+%> --%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,12 +18,6 @@
 <link rel="stylesheet" href="../css/talent.css" type="text/css">
 </head>
 <body>
-	<%
-	TalentService talentService = new TalentServiceImpl();
-	MemberService memberService = new MemberServiceImpl();
-	List<TalentDTO> talentList = talentService.ListingTalents();
-	request.setAttribute("talentList", talentList);
-	%>
 	<div class="nav">
 		<form method="post" action="../detailedSearch/list.jsp">
 		<p></p>
@@ -55,18 +52,17 @@
 				</div>
 				<p>
 					<a href="<c:url value='showTalent.jsp'>
-						<c:param name='talentTitle' value='${talent.talentTitle}'/>
+						<c:param name='talentId' value='${talent.talentId}'/>
 						</c:url>"><strong>${ talent.title }</strong>
 					</a>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%{talent.writtenDate}
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${talent.writtenDate}
 				</p>
 				<p></p>
 				<p></p>
 				<p>${ talent.content }</p>
 			</div>
 		</c:forEach>
-		
-		
+			
 		<%-- <div class="post">
 			<div id="imgSection1">
 				<img id="thumbnail1" src="img/loopy/img1.jpg" width="120" height="120">
