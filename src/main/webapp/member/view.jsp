@@ -29,19 +29,19 @@ function userRemove() {
 	  	<table style="background-color: YellowGreen">
 	  	  <tr>
 			<td width="120" align="center" bgcolor="E6ECDE" height="22">이메일 ID</td>
-			<td width="470" bgcolor="ffffff" style="padding-left: 10">
+			<td width="400" bgcolor="ffffff" style="padding-left: 10">
 				${member.email}
 			</td>
 		  </tr>
 		  <tr>
 			<td width="120" align="center" bgcolor="E6ECDE" height="22">닉네임</td>
-			<td width="470" bgcolor="ffffff" style="padding-left: 10">
+			<td width="400" bgcolor="ffffff" style="padding-left: 10">
 				${member.nickname}
 			</td>
 		  </tr>	  
 		  <tr>
 			<td width="120" align="center" bgcolor="E6ECDE" height="22">전화번호</td>
-			<td width="470" bgcolor="ffffff" style="padding-left: 10">
+			<td width="400" bgcolor="ffffff" style="padding-left: 10">
 				${member.phone} <%-- <%=user.getPhone()%> --%>
 			</td>
 		  </tr>
