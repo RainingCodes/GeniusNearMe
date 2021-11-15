@@ -19,7 +19,7 @@ public class MatchingDAOImpl implements MatchingDAO {
 	public MatchingDAOImpl() {
 		jdbcUtil = new JDBCUtil();
 	}
-	//¸ÅÂ¡ ¸®½ºÆ® ¹ÝÈ¯  userId¿¡ µû¸¥
+	//ï¿½ï¿½Â¡ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½È¯  userIdï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		public List<MatchingDTO> getMatchingListByUserId(int userId){
 			String searchQuery = query + "FROM MATCHING "+
 							"WHERE USERID = ? ";
@@ -50,7 +50,7 @@ public class MatchingDAOImpl implements MatchingDAO {
 			}return null;
 		}
 		
-		//¸ÅÄª»ó¼¼ º¸±â
+		//ï¿½ï¿½Äªï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		public MatchingDTO getMatchingByMatchingId(int matchingId) {
 			String searchQuery = query + "FROM MATCHING "+
 						"WHERE MATCHINGID = ? ";
@@ -79,7 +79,7 @@ public class MatchingDAOImpl implements MatchingDAO {
 			}return null;			
 		}
 		
-		//¸ÅÄª °áÁ¤ matching State°¡ ¼º°ø(1)
+		//ï¿½ï¿½Äª ï¿½ï¿½ï¿½ï¿½ matching Stateï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½(1)
 		public int decideMatching(MatchingDTO matchingDto) {
 			String updateQuery = "UPDATE MATCHING SET MATCHINGSTATE = 1 WHERE MATCHINGID = ? ";
 		
@@ -98,7 +98,7 @@ public class MatchingDAOImpl implements MatchingDAO {
 			return result;			
 		}
 		
-		//¸ÅÄª °ÅÀý ¹× ½ÇÆÐ. Áï matchingState°¡ 2
+		//ï¿½ï¿½Äª ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½. ï¿½ï¿½ matchingStateï¿½ï¿½ 2
 		public int denyMatching(MatchingDTO matchingDto) {
 			String updateQuery = "UPDATE MATCHING SET MATCHINGSTATE = 2 WHERE MATCHINGID = ? ";
 			
@@ -117,12 +117,12 @@ public class MatchingDAOImpl implements MatchingDAO {
 			return result;	
 		}
 		
-		//¸ÅÄª apply
+		//ï¿½ï¿½Äª apply
 		public int insertMatching(MatchingDTO matchingDto) {
 			int result = 0;
 			String insertQuery = "INSERT INTO MATCHING (MATCHINGID, TALENTID, "
 					+ "MATCHINGSTATE, GROUPID, USERID) "
-					+ "VALUES (matchingId_seq.nextval, ?, ?, ?, ?) ";
+					+ "VALUES (matching_seq.nextval, ?, ?, ?, ?) ";
 			
 			Object[] param = new Object[] { matchingDto.getMatchingId(), matchingDto.getTalentId(),
 					matchingDto.getMatchingState(), matchingDto.getGroupId(), matchingDto.getUserId()};
@@ -141,7 +141,7 @@ public class MatchingDAOImpl implements MatchingDAO {
 			return result;	
 			
 		}
-		//¸ÅÄª °ÅÀý
+		//ï¿½ï¿½Äª ï¿½ï¿½ï¿½ï¿½
 		public int deleteMatching(int matchingId) {
 			int result = 0;
 			String DeleteQuery = "DELETE FROM MATCHING WHERE MATCHINGID = ? ";
