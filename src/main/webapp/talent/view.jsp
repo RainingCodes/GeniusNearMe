@@ -9,7 +9,7 @@
 <html>
     <head>
     <meta charset="UTF-8">
-        <title>게시글 화면</title>
+        <title>${talent.title }</title>
         <script>
         
         </script>
