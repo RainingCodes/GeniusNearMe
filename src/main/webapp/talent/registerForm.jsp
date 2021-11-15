@@ -9,32 +9,32 @@
         <title>게시글 추가</title>
         <script>
         function talentCreate(){
-        	if(from.title.value ==""){
+        	if(form.title.value ==""){
         		alert("제목를 입력하십시오.");
         		form.title.focus();
         		return false;
         	} 
-        	if(from.student.value ==""){
+        	if(form.student.value ==""){
         		alert("학생 수를 입력하십시오.");
         		form.student.focus();
         		return false;
         	} 
-        	if(from.cost.value ==""){
+        	if(form.cost.value ==""){
         		alert("가격을 입력하십시오.");
         		form.cost.focus();
         		return false;
         	} 
-        	if(from.startDate.value ==""){
+        	if(form.startDate.value ==""){
         		alert("모집 시작일을 입력하십시오.");
         		form.startDate.focus();
         		return false;
         	} 
-        	if(from.deadline.value ==""){
+        	if(form.deadline.value ==""){
         		alert("모집마감일을 입력하십시오.");
         		form.deadline.focus();
         		return false;
         	} 
-        	if(from.content.value ==""){
+        	if(form.content.value ==""){
         		alert("설명을 입력하십시오.");
         		form.content.focus();
         		return false;
@@ -50,8 +50,8 @@
         </style>
     </head>
     <body>
-    <!-- talent registration from -->
-       <from name = "from" method="POST" action="<c:url value='/talent/register' />">
+    <!-- talent registration form -->
+       <form name = "form" method="POST" action="<c:url value='/talent/register' />">
            <h5>제목</h5>
            <input type="text" name="title">
            <hr/>
@@ -86,7 +86,6 @@
                </tr>
            </table>
             <input type="button" value="등록" onClick="talentCreate()">
-
        </form>
     </body>
 </html>

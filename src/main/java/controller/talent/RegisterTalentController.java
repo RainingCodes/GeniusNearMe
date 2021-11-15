@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 
 import controller.Controller;
 import controller.user.UserSessionUtils;
+import service.ExistingTalentException;
 import service.ExistingUserException;
 import service.TalentService;
 import service.TalentServiceImpl;
@@ -47,16 +48,20 @@ public class RegisterTalentController implements Controller{
 		
 		log.debug("Create Talent : {}", dto.getTitle());
 		
-		try {
+//		try {
 			System.out.println("재능 추가");
 			TalentService talentService = new TalentServiceImpl();
 			int i = talentService.insertTalent(dto);
 			System.out.println(i+ "완료");
 		
 			return "redirect:/talent/view";
-		}catch(SQLException e) {
-			return "/talent/registerForm.jsp";
-		}
+//		}catch(ExistingTalentException e) {
+//			System.out.println("재능 추가 실패");
+//            request.setAttribute("registerFailed", true);
+//			request.setAttribute("exception", e);
+//			request.setAttribute("talent", dto);
+//			return "/talent/registerForm.jsp";
+//		}
 	}
 
 }
