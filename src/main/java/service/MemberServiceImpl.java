@@ -69,8 +69,8 @@ public class MemberServiceImpl implements MemberService {
 			}
 			return member;
 	}
-	public int getUserIdByEmail(String email) {
-		int userId = dao.getUserIdByEmail(email);
-		return userId;
+	public String getEmailByUserId(int userId) {
+		String email = dao.getEmailByUserId(userId);
+		return email;
 	}
 }

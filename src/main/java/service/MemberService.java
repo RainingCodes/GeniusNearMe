@@ -14,5 +14,5 @@ public interface MemberService { // 유저 정보 관리 목적의 인터페이�
 	public int deleteMember(int userId);
 	public boolean login(String userId, String password) throws SQLException, UserNotFoundException, PasswordMismatchException;
 	public MemberDTO findUserByEmail(String userId) throws SQLException, UserNotFoundException;
-	public int getUserIdByEmail(String email);
+	public String getEmailByUserId(int userId);
 }

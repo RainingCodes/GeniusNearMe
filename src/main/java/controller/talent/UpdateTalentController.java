@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import controller.Controller;
 import controller.user.UpdateMemberController;
 import controller.user.UserSessionUtils;
+import service.MemberService;
 import service.TalentService;
 import service.TalentServiceImpl;
 import service.dto.TalentDTO;
@@ -25,7 +26,8 @@ public class UpdateTalentController implements Controller {
     		int talentId = Integer.parseInt(request.getParameter("talentId"));
     		int userId = Integer.parseInt(request.getParameter("userId"));
     		
-    		
+    		MemberService member = new MemberServiceImpl();
+    		member.get
 
     		log.debug("UpdateForm Request : {}", userId);
     		
