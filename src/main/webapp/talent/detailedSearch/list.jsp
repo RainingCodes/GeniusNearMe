@@ -21,6 +21,9 @@
 		List<TalentDTO> talentList = talentService.getTalentByTalentCategory(selectedCategory);
 		request.setAttribute("talentList", talentList);
 		
+		// 결과내 재검색 키워드 저장
+		String reSearch = request.getParameter("reSearch");
+		
 		//price값 저장
 		String price = request.getParameter("price");
 		
@@ -31,7 +34,7 @@
 		<div class="nav">
 		<form method="post" action="../detailedSearch/list.jsp">
 		<p></p>
-		<input type="text" id="value" placeholder="결과내 재검색">
+		<input type="text" id="reSearch" name="reSearch" placeholder="결과내 재검색" value=<%=reSearch%>>
 		<p></p>
 		<strong>카테고리</strong><br>
 		<div class="category">

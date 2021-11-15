@@ -21,7 +21,7 @@
 	<div class="nav">
 		<form method="post" action="../detailedSearch/list.jsp">
 		<p></p>
-		<input type="text" id="value" name="reSearch" placeholder="결과내 재검색">
+		<input type="text" id="reSearch" name="reSearch" placeholder="결과내 재검색">
 		<p></p>
 		<strong>카테고리</strong><br>
 		<div class="category">
@@ -29,7 +29,7 @@
 			<input type="checkbox" name="category" value="sports">운동 <input type="checkbox" name="category" value="foreignLanguage">외국어<br>
 			<input type="checkbox" name="category" value="cook">요리 <input type="checkbox" name="category" value="law">법률<br>
 			<input type="checkbox" name="category" value="it">IT <input type="checkbox" name="category" value="art">예술<br>
-			<input type="checkbox" name="category" value="game">Game <input type="checkbox" name="category" value="mechanic">수리<br>
+			<input type="checkbox" name="category" value="game">게임 <input type="checkbox" name="category" value="mechanic">수리<br>
 		</div>
 		<p></p>
 		<strong>가격대</strong>
