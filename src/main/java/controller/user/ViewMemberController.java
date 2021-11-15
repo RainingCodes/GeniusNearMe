@@ -25,7 +25,7 @@ public class ViewMemberController implements Controller {
     	try {
     		member = manager.findUserByEmail(userId);	// 사용자 정보 검색
 		} catch (UserNotFoundException e) {				
-	        return "redirect:/member/list";
+	        return "redirect:/member/login/form";
 		}	
 		
     	request.setAttribute("member", member);		// 사용자 정보 저장				

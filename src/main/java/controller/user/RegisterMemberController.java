@@ -32,14 +32,17 @@ public class RegisterMemberController implements Controller {
 			request.getParameter("phone"));
        	System.out.println(member);
 		
-        log.debug("Create member : {}", member);
+        log.debug("Create member : {}", member.getEmail());
 
 		try {
+			System.out.println("멤버 추가");
 			MemberService manager = new MemberServiceImpl();
-			manager.insertMember(member);
-	        return "redirect:/member/login";	// 성공 시 사용자 상세 화면으로 redirect
+			int i = manager.insertMember(member);
+			System.out.println(i+"완료");
+	        return "redirect:/member/login/form";	// 성공 시 다시 로그인화면으로
 	        
 		} catch (ExistingUserException e) {	// 예외 발생 시 회원가입 form으로 forwarding
+			System.out.println("멤버 추가 실패");
             request.setAttribute("registerFailed", true);
 			request.setAttribute("exception", e);
 			request.setAttribute("member", member);

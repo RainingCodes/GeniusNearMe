@@ -5,7 +5,6 @@
 <head>
 <title>이웃집 똑똑이 로그인</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css">
 <script>
 function login() {
 	if (form.email.value == "") {

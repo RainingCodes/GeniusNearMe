@@ -4,7 +4,6 @@
 <head>
 <title>이웃집 똑똑이 회원가입</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css">
 <script>
 function userCreate() {
 	if (form.password.value == "") {
@@ -34,11 +33,6 @@ function userCreate() {
 		form.phone.focus();
 		return false;
 	}
-	form.submit();
-}
-
-function userList(targetUri) {
-	form.action = targetUri;
 	form.submit();
 }
 
@@ -103,7 +97,7 @@ function userList(targetUri) {
 		  <tr>
 			<td align="left">
 			<input type="button" value="회원 가입" onClick="userCreate()"> &nbsp;
-			<input type="button" value="목록" onClick="userList('<c:url value='/member/list' />')">
+			<input type="button" value="로그인으로 돌아가기" onClick="<c:url value='/member/login/form' />">
 			</td>
 		  </tr>
 	    </table>
