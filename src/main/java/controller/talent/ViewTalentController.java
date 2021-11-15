@@ -11,10 +11,6 @@ import service.dto.TalentDTO;
 public class ViewTalentController {
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {			
     	
-    	if (!UserSessionUtils.hasLogined(request.getSession())) {
-            return "redirect:/member/login/form";		// login form 요청으로 redirect
-        }
-    	
 		int talentId = Integer.parseInt(request.getParameter("talentId"));
 		TalentService talentService = new TalentServiceImpl();
 		TalentDTO talent = talentService.findTalent(talentId);
