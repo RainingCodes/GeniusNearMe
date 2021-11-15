@@ -38,7 +38,6 @@ function goHome() {
 		background-color : transparent;
 		border : none;
 	}
-	
 </style>
 </head>
 <body>

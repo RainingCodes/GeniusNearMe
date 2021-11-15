@@ -28,6 +28,7 @@ public class RequestMapping {
         mappings.put("/member/myPage", new ViewMemberController());
         mappings.put("/main/login", new ForwardController("/main/main_login.jsp"));
         
+        
         logger.info("Initialized Request Mapping!");
     }
 
