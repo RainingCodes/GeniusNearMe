@@ -71,11 +71,11 @@
 			<input type="checkbox" name="category" value="game"
 				<% if (Arrays.asList(selectedCategory).contains("game")==true){
 					out.print(" checked");
-				}%>>예술<br>
+				}%>>게임
 			<input type="checkbox" name="category" value="mechanic"
 				<% if (Arrays.asList(selectedCategory).contains("mechanic")==true){
 					out.print(" checked");
-				}%>>예술<br>
+				}%>>수리<br>
 		</div>
 		<p></p>
 		<strong>가격대</strong>

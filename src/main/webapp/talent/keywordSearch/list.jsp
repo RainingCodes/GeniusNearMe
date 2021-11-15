@@ -60,7 +60,7 @@
 				</p>
 				<p></p>
 				<p></p>
-				<p>${ talent.content }</p>
+				<p>${talent.content}</p>
 			</div>
 		</c:forEach>
 			
