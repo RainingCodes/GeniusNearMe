@@ -52,8 +52,7 @@ function goHome() {
 			</a>
 		</td>
 		<td class="user" valign="bottom">
-			<button type="button" class="btn_user"><img alt="회원" src="img/user.png" class="img_user">
-			<a href="<c:url value='/member/myPage' />"><%=nickname %>님</a></button>
+			<a href="<c:url value='../member/view' />"><%=nickname %>님</a>
 		</td>
 		<td class="" valign="bottom">
 			<button type="button" class="btn_chat"><img alt="채팅" src="img/chat.png" class="img_chat"></button>
