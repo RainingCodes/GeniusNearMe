@@ -69,7 +69,7 @@ function categorySearch() {
 				<td>
 					<button type="button" class="btn_law">
 						<img alt="법" src="img/law.png">
-						<div>법</div>
+						<div>법률</div>
 					</button>
 				</td>
 				<td>
@@ -91,9 +91,9 @@ function categorySearch() {
 					</button>
 				</td>
 				<td>
-					<button type="button" class="btn_study">
-						<img alt="공부" src="img/study.png">
-						<div>공부</div>
+					<button type="button" class="btn_beauty">
+						<img alt="뷰티" src="img/beauty.png">
+						<div>뷰티</div>
 					</button>
 				</td>
 			</tr>

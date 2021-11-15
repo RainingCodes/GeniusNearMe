@@ -32,6 +32,7 @@ public class RequestMapping {
         
       mappings.put("/talent/register", new RegisterTalentController());
       mappings.put("/talent/view", new ViewTalentController());
+      mappings.put("/talent/registerForm", new ForwardController("/talent/registerForm.jsp"));
         
         logger.info("Initialized Request Mapping!");
     }

@@ -38,15 +38,16 @@ function goHome() {
 		<td class="user" valign="bottom">
 			<a href="<c:url value='../member/view' />"><%=nickname %>님</a>
 		</td>
-		<td>
+		<td valign="bottom">
 			<a href="<c:url value='../member/logout' />">로그아웃</a>
 		</td>
-		<td>
+		<td valign="bottom">
 			<a href="<c:url value='../talent/registerForm' />">재능 글 작성</a>
 		</td>
+		<!-- 
 		<td class="" valign="bottom">
 			<button type="button" class="btn_chat"><img alt="채팅" src="img/chat.png" class="img_chat"></button>
-		</td>
+		</td> -->
 	</tr>
 </table>
 <hr />
