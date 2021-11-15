@@ -150,8 +150,8 @@ public class TalentDAOImpl implements TalentDAO  {
 	public int insertTalent(TalentDTO t) {
 		int result = 0;
 		String insertQuery = "INSERT INTO TALENT (TALENTID, TITLE, CONTENT, STARTDATE, DEADLINE, " +
-				"WRITTENDATE, MATCHINGCOUNTS, WRITERID, TALENTCATEGORYNAME, POSTTYPE) " +
-				"VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) ";
+				"WRITTENDATE, MATCHINGCOUNTS, WRITERID, TALENTCATEGORYNAME, POSTTYPE, PRICE) " +
+				"VALUES (talent_seq.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
 		
 		//카테고리는 무조건 정해진 내용으로만 전달이 될거니까 (왜냐면 jsp에서 그렇게 구성하겠지?... 굳이 뭐 제약조건 안둠)
 		//그리고 writerId는 지금 글쓰고 있는 user꺼 무조건 전달되니까... 오류 안뜨겠지?.......

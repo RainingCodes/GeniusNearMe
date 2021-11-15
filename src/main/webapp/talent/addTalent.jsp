@@ -68,8 +68,7 @@
                    </td>
                    <td>
                        <h5>가격 </h5>
-                       <p>학생 수
-                       <input type="number" name="student"> &nbsp; 가격
+                       <p>학생 수 1:1 &nbsp; 가격
                       <input type="number" name="cost" ></p>
                    </td>
                </tr>

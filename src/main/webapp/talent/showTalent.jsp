@@ -47,7 +47,7 @@
                     <p>가격</p>
                     <ul>
                         <li>
-                            1:?  ${talent.price }
+                            1:1  ${talent.price }
                         </li>
              
                     </ul>
