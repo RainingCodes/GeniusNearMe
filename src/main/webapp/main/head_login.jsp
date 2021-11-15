@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="service.dto.MemberDTO" %>
 <%
-	MemberDTO member = (MemberDTO)request.getAttribute("member");
+	
+	String nickname = (String)session.getAttribute("nickname");
 %>
 
 <!DOCTYPE html>
@@ -54,7 +54,7 @@ function goHome() {
 		</td>
 		<td class="user" valign="bottom">
 			<button type="button" class="btn_user"><img alt="회원" src="img/user.png" class="img_user">
-			<a href="<c:url value='../member/myPage' />">{member.getUserId()}님</a></button>
+			<a href="<c:url value='../member/myPage' />">{nickname}님</a></button>
 		</td>
 		<td class="" valign="bottom">
 			<button type="button" class="btn_chat"><img alt="채팅" src="img/chat.png" class="img_chat"></button>
