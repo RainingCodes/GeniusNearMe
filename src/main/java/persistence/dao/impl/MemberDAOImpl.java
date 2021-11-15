@@ -54,8 +54,10 @@ public class MemberDAOImpl implements MemberDAO {
 		try {
 			result = jdbcUtil.executeUpdate();
 		} catch (Exception ex) {
+			jdbcUtil.rollback();
 			ex.printStackTrace();
 		} finally {
+			jdbcUtil.commit();
 			jdbcUtil.close();
 		}
 		return result;
@@ -208,7 +210,7 @@ public class MemberDAOImpl implements MemberDAO {
 			
 		} catch (Exception ex) {
 			ex.printStackTrace();
-		} finally {
+		} finally {			
 			jdbcUtil.close();
 		}
 		return null;

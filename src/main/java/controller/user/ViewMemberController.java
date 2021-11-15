@@ -14,16 +14,19 @@ public class ViewMemberController implements Controller {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {			
     	// 로그인 여부 확인
     	if (!UserSessionUtils.hasLogined(request.getSession())) {
+    		System.out.println("not Logined");
             return "redirect:/member/login/form";		// login form 요청으로 redirect
         }
     	
     	MemberService manager = new MemberServiceImpl();
-		String userId = request.getParameter("email");
-
+		String email = UserSessionUtils.getLoginUserId(request.getSession());
+		
+		System.out.println(email);
     	MemberDTO member = null;
     	
     	try {
-    		member = manager.findUserByEmail(userId);	// 사용자 정보 검색
+    		member = manager.findUserByEmail(email);	// 사용자 정보 검색
+    		System.out.println(member);
 		} catch (UserNotFoundException e) {				
 	        return "redirect:/member/login/form";
 		}	

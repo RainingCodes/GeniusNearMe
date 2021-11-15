@@ -53,11 +53,11 @@ function goHome() {
 			</a>
 		</td>
 		<td class="user" valign="bottom">
-			<button type="button" class="btn_user"><img alt="회원" src="img/user.png" class="img_user">{member.getUserId()}님</button>
+			<button type="button" class="btn_user"><img alt="회원" src="img/user.png" class="img_user">
+			<a href="<c:url value='../member/myPage' />">{member.getUserId()}님</a></button>
 		</td>
 		<td class="" valign="bottom">
 			<button type="button" class="btn_chat"><img alt="채팅" src="img/chat.png" class="img_chat"></button>
-			<span><button type="button" class="btn_notice"><img alt="알림" src="img/notice.png" class="img_notice"></span>
 		</td>
 	</tr>
 </table>
