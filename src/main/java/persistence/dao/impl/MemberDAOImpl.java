@@ -204,8 +204,9 @@ public class MemberDAOImpl implements MemberDAO {
 				member.setEmail(rs.getString("EMAIL"));
 				member.setPhone(rs.getString("PHONE"));
 				member.setUserId(rs.getInt("USERID"));
-				member.setNickname(rs.getString("PW"));
+				member.setNickname(rs.getString("NICKNAME"));
 			}
+			System.out.println("getMemberBYEmail : " + member);
 			return member;
 			
 		} catch (Exception ex) {
