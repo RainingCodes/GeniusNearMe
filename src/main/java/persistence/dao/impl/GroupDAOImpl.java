@@ -25,13 +25,13 @@ public class GroupDAOImpl implements GroupDAO {
 	}
 	
 	@Override
-	public int insertGroup(GroupDTO group, int talentId) {
+	public int insertGroup(GroupDTO group) {
 		// TODO Auto-generated method stub
 		int result = 0;
 		String insertGroupQuery = "INSERT INTO GROUPING "
-				+ "Values (group_seq.nextqal, ?, null, ?, ?) ";
+				+ "Values (group_seq.nextqal, ?, ?, ?, ?) ";
 		
-		Object[] param = new Object[] { group.getTalentId(), group.getMaximum(), group.getCountMembers() };
+		Object[] param = new Object[] { ) };
 		jdbcUtil.setSqlAndParameters(insertGroupQuery, param);
 		
 		try {
