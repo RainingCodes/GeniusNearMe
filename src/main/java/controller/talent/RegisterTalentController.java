@@ -74,7 +74,10 @@ public class RegisterTalentController implements Controller{
 			
 			
 			PriceService priceService = new PriceServiceImpl();
+			PriceDTO dto1 = new PriceDTO(talentId, 1, Integer.parseInt(request.getParameter("price")));
+			int result = priceService.insertPrice(dto1);
 			
+			System.out.println(result);
 			int num = Integer.parseInt(request.getParameter("student"));
 			for(int i = 1; i <= num; i++) {
 				PriceDTO dto2 = new PriceDTO(
@@ -82,12 +85,9 @@ public class RegisterTalentController implements Controller{
 						Integer.parseInt(request.getParameter("num"+i)),
 						Integer.parseInt(request.getParameter("price"+i))
 						);
-				int result = priceService.insertPrice(dto2);
+				result = priceService.insertPrice(dto2);
 				System.out.println(result);
 			}
-			
-			
-			
 		
 			return "redirect:/talent/view?talentId=";
 //		}catch(ExistingTalentException e) {
