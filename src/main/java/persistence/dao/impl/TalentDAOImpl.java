@@ -1,6 +1,6 @@
 package persistence.dao.impl;
 
-import java.sql.Date;
+//import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -14,7 +14,7 @@ public class TalentDAOImpl implements TalentDAO  {
 	private JDBCUtil jdbcUtil = null;
 	
 	private static String query = "SELECT TALENTID, TITLE, CONTENT, STARTDATE, DEADLINE, "
-			+ "WRITTENDATE, MATCHINGCOUNTS, WRITERID, TALENTCNAME, POSTTYPE, PRICE ";
+			+ "WRITTENDATE, MATCHINGCOUNTS, WRITERID, TALENTCNAME, POSTTYPE ";
 
 	public TalentDAOImpl() {
 		jdbcUtil = new JDBCUtil();
@@ -40,7 +40,6 @@ public class TalentDAOImpl implements TalentDAO  {
 				dto.setWriterId(rs.getInt("WRITERID"));
 				dto.setTalentCategoryName(rs.getString("TALENTCNAME"));
 				dto.setPostType(rs.getInt("POSTTYPE"));
-				dto.setPrice(rs.getInt("PRICE"));
 			}
 			return list;
 		} catch (Exception ex) {
@@ -74,7 +73,6 @@ public class TalentDAOImpl implements TalentDAO  {
 				dto.setWriterId(rs.getInt("WRITERID"));
 				dto.setTalentCategoryName(rs.getString("TALENTCNAME"));
 				dto.setPostType(rs.getInt("POSTTYPE"));
-				dto.setPrice(rs.getInt("PRICE"));
 			}
 			return list;
 		} catch (Exception ex) {
@@ -83,6 +81,7 @@ public class TalentDAOImpl implements TalentDAO  {
 			jdbcUtil.close();
 		} return null;
 	}
+	
 	
 	public List<TalentDTO> getTalentListByTitle(String Title) {
 		String getByTitleQuery = query + "FROM TALENT WHERE TITLE LIKE ? ";
@@ -108,7 +107,6 @@ public class TalentDAOImpl implements TalentDAO  {
 				dto.setWriterId(rs.getInt("WRITERID"));
 				dto.setTalentCategoryName(rs.getString("TALENTCNAME"));
 				dto.setPostType(rs.getInt("POSTTYPE"));
-				dto.setPrice(rs.getInt("PRICE"));
 			}
 			return list;
 		} catch (Exception ex) {
@@ -118,6 +116,7 @@ public class TalentDAOImpl implements TalentDAO  {
 		} return null;
 	}
 	
+	/*
 	public List<TalentDTO> getTalentListByOptions(String[] categories, int price, Date startDate, Date endDate) {
 		String getByOptionsQuery = query + "FROM TALENT WHERE CATEGORIES = ? AND PRICE <= ? AND STARTDATE = ? AND ENDDATE = ? ";
 		
@@ -142,7 +141,6 @@ public class TalentDAOImpl implements TalentDAO  {
 				dto.setWriterId(rs.getInt("WRITERID"));
 				dto.setTalentCategoryName(rs.getString("TALENTCNAME"));
 				dto.setPostType(rs.getInt("POSTTYPE"));
-				dto.setPrice(rs.getInt("PRICE"));
 			}
 			return list;
 		} catch (Exception ex) {
@@ -151,6 +149,7 @@ public class TalentDAOImpl implements TalentDAO  {
 			jdbcUtil.close();
 		} return null;
 	}
+	*/
 	
 	public TalentDTO getTalentView(int talentId) {
 		String getTalentQuery = query + "FROM TALENT WHERE TALENTID = ? ";
@@ -176,7 +175,6 @@ public class TalentDAOImpl implements TalentDAO  {
 				dto.setWriterId(rs.getInt("WRITERID"));
 				dto.setTalentCategoryName(rs.getString("TALENTCNAME"));
 				dto.setPostType(rs.getInt("POSTTYPE"));
-				dto.setPrice(rs.getInt("PRICE"));
 			}
 			return dto;
 		} catch (Exception ex) {
@@ -190,8 +188,8 @@ public class TalentDAOImpl implements TalentDAO  {
 		int result = 0;
 		int generatedKey = 0;
 		String insertQuery = "INSERT INTO TALENT (TALENTID, TITLE, CONTENT, STARTDATE, DEADLINE, " +
-				"WRITTENDATE, MATCHINGCOUNTS, WRITERID, TALENTCNAME, POSTTYPE, PRICE) " +
-				"VALUES (talent_seq.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";	
+				"WRITTENDATE, MATCHINGCOUNTS, WRITERID, TALENTCNAME, POSTTYPE) " +
+				"VALUES (talent_seq.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";	
 		System.out.println(insertQuery);
 		System.out.println(t.getTitle().getClass().getSimpleName()+ t.getContent().getClass().getSimpleName()+
 				new java.sql.Date(t.getStartDate().getTime()).getClass().getSimpleName()+
@@ -199,14 +197,14 @@ public class TalentDAOImpl implements TalentDAO  {
 				new java.sql.Date(t.getWrittenDate().getTime()).getClass().getSimpleName()+
 				t.getMatchingCounts()+
 				t.getWriterId()+ t.getTalentCategoryName().getClass().getSimpleName()+
-				t.getPostType()+ t.getPrice());
+				t.getPostType());
 		
 		System.out.println(t.getTitle()+ t.getContent()+ new java.sql.Date(t.getStartDate().getTime())+
 							new java.sql.Date(t.getDeadLine().getTime())+
 							new java.sql.Date(t.getWrittenDate().getTime())+
 							t.getMatchingCounts()+
 							t.getWriterId()+ t.getTalentCategoryName()+
-							t.getPostType()+ t.getPrice());
+							t.getPostType());
 		
 		
 		Object[] param = new Object[] { t.getTitle(), t.getContent(), new java.sql.Date(t.getStartDate().getTime()),
@@ -214,7 +212,7 @@ public class TalentDAOImpl implements TalentDAO  {
 							new java.sql.Date(t.getWrittenDate().getTime()),
 							t.getMatchingCounts(),
 							t.getWriterId(), t.getTalentCategoryName(),
-							t.getPostType(), t.getPrice() };
+							t.getPostType() };
 		jdbcUtil.setSql(insertQuery);
 		jdbcUtil.setParameters(param);
 		
@@ -286,10 +284,6 @@ public class TalentDAOImpl implements TalentDAO  {
 		if (t.getPostType() != -1) {		
 			updateQuery += "POSTTYPE = ?, ";	
 			tempParam[index++] = t.getPostType();	
-		}
-		if (t.getPostType() != -1) {		
-			updateQuery += "PRICE = ? ";	
-			tempParam[index++] = t.getPrice();	
 		}
 	
 		
