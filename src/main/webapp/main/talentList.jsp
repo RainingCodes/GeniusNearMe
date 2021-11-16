@@ -19,20 +19,21 @@ function categorySearch() {
 </head>
 <body>
 	<table class="talentList">
-		<form name="keywordSearch" method="post" action="<c:url value='/talent/keywordSearch' />">
 			<tr class="search">
 				<td colspan="5">
-					<select name="search_options">
-						<option value="0">제목과 내용</option>
-						<option value="1">작성자</option>
-						<option value="2">재능 주제</option>
-					</select>
-					<span><input name="search_bar" size="50"></span>
-					<span><input type="button" class="btn_search" onClick="keywordSearch()" value="검색"></span>
+					<form name="keywordSearch" method="post" action="<c:url value='/talent/keywordSearch' />">
+						<select name="search_options">
+							<option value="0">제목과 내용</option>
+							<option value="1">작성자</option>
+							<option value="2">재능 주제</option>
+						</select>
+						<span><input name="search_bar" size="50"></span>
+						<span><input type="button" class="btn_search" onClick="keywordSearch()" value="검색"></span>
+					</form>	
 				</td>
 			</tr>
-		</form>	
-		<form name="categorySearch" method="post">
+
+		
 			<tr>
 				<td>
 					<button type="button" class="btn_all">
@@ -97,7 +98,6 @@ function categorySearch() {
 					</button>
 				</td>
 			</tr>
-		</form>	
 	</table>
 </body>
 </html>
