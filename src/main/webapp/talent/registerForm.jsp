@@ -18,6 +18,7 @@
 					  $("#add_btn").before("<p>학생 <input type='number' name='num" + cnt + "'> 명당 가격 <input type='number' name='price" + cnt +"' > 원</p>");
 					  $("#student").val(cnt);
 					  }
+				  
 			  });
 			});
         function talentCreate(){
