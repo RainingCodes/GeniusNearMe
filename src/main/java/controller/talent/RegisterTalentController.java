@@ -16,8 +16,11 @@ import service.ExistingTalentException;
 import service.ExistingUserException;
 import service.MemberService;
 import service.MemberServiceImpl;
+import service.PriceService;
+import service.PriceServiceImpl;
 import service.TalentService;
 import service.TalentServiceImpl;
+import service.dto.PriceDTO;
 import service.dto.TalentDTO;
 
 public class RegisterTalentController implements Controller{
@@ -68,6 +71,23 @@ public class RegisterTalentController implements Controller{
 			System.out.println("here");
 			int talentId = talentService.insertTalent(dto);
 			System.out.println(talentId+ "완료");
+			
+			
+			PriceService priceService = new PriceServiceImpl();
+			
+			int num = Integer.parseInt(request.getParameter("student"));
+			for(int i = 1; i <= num; i++) {
+				PriceDTO dto2 = new PriceDTO(
+						talentId,
+						Integer.parseInt(request.getParameter("num"+i)),
+						Integer.parseInt(request.getParameter("price"+i))
+						);
+				int result = priceService.insertPrice(dto2);
+				System.out.println(result);
+			}
+			
+			
+			
 		
 			return "redirect:/talent/view?talentId=";
 //		}catch(ExistingTalentException e) {
@@ -77,6 +97,10 @@ public class RegisterTalentController implements Controller{
 //			request.setAttribute("talent", dto);
 //			return "/talent/registerForm.jsp";
 //		}
+			
+			
+			
+			
 	}
 
 }
