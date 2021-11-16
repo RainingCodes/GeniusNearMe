@@ -23,6 +23,7 @@ public class CreateGroupController implements Controller {
 		log.debug("Create group : {}", group);
 		
 		GroupService manager = new GroupServiceImpl();
+		
 		manager.insertGroup(group, talent.getTalentId());
 	    return "redirect:/talent/group/list";	
 	}

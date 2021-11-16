@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<% 
+	request.getAttribute("", );
+%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
@@ -57,10 +60,17 @@
                    <td>
                         <h5>카테고리 선택</h5>
                         <select name="category" size="4" multiple>
+                        	<option value="it">IT</option>
+                        	<option value="cook">요리</option>
+                        	<option value="exer">운동</option>
+                        	<option value="fore">외국어</option>
+                        	<option value="law">법률</option>
+                        	<option value="mech">수리</option>
+                        	<option value="art">예술</option>
+                        	<option value="game">게임</option>
                             <option value="beauty" selected>뷰티</option>
-                            <option value="exer">운동</option>
-                            <option value="it">IT</option>
                             <option value="extra">기타</option>
+                            <option value=""></option>
                         </select>
                    </td>
                    <td>

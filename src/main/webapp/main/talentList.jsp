@@ -68,7 +68,7 @@ function categorySearch() {
 			<tr>
 				<td>
 					<button type="button" class="btn_law">
-						<img alt="법" src="img/law.png">
+						<img alt="법률" src="img/law.png">
 						<div>법률</div>
 					</button>
 				</td>

@@ -15,10 +15,10 @@ public class GroupDAOImpl implements GroupDAO {
 	private JDBCUtil jdbcUtil =  null;
 	
 	private static String query = "SELECT GROUPING.GROUPID AS GROUP_ID, "
+			+ "GROUPING.MATCHINGID AS MATCHING_ID, "
 			+ "GROUPING.TALENTID AS TALENT_ID, "
 			+ "GROUPING.REPRESENTATIVEID AS REPRESENTATIVE_ID "
-			+ "GROUPING.MAXIMUM AS MAXIMUM "
-			+ "GROUPING.MEMBERSCOUNT AS MEMBERS_COUNT ";
+			+ "GROUPING.HEADCOUNT AS HEAD_COUNT ";
 	
 	public GroupDAOImpl() {
 		jdbcUtil = new JDBCUtil();
@@ -29,7 +29,6 @@ public class GroupDAOImpl implements GroupDAO {
 		// TODO Auto-generated method stub
 		int result = 0;
 		String insertGroupQuery = "INSERT INTO GROUPING "
-				+ "(GROUPID, TALENTID, REPSENTATIVEID, MAXIMUM, MEMBERSCOUNT) "
 				+ "Values (group_seq.nextqal, ?, null, ?, ?) ";
 		
 		Object[] param = new Object[] { group.getTalentId(), group.getMaximum(), group.getCountMembers() };
