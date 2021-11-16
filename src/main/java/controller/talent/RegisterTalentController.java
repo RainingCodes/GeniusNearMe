@@ -47,10 +47,6 @@ public class RegisterTalentController implements Controller{
 		MemberService mem = new MemberServiceImpl();
 		int userId = mem.getuserIdByEmail(email);
 		
-		System.out.println("유저아이디: "+userId);
-		System.out.println(request.getParameter("category"));
-		System.out.println(request.getParameter("postType"));		
-		
 		TalentDTO dto = new TalentDTO(
 				request.getParameter("title"),
 				request.getParameter("content"),
@@ -74,6 +70,10 @@ public class RegisterTalentController implements Controller{
 			
 			
 			PriceService priceService = new PriceServiceImpl();
+			PriceDTO dto1 = new PriceDTO(talentId, 1, Integer.parseInt(request.getParameter("price")));
+			int result = priceService.insertPrice(dto1);
+			
+			System.out.println(result);
 			
 			int num = Integer.parseInt(request.getParameter("student"));
 			for(int i = 1; i <= num; i++) {
@@ -82,12 +82,9 @@ public class RegisterTalentController implements Controller{
 						Integer.parseInt(request.getParameter("num"+i)),
 						Integer.parseInt(request.getParameter("price"+i))
 						);
-				int result = priceService.insertPrice(dto2);
+				result = priceService.insertPrice(dto2);
 				System.out.println(result);
 			}
-			
-			
-			
 		
 			return "redirect:/talent/view?talentId=";
 //		}catch(ExistingTalentException e) {

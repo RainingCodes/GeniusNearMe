@@ -190,22 +190,6 @@ public class TalentDAOImpl implements TalentDAO  {
 		String insertQuery = "INSERT INTO TALENT (TALENTID, TITLE, CONTENT, STARTDATE, DEADLINE, " +
 				"WRITTENDATE, MATCHINGCOUNTS, WRITERID, TALENTCNAME, POSTTYPE) " +
 				"VALUES (talent_seq.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";	
-		System.out.println(insertQuery);
-		System.out.println(t.getTitle().getClass().getSimpleName()+ t.getContent().getClass().getSimpleName()+
-				new java.sql.Date(t.getStartDate().getTime()).getClass().getSimpleName()+
-				new java.sql.Date(t.getDeadLine().getTime()).getClass().getSimpleName()+
-				new java.sql.Date(t.getWrittenDate().getTime()).getClass().getSimpleName()+
-				t.getMatchingCounts()+
-				t.getWriterId()+ t.getTalentCategoryName().getClass().getSimpleName()+
-				t.getPostType());
-		
-		System.out.println(t.getTitle()+ t.getContent()+ new java.sql.Date(t.getStartDate().getTime())+
-							new java.sql.Date(t.getDeadLine().getTime())+
-							new java.sql.Date(t.getWrittenDate().getTime())+
-							t.getMatchingCounts()+
-							t.getWriterId()+ t.getTalentCategoryName()+
-							t.getPostType());
-		
 		
 		Object[] param = new Object[] { t.getTitle(), t.getContent(), new java.sql.Date(t.getStartDate().getTime()),
 							new java.sql.Date(t.getDeadLine().getTime()),
@@ -219,7 +203,7 @@ public class TalentDAOImpl implements TalentDAO  {
 		String key[]={"TALENTID"};
 		
 		try {				
-			result = jdbcUtil.executeUpdate();		// insert 문 실행
+			result = jdbcUtil.executeUpdate(key);		// insert 문 실행
 			 ResultSet rs = jdbcUtil.getGeneratedKeys(); 
 			 
 			 if(rs.next()) {
