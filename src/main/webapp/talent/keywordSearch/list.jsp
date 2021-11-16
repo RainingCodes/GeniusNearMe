@@ -21,16 +21,16 @@
 			<p></p>
 			<strong>카테고리</strong><br>
 			<div class="category">
-				<input type="checkbox" name="category" value="all" checked>모든
-				재능 <input type="checkbox" name="category" value="beauty">뷰티<br>
-				<input type="checkbox" name="category" value="sports">운동 <input
-					type="checkbox" name="category" value="foreignLanguage">외국어<br>
-				<input type="checkbox" name="category" value="cook">요리 <input
-					type="checkbox" name="category" value="law">법률<br> <input
-					type="checkbox" name="category" value="it">IT <input
-					type="checkbox" name="category" value="art">예술<br> <input
-					type="checkbox" name="category" value="game">게임 <input
-					type="checkbox" name="category" value="mechanic">수리<br>
+				<input type="checkbox" name="category" value="all" checked>모든재능
+				<input type="checkbox" name="category" value="beauty">뷰티<br>
+				<input type="checkbox" name="category" value="sports">운동
+				<input type="checkbox" name="category" value="foreignLanguage">외국어<br>
+				<input type="checkbox" name="category" value="cook">요리
+				<input type="checkbox" name="category" value="law">법률<br>
+				<input type="checkbox" name="category" value="it">IT
+				<input type="checkbox" name="category" value="art">예술<br>
+				<input type="checkbox" name="category" value="game">게임
+				<input type="checkbox" name="category" value="mechanic">수리<br>
 			</div>
 			<p></p>
 			<strong>가격대</strong>
@@ -68,21 +68,6 @@
 				<p><c:out value="${talent.content}"/></p>
 			</div>
 		</c:forEach>
-
-		<%-- 	<div class="post">
-			<div id="imgSection1">
-				<img id="thumbnail1" src="img/loopy/img1.jpg" width="120" height="120">
-			</div>
-			<p>
-				<a href="showTalent.jsp"><strong><% out.print(talent.getTitle()); %></strong></a> <!-- parameter넘기는 코드 필요 -->
-			</p>
-			<p></p>
-			<p></p>
-			<p>
-				<%out.print(talent.getContent()); %>
-			</p>
-		</div>
-		 --%>
 	</div>
 	<br>
 </body>
