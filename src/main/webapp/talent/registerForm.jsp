@@ -15,9 +15,9 @@
         		return false;
         	} 
         	
-        	if(form.cost.value ==""){
+        	if(form.price.value ==""){
         		alert("가격을 입력하십시오.");
-        		form.cost.focus();
+        		form.price.focus();
         		return false;
         	} 
         	if(form.startDate.value ==""){
@@ -66,7 +66,7 @@
                    <td>
                        <h5>가격 </h5>
                        <p>학생 수 1:1 &nbsp; 가격
-                      <input type="number" name="cost" ></p>
+                      <input type="number" name="price" ></p>
                    </td>
                </tr>
                <tr>

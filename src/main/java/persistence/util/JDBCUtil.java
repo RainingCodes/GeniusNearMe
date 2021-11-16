@@ -126,6 +126,16 @@ public class JDBCUtil {
 		}
 		return cstmt.execute();
 	}
+	
+	// PK 컬럼의 값(들)을 포함하는 ResultSet 객체 구하기
+		public ResultSet getGeneratedKeys() {
+			try {
+				return pstmt.getGeneratedKeys();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			return null;
+		}
 
 	public void close() {
 		if (rs != null) {

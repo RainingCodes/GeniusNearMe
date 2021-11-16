@@ -10,7 +10,7 @@ public class TalentDTO {
 	private Date writtenDate = null;
 	private int matchingCounts = -1;
 	private int writerId = -1;
-	private String TalentCategoryName = null;	
+	private String talentCategoryName = null;	
 	private int postType = -1;
 	private int price;
 	
@@ -38,7 +38,7 @@ public class TalentDTO {
 		this.writtenDate = writtenDate;
 		this.matchingCounts = matchingCounts;
 		this.writerId = writerId;
-		TalentCategoryName = talentCategoryName;
+		this.talentCategoryName = talentCategoryName;
 		this.postType = postType;
 		this.price = price;
 	}
@@ -98,10 +98,10 @@ public class TalentDTO {
 		this.writerId = writerId;
 	}
 	public String getTalentCategoryName() {
-		return TalentCategoryName;
+		return talentCategoryName;
 	}
 	public void setTalentCategoryName(String talentCategoryName) {
-		TalentCategoryName = talentCategoryName;
+		this.talentCategoryName = talentCategoryName;
 	}
 	public int getPrice() {
 		return price;

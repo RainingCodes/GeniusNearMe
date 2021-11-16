@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,6 +14,8 @@ import controller.Controller;
 import controller.user.UserSessionUtils;
 import service.ExistingTalentException;
 import service.ExistingUserException;
+import service.MemberService;
+import service.MemberServiceImpl;
 import service.TalentService;
 import service.TalentServiceImpl;
 import service.dto.TalentDTO;
@@ -22,7 +25,7 @@ public class RegisterTalentController implements Controller{
 
 	 SimpleDateFormat format1 = new SimpleDateFormat ("yyyy-MM-dd");
 	 long miliseconds = System.currentTimeMillis();
-     Date date = new Date(miliseconds);
+     Date current = new Date(miliseconds);
      
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -32,16 +35,29 @@ public class RegisterTalentController implements Controller{
         }
 		Date start = format1.parse(request.getParameter("startDate"));
 		Date deadline = format1.parse(request.getParameter("deadline"));
-		System.out.print(date);
+		System.out.println(start);
+		System.out.println(deadline);
+		System.out.println(current);
+		
+		HttpSession session = request.getSession();
+		String email = UserSessionUtils.getLoginUserId(session);
+		MemberService mem = new MemberServiceImpl();
+		int userId = mem.getuserIdByEmail(email);
+		
+		System.out.println("유저아이디: "+userId);
+		System.out.println(request.getParameter("category"));
+		System.out.println(request.getParameter("postType"));
+		System.out.println(request.getParameter("price"));
+		
 		
 		TalentDTO dto = new TalentDTO(
 				request.getParameter("title"),
 				request.getParameter("content"),
 				start,
 				deadline,
-				date,
+				current,
 				0,
-				Integer.parseInt(request.getParameter("userId")),
+				userId,
 				request.getParameter("category"),
 				Integer.parseInt(request.getParameter("postType")),//일단 모두 0 판매
 				Integer.parseInt(request.getParameter("price")));
@@ -52,10 +68,11 @@ public class RegisterTalentController implements Controller{
 //		try {
 			System.out.println("재능 추가");
 			TalentService talentService = new TalentServiceImpl();
-			int i = talentService.insertTalent(dto);
-			System.out.println(i+ "완료");
+			System.out.println("here");
+			int talentId = talentService.insertTalent(dto);
+			System.out.println(talentId+ "완료");
 		
-			return "redirect:/talent/view";
+			return "redirect:/talent/view?talentId=";
 //		}catch(ExistingTalentException e) {
 //			System.out.println("재능 추가 실패");
 //            request.setAttribute("registerFailed", true);

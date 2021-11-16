@@ -188,23 +188,34 @@ public class TalentDAOImpl implements TalentDAO  {
 	
 	public int insertTalent(TalentDTO t) {
 		int result = 0;
+		int generatedKey = 0;
 		String insertQuery = "INSERT INTO TALENT (TALENTID, TITLE, CONTENT, STARTDATE, DEADLINE, " +
 				"WRITTENDATE, MATCHINGCOUNTS, WRITERID, TALENTCATEGORYNAME, POSTTYPE, PRICE) " +
-				"VALUES (talent_seq.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
+				"VALUES (talent_seq.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";		
 		
-		//카테고리는 무조건 정해진 내용으로만 전달이 될거니까 (왜냐면 jsp에서 그렇게 구성하겠지?... 굳이 뭐 제약조건 안둠)
-		//그리고 writerId는 지금 글쓰고 있는 user꺼 무조건 전달되니까... 오류 안뜨겠지?.......
-		
-		Object[] param = new Object[] { t.getTitle(), t.getContent(), t.getStartDate(), t.getDeadLine(), 
-				t.getWrittenDate(), t.getMatchingCounts(), t.getWriterId(), t.getTalentCategoryName(), t.getPostType(), t.getPrice() };
+		Object[] param = new Object[] { t.getTitle(), t.getContent(), new java.sql.Date(t.getStartDate().getTime()),
+							new java.sql.Date(t.getDeadLine().getTime()),
+							new java.sql.Date(t.getWrittenDate().getTime()),
+							t.getMatchingCounts(),
+							t.getWriterId(), t.getTalentCategoryName(),
+							t.getPostType(), t.getPrice() };
 		jdbcUtil.setSql(insertQuery);
 		jdbcUtil.setParameters(param);
 		
+		String key[]={"TALENTID"};
+		
 		try {				
 			result = jdbcUtil.executeUpdate();		// insert 문 실행
+			 ResultSet rs = jdbcUtil.getGeneratedKeys(); 
+			 
+			 if(rs.next()) {
+
+			       generatedKey = rs.getInt(1); 
+			 }
 			System.out.println(t.getTitle() + " 삽입 완료.");
 		} catch (SQLException ex) {
 			System.out.println("입력오류 발생!!!");
+			ex.printStackTrace();
 			if (ex.getErrorCode() == 1)
 				System.out.println("동일한 정보가 이미 존재합니다."); 
 		} catch (Exception ex) {
@@ -214,7 +225,7 @@ public class TalentDAOImpl implements TalentDAO  {
 			jdbcUtil.commit();
 			jdbcUtil.close();		// ResultSet, PreparedStatement, Connection 반환
 		}		
-		return result;
+		return generatedKey;
 	}
 	
 
