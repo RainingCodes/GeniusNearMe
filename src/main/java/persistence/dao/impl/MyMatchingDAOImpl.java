@@ -25,7 +25,6 @@ public class MyMatchingDAOImpl implements MyMatchingDAO {
 				"WHERE MATCHING.TALENTID = TALENT.TALENTID AND USERID = ? ";
 		
 		jdbcUtil.setSqlAndParameters(searchQuery, new Object[] { userId });
-		System.out.println(searchQuery);
 		
 		try {
 			ResultSet rs = jdbcUtil.executeQuery();

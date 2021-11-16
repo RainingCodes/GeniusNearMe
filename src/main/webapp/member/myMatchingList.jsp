@@ -1,32 +1,35 @@
-<%@ page contentType="text/html; charset=utf-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="java.util.List" %>
-<%@ page import="java.util.Iterator" %>
-<%@ page import="service.*" %>
-<%@ page import="service.dto.MyMatchingDTO" %>
+<%@page contentType="text/html; charset=utf-8" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>나의 매칭 리스트</title>
 </head>
 <body>
-
-<div class="container">   
+<div>   
 	<br>
 	<h4>나의 매칭 리스트</h4>
 	<br>
-	<table>
+	<table border = "1">
+	<thead class="thead-inverse">
+      	<tr>
+		  <td>매칭 ID</td>
+		  <td>재능 제목</td>
+		  <td>재능 상태</td>
+		  <td>재능글 이동</td>
+		</tr>
+      </thead>
       <tbody> 
-		<c:forEach var="matching" items="${matchingList}">  			  	
+		<c:forEach var="li" items="${list}">  			  	
 	  	    <tr>
 			  <td>
-			  	${matching.matchingId}     
+			  	<c:out value="${li.matchingId}"/>     
 			  </td>
 			  <td>
-				${matching.talentTitle}  
+				${li.talentTitle}  
 			  </td>
 			  <td>
-			    ${matching.matchingState} 
+			    ${li.matchingState} 
 			  </td>
 			  <td>
 				<a href="<c:url value='/talent/view'>
@@ -35,8 +38,8 @@
 				매칭글로 이동하기</a>
 			  </td>
 			</tr>
-		 </c:forEach> 
-	  </tbody>
+		 </c:forEach>
+		</tbody>
 	</table>		  	 
 	<br>   
 	<a href="<c:url value='/member/view' />">목록으로 이동하기</a>    		     
