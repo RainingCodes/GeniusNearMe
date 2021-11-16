@@ -1,9 +1,6 @@
 <%@page contentType="text/html; charset=utf-8" %>
 <%@page import="service.dto.*" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%
-	MemberDTO member = (MemberDTO) request.getAttribute("member");
-%>
 <html>
 <head>
 <title>이웃집 똑똑이 멤버 마이페이지</title>
@@ -48,10 +45,10 @@ function userRemove() {
 	 	</table>
 	    <br>
 	    <a href="<c:url value='/member/update'>
-	     		   <c:param name='userEmail' value='<%=member.getEmail()%>'/>
+	     		   <c:param name='userEmail' value='${member.email}'/>
 			 	 </c:url>">회원 정보 수정</a> &nbsp;
  	    <a href="<c:url value='/member/delete'>
-				   <c:param name='userEmail' value='<%=member.getEmail()%>'/>
+				   <c:param name='userEmail' value='${member.email}'/>
 			 	 </c:url>" onclick="return userRemove();">회원 탈퇴</a> &nbsp;
 		<a href="<c:url value='/member/matching'></c:url>">나의 매칭 목록</a> &nbsp;
 		

@@ -3,6 +3,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import service.dto.MemberDTO;
+import service.dto.MyMatchingDTO;
 
 public interface MemberService { // 유저 정보 관리 목적의 인터페이스
 	public List<MemberDTO> ListingMembers(); // 전체 유저정보를 List 형태로 반환
@@ -15,4 +16,6 @@ public interface MemberService { // 유저 정보 관리 목적의 인터페이�
 	public boolean login(String userId, String password) throws SQLException, UserNotFoundException, PasswordMismatchException;
 	public MemberDTO findUserByEmail(String userId) throws SQLException, UserNotFoundException;
 	public String getEmailByUserId(int userId);
+	
+	public List<MyMatchingDTO> ListingMyMatchingByUserId(int userId) throws SQLException;
 }

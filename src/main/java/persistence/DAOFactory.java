@@ -20,4 +20,8 @@ public class DAOFactory {
 	public GroupDAO getGroupDAO() {
 		return new GroupDAOImpl();
 	}
+	
+	public MyMatchingDAO getMyMatchingDAO() {
+		return new MyMatchingDAOImpl();
+	}
 }

@@ -3,21 +3,13 @@
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.Iterator" %>
 <%@ page import="service.*" %>
-<%@ page import="service.dto.MatchingDTO" %>
-<%@ page import="service.dto.TalentDTO" %>
+<%@ page import="service.dto.MyMatchingDTO" %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Talent Service Test</title>
 </head>
 <body>
-<%
-	
-	
-	//TalentService tService = new TalentServiceImpl();
-	
-	//매칭 목록에 있을거 : 매칭id, 매칭게시글제목(talent와 조인), 매칭상태, 매칭글로 이동
-%>
 
 <div class="container">   
 	<br>
@@ -31,7 +23,7 @@
 			  	${matching.matchingId}     
 			  </td>
 			  <td>
-				${matching.talentId}  
+				${matching.talentTitle}  
 			  </td>
 			  <td>
 			    ${matching.matchingState} 

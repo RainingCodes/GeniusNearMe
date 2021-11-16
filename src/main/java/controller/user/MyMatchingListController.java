@@ -1,13 +1,13 @@
 package controller.user;
 
+import java.sql.SQLException;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import controller.Controller;
-import service.UserNotFoundException;
-import service.dto.MemberDTO;
-import service.dto.MatchingDTO;
-import service.MatchingServiceImpl;
+import service.dto.MyMatchingDTO;
 import service.MemberService;
 import service.MemberServiceImpl;
 
@@ -24,18 +24,17 @@ public class MyMatchingListController implements Controller {
 		String email = UserSessionUtils.getLoginUserId(request.getSession());
 		
 		System.out.println(email);
+		int userId = manager.getuserIdByEmail(email);
 
-    	MatchingService mService = new MatchingServiceImpl();
-    	List<MatchingDTO> matchingList = mService.MatchingList(userId);
-    	request.setAttribute("matchingList", matchingList);
+		List<MyMatchingDTO> myMatchingInfo = null;
     	
     	try {
-    		member = manager.findUserByEmail(email);	// 사용자 정보 검색
-		} catch (UserNotFoundException e) {				
+    		myMatchingInfo =  manager.ListingMyMatchingByUserId(userId);	// 사용자 정보 검색
+		} catch (SQLException e) {	
 	        return "redirect:/member/login/form";
 		}	
 		
-    	request.setAttribute("member", member);		// 사용자 정보 저장				
-		return "/member/view.jsp";				// 사용자 보기 화면으로 이동
+    	request.setAttribute("myMatchingInfo", myMatchingInfo);		// 사용자 정보 저장				
+		return "/member/myMatchingList.jsp";				// 사용자 보기 화면으로 이동
     }
 }

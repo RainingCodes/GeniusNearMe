@@ -4,14 +4,18 @@ import java.sql.SQLException;
 import java.util.List;
 import persistence.DAOFactory;
 import persistence.dao.MemberDAO;
+import persistence.dao.MyMatchingDAO;
 import service.dto.MemberDTO;
+import service.dto.MyMatchingDTO;
 
 public class MemberServiceImpl implements MemberService {
 	private MemberDAO dao = null;
+	private MyMatchingDAO matchingDao = null;
 	
 	public MemberServiceImpl() {
 		DAOFactory factory = new DAOFactory();
 		dao = factory.getMemberDAO();
+		matchingDao = factory.getMyMatchingDAO();
 	}
 	
 	public List<MemberDTO> ListingMembers() { // 전체 유저정보를 List 형태로 반환
@@ -74,5 +78,9 @@ public class MemberServiceImpl implements MemberService {
 	public String getEmailByUserId(int userId) {
 		String email = dao.getEmailByUserId(userId);
 		return email;
+	}
+	
+	public List<MyMatchingDTO> ListingMyMatchingByUserId(int userId) throws SQLException {
+		return matchingDao.getMyMatchingListByUserId(userId);
 	}
 }
