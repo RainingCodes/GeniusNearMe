@@ -9,17 +9,13 @@
         <title>게시글 추가</title>
 		<script language="JavaScript">
 		var cnt = 0;
-		//alert(1);
 		$(document).ready(function () {
 			  $(document).on("click", "input[name='add']", function () {
 				  if(cnt >= 10)
 					  alert("최대 입력 값을 초과했습니다.");
 				  else {
-					  alert(1);
 					  cnt++;
 					  $("#add_btn").before("<p>학생 <input type='number' name='num" + cnt + "'> 명당 가격 <input type='number' name='price" + cnt +"' > 원</p>");
-					  $("#student").val(cnt);
-					  alert($("#student").val());
 					  }
 			  });
 			});
@@ -106,6 +102,7 @@
                    </td>
                </tr>
            </table>
+           <input type="hidden" id="student" name="student">
             <input type="button" value="등록" onClick="talentCreate()">
        </form>
     </body>
