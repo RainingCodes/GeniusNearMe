@@ -21,7 +21,6 @@ public class ViewMemberController implements Controller {
     	MemberService manager = new MemberServiceImpl();
 		String email = UserSessionUtils.getLoginUserId(request.getSession());
 		
-		System.out.println(email);
     	MemberDTO member = null;
     	
     	try {

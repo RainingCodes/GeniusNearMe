@@ -23,16 +23,15 @@ public class MyMatchingDAOImpl implements MyMatchingDAO {
 	public List<MyMatchingDTO> getMyMatchingListByUserId(int userId) {
 		String searchQuery = query + "FROM MATCHING, TALENT "+
 				"WHERE MATCHING.TALENTID = TALENT.TALENTID AND USERID = ? ";
-
-		Object[] param = new Object[] { userId };
-		jdbcUtil.setSqlAndParameters(searchQuery, param);
+		
+		jdbcUtil.setSqlAndParameters(searchQuery, new Object[] { userId });
 		System.out.println(searchQuery);
 		
 		try {
 			ResultSet rs = jdbcUtil.executeQuery();
 			List<MyMatchingDTO> list = new ArrayList<MyMatchingDTO>();
 			
-			while(rs.next()) {
+			while (rs.next()) {
 				MyMatchingDTO dto = new MyMatchingDTO();
 				dto.setMatchingId(rs.getInt("MATCHINGID"));
 				dto.setTalentId(rs.getInt("TALENTID"));
