@@ -1,6 +1,6 @@
 package persistence.dao.impl;
 
-import java.sql.ResultSet;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +10,7 @@ import service.dto.MyMatchingDTO;
 
 public class MyMatchingDAOImpl implements MyMatchingDAO {
 	private JDBCUtil jdbcUtil = null;
+	
 	private static String query = "SELECT MATCHING.MATCHINGID AS MATCHINGID, "
 			+ "TALENT.TALENTID AS TALENTID, "
 			+ "TALENT.TITLE AS TITLE, "
@@ -24,8 +25,8 @@ public class MyMatchingDAOImpl implements MyMatchingDAO {
 				"WHERE MATCHING.TALENTID = TALENT.TALENTID AND USERID = ? ";
 
 		Object[] param = new Object[] { userId };
-		jdbcUtil.setSql(searchQuery);
-		jdbcUtil.setParameters(param);
+		jdbcUtil.setSqlAndParameters(searchQuery, param);
+		System.out.println(searchQuery);
 		
 		try {
 			ResultSet rs = jdbcUtil.executeQuery();
@@ -37,6 +38,8 @@ public class MyMatchingDAOImpl implements MyMatchingDAO {
 				dto.setTalentId(rs.getInt("TALENTID"));
 				dto.setTalentTitle(rs.getString("TITLE"));
 				dto.setMatchingState(rs.getInt("MATCHINGSTATE"));
+				
+				System.out.println(dto);
 				
 				list.add(dto);
 			}

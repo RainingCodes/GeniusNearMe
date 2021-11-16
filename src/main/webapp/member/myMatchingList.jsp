@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Talent Service Test</title>
+<title>나의 매칭 리스트</title>
 </head>
 <body>
 

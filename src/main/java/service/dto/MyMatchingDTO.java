@@ -30,7 +30,10 @@ public class MyMatchingDTO {
 	public void setTalentId(int talentId) {
 		this.talentId = talentId;
 	}
-	
-	
+	@Override
+	public String toString() {
+		return "MyMatchingDTO [matchingId=" + matchingId + ", talentId=" + talentId + ", talentTitle=" + talentTitle
+				+ ", matchingState=" + matchingState + "]";
+	}
 	
 }
