@@ -46,9 +46,7 @@ public class RegisterTalentController implements Controller{
 		
 		System.out.println("유저아이디: "+userId);
 		System.out.println(request.getParameter("category"));
-		System.out.println(request.getParameter("postType"));
-		System.out.println(request.getParameter("price"));
-		
+		System.out.println(request.getParameter("postType"));		
 		
 		TalentDTO dto = new TalentDTO(
 				request.getParameter("title"),
@@ -59,8 +57,7 @@ public class RegisterTalentController implements Controller{
 				0,
 				userId,
 				request.getParameter("category"),
-				Integer.parseInt(request.getParameter("postType")),//일단 모두 0 판매
-				Integer.parseInt(request.getParameter("price")));
+				Integer.parseInt(request.getParameter("postType")));//0=selling, 1=demanding
 		System.out.println(dto);
 		
 		log.debug("Create Talent : {}", dto.getTitle());
