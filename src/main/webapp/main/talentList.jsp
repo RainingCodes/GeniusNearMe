@@ -23,7 +23,7 @@ function submitForm() {
 </head>
 <body>
 	<div class="search">
-		<form name="form" method="post"
+		<form name="form" method="get"
 			action="<c:url value='/talent/keywordSearch' />">
 			<select name="search_options">
 				<option value="0">제목과 내용</option>

@@ -16,8 +16,7 @@
 	<div class="nav">
 		<form method="post" action="../detailedSearch/list.jsp">
 			<p></p>
-			<input type="text" id="reSearch" name="reSearch"
-				placeholder="결과내 재검색">
+			<input type="text" id="reSearch" name="reSearch" placeholder="결과내 재검색">
 			<p></p>
 			<strong>카테고리</strong><br>
 			<div class="category">
