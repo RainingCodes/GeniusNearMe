@@ -16,7 +16,7 @@
 		  <td>매칭 ID</td>
 		  <td>재능 제목</td>
 		  <td>재능 상태</td>
-		  <td>재능글 이동</td>
+		  <td>상태에 따른 interact</td>
 		</tr>
       </thead>
       <tbody> 
@@ -26,16 +26,27 @@
 			  	<c:out value="${li.matchingId}"/>     
 			  </td>
 			  <td>
-				${li.talentTitle}  
-			  </td>
-			  <td>
-			    ${li.matchingState} 
-			  </td>
-			  <td>
-				<a href="<c:url value='/talent/view'>
-						   <c:param name='talentId' value='${matching.talentId}'/>
+			  	<a href="<c:url value='/talent/view'>
+						   <c:param name='talentId' value='${li.talentId}'/>
 				 		 </c:url>">		
-				매칭글로 이동하기</a>
+				${li.talentTitle}</a>
+			  </td>
+			  <td>
+				<c:set var="state" value="${li.matchingState}" />
+				  <c:choose>
+				  	<c:when test="${state eq '0'}">
+				  		매칭 진행중
+				    </c:when>
+				    <c:when test="${state eq '1'}">
+				  		매칭 성공
+				    </c:when>
+				    <c:when test="${state eq '2'}">
+				  		매칭 거절
+				    </c:when>
+				</c:choose>
+			  </td>
+			  <td>
+				interact(후에 추가 ex:유저정보 본다던가)
 			  </td>
 			</tr>
 		 </c:forEach>
