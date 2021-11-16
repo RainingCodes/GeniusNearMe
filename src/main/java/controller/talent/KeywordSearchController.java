@@ -14,9 +14,9 @@ public class KeywordSearchController implements Controller{
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {		
 
-		String title = request.getParameter("title");
+		String search_bar = request.getParameter("search_bar");
 		TalentService manager = new TalentServiceImpl();
-		List<TalentDTO> talentList = manager.getTalent(title);
+		List<TalentDTO> talentList = manager.getTalent(search_bar);
 		
 		request.setAttribute("talentList", talentList);
 		

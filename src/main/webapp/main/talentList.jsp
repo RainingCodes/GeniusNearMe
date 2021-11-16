@@ -7,7 +7,7 @@
 <title>재능 리스트</title>
 <script language="JavaScript">
 function keywordSearch() {
-	keywordSearch.action = "../talent/keywordSearch/list.jsp";
+	//keywordSearch.action = "../talent/keywordSearch/list.jsp";
 	keywordSearch.submit();
 	}
 function categorySearch() {
@@ -19,7 +19,7 @@ function categorySearch() {
 </head>
 <body>
 	<table class="talentList">
-		<form name="keywordSearch" method="post">
+		<form name="keywordSearch" method="post" action="<c:url value='/talent/keywordSearch' />">
 			<tr class="search">
 				<td colspan="5">
 					<select name="search_options">

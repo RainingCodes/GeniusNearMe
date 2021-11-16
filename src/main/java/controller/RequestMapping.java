@@ -5,6 +5,7 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import controller.talent.KeywordSearchController;
 import controller.talent.RegisterTalentController;
 import controller.talent.ViewTalentController;
 import controller.user.*;
@@ -33,7 +34,8 @@ public class RequestMapping {
         mappings.put("/talent/register", new RegisterTalentController());
         mappings.put("/talent/view", new ViewTalentController());
         mappings.put("/talent/registerForm", new ForwardController("/talent/registerForm.jsp"));
-      
+        mappings.put("/talent/keywordSearch", new KeywordSearchController());
+        
         logger.info("Initialized Request Mapping!");
     }
 
