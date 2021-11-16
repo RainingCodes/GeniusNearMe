@@ -20,7 +20,7 @@ public class KeywordSearchController implements Controller{
 		
 		request.setAttribute("talentList", talentList);
 		
-		return "/talent/keywordSearch/list";
+		return "/talent/keywordSearch/list.jsp";
 	}
 	
 }
