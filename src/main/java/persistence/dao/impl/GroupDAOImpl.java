@@ -278,22 +278,7 @@ public class GroupDAOImpl implements GroupDAO {
 	@Override
 	public int groupMatching(GroupDTO group) {
 		int result = 0;
-		
-		
-		jdbcUtil.setSqlAndParameters(groupMatchingQuery, param);
-		try {
-			result = jdbcUtil.executeUpdate();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		jdbcUtil.close();
-		jdbcUtil = new JDBCUtil();
-		String stateUpdateQuery = "UPDATE MATCHING SET STATE=matching_seq.nextval WHERE TALENTID=? ";
-		return 0;
+		return result;
 	}
 
 	

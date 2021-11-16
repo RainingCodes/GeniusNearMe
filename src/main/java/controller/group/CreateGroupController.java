@@ -24,7 +24,7 @@ public class CreateGroupController implements Controller {
 		
 		GroupService manager = new GroupServiceImpl();
 		manager.insertGroup(group, talent.getTalentId());
-	    return "redirect:/talent/group";	
+	    return "redirect:/talent/group/list";	
 	}
 
 }
