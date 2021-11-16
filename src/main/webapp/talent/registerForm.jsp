@@ -15,13 +15,12 @@
 				  if(cnt >= 10)
 					  alert("최대 입력 값을 초과했습니다.");
 				  else {
+					  alert(1);
 					  cnt++;
 					  $("#add_btn").before("<p>학생 <input type='number' name='num" + cnt + "'> 명당 가격 <input type='number' name='price" + cnt +"' > 원</p>");
 					  $("#student").val(cnt);
 					  alert($("#student").val());
 					  }
-				  });
-			  });   
 			  });
 			});
         function talentCreate(){

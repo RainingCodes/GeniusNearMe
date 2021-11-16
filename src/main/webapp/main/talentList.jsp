@@ -22,16 +22,16 @@ function submitForm() {
 	type="text/css">
 </head>
 <body>
-	<form name="form" method="post"
-		action="<c:url value='/talent/keywordSearch' />">
-		<select name="search_options">
-			<option value="0">제목과 내용</option>
-			<option value="1">작성자</option>
-			<option value="2">재능 주제</option>
-		</select> <input name="search_bar" size="50"></span> <input type="button"
-			value="검색" onClick="submitForm()">
-	</form>
-
+	<div class="search">
+		<form name="form" method="post"
+			action="<c:url value='/talent/keywordSearch' />">
+			<select name="search_options">
+				<option value="0">제목과 내용</option>
+				<option value="1">작성자</option>
+				<option value="2">재능 주제</option>
+			</select> <input name="search_bar" size="50"></span> <input type="button" value="검색" onClick="submitForm()">
+		</form>
+	</div>
 	<table class="talentList">
 		<tr>
 			<td>
