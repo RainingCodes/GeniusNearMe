@@ -2,25 +2,28 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<script src="https://code.jquery.com/jquery-1.12.4.min.js" />
-<script language="JavaScript">
-var cnt = 0;
-$(document).ready(function () {
-	  $(document).on("click", "input[name='add']", function () {
-		  if(cnt >= 10)
-			  alert("최대 입력 값을 초과했습니다.");
-		  else {
-			  cnt++;
-			  $("#add_btn").before("<p>학생 <input type='number' name='num" + cnt + "'> 명당 가격 <input type='number' name='price" + cnt +"' > 원</p>");
-		  }
-	  });
-	});
-</script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <html>
     <head>
     <meta charset="UTF-8">
         <title>게시글 추가</title>
-        <script>
+		<script language="JavaScript">
+		var cnt = 0;
+		//alert(1);
+		$(document).ready(function () {
+			  $(document).on("click", "input[name='add']", function () {
+				  if(cnt >= 10)
+					  alert("최대 입력 값을 초과했습니다.");
+				  else {
+					  cnt++;
+					  $("#add_btn").before("<p>학생 <input type='number' name='num" + cnt + "'> 명당 가격 <input type='number' name='price" + cnt +"' > 원</p>");
+					  $("#student").val(cnt);
+					  alert($("#student").val());
+					  }
+				  });
+			  });   
+			  });
+			});
         function talentCreate(){
         	if(form.title.value ==""){
         		alert("제목를 입력하십시오.");
@@ -59,6 +62,7 @@ $(document).ready(function () {
         </style>
     </head>
     <body>
+
     <!-- talent registration form -->
        <form name = "form" method="POST" action="<c:url value='/talent/register' />">
        <input type="hidden" name="postType" value=0>
