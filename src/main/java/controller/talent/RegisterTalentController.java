@@ -74,7 +74,7 @@ public class RegisterTalentController implements Controller{
 			int result = priceService.insertPrice(dto1);
 			
 			System.out.println(result);
-			
+			System.out.println("student값: "+request.getParameter("student"));
 			int num = Integer.parseInt(request.getParameter("student"));
 			for(int i = 1; i <= num; i++) {
 				PriceDTO dto2 = new PriceDTO(
@@ -86,7 +86,8 @@ public class RegisterTalentController implements Controller{
 				System.out.println(result);
 			}
 		
-			return "redirect:/talent/view?talentId=";
+			request.setAttribute("talentId", talentId);
+			return "/talent/view";
 //		}catch(ExistingTalentException e) {
 //			System.out.println("재능 추가 실패");
 //            request.setAttribute("registerFailed", true);

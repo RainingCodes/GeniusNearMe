@@ -35,7 +35,7 @@
 				<c:set var="state" value="${li.matchingState}" />
 				  <c:choose>
 				  	<c:when test="${state eq '0'}">
-				  		매칭 진행중
+				  		매칭 신청 중
 				    </c:when>
 				    <c:when test="${state eq '1'}">
 				  		매칭 성공
