@@ -15,7 +15,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>재능글 검색결과</title>
-<link rel="stylesheet" href="../../css/talent.css" type="text/css">
+<link rel="stylesheet" href="../css/talent.css" type="text/css">
 </head>
 <body>
 	<div class="nav">
