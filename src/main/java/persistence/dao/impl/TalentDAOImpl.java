@@ -190,8 +190,24 @@ public class TalentDAOImpl implements TalentDAO  {
 		int result = 0;
 		int generatedKey = 0;
 		String insertQuery = "INSERT INTO TALENT (TALENTID, TITLE, CONTENT, STARTDATE, DEADLINE, " +
-				"WRITTENDATE, MATCHINGCOUNTS, WRITERID, TALENTCATEGORYNAME, POSTTYPE, PRICE) " +
-				"VALUES (talent_seq.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";		
+				"WRITTENDATE, MATCHINGCOUNTS, WRITERID, TALENTCNAME, POSTTYPE, PRICE) " +
+				"VALUES (talent_seq.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";	
+		System.out.println(insertQuery);
+		System.out.println(t.getTitle().getClass().getSimpleName()+ t.getContent().getClass().getSimpleName()+
+				new java.sql.Date(t.getStartDate().getTime()).getClass().getSimpleName()+
+				new java.sql.Date(t.getDeadLine().getTime()).getClass().getSimpleName()+
+				new java.sql.Date(t.getWrittenDate().getTime()).getClass().getSimpleName()+
+				t.getMatchingCounts()+
+				t.getWriterId()+ t.getTalentCategoryName().getClass().getSimpleName()+
+				t.getPostType()+ t.getPrice());
+		
+		System.out.println(t.getTitle()+ t.getContent()+ new java.sql.Date(t.getStartDate().getTime())+
+							new java.sql.Date(t.getDeadLine().getTime())+
+							new java.sql.Date(t.getWrittenDate().getTime())+
+							t.getMatchingCounts()+
+							t.getWriterId()+ t.getTalentCategoryName()+
+							t.getPostType()+ t.getPrice());
+		
 		
 		Object[] param = new Object[] { t.getTitle(), t.getContent(), new java.sql.Date(t.getStartDate().getTime()),
 							new java.sql.Date(t.getDeadLine().getTime()),

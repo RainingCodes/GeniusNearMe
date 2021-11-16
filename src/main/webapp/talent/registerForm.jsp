@@ -57,10 +57,10 @@
                    <td>
                         <h5>카테고리 선택</h5>
                         <select name="category" size="4" multiple>
-                            <option value="1" selected>뷰티</option>
-                            <option value="2">운동</option>
-                            <option value="3">IT</option>
-                            <option value="4">기타</option>
+                            <option value="beauty" selected>뷰티</option>
+                            <option value="exer">운동</option>
+                            <option value="it">IT</option>
+                            <option value="extra">기타</option>
                         </select>
                    </td>
                    <td>
