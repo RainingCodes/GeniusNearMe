@@ -5,11 +5,6 @@
 <%@ page import="java.util.List"%>
 <%@ page import="java.util.Iterator" %>
 <% request.setCharacterEncoding("UTF-8"); %>
-<%-- <%
-	TalentService talentService = new TalentServiceImpl();
-	MemberService memberService = new MemberServiceImpl();
-	List<TalentDTO> talentList = (List<TalentDTO>)request.getAttribute("talentList");
-%> --%>
 <!DOCTYPE html>
 <html>
 <head>

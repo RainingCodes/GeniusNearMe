@@ -1,6 +1,6 @@
 package service;
 
-import java.sql.Date;
+//import java.sql.Date;
 import java.util.List;
 import persistence.DAOFactory;
 import persistence.dao.TalentDAO;
@@ -22,9 +22,11 @@ public class TalentServiceImpl implements TalentService {
 		return dao.getTalentListByTitle(title);
 	}
 
+	/*
 	public List<TalentDTO> getTalentByOptions(String[] categories, int price, Date startDate, Date endDate) {
 		return dao.getTalentListByOptions(categories, price, startDate, endDate);
 	}
+	*/
 	
 	public List<TalentDTO> getTalentByTalentCategory(String[] category) {
 		return dao.getTalentListByCategory(category);
