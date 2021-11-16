@@ -294,13 +294,49 @@ public class MemberDAOImpl implements MemberDAO {
 	
 	public boolean existingNickname(String nickname) throws SQLException {
 		String sql = "SELECT count(*) FROM MEMBERS WHERE NICKNAME = ?";      
-		jdbcUtil.setSqlAndParameters(sql, new Object[] {nickname});	// JDBCUtil에 query문과 매개 변수 설정
+		jdbcUtil.setSqlAndParameters(sql, new Object[] { nickname });	// JDBCUtil에 query문과 매개 변수 설정
+		
+		System.out.println(sql);
 
 		try {
 			ResultSet rs = jdbcUtil.executeQuery();		// query 실행
 			if (rs.next()) {
 				int count = rs.getInt(1);
-				return (count == 1 ? true : false);
+				System.out.println(count);
+				boolean result = (count == 1 ? true : false);
+				System.out.println(result);
+				return result;
+			}
+		} catch (Exception ex) {
+			jdbcUtil.rollback();
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.commit();
+			jdbcUtil.close();		// resource 반환
+		}
+		return false;
+	}
+	
+	public boolean existingNicknameForEdit(String nickname, int userId) throws SQLException {
+		String sql = "SELECT count(*), USERID FROM MEMBERS WHERE NICKNAME = ?";      
+		jdbcUtil.setSqlAndParameters(sql, new Object[] { nickname });	// JDBCUtil에 query문과 매개 변수 설정
+		
+		System.out.println(sql);
+
+		try {
+			ResultSet rs = jdbcUtil.executeQuery();		// query 실행
+			if (rs.next()) {
+				int count = rs.getInt(1);
+				
+				boolean result = (count == 1 ? true : false);
+				
+				if (result == true) { // 유저아이디랑 같은지 체크
+					int selectID = rs.getInt("USERID");
+					if (selectID == userId) {
+						return false;
+					}
+				}
+				return result;
 			}
 		} catch (Exception ex) {
 			jdbcUtil.rollback();

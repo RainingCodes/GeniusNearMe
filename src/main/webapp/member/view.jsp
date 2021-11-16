@@ -53,9 +53,7 @@ function userRemove() {
  	    <a href="<c:url value='/member/delete'>
 				   <c:param name='userEmail' value='<%=member.getEmail()%>'/>
 			 	 </c:url>" onclick="return userRemove();">회원 탈퇴</a> &nbsp;
-		<a href="<c:url value='/member/matching'>
-	     		   <c:param name='userEmail' value='<%=member.getEmail()%>'/>
-			 	 </c:url>">나의 매칭 목록</a> &nbsp;
+		<a href="<c:url value='/member/matching'></c:url>">나의 매칭 목록</a> &nbsp;
 		
  	    <a href="<c:url value='/' />">이웃집 솜솜이 메인페이지</a> 	    
  	    <br><br>	   

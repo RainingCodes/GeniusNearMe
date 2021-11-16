@@ -3,7 +3,8 @@
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.Iterator" %>
 <%@ page import="service.*" %>
-<%@ page import="service.dto.MemberDTO" %>
+<%@ page import="service.dto.MatchingDTO" %>
+<%@ page import="service.dto.TalentDTO" %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -11,43 +12,42 @@
 </head>
 <body>
 <%
-	MemberService memberSvc = new MemberServiceImpl();
-	List<MemberDTO> list = memberSvc.ListingMembers();
-	request.setAttribute("memberList", list);
+	
+	
+	//TalentService tService = new TalentServiceImpl();
+	
+	//매칭 목록에 있을거 : 매칭id, 매칭게시글제목(talent와 조인), 매칭상태, 매칭글로 이동
 %>
 
 <div class="container">   
 	<br>
-	<h4>사용자 목록</h4>
+	<h4>나의 매칭 리스트</h4>
 	<br>
-	<table class="table table-bordered">
+	<table>
       <tbody> 
-		<c:forEach var="user" items="${userList}">  			  	
+		<c:forEach var="matching" items="${matchingList}">  			  	
 	  	    <tr>
 			  <td>
-			  	${user.userId}     
+			  	${matching.matchingId}     
 			  </td>
 			  <td>
-				<a href="<c:url value='/user/view'>
-						   <c:param name='userId' value='${user.userId}'/>
-				 		 </c:url>">
-				  ${user.name}</a>	 
+				${matching.talentId}  
 			  </td>
 			  <td>
-			    ${user.email} 
+			    ${matching.matchingState} 
 			  </td>
 			  <td>
-				<a href="<c:url value='/community/view'>
-						   <c:param name='commId' value='${user.commId}'/>
+				<a href="<c:url value='/talent/view'>
+						   <c:param name='talentId' value='${matching.talentId}'/>
 				 		 </c:url>">		
-				${user.commName}</a>
+				매칭글로 이동하기</a>
 			  </td>
 			</tr>
 		 </c:forEach> 
 	  </tbody>
 	</table>		  	 
 	<br>   
-	<a href="<c:url value='/user/register' />" class="btn btn-primary">사용자 추가 </a>    		     
+	<a href="<c:url value='/member/view' />">목록으로 이동하기</a>    		     
 </div>
 
 </body>

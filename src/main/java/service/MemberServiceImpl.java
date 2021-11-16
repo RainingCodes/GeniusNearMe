@@ -32,14 +32,16 @@ public class MemberServiceImpl implements MemberService {
 			throw new ExistingUserException(member.getEmail() + "는 존재하는 아이디입니다.");
 		}
 		if (dao.existingNickname(member.getNickname()) == true) {
-			throw new ExistingUserException(member.getEmail() + "는(은) 존재하는 닉네임입니다.");
+			throw new ExistingUserException(member.getNickname() + "는(은) 존재하는 닉네임입니다.");
 		}
 		return dao.insertMember(member);
 	}
 	public int updateMember(MemberDTO member) throws SQLException, ExistingUserException {
-		if (dao.existingNickname(member.getNickname()) == true) {
-			throw new ExistingUserException(member.getEmail() + "는(은) 존재하는 닉네임입니다.");
+		System.out.println("닉네임 중복 검사 실행");
+		if (dao.existingNicknameForEdit(member.getNickname(), member.getUserId()) == true) {
+			throw new ExistingUserException(member.getNickname() + "는(은) 존재하는 닉네임입니다.");
 		}
+		System.out.println("닉네임 중복 검사 실행완료");
 		return dao.updateMember(member);
 	}
 	

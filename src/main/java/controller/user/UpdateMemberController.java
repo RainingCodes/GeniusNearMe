@@ -68,6 +68,8 @@ public class UpdateMemberController implements Controller {
     		return "redirect:/member/view";
 	        
 		} catch (ExistingUserException e) {	// 예외 발생 시 수정 form으로 forwarding
+			
+			System.out.println("수정불가");
             request.setAttribute("registerFailed", true);
 			request.setAttribute("exception", e);
 			request.setAttribute("member", updateMember);

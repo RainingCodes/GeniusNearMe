@@ -27,6 +27,7 @@ public class LoginController implements Controller {
   
         	MemberDTO member = manager.findUserByEmail(email);          
             session.setAttribute("nickname", member.getNickname());
+            session.setAttribute("userId", member.getUserId());
             
             return "redirect:/main"; // 홈으로 재이동		
 		} catch (Exception e) {
