@@ -203,7 +203,7 @@ public class TalentDAOImpl implements TalentDAO  {
 		String key[]={"TALENTID"};
 		
 		try {				
-			result = jdbcUtil.executeUpdate();		// insert 문 실행
+			result = jdbcUtil.executeUpdate(key);		// insert 문 실행
 			 ResultSet rs = jdbcUtil.getGeneratedKeys(); 
 			 
 			 if(rs.next()) {

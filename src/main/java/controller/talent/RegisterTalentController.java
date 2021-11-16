@@ -47,10 +47,6 @@ public class RegisterTalentController implements Controller{
 		MemberService mem = new MemberServiceImpl();
 		int userId = mem.getuserIdByEmail(email);
 		
-		System.out.println("유저아이디: "+userId);
-		System.out.println(request.getParameter("category"));
-		System.out.println(request.getParameter("postType"));		
-		
 		TalentDTO dto = new TalentDTO(
 				request.getParameter("title"),
 				request.getParameter("content"),
@@ -78,6 +74,7 @@ public class RegisterTalentController implements Controller{
 			int result = priceService.insertPrice(dto1);
 			
 			System.out.println(result);
+			
 			int num = Integer.parseInt(request.getParameter("student"));
 			for(int i = 1; i <= num; i++) {
 				PriceDTO dto2 = new PriceDTO(
