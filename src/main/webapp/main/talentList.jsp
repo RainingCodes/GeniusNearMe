@@ -7,11 +7,11 @@
 <title>재능 리스트</title>
 <script language="JavaScript">
 function keywordSearch() {
-	keywordSearch.action = "keywordSearch/list.jsp";
+	keywordSearch.action = "../talent/keywordSearch/list.jsp";
 	keywordSearch.submit();
 	}
 function categorySearch() {
-	categorySearch.action = "categorySearch/list.jsp";
+	categorySearch.action = "../talent/categorySearch/list.jsp";
 	categorySearch.submit();
 }
 </script>

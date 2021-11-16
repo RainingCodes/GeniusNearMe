@@ -1,11 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<% 
-	request.getAttribute("", );
-%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <!DOCTYPE html>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" />
+<script language="JavaScript">
+var cnt = 0;
+$(document).ready(function () {
+	  $(document).on("click", "input[name='add']", function () {
+		  if(cnt >= 10)
+			  alert("최대 입력 값을 초과했습니다.");
+		  else {
+			  cnt++;
+			  $("#add_btn").before("<p>학생 <input type='number' name='num" + cnt + "'> 명당 가격 <input type='number' name='price" + cnt +"' > 원</p>");
+		  }
+	  });
+	});
+</script>
 <html>
     <head>
     <meta charset="UTF-8">
@@ -76,7 +86,8 @@
                    <td>
                        <h5>가격 </h5>
                        <p>학생 수 1:1 &nbsp; 가격
-                      <input type="number" name="price" ></p>
+                      <input type="number" name="price" >원</p> 
+                      <input type="button" name="add" value="추가하기" id="add_btn">
                    </td>
                </tr>
                <tr>

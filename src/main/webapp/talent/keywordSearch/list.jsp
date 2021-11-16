@@ -13,6 +13,12 @@
 <link rel="stylesheet" href="../../css/talent.css" type="text/css">
 </head>
 <body>
+<%
+	String title = request.getParameter("search_bar");
+	TalentService talentSvc = new TalentServiceImpl();
+	
+	List<TalentDTO> talentList = talentSvc.getTalent(title);
+%>
 	<div class="nav">
 		<form method="post" action="../detailedSearch/list.jsp">
 		<p></p>
@@ -59,7 +65,7 @@
 			</div>
 		</c:forEach>
 			
-		<%-- <div class="post">
+	<%-- 	<div class="post">
 			<div id="imgSection1">
 				<img id="thumbnail1" src="img/loopy/img1.jpg" width="120" height="120">
 			</div>
