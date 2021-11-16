@@ -86,7 +86,7 @@ function goToURI(targetUri) {
 						  	<c:set var="count" value="${price.headCount}" />
 						  	<c:choose>
 						  		<c:when test="${count eq '1'}"> 1:1매칭 </c:when>
-						  		<c:otherwise> 그룹 ${count}명을 모을 시</c:otherwise>
+						  		<c:otherwise> 학생 ${count}명을 모을 시</c:otherwise>
 						  	</c:choose>
 						  </td>
 						  <td>
