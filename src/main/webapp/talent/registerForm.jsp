@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
         <title>게시글 추가</title>
 		<script language="JavaScript">
-		var cnt = 0;
+		var cnt = 0; 
 		$(document).ready(function () {
 			  $(document).on("click", "input[name='add']", function () {
 				  if(cnt >= 10)
@@ -16,7 +16,9 @@
 				  else {
 					  cnt++;
 					  $("#add_btn").before("<p>학생 <input type='number' name='num" + cnt + "'> 명당 가격 <input type='number' name='price" + cnt +"' > 원</p>");
+					  $("#student").val(cnt);
 					  }
+				  
 			  });
 			});
         function talentCreate(){

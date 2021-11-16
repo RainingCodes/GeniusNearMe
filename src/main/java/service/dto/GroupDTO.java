@@ -5,25 +5,18 @@ public class GroupDTO {
 	private int groupId = -1;
 	private int talentId = -1;
 	private int representativeId = -1;
-	private int membersCount = 0;
-	private int maximum = 0;
-	public int getMembersCount() {
-		return membersCount;
+	private int headCount = 0;
+	public int getHeadCount() {
+		return headCount;
 	}
-	public void setMembersCount(int membersCount) {
-		this.membersCount = membersCount;
-	}
-	public int getMaximum() {
-		return maximum;
-	}
-	public void setMaximum(int maximum) {
-		this.maximum = maximum;
+	public void setHeadCount(int headCount) {
+		this.headCount = headCount;
 	}
 	public int getCountMembers() {
-		return membersCount;
+		return headCount;
 	}
 	public void setCountMembers(int membersCount) {
-		this.membersCount = membersCount;
+		this.headCount = membersCount;
 	}
 	public int getGroupId() {
 		return groupId;
@@ -60,14 +53,13 @@ public class GroupDTO {
 	public GroupDTO() {
 		
 	}
-	public GroupDTO(int[] userId, int groupId, int talentId, int representativeId, int membersCount, int maximum) {
+	public GroupDTO(int[] userId, int groupId, int talentId, int representativeId, int headCount) {
 		super();
 		this.userId = userId;
 		this.groupId = groupId;
 		this.talentId = talentId;
 		this.representativeId = representativeId;
-		this.membersCount = membersCount;
-		this.maximum = maximum;
+		this.headCount = headCount;
 	}
 	
 }
