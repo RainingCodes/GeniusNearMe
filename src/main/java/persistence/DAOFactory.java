@@ -24,4 +24,8 @@ public class DAOFactory {
 	public MyMatchingDAO getMyMatchingDAO() {
 		return new MyMatchingDAOImpl();
 	}
+	
+	public PriceDAO getPriceDAO() {
+		return new PriceDAOImpl();
+	}
 }
