@@ -87,7 +87,9 @@ public class RegisterTalentController implements Controller{
 			}
 		
 			request.setAttribute("talentId", talentId);
-			return "/talent/view";
+			String src = "/talent/view?talentId=" +talentId; 
+			System.out.println(src);
+			return src;
 //		}catch(ExistingTalentException e) {
 //			System.out.println("재능 추가 실패");
 //            request.setAttribute("registerFailed", true);
