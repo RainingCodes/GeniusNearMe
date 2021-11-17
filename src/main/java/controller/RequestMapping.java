@@ -34,6 +34,7 @@ public class RequestMapping {
         mappings.put("/talent/view", new ViewTalentController());
         mappings.put("/talent/registerForm", new ForwardController("/talent/registerForm.jsp"));
         mappings.put("/talent/keywordSearch", new KeywordSearchController());
+        mappings.put("/talent/categorySearch", new CategorySearchController());
         mappings.put("/talent/detailedSearch", new DetailedSearchController());
         mappings.put("/talent/update", new UpdateTalentController());
         
