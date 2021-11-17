@@ -10,4 +10,5 @@ public interface PriceService {
 	public PriceDTO getPriceDTOByIdHead(int talentId, int headCount);//priceDto 반환
 	public int PriceByIdHead(int talentId, int headCount);//price 반환
 	public int deleteAllPriceById(int talentId);
+	public int updatePrice(PriceDTO priceDto);
 }
