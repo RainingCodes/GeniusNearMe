@@ -16,7 +16,12 @@ public class ViewMemberController implements Controller {
 	private static final Logger log = LoggerFactory.getLogger(ViewMemberController.class);
 	
     @Override
-    public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {			
+    public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {		
+    	// 로그인 여부 확인
+    	if (!UserSessionUtils.hasLogined(request.getSession())) {
+    		System.out.println("not Logined");
+            return "redirect:/member/login/form";		// login form 요청으로 redirect
+        }
     	
     	MemberService manager = new MemberServiceImpl();
 		String email = UserSessionUtils.getLoginUserId(request.getSession());
