@@ -28,7 +28,7 @@ public class GroupDAOImpl implements GroupDAO {
 	public int insertGroup(GroupDTO group) {
 		// TODO Auto-generated method stub
 		int result = 0;
-		String insertGroupQuery = "INSERT INTO GROUPING "
+		String insertGroupQuery = "INSERT INTO GROUPING (GROUPID, MATCHINGID, TALENTID, REPRESENTATIVEID, HEADCOUNT) "
 				+ "Values (group_seq.nextqal, ?, ?, ?, ?) ";
 		
 		Object[] param = new Object[] { group.getMatchingId(), group.getTalentId(), group.getRepresentativeId(), group.getHeadCount()  };
@@ -44,9 +44,6 @@ public class GroupDAOImpl implements GroupDAO {
 			e.printStackTrace();
 		}
 		
-		String insertMatchingQuery = "INSERT INTO MATCHING (MATCHINGID, TALENTID, "
-				+ "MATCHINGSTATE, GROUPID, USERID) "
-				+ "VALUES (matching_seq.nextval, ?, DEFAULT, ?, ?) ";
 		jdbcUtil.close();
 		
 		return result;
@@ -82,13 +79,13 @@ public class GroupDAOImpl implements GroupDAO {
 	}
 
 	@Override
-	public int insertGroupMember(GroupDTO group, int userId) {
+	public int insertGroupMember(int groupId, int talentId, int userId) {
 		// TODO Auto-generated method stub
 		int result = 0;
 		String insertMemberQuery = "INSERT INTO GROUPMEMBERS (USERID, GROUPID, TALENTID) "
 				+ "VALUES (?, ?, ?) ";
 		
-		Object[] param = new Object[] { userId, group.getGroupId(), group.getTalentId()};
+		Object[] param = new Object[] { userId, groupId, talentId };
 		jdbcUtil.setSqlAndParameters(insertMemberQuery, param);
 		try {
 			result = jdbcUtil.executeUpdate();
@@ -100,23 +97,7 @@ public class GroupDAOImpl implements GroupDAO {
 			e.printStackTrace();
 		}
 		jdbcUtil.close();				
-		jdbcUtil = new JDBCUtil();
-		if(result > 0) {
-			group.setCountMembers(group.getCountMembers() + 1);
-			String updateMembersQuery = "UPDATE GROUP SET MEMBERSCOUNT=? WHERE GROUPID=? ";
-			param = new Object[] { group.getCountMembers(), group.getGroupId() };
-			jdbcUtil.setSqlAndParameters(updateMembersQuery, param);
-			try {
-				jdbcUtil.executeUpdate();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			jdbcUtil.close();
-		}
+		
 		return result;
 	}
 

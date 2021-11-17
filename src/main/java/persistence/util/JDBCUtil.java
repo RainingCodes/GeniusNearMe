@@ -13,6 +13,7 @@ public class JDBCUtil {
 	private PreparedStatement pstmt = null;
 	private CallableStatement cstmt = null;
 	private ResultSet rs = null;
+	private String[] queries = null;
 
 	public JDBCUtil() {
 		initJDBCUtil();
@@ -175,22 +176,7 @@ public class JDBCUtil {
 		}
 
 	public void close() {
-		if (rs != null) {
-			try {
-				rs.close();
-				rs = null;
-			} catch (SQLException ex) {
-				ex.printStackTrace();
-			}
-		}
-		if (pstmt != null) {
-			try {
-				pstmt.close();
-				pstmt = null;
-			} catch (SQLException ex) {
-				ex.printStackTrace();
-			}
-		}
+		closeResultSetNPreparedStatment();
 		if (cstmt != null) {
 			try {
 				cstmt.close();
@@ -239,5 +225,24 @@ public class JDBCUtil {
 		BasicDataSource bds = (BasicDataSource) ds;
 		System.out.println("NumActive: " + bds.getNumActive());
 		System.out.println("NumIdle: " + bds.getNumIdle());
+	}
+	
+	public void closeResultSetNPreparedStatment() {
+		if (rs != null) {
+			try {
+				rs.close();
+				rs = null;
+			} catch (SQLException ex) {
+				ex.printStackTrace();
+			}
+		}
+		if (pstmt != null) {
+			try {
+				pstmt.close();
+				pstmt = null;
+			} catch (SQLException ex) {
+				ex.printStackTrace();
+			}
+		}
 	}
 }
