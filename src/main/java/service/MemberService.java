@@ -17,5 +17,6 @@ public interface MemberService { // 유저 정보 관리 목적의 인터페이�
 	public MemberDTO findUserByEmail(String userId) throws SQLException, UserNotFoundException;
 	public String getEmailByUserId(int userId);
 	
-	public List<MyMatchingDTO> ListingMyMatchingByUserId(int userId) throws SQLException;
+	public List<MyMatchingDTO> ListingApplyMyMatchingByUserId(int userId) throws SQLException;
+	public List<MyMatchingDTO> ListingReceiveMyMatchingByUserId(int userId) throws SQLException;
 }

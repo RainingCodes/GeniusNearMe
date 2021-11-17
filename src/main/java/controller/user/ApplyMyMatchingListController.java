@@ -35,7 +35,7 @@ public class ApplyMyMatchingListController implements Controller {
 		List<MyMatchingDTO> myMatchingInfo = null;
     	
     	try {
-    		myMatchingInfo =  manager.ListingMyMatchingByUserId(userId);	// 사용자 정보 검색
+    		myMatchingInfo =  manager.ListingApplyMyMatchingByUserId(userId);	// 사용자 정보 검색
 		} catch (SQLException e) {	
 	        return "redirect:/member/login/form";
 		}

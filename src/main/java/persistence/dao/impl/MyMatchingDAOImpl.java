@@ -20,9 +20,38 @@ public class MyMatchingDAOImpl implements MyMatchingDAO {
 		jdbcUtil = new JDBCUtil();
 	}
 	
-	public List<MyMatchingDTO> getMyMatchingListByUserId(int userId) {
+	public List<MyMatchingDTO> getApplyMyMatchingListByUserId(int userId) {
 		String searchQuery = query + "FROM MATCHING, TALENT "+
 				"WHERE MATCHING.TALENTID = TALENT.TALENTID AND USERID = ? ";
+		
+		jdbcUtil.setSqlAndParameters(searchQuery, new Object[] { userId });
+		
+		try {
+			ResultSet rs = jdbcUtil.executeQuery();
+			List<MyMatchingDTO> list = new ArrayList<MyMatchingDTO>();
+			
+			while (rs.next()) {
+				MyMatchingDTO dto = new MyMatchingDTO();
+				dto.setMatchingId(rs.getInt("MATCHINGID"));
+				dto.setTalentId(rs.getInt("TALENTID"));
+				dto.setTalentTitle(rs.getString("TITLE"));
+				dto.setMatchingState(rs.getInt("MATCHINGSTATE"));
+				
+				System.out.println(dto);
+				
+				list.add(dto);
+			}
+			return list;
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			jdbcUtil.close();
+		}return null;
+	}
+	
+	public List<MyMatchingDTO> getReceiveMyMatchingListByUserId(int userId) {
+		String searchQuery = query + "FROM MATCHING, TALENT "+
+				"WHERE MATCHING.TALENTID = TALENT.TALENTID AND TALENT.WRITERID = ? ";
 		
 		jdbcUtil.setSqlAndParameters(searchQuery, new Object[] { userId });
 		

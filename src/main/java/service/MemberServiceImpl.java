@@ -80,7 +80,11 @@ public class MemberServiceImpl implements MemberService {
 		return email;
 	}
 	
-	public List<MyMatchingDTO> ListingMyMatchingByUserId(int userId) throws SQLException {
-		return matchingDao.getMyMatchingListByUserId(userId);
+	public List<MyMatchingDTO> ListingApplyMyMatchingByUserId(int userId) throws SQLException {
+		return matchingDao.getApplyMyMatchingListByUserId(userId);
+	}
+	
+	public List<MyMatchingDTO> ListingReceiveMyMatchingByUserId(int userId) throws SQLException {
+		return matchingDao.getReceiveMyMatchingListByUserId(userId);
 	}
 }

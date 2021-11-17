@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>내가 신청한 매칭 리스트</title>
+<title>내가 받은 매칭 리스트</title>
 </head>
 <body>
 <div>   
@@ -16,7 +16,7 @@
 		  <td>매칭 ID</td>
 		  <td>재능 제목</td>
 		  <td>재능 상태</td>
-		  <td>상태에 따른 interact</td>
+		  <td>매칭 결정하기</td>
 		</tr>
       </thead>
       <tbody> 
@@ -46,7 +46,7 @@
 				</c:choose>
 			  </td>
 			  <td>
-				interact(후에 추가 ex:유저정보 본다던가)
+				matchingDecide 구현 후 작성
 			  </td>
 			</tr>
 		 </c:forEach>

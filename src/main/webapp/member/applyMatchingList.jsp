@@ -16,7 +16,7 @@
 		  <td>매칭 ID</td>
 		  <td>재능 제목</td>
 		  <td>재능 상태</td>
-		  <td>상태에 따른 interact</td>
+		  <td>매칭 결과에 따른 상호작용</td>
 		</tr>
       </thead>
       <tbody> 

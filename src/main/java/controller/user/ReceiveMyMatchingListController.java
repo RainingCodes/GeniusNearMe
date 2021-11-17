@@ -34,12 +34,12 @@ public class ReceiveMyMatchingListController implements Controller {
 		List<MyMatchingDTO> myMatchingInfo = null;
     	
     	try {
-    		myMatchingInfo =  manager.ListingMyMatchingByUserId(userId);	// 사용자 정보 검색
+    		myMatchingInfo =  manager.ListingReceiveMyMatchingByUserId(userId);	// 사용자 정보 검색
 		} catch (SQLException e) {	
 	        return "redirect:/member/login/form";
 		}
    		
     	request.setAttribute("list", myMatchingInfo);		// 사용자 정보 저장				
-		return "/member/applyMatchingList.jsp";				// 사용자 보기 화면으로 이동
+		return "/member/receiveMatchingList.jsp";				// 사용자 보기 화면으로 이동
     }
 }
