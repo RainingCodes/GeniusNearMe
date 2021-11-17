@@ -85,13 +85,13 @@ function submitForm() {
 				</a>
 			</td>
 			<td>
-				<a class="btn_game" href="<c:url value='?category=9' />">
+				<a class="btn_game" href="<c:url value='?category=8' />">
 					<img alt="게임" src="img/game.png">
 					<div>게임</div>
 				</a>
 			</td>
 			<td>
-				<a class="btn_beauty">
+				<a class="btn_beauty" href="<c:url value='?category=9' />">
 					<img alt="뷰티" src="img/beauty.png">
 					<div>뷰티</div>
 				</a>
