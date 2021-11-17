@@ -14,10 +14,14 @@ public class CategorySearchController implements Controller{
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		//String[] category = request.getParameterValues("category");
-		String category = request.getParameter("category");
+		String[] category = request.getParameterValues("category");
 		TalentService manager = new TalentServiceImpl();
-		List<TalentDTO> talentList = manager.getTalentByTalentCategory(category);
+		
+		List<TalentDTO> talentList;
+		if(category.length == 1 && category[1].equals("all"))
+			talentList = manager.ListingTalents();
+		else 
+			talentList = manager.getTalentByTalentCategory(category);
 		
 		request.setAttribute("talentList", talentList);
 		
