@@ -95,7 +95,7 @@
 						  </td>
 						  <td>
 						  <script>
-						  	document.write("<input type='text' name='inputPrice" + i++ +"' value='${price.price}'>원" + i);
+						  	document.write("<input type='text' name='inputPrice" + i++ +"' value='${price.price}'>원");
 						  </script>
 						  </td>
 						</tr>
