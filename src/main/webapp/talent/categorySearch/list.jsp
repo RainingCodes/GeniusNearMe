@@ -5,7 +5,7 @@
 <%@ page import="java.util.List"%>
 <%@ page import="java.util.Iterator" %>
 <% request.setCharacterEncoding("UTF-8"); %>
-<%! int i = 1; %>
+<% int j = 1; %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,7 +46,7 @@
 		<c:forEach var="talent" items="${talentList}">
 			<div class="post">
 				<div id="imgSection1">
-					<img id="thumbnail" src="../img/loopy/img<%=i++ %>.jpg" width="120" height="120">
+					<img id="thumbnail" src="../img/loopy/img<%=j++ %>.jpg" width="120" height="120">
 				</div>
 				<p>
 					<a href="<c:url value='/talent/view'>

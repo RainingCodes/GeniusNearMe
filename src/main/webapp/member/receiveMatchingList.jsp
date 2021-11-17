@@ -12,9 +12,9 @@
 <%@ include file="../main/head.jsp"  %>
 <div>   
 	<br>
-	<h4>내가 받은 매칭 리스트</h4>
+	<h4 style="text-align: center;">내가 받은 매칭 리스트</h4>
 	<br>
-	<table border = "1">
+	<table border = "1" align="center">
 	<thead class="thead-inverse">
       	<tr>
 		  <td>매칭 ID</td>
@@ -82,8 +82,10 @@
 		 </c:forEach>
 		</tbody>
 	</table>		  	 
-	<br>   
-	<a href="<c:url value='/member/view' />">목록으로 이동하기</a>    		     
+	<br>
+	<div style="text-align:center;">
+	<a href="<c:url value='/member/view' />">목록으로 이동하기</a>    		     	
+	</div>  
 </div>
 
 </body>

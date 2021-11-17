@@ -14,10 +14,10 @@ function userRemove() {
 <body>
 <%@ include file="../main/head.jsp"  %>
   <br>
-  <table style="width:100%">
+  <table style="width:100%; ">
     <tr>
 	  <td width="20"></td>
-	  <td>
+	  <td align=center>
 	    <table>
 		  <tr>
 			<td class="title">&nbsp;&nbsp;<b>이웃집 똑똑이 멤버 마이페이지</b>&nbsp;&nbsp;</td>

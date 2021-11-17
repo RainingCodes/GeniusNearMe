@@ -38,7 +38,7 @@ function userCreate(targetUri) {
   <table style="width:100%">
 	<tr>
 	  <td width="20"></td>
-	  <td align=center>
+	  <td align="center">
 	  	<b>이웃집 똑똑이 로그인</b><br><br>
 	   	<table>
 	   	  <tr>
