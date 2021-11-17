@@ -14,6 +14,7 @@ import service.MemberServiceImpl;
 
 public class ViewMemberController implements Controller {
 	private static final Logger log = LoggerFactory.getLogger(ViewMemberController.class);
+	
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {			
     	
