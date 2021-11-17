@@ -20,25 +20,13 @@ public class ApplicationMatchingController implements Controller {
 		log.debug("Application Matching - member : {}", applicationId);
 		
 		int talentId = Integer.parseInt(request.getParameter("talentId"));
-		int writerId = Integer.parseInt(request.getParameter("writerId"));
-		
-		if (applicationId == writerId) {
-			System.out.println("멤버 추가 실패");
-            request.setAttribute("registerFailed", true);
-			request.setAttribute("exception", e);
-			request.setAttribute("member", member);
-			
-			String src = "/talent/view?talentId=" +talentId; 
-			System.out.println(src);
-			return src;
-		}
-		
 		MatchingService mService = new MatchingServiceImpl();
-		int result = -1;
 		
+		
+		//talentId, applicationId, matchingState==0 인 값이 있으면 추가 안되게 나중에 수정해야함
 		
 		MatchingDTO mDTO = new MatchingDTO(-1, 0, talentId, -1, applicationId);
-		result = mService.insertMatching(mDTO);
+		int result = mService.insertMatching(mDTO);
 		System.out.println("결과"+result);
 		
 		return "/member/ApplyMatching";		//매칭 신청 화면으로 이동

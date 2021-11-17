@@ -112,7 +112,6 @@ function goToURI(targetUri) {
                 <c:if test="${userId ne talent.writerId}"> 
 				         <a href="<c:url value='/matching/talent'>
                      	   <c:param name='talentId' value='${talent.talentId}'/>
-                     	   <c:param name='writerId' value='${talent.writerId}'/>
                      	   <c:param name='userId' value='${userId}'/>
                 			</c:url>">1:1 매칭 신청하기</a>
        			</c:if>
