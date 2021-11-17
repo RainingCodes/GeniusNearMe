@@ -5,11 +5,7 @@
 <%@ page import="java.util.List"%>
 <%@ page import="java.util.Iterator" %>
 <% request.setCharacterEncoding("UTF-8"); %>
-<%-- <%
-	TalentService talentService = new TalentServiceImpl();
-	MemberService memberService = new MemberServiceImpl();
-	List<TalentDTO> talentList = (List<TalentDTO>)request.getAttribute("talentList");
-%> --%>
+<%! int i = 1; %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -50,10 +46,10 @@
 		<c:forEach var="talent" items="${talentList}">
 			<div class="post">
 				<div id="imgSection1">
-					<img id="thumbnail" src="../img/loopy/img1.jpg" width="120" height="120">
+					<img id="thumbnail" src="../img/loopy/img<%=i++ %>.jpg" width="120" height="120">
 				</div>
 				<p>
-					<a href="<c:url value='view.jsp'>
+					<a href="<c:url value='/talent/view'>
 						<c:param name='talentId' value='${talent.talentId}'/>
 						</c:url>"><strong>${ talent.title }</strong>
 					</a>
@@ -64,21 +60,6 @@
 				<p>${talent.content}</p>
 			</div>
 		</c:forEach>
-			
-		<%-- <div class="post">
-			<div id="imgSection1">
-				<img id="thumbnail1" src="img/loopy/img1.jpg" width="120" height="120">
-			</div>
-			<p>
-				<a href="showTalent.jsp"><strong><% out.print(talent.getTitle()); %></strong></a> <!-- parameter넘기는 코드 필요 -->
-			</p>
-			<p></p>
-			<p></p>
-			<p>
-				<%out.print(talent.getContent()); %>
-			</p>
-		</div>
-		 --%>
 	</div>
 	<br>
 	<!-- <a href="index.jsp">GO BACK</a>  -->
