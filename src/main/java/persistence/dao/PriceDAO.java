@@ -9,5 +9,6 @@ public interface PriceDAO {
 	public int insertPrice(PriceDTO priceDto);
 	public PriceDTO getPriceDTOByIdHead(int talentId, int headCount);//priceDto 반환
 	public int getPriceByIdHead(int talentId, int headCount);//price 반환
+	public int deleteAllPriceById(int talentId);
 
 }
