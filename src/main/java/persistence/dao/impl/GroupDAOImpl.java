@@ -29,7 +29,7 @@ public class GroupDAOImpl implements GroupDAO {
 		// TODO Auto-generated method stub
 		int result = 0;
 		String insertGroupQuery = "INSERT INTO GROUPING (GROUPID, MATCHINGID, TALENTID, REPRESENTATIVEID, HEADCOUNT) "
-				+ "Values (group_seq.nextqal, ?, ?, ?, ?) ";
+				+ "Values (group_seq.nextval, ?, ?, ?, ?) ";
 		
 		Object[] param = new Object[] { group.getMatchingId(), group.getTalentId(), group.getRepresentativeId(), group.getHeadCount()  };
 		jdbcUtil.setSqlAndParameters(insertGroupQuery, param);

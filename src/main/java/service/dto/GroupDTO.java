@@ -6,13 +6,14 @@ public class GroupDTO {
 	private int talentId = -1;
 	private int matchingId = -1;
 	private int headCount = 0;
+	private Integer representativeId = null;
 	public int getMatchingId() {
 		return matchingId;
 	}
 	public void setMatchingId(int matchingId) {
 		this.matchingId = matchingId;
 	}
-	private int representativeId = -1;
+	
 	
 	public int getHeadCount() {
 		return headCount;
@@ -61,13 +62,11 @@ public class GroupDTO {
 	public GroupDTO() {
 		
 	}
-	public GroupDTO(int[] userId, int groupId, int talentId, int representativeId, int headCount) {
+	public GroupDTO(int groupId, int matchingId, int talentId) {
 		super();
-		this.userId = userId;
 		this.groupId = groupId;
+		this.matchingId = matchingId;
 		this.talentId = talentId;
-		this.representativeId = representativeId;
-		this.headCount = headCount;
 	}
 	
 }

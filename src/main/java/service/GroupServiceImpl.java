@@ -4,14 +4,14 @@ import java.util.List;
 
 import persistence.DAOFactory;
 import persistence.dao.GroupDAO;
+import persistence.util.JDBCUtil;
 import service.dto.GroupDTO;
 
 public class GroupServiceImpl implements GroupService {
 	private GroupDAO groupDao = null;
-	
+	private JDBCUtil jdbcUtil = null;
 	public GroupServiceImpl() {
-		DAOFactory factory = new DAOFactory();
-		groupDao = factory.getGroupDAO();
+		jdbcUtil = new JDBCUtil();
 	}
 	
 	@Override
@@ -61,6 +61,7 @@ public class GroupServiceImpl implements GroupService {
 		// TODO Auto-generated method stub
 		return groupDao.getGroupMembers(groupId, talentId);
 	}
+
 
 
 }
