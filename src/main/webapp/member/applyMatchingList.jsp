@@ -1,4 +1,5 @@
-<%@page contentType="text/html; charset=utf-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
@@ -6,6 +7,7 @@
 <title>내가 신청한 매칭 리스트</title>
 </head>
 <body>
+<%@ include file="../main/head.jsp"  %>
 <div>   
 	<br>
 	<h4>내가 신청한 매칭 리스트</h4>
