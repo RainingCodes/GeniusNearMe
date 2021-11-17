@@ -52,13 +52,17 @@ function submitForm() {
 				</a>
 			</td>
 			<td>
-				<a class="btn_exercise" href="<c:url value='/talent/categorySearch'/>?category=excercise">
+				<a class="btn_excercise" href="<c:url value='/talent/categorySearch'>
+											<c:param name='category' value='excercise' />
+										</c:url>">
 					<img alt="운동" src="img/exercise.png">
 					<div>운동</div>
 				</a>
 			</td>
 			<td>
-				<a class="btn_languages" href="<c:url value='/talent/categorySearch' />?category=foreignLanguage">
+				<a class="btn_languages" href="<c:url value='/talent/categorySearch'>
+											<c:param name='category' value='foreignLanguage' />
+										</c:url>">
 					<img alt="외국어" src="img/languages.png">
 					<div>외국어</div>
 				</a>
@@ -66,31 +70,41 @@ function submitForm() {
 		</tr>
 		<tr>
 			<td>
-				<a class="btn_law" href="<c:url value='/talent/categorySearch' />?category=law">
+				<a class="btn_law" href="<c:url value='/talent/categorySearch'>
+											<c:param name='category' value='law' />
+										</c:url>">
 					<img alt="법률" src="img/law.png">
 					<div>법률</div>
 				</a>
 			</td>
 			<td>
-				<a  class="btn_mechanic" href="<c:url value='/talent/categorySearch' />?category=mechanic">
+				<a class="btn_mechanic" href="<c:url value='/talent/categorySearch'>
+											<c:param name='category' value='mechanic' />
+										</c:url>">
 					<img alt="수리" src="img/mechanic.png">
 					<div>수리</div>
 				</a>
 			</td>
 			<td>
-				<a class="btn_art" href="<c:url value='/talent/categorySearch' />?category=art">
+				<a class="btn_art" href="<c:url value='/talent/categorySearch'>
+											<c:param name='category' value='art' />
+										</c:url>">
 					<img alt="예술" src="img/art.png">
 					<div>예술</div>
 				</a>
 			</td>
 			<td>
-				<a class="btn_game" href="<c:url value='/talent/categorySearch' />?category=game">
+				<a class="btn_game" href="<c:url value='/talent/categorySearch'>
+											<c:param name='category' value='game' />
+										</c:url>">
 					<img alt="게임" src="img/game.png">
 					<div>게임</div>
 				</a>
 			</td>
 			<td>
-				<a class="btn_beauty" href="<c:url value='/talent/categorySearch' />?category=beauty">
+				<a class="btn_beauty" href="<c:url value='/talent/categorySearch'>
+											<c:param name='category' value='beauty' />
+										</c:url>">
 					<img alt="뷰티" src="img/beauty.png">
 					<div>뷰티</div>
 				</a>
