@@ -26,7 +26,7 @@ public class CategorySearchController implements Controller{
 		
 		request.setAttribute("talentList", talentList);
 		
-		return "/talent/categorySearchController";
+		return "/talent/categorySearch/list.jsp";
 	}
 	
 }
