@@ -31,7 +31,7 @@ public class GroupDAOImpl implements GroupDAO {
 		String insertGroupQuery = "INSERT INTO GROUPING "
 				+ "Values (group_seq.nextqal, ?, ?, ?, ?) ";
 		
-		Object[] param = new Object[] { ) };
+		Object[] param = new Object[] { group.getMatchingId(), group.getTalentId(), group.getRepresentativeId(), group.getHeadCount()  };
 		jdbcUtil.setSqlAndParameters(insertGroupQuery, param);
 		
 		try {
