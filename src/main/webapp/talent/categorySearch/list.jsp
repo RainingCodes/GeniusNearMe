@@ -50,7 +50,7 @@
 		<c:forEach var="talent" items="${talentList}">
 			<div class="post">
 				<div id="imgSection1">
-					<img id="thumbnail" src="img/loopy/img1.jpg" width="120" height="120">
+					<img id="thumbnail" src="../img/loopy/img1.jpg" width="120" height="120">
 				</div>
 				<p>
 					<a href="<c:url value='showTalent.jsp'>
