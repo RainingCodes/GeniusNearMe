@@ -52,7 +52,11 @@ public class TalentDAOImpl implements TalentDAO  {
 	}
 	
 	public List<TalentDTO> getTalentListByCategory(String[] category) {
-		String getByCategoryQuery = query + "FROM TALENT WHERE TALENTCNAME = ? ";
+		String getByCategoryQuery = query + "FROM TALENT WHERE ";
+		for(int i = 0; i < category.length - 1; i++) 
+			query += "TALENTCNAME=? OR ";
+		query += "TALENTCNAME=?";
+		
 		
 		Object[] param = new Object[] { category };
 		

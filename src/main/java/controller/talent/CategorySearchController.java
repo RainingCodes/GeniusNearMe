@@ -14,7 +14,8 @@ public class CategorySearchController implements Controller{
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String[] category = request.getParameterValues("category");
+		//String[] category = request.getParameterValues("category");
+		String category = request.getParameter("category");
 		TalentService manager = new TalentServiceImpl();
 		List<TalentDTO> talentList = manager.getTalentByTalentCategory(category);
 		
