@@ -99,7 +99,7 @@ function goToURI(targetUri) {
 
                 <td rowspan="3">
                 <br/>
-               	 작성자: ${talent.writerId}
+               	 작성자: ${nickName}
                 <br/>
                     <!-- <button type="button" onclick="쪽지">쪽지보내기</button> -->
                 </td>

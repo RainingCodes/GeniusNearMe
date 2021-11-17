@@ -73,10 +73,10 @@
                         <select name="category" size="4" multiple>
                         	<option value="it">IT</option>
                         	<option value="cook">요리</option>
-                        	<option value="exer">운동</option>
-                        	<option value="fore">외국어</option>
+                        	<option value="sports">운동</option>
+                        	<option value="foreignLanguage">외국어</option>
                         	<option value="law">법률</option>
-                        	<option value="mech">수리</option>
+                        	<option value="mechanic">수리</option>
                         	<option value="art">예술</option>
                         	<option value="game">게임</option>
                             <option value="beauty" selected>뷰티</option>

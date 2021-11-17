@@ -13,6 +13,7 @@ public class JDBCUtil {
 	private PreparedStatement pstmt = null;
 	private CallableStatement cstmt = null;
 	private ResultSet rs = null;
+	private String[] queries = null;
 
 	public JDBCUtil() {
 		initJDBCUtil();
@@ -240,4 +241,5 @@ public class JDBCUtil {
 		System.out.println("NumActive: " + bds.getNumActive());
 		System.out.println("NumIdle: " + bds.getNumIdle());
 	}
+	
 }

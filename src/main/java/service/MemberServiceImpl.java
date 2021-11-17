@@ -79,6 +79,10 @@ public class MemberServiceImpl implements MemberService {
 		String email = dao.getEmailByUserId(userId);
 		return email;
 	}
+	public String getNicknameByUserId(int userId) {
+		String nickName = dao.getNicknameByUserId(userId);
+		return nickName;
+	}
 	
 	public List<MyMatchingDTO> ListingApplyMyMatchingByUserId(int userId) throws SQLException {
 		return matchingDao.getApplyMyMatchingListByUserId(userId);
