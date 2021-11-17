@@ -30,7 +30,7 @@ function goHome() {
 			<button type="button" class="btn_talent_test">관심 재능 검사<img alt="돋보기" src="/img/search.png" class="search_icon"></button>
 		</td> 
 		<td class="logo" align="center">
-			<a href="c:url value="/">
+			<a href="<c:url value='/' />">
 				<img alt="로고" src="<c:url value='/img/logo.png' />" class="logo">
 			</a>
 		</td>

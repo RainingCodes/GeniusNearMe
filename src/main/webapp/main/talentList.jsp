@@ -35,66 +35,66 @@ function submitForm() {
 	<table class="talentList">
 		<tr>
 			<td>
-				<button type="button" class="btn_all">
+				<a class="btn_all" href="<c:url value='?category=0' />">
 					<img alt="모든 재능" src="img/talent.png">
 					<div>모든 재능</div>
-				</button>
+				</a>
 			</td>
 			<td>
-				<button type="button" class="btn_IT">
+				<a class="btn_IT" href="<c:url value='?category=1' />">
 					<img alt="IT" src="img/it.png">
 					<div>IT</div>
-				</button>
+				</a>
 			</td>
 			<td>
-				<button type="button" class="btn_cooking">
+				<a class="btn_cooking" href="<c:url value='?category=2' />">
 					<img alt="요리" src="img/cooking.png">
 					<div>요리</div>
-				</button>
+				</a>
 			</td>
 			<td>
-				<button type="button" class="btn_exercise">
+				<a class="btn_exercise" href="<c:url value='?category=3' />">
 					<img alt="운동" src="img/exercise.png">
 					<div>운동</div>
-				</button>
+				</a>
 			</td>
 			<td>
-				<button type="button" class="btn_languages">
+				<a class="btn_languages" href="<c:url value='?category=4' />">
 					<img alt="외국어" src="img/languages.png">
 					<div>외국어</div>
-				</button>
+				</a>
 			</td>
 		</tr>
 		<tr>
 			<td>
-				<button type="button" class="btn_law">
+				<a class="btn_law" href="<c:url value='?category=5' />">
 					<img alt="법률" src="img/law.png">
 					<div>법률</div>
-				</button>
+				</a>
 			</td>
 			<td>
-				<button type="button" class="btn_mechanic">
+				<a  class="btn_mechanic" href="<c:url value='?category=6' />">
 					<img alt="수리" src="img/mechanic.png">
 					<div>수리</div>
-				</button>
+				</a>
 			</td>
 			<td>
-				<button type="button" class="btn_art">
+				<a class="btn_art" href="<c:url value='?category=7' />">
 					<img alt="예술" src="img/art.png">
 					<div>예술</div>
-				</button>
+				</a>
 			</td>
 			<td>
-				<button type="button" class="btn_game">
+				<a class="btn_game" href="<c:url value='?category=9' />">
 					<img alt="게임" src="img/game.png">
 					<div>게임</div>
-				</button>
+				</a>
 			</td>
 			<td>
-				<button type="button" class="btn_beauty">
+				<a class="btn_beauty">
 					<img alt="뷰티" src="img/beauty.png">
 					<div>뷰티</div>
-				</button>
+				</a>
 			</td>
 		</tr>
 	</table>
