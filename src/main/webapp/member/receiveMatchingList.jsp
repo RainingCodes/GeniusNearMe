@@ -19,12 +19,14 @@
       	<tr>
 		  <td>매칭 ID</td>
 		  <td>재능 제목</td>
+		  <td>매칭 신청자</td>
 		  <td>재능 상태</td>
 		  <td>매칭 결정하기</td>
 		</tr>
       </thead>
       <tbody> 
-		<c:forEach var="li" items="${list}">  			  	
+		<c:forEach var="li" items="${list}" varStatus="status">
+		
 	  	    <tr>
 			  <td>
 			  	<c:out value="${li.matchingId}"/>     
@@ -34,6 +36,9 @@
 						   <c:param name='talentId' value='${li.talentId}'/>
 				 		 </c:url>">		
 				${li.talentTitle}</a>
+			  </td>
+			  <td>
+			  	${nickList[status.index]}
 			  </td>
 			  <td>
 				<c:set var="state" value="${li.matchingState}" />

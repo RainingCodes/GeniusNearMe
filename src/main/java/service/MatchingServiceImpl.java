@@ -19,11 +19,11 @@ public class MatchingServiceImpl implements MatchingService{
 	public MatchingDTO Matching(int matchingId) {
 		return dao.getMatchingByMatchingId(matchingId);
 	}
-	public int decideMatching(MatchingDTO matchingDto) {
-		return dao.decideMatching(matchingDto);
+	public int decideMatching(int matchingId) {
+		return dao.decideMatching(matchingId);
 	}
-	public int denyMatching(MatchingDTO matchingDto) {
-		return dao.denyMatching(matchingDto);
+	public int denyMatching(int matchingId) {
+		return dao.denyMatching(matchingId);
 	}
 	public int insertMatching(MatchingDTO matchingDto) {
 		return dao.insertMatching(matchingDto);

@@ -11,10 +11,10 @@ public interface MatchingDAO {
 	
 
 	//수락
-	public int decideMatching(MatchingDTO matchingDto);
+	public int decideMatching(int matchingId);
 	
 	//거절
-	public int denyMatching(MatchingDTO matchingDto);
+	public int denyMatching(int matchingId);
 
 	
 	//매칭 정보 insert

@@ -79,11 +79,10 @@ public class MatchingDAOImpl implements MatchingDAO {
 			}return null;			
 		}
 		
-		//��Ī ���� matching State�� ����(1)
-		public int decideMatching(MatchingDTO matchingDto) {
+		public int decideMatching(int matchingId) {
 			String updateQuery = "UPDATE MATCHING SET MATCHINGSTATE = 1 WHERE MATCHINGID = ? ";
 		
-			Object[] param = new Object[] { matchingDto.getMatchingId() };
+			Object[] param = new Object[] { matchingId };
 			jdbcUtil.setSql(updateQuery);
 			jdbcUtil.setParameters(param);
 			int result = 0;
@@ -91,18 +90,20 @@ public class MatchingDAOImpl implements MatchingDAO {
 			try {
 				result = jdbcUtil.executeUpdate();
 			}catch(Exception ex) {
+				jdbcUtil.rollback();
 				ex.printStackTrace();
 			}finally {
+				jdbcUtil.commit();
 				jdbcUtil.close();
 			}
 			return result;			
 		}
 		
-		//��Ī ���� �� ����. �� matchingState�� 2
-		public int denyMatching(MatchingDTO matchingDto) {
+	
+		public int denyMatching(int matchingId) {
 			String updateQuery = "UPDATE MATCHING SET MATCHINGSTATE = 2 WHERE MATCHINGID = ? ";
 			
-			Object[] param = new Object[] { matchingDto.getMatchingId() };
+			Object[] param = new Object[] { matchingId };
 			jdbcUtil.setSql(updateQuery);
 			jdbcUtil.setParameters(param);
 			int result = 0;
@@ -110,8 +111,10 @@ public class MatchingDAOImpl implements MatchingDAO {
 			try {
 				result = jdbcUtil.executeUpdate();
 			}catch(Exception ex) {
+				jdbcUtil.rollback();
 				ex.printStackTrace();
 			}finally {
+				jdbcUtil.commit();
 				jdbcUtil.close();
 			}
 			return result;	
@@ -134,8 +137,10 @@ public class MatchingDAOImpl implements MatchingDAO {
 				
 				result = jdbcUtil.executeUpdate();
 			}catch(Exception ex) {
+				jdbcUtil.rollback();
 				ex.printStackTrace();
 			}finally {
+				jdbcUtil.commit();
 				jdbcUtil.close();
 			}
 			return result;	
@@ -153,6 +158,7 @@ public class MatchingDAOImpl implements MatchingDAO {
 			}catch(Exception ex) {
 				ex.printStackTrace();
 			}finally {
+				jdbcUtil.commit();
 				jdbcUtil.close();
 			}
 			

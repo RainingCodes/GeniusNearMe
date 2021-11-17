@@ -77,4 +77,26 @@ public class MyMatchingDAOImpl implements MyMatchingDAO {
 			jdbcUtil.close();
 		}return null;
 	}
+	
+	public int getUserIdByMatchingId(int matchingId) {
+		String searchQuery = "SELECT USERID FROM MATCHING WHERE MATCHINGID = ? ";
+		jdbcUtil.setSql(searchQuery);
+		Object[] param = new Object[] { matchingId };
+		jdbcUtil.setParameters(param);
+
+		try {
+			ResultSet rs = jdbcUtil.executeQuery();
+			int userId = -1;
+
+			if (rs.next()) {
+				userId = rs.getInt("USERID");
+			}
+			return userId;
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.close();
+		}
+		return -1;
+	}
 }

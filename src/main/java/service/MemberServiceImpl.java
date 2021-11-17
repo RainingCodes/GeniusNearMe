@@ -91,4 +91,8 @@ public class MemberServiceImpl implements MemberService {
 	public List<MyMatchingDTO> ListingReceiveMyMatchingByUserId(int userId) throws SQLException {
 		return matchingDao.getReceiveMyMatchingListByUserId(userId);
 	}
+	
+	public int getUserIdByMatchingId(int matchingId) throws SQLException {
+		return matchingDao.getUserIdByMatchingId(matchingId);
+	}
 }

@@ -1,6 +1,7 @@
 package controller.user;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -32,14 +33,30 @@ public class ReceiveMyMatchingListController implements Controller {
 		
 		int userId = manager.getuserIdByEmail(email);
 		List<MyMatchingDTO> myMatchingInfo = null;
+		List<String> userNicekname = null;
     	
     	try {
     		myMatchingInfo =  manager.ListingReceiveMyMatchingByUserId(userId);	// 사용자 정보 검색
+    		userNicekname = new ArrayList<String>();
+    		
+    		for (int i = 0; i < myMatchingInfo.size(); i++) {
+    			int mId = myMatchingInfo.get(i).getMatchingId();
+    			
+    			
+    			//매칭 아이디 통해서 userId 구해오고, userNickname 구해오기 (와 진짜 미친 조인)
+    			int mUserId = manager.getUserIdByMatchingId(mId);
+    			String nickname = manager.getNicknameByUserId(mUserId);
+    			
+    			userNicekname.add(nickname);
+    		}
+    		
 		} catch (SQLException e) {	
 	        return "redirect:/member/login/form";
 		}
-   		
-    	request.setAttribute("list", myMatchingInfo);		// 사용자 정보 저장				
+    	
+    	
+    	request.setAttribute("list", myMatchingInfo);		// 사용자 정보 저장	
+    	request.setAttribute("nickList", userNicekname);
 		return "/member/receiveMatchingList.jsp";				// 사용자 보기 화면으로 이동
     }
 }
