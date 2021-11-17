@@ -30,6 +30,7 @@ function userCreate(targetUri) {
 <body>
 <br>
 <!-- login form  -->
+<%@ include file="../main/head.jsp"  %>
 <form name="form" method="POST" action="<c:url value='/member/login' />">
   <table style="width:100%">
 	<tr>
