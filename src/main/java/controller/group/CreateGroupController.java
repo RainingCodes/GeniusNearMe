@@ -20,14 +20,14 @@ public class CreateGroupController implements Controller {
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
 		int talentId = Integer.parseInt(request.getParameter("talentId"));
-		GroupService groupService = new GroupServiceImpl();
-		MatchingDTO matching = new MatchingDTO();
-		GroupDTO group = new GroupDTO();
+		//MatchingDTO matching = new MatchingDTO(); id 필요함
+		int matchingId = -1;
+		GroupDTO group = new GroupDTO(matchingId, talentId);
 		log.debug("Create group : {}", group);
 		
 		GroupService manager = new GroupServiceImpl();
 		
-		manager.insertGroup(group, talent.getTalentId());
+		manager.insertGroup(group);
 	    return "redirect:/talent/group/list";	
 	}
 

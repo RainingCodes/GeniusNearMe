@@ -62,9 +62,8 @@ public class GroupDTO {
 	public GroupDTO() {
 		
 	}
-	public GroupDTO(int groupId, int matchingId, int talentId) {
+	public GroupDTO(int matchingId, int talentId) {
 		super();
-		this.groupId = groupId;
 		this.matchingId = matchingId;
 		this.talentId = talentId;
 	}
