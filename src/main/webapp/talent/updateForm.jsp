@@ -10,8 +10,7 @@
        <script>
       
         function talentUpdate(){
-
-        	if(from.content.value ==""){
+        	if(form.content.value ==""){
         		alert("설명을 입력하십시오.");
         		form.content.focus();
         		return false;
@@ -35,7 +34,7 @@
         </style>
     </head>
     <body>
-    <!-- talent update from -->
+    <!-- talent update form -->
     <%@ include file="../main/head.jsp"  %>
      <input type="hidden" name="talentId" value="${talent.talentId}"/>	  
        <form name = "form" method="POST" action="<c:url value='/talent/update' />">

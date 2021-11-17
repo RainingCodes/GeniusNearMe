@@ -66,6 +66,7 @@ public class UpdateTalentController implements Controller {
 					new IllegalStateException("타인의 정보는 수정할 수 없습니다."));            
 			return "/talent/view.jsp";	// 사용자 보기 화면으로 이동 (forwarding)
 	    }	
+		System.out.println("이제 시작");
     	
 		//post
 		Date start = format1.parse(request.getParameter("startDate"));
