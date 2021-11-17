@@ -78,6 +78,9 @@
 						</c:choose>
                     <br/>
                    </td>
+                   <script>
+						var i = 0;
+					</script>
                    <td>
                        <h5>가격 </h5>
                        	<table class="priceTable" border="1">
@@ -91,7 +94,9 @@
 						  	</c:choose>
 						  </td>
 						  <td>
-						  	<input type="text" name="inputPrice" value="${price.price}">원
+						  <script>
+						  	document.write("<input type='text' name='inputPrice" + i++ +"' value='${price.price}'>원" + i);
+						  </script>
 						  </td>
 						</tr>
 					 </c:forEach>
