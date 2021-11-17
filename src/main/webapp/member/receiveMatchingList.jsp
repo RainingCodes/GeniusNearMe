@@ -7,17 +7,6 @@
 <title>내가 받은 매칭 리스트</title>
 </head>
 <script>
-function matching() {
-	var url = "/matching/choose";
-	var name = "talent test"
-	var option = "width = 500, height = 500, top = 100, left = 200, location = no"
-	window.open(url, name, option);
-	form.submit();
-}
-function submitForm() {
-	   form.submit();
-	   alert("실행");
-}
 </script>
 <body>
 <%@ include file="../main/head.jsp"  %>
@@ -63,17 +52,17 @@ function submitForm() {
 			  <td>
 				<c:choose>
 				  	<c:when test="${state eq '0'}">
-				  		<form name="form" method="POST" action="<c:url value='/matching/choose' />">
+				  		<form name="form1" method="POST" action="<c:url value='/matching/choose' />">
 				  			<input type="hidden" name="matchingId" value="${li.matchingId}">
 				  			<input type="hidden" name="talentId" value="${li.talentId}">
 				  			<input type="hidden" name="state" value="decideMatching">
-				  			<input type="button" onClick="submitForm()" value="매칭 수락">
+				  			<button type="submit">매칭 수락</button>
 				  		</form>
-				  		<form name="form" method="POST" action="<c:url value='/matching/choose' />">
+				  		<form name="form2" method="POST" action="<c:url value='/matching/choose' />">
 				  			<input type="hidden" name="matchingId" value="${li.matchingId}">
 				  			<input type="hidden" name="talentId" value="${li.talentId}">
 				  			<input type="hidden" name="state" value="denyMatching">
-				  			<input type="button" onClick="submitForm()" value="매칭 거절">
+				  			<button type="submit">매칭 거절</button>
 				  		</form>
 				    </c:when>
 				    <c:when test="${state eq '1'}">
