@@ -13,9 +13,8 @@ function matching() {
 	window.open(url, name, option);
 	form.submit();
 }
-function gotoUri(targetUri) {
-	form.action = targetUri;
-	form.submit();
+function submitForm() {
+	   form.submit();
 }
 </script>
 <body>
@@ -62,9 +61,9 @@ function gotoUri(targetUri) {
 				<c:choose>
 				  	<c:when test="${state eq '0'}">
 				  		<form name="form" method="POST" action="<c:url value='/matching/choose' />">
-				  			<input type="hidden" name="matchingId" value="${li.matchingId}"/>
-				  			<input type="hidden" name="talentId" value="${li.talentId}"/>
-				  			<button type="button" onclick="gotoUri()">매칭</button>
+				  			<input type="hidden" name="matchingId" value="${li.matchingId}">
+				  			<input type="hidden" name="talentId" value="${li.talentId}">
+				  			<input type="button" onClick="submitForm()" value="매칭ㅇ">
 				  		</form>
 				    </c:when>
 				    <c:when test="${state eq '1'}">
