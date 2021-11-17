@@ -66,7 +66,37 @@
                <tr>
                    <td>
                         <h5>카테고리</h5>
-                        <p>${talent.talentCName }
+                        <c:set var="category" value="${talent.talentCategoryName}" />
+						<c:choose>
+						  	<c:when test="${category eq 'foreignLanguage'}">
+						  		외국어
+						    </c:when>
+						    <c:when test="${category eq 'sports'}">
+						  		운동
+						    </c:when>
+						    <c:when test="${category eq 'game'}">
+						  		게임
+						    </c:when>
+						    <c:when test="${category eq 'law'}">
+						  		법률
+						    </c:when>
+						    <c:when test="${category eq 'cook'}">
+						  		요리
+						    </c:when>
+						    <c:when test="${category eq 'mechanic'}">
+						  		수리
+						    </c:when>
+						    <c:when test="${category eq 'art'}">
+						  		예술
+						    </c:when>
+						    <c:when test="${category eq 'beauty'}">
+						  		뷰티
+						    </c:when>
+						    <c:when test="${category eq 'it'}">
+						  		IT
+						    </c:when>
+						</c:choose>
+                    <br/>
                    </td>
                    <td>
                        <h5>가격 </h5>
@@ -93,11 +123,13 @@
                     <h5>모집 시작일</h5>
                     <input type="date" name="startDate" value="${talent.startDate }">
                     <h5>모집 마감일</h5>
-                    <input type="date" name="deadline" value="${talent.deadline }" >
+                    <input type="date" name="deadline" value="${talent.deadLine }" >
+                    <h5>작성일</h5>
+                    ${talent.writtenDate}
                    </td>
                    <td>
                         <h5>세부 설명 및 주의사항</h5>
-                        <textarea rows="10" cols="50" name="content"></textarea>
+                        <textarea rows="10" cols="50" name="content" value="${talent.content }"></textarea>
                    </td>
                </tr>
            </table>
