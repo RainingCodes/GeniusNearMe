@@ -1,22 +1,26 @@
 package persistence.dao;
-//¸ÅÄª Á¤º¸ DAO
+
 import java.util.List;
 import service.dto.MatchingDTO;
 public interface MatchingDAO {
-	//¸ÅÂ¡ ¸®½ºÆ® ¹İÈ¯  userId¿¡ µû¸¥
 	
+	//userIdë¡œ ë§¤ì¹­DTO return
 	public List<MatchingDTO> getMatchingListByUserId(int userId);
-	//¸ÅÄª»ó¼¼ º¸±â
+	//ë§¤ì¹­DTO í•˜ë‚˜ return
 	public MatchingDTO getMatchingByMatchingId(int matchingId);
-	//¸ÅÄª °áÁ¤
+	
+
+	//ìˆ˜ë½
 	public int decideMatching(MatchingDTO matchingDto);
 	
-	//¸ÅÄª°ÅÀı
+	//ê±°ì ˆ
 	public int denyMatching(MatchingDTO matchingDto);
+
 	
-	//¸ÅÄª apply
+	//ë§¤ì¹­ ì •ë³´ insert
 	public int insertMatching(MatchingDTO matchingDto);
-	
-	//¸ÅÄª »èÁ¦
+
+	//ë§¤ì¹­ ì •ë³´ delete By matchingId
 	public int deleteMatching(int matchindId);
+
 }

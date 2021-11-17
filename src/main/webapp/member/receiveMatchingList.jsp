@@ -5,6 +5,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>내가 받은 매칭 리스트</title>
 </head>
+<script>
+function matching() {
+	var url = "talentTest.jsp";
+	var name = "talent test"
+	var option = "width = 500, height = 500, top = 100, left = 200, location = no"
+	window.open(url, name, option);
+	form.submit();
+}
+</script>
 <body>
 <div>   
 	<br>
@@ -46,7 +55,21 @@
 				</c:choose>
 			  </td>
 			  <td>
-				matchingDecide 구현 후 작성
+				<c:choose>
+				  	<c:when test="${state eq '0'}">
+				  		<form action="/matching/choose" method="post">
+				  			<input type="hidden" name="matchingId" value="${li.matchingId}"/>
+				  			<input type="hidden" name="talentId" value="${li.talentId}"/>
+				  			<button type="button" onclick="matching()">매칭</button>
+				  		</form>
+				    </c:when>
+				    <c:when test="${state eq '1'}">
+				  		매칭 성공
+				    </c:when>
+				    <c:when test="${state eq '2'}">
+				  		매칭 거절
+				    </c:when>
+				</c:choose>
 			  </td>
 			</tr>
 		 </c:forEach>
