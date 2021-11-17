@@ -238,7 +238,7 @@ public class TalentDAOImpl implements TalentDAO  {
 	
 
 	public int updateTalent(TalentDTO t) {
-		
+		int result = -1;
 		String updateQuery = "UPDATE TALENT SET ";
 		int index = 0;
 		Object[] tempParam = new Object[10];		// update 문에 사용할 매개변수를 저장할 수 있는 임시 배열
@@ -294,9 +294,12 @@ public class TalentDAOImpl implements TalentDAO  {
 		jdbcUtil.setParameters(newParam);		// JDBCUtil 에 매개변수 설정
 		
 		try {
-			int result = jdbcUtil.executeUpdate();		// update 문 실행
+			result = jdbcUtil.executeUpdate();		// update 문 실행
 			return result;			// update 에 의해 반영된 레코드 수 반환
-		} catch (Exception ex) {
+		} catch (SQLException ex) {
+			System.out.println("입력오류 발생!!!");
+			ex.printStackTrace();
+		}catch (Exception ex) {
 			jdbcUtil.rollback();
 			ex.printStackTrace();
 		}
@@ -304,7 +307,7 @@ public class TalentDAOImpl implements TalentDAO  {
 			jdbcUtil.commit();
 			jdbcUtil.close();		// ResultSet, PreparedStatement, Connection 반환
 		}		
-		return 0;
+		return result;
 	}
 	
 	public int deleteTalent(int talentId) {

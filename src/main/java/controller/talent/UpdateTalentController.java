@@ -29,18 +29,20 @@ public class UpdateTalentController implements Controller {
 	
 	 SimpleDateFormat format1 = new SimpleDateFormat ("yyyy-MM-dd");
 	 long miliseconds = System.currentTimeMillis();
-
 	
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {	
 		Date writtenDate = null;
 		int postType = -1;
 		int matchingCounts = -1;
 		String category = null;
-		int talentid = -1;
+		int talentId = -1;
+		int userId = -1;
+		
 		if (request.getMethod().equals("GET")) {	
     		// GET request: 회원정보 수정 form 요청	
-    		int talentId = Integer.parseInt(request.getParameter("talentId"));
-    		int userId = Integer.parseInt(request.getParameter("userId"));
+    		talentId = Integer.parseInt(request.getParameter("talentId"));
+    		userId = Integer.parseInt(request.getParameter("userId"));
+    		request.setAttribute("talentId", talentId);
     		
     		MemberService member = new MemberServiceImpl();
     		String email = member.getEmailByUserId(userId);
@@ -50,11 +52,6 @@ public class UpdateTalentController implements Controller {
     		TalentService talentService = new TalentServiceImpl();
     		TalentDTO talent = talentService.findTalent(talentId);
 			request.setAttribute("talent", talent);			
-			writtenDate = talent.getWrittenDate();
-			postType = talent.getPostType();
-			matchingCounts = talent.getMatchingCounts();
-			category = talent.getTalentCategoryName();
-			talentid = talent.getTalentId();
 
 			HttpSession session = request.getSession();
 			if (UserSessionUtils.isLoginUser(email, session) ||
@@ -74,8 +71,16 @@ public class UpdateTalentController implements Controller {
 					new IllegalStateException("타인의 정보는 수정할 수 없습니다."));            
 			return "/talent/view.jsp";	// 사용자 보기 화면으로 이동 (forwarding)
 	    }	
-		
 		//post
+		talentId = Integer.parseInt(request.getParameter("talentId"));
+		TalentService talentService = new TalentServiceImpl();
+		TalentDTO talent = talentService.findTalent(talentId);
+		
+		writtenDate = talent.getWrittenDate();
+		postType = talent.getPostType();
+		matchingCounts = talent.getMatchingCounts();
+		category = talent.getTalentCategoryName();
+
 		Date start = format1.parse(request.getParameter("startDate"));
 		Date deadline = format1.parse(request.getParameter("deadline"));
 		System.out.println(start);
@@ -83,12 +88,16 @@ public class UpdateTalentController implements Controller {
 		
 		HttpSession session = request.getSession();    	
 		String email = UserSessionUtils.getLoginUserId(session);
+	
+		System.out.println(category);
+		System.out.println(postType);
 		
 		MemberService mem = new MemberServiceImpl();
-		int userId = mem.getuserIdByEmail(email);
+		userId = mem.getuserIdByEmail(email);
 		System.out.println("이제 시작");
+		System.out.println(userId);
 		TalentDTO dto = new TalentDTO(
-				talentid,
+				talentId,
 				request.getParameter("title"),
 				request.getParameter("content"),
 				start,
@@ -105,28 +114,27 @@ public class UpdateTalentController implements Controller {
 		
 //		try {
 			System.out.println("재능 수정");
-			TalentService talentService = new TalentServiceImpl();
+			
 			System.out.println("here");
-			int talentId = talentService.updateTalent(dto);
-			System.out.println(talentId+ "완료");
+			int result = talentService.updateTalent(dto);
+			System.out.println(result+ "완료");
 			
 			
 			PriceService priceService = new PriceServiceImpl();
-			PriceDTO dto1 = new PriceDTO(talentId, 1, Integer.parseInt(request.getParameter("price")));
-			int result = priceService.insertPrice(dto1);
-			
-			System.out.println(result);
-			System.out.println("student값: "+request.getParameter("student"));
-			int num = Integer.parseInt(request.getParameter("student"));
-			for(int i = 1; i <= num; i++) {
-				PriceDTO dto2 = new PriceDTO(
-						talentId,
-						Integer.parseInt(request.getParameter("num"+i)),
-						Integer.parseInt(request.getParameter("price"+i))
-						);
-				result = priceService.insertPrice(dto2);
-				System.out.println(result);
-			}
+//			PriceDTO dto1 = new PriceDTO(talentId, 1, Integer.parseInt(request.getParameter("price")));
+//			result = priceService.insertPrice(dto1);
+//			
+//			System.out.println(result);
+//			int num = Integer.parseInt(request.getParameter("student"));
+//			for(int i = 1; i <= num; i++) {
+//				PriceDTO dto2 = new PriceDTO(
+//						talentId,
+//						Integer.parseInt(request.getParameter("num"+i)),
+//						Integer.parseInt(request.getParameter("price"+i))
+//						);
+//				result = priceService.insertPrice(dto2);
+//				System.out.println(result);
+//			}
 		
 			request.setAttribute("talentId", talentId);
 			String src = "/talent/view?talentId=" +talentId; 

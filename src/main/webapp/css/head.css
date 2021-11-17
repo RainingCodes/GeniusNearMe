@@ -1,6 +1,7 @@
 .head_table {
-		width : 100%;
+		width : 50%;
 		border : none;
+		margin: auto;
 	}
 	img {
 		width: 170px;
@@ -36,6 +37,6 @@
 		background-color : transparent;
 		border : none;
 	}
-	.search {
+	.search, .login {
 		text-align : center;
 	}
