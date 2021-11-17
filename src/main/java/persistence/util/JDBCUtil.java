@@ -176,7 +176,22 @@ public class JDBCUtil {
 		}
 
 	public void close() {
-		closeResultSetNPreparedStatment();
+		if (rs != null) {
+			try {
+				rs.close();
+				rs = null;
+			} catch (SQLException ex) {
+				ex.printStackTrace();
+			}
+		}
+		if (pstmt != null) {
+			try {
+				pstmt.close();
+				pstmt = null;
+			} catch (SQLException ex) {
+				ex.printStackTrace();
+			}
+		}
 		if (cstmt != null) {
 			try {
 				cstmt.close();
@@ -227,22 +242,4 @@ public class JDBCUtil {
 		System.out.println("NumIdle: " + bds.getNumIdle());
 	}
 	
-	public void closeResultSetNPreparedStatment() {
-		if (rs != null) {
-			try {
-				rs.close();
-				rs = null;
-			} catch (SQLException ex) {
-				ex.printStackTrace();
-			}
-		}
-		if (pstmt != null) {
-			try {
-				pstmt.close();
-				pstmt = null;
-			} catch (SQLException ex) {
-				ex.printStackTrace();
-			}
-		}
-	}
 }

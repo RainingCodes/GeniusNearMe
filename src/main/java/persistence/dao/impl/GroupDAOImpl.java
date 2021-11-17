@@ -103,11 +103,11 @@ public class GroupDAOImpl implements GroupDAO {
 
 
 	@Override
-	public int setRepresentative(GroupDTO group, int userId) {
+	public int setRepresentative(int groupId, int talentId, int userId) {
 		// TODO Auto-generated method stub
 		int result = 0;
-		String setRepreQuery = "UPDATE GROUPING SET REPRESENTATIVEID=? WHERE GROUPID=? ";
-		Object[] param = new Object[] { userId, group.getGroupId() };
+		String setRepreQuery = "UPDATE GROUPING SET REPRESENTATIVEID=? WHERE GROUPID=? AND TALENTID=?";
+		Object[] param = new Object[] { userId, groupId, talentId };
 		jdbcUtil.setSqlAndParameters(setRepreQuery, param);
 		try {
 			result = jdbcUtil.executeUpdate();
@@ -137,10 +137,8 @@ public class GroupDAOImpl implements GroupDAO {
 				dto.setGroupId(rs.getInt("GROUP_ID"));
 				dto.setTalentId(talentId);
 				dto.setRepresentativeId(rs.getInt("REPRESENTATIVE_ID"));
-				dto.setMembersCount(rs.getInt("MEMBERS_COUNT"));
-				dto.setMaximum(rs.getInt("MAXIMUM"));
+				dto.setHeadCount(rs.getInt("HEAD_COUNT"));
 				dto.setUserId(getGroupMembers(dto.getGroupId(), talentId));
-
 				list.add(dto);
 			}
 		} catch (SQLException e) {
@@ -153,7 +151,7 @@ public class GroupDAOImpl implements GroupDAO {
 	}
 
 	@Override
-	public int deleteGroupMember(GroupDTO group, int userId) {
+	public int deleteGroupMember(int groupId, int talentId, int userId) {
 		// TODO Auto-generated method stub
 		int result = 0;
 		String deleteMemQuery = "DELETE FROM GROUPMEMBERS WHERE USERID=? ";
@@ -170,7 +168,7 @@ public class GroupDAOImpl implements GroupDAO {
 		}
 		jdbcUtil.close();
 		if(result > 0) {
-			jdbcUtil = new JDBCUtil();
+			GroupDTO group = getGroup(groupId, talentId);
 			group.setCountMembers(group.getCountMembers() - 1);
 			String updateMembersQuery = "UPDATE GROUP SET MEMBERSCOUNT=? WHERE GROUPID=? ";
 			param = new Object[] { group.getCountMembers(), group.getGroupId() };
@@ -192,12 +190,11 @@ public class GroupDAOImpl implements GroupDAO {
 	}
 
 	@Override
-	public int deleteGroup(GroupDTO group) {
-		// TODO Auto-generated method stub
+	public int deleteGroup(int groupId) {
 		int result = 0;
-		String deleteGroupQuery = "DELETE FROM GROUPING WHERE GROUPID=? ";
-		Object[] param = new Object[] { group.getGroupId() };
-		jdbcUtil.setSqlAndParameters(deleteGroupQuery, param);
+		String deleteGroupMembersQuery = "DELETE FROM GROUPMEMBERS WHERE GROUPID=? ";
+		Object[] param = new Object[] { groupId };
+		jdbcUtil.setSqlAndParameters(deleteGroupMembersQuery, param);
 		try {
 			result = jdbcUtil.executeUpdate();
 		} catch (SQLException e) {
@@ -208,6 +205,21 @@ public class GroupDAOImpl implements GroupDAO {
 			e.printStackTrace();
 		}
 		jdbcUtil.close();
+		if(result > 0) {
+			String deleteGroupQuery = "DELETE FROM GROUPING WHERE GROUPID=? ";
+			param = new Object[] { groupId };
+			jdbcUtil.setSqlAndParameters(deleteGroupMembersQuery, param);
+			try {
+				result = jdbcUtil.executeUpdate();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			jdbcUtil.close();
+		}
 		return result;
 	}
 
@@ -240,11 +252,11 @@ public class GroupDAOImpl implements GroupDAO {
 		try {
 			if(rs.next()) {
 				GroupDTO group = new GroupDTO();
-				group.setGroupId(rs.getInt("GROUP_ID"));
-				group.setMaximum(rs.getInt("MAXIMUM"));
-				group.setCountMembers(rs.getInt("MEMBERS_COUNT"));
-				group.setRepresentativeId(rs.getInt("REPRESENTATIVE_ID"));
+				group.setGroupId(groupId);
+				group.setMatchingId(rs.getInt("MATCHING_ID"));
 				group.setTalentId(talentId);
+				group.setHeadCount(rs.getInt("HEAD_COUNT"));
+				group.setRepresentativeId(rs.getInt("REPRESENTATIVE_ID"));
 				group.setUserId(getGroupMembers(groupId, talentId));
 				return group;
 			}
@@ -254,14 +266,5 @@ public class GroupDAOImpl implements GroupDAO {
 		}
 		return null;
 	}
-
-	@Override
-	public int groupMatching(GroupDTO group) {
-		int result = 0;
-		return result;
-	}
-
-	
-
 	
 }

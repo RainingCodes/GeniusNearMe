@@ -5,6 +5,7 @@ public class GroupDTO {
 	private int groupId = -1;
 	private int talentId = -1;
 	private int matchingId = -1;
+	private int headCount = 0;
 	public int getMatchingId() {
 		return matchingId;
 	}
@@ -12,7 +13,7 @@ public class GroupDTO {
 		this.matchingId = matchingId;
 	}
 	private int representativeId = -1;
-	private int headCount = 0;
+	
 	public int getHeadCount() {
 		return headCount;
 	}
