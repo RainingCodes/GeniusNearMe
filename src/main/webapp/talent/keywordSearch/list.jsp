@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="../css/talent.css" type="text/css">
 </head>
 <body>
+<%@ include file="../../main/head.jsp"  %>
 	<div class="nav">
 		<form method="post" action="../detailedSearch/list.jsp">
 			<p></p>

@@ -27,4 +27,7 @@ public class PriceServiceImpl implements PriceService{
 	public int PriceByIdHead(int talentId, int headCount){//price 반환
 		return dao.getPriceByIdHead(talentId, headCount);
 	}
+	public int deleteAllPriceById(int talentId) {
+		return dao.deleteAllPriceById(talentId);
+	}
 }

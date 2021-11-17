@@ -109,4 +109,23 @@ public class PriceDAOImpl implements PriceDAO{
 			jdbcUtil.close();
 		}return -1;
 	}
+	
+	public int deleteAllPriceById(int talentId) {
+		String deleteQuery = "DELETE FROM PRICE WHERE = ? ";
+		
+		Object[] param = new Object[] { talentId };
+		jdbcUtil.setSqlAndParameters(deleteQuery, param);
+		
+		try {
+			int result = jdbcUtil.executeUpdate();
+			return result;
+		}catch(Exception e) {
+			jdbcUtil.rollback();
+			e.printStackTrace();
+		}finally {
+			jdbcUtil.commit();
+			jdbcUtil.close();
+		}
+		return 0;
+	}
 }

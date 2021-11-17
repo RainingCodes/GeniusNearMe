@@ -39,6 +39,7 @@ function gotoUri(targetUri) {
 <body>
 <br>
 <!-- Update Form  -->
+<%@ include file="../main/head.jsp"  %>
 <form name="form" method="POST" action="<c:url value='/member/update' />">
   <input type="hidden" name="userId" value="${member.userId}"/>
   <input type="hidden" name="email" value="${member.email}"/>	  
