@@ -4,14 +4,9 @@ body {
 	font: 14p, sans-serif;
 }
 
-frame {
-	margin: 0 auto;
-	border: 1px solid #aaa;
-}
-
 .nav {
 	float: left;
-	width: 200px;
+	width: 10%;
 	margin-left: 200px;
 }
 
@@ -21,14 +16,13 @@ frame {
 }
 
 .nav-item {
-	margin: 10px 0;
+	margin: 10px 10px;
 }
 
 .content {
 	float: left;
 	width: 900px;
-	background: #fff;
-	margin: 10px 0px 0px 30px;
+	margin: 10px 0px 0px 50px;
 }
 
 button {
@@ -45,19 +39,14 @@ button {
 
 .category {
 	display: inline-block;
-	width: 200px;
 	line-height: 30px;
-}
-
-.container {
-	float: center;
 }
 
 .post {
 	display: inline-block;
 	border: 1px solid;
-	padding: 10px;
-	margin: 15px 10px 10px 10px;
+	padding: 15px;
+	margin: 15px 10px;
 	width: 800px;
 	height: 150px;
 	border-radius: 30px;
@@ -65,15 +54,12 @@ button {
 
 #thumbnail {
 	border-radius: 30px;
-	margin: 15px 30px 10px 30px;
+	margin: 2px 30px;
 	float: left;
+	width: 150px;
+	height: 150px;
 }
 
-#imgSection {
-	width: 100px;
-	margin: 15px;
-	float: left;
-}
 
 #priceRange {
 	width: 100px;
