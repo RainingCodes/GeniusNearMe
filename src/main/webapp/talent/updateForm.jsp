@@ -57,6 +57,7 @@
     </head>
     <body>
     <!-- talent update from -->
+    <%@ include file="../main/head.jsp"  %>
      <input type="hidden" name="talentId" value="${talent.talentId}"/>	  
        <form name = "form" method="POST" action="<c:url value='/talent/update' />">
            <h5>제목</h5>
