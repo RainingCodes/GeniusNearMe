@@ -29,6 +29,7 @@ function userCreate(targetUri) {
 }
 </script>
 </head>
+<link rel=stylesheet href="../css/login.css" type="text/css">
 <body>
 <br>
 <!-- login form  -->
@@ -37,7 +38,7 @@ function userCreate(targetUri) {
   <table style="width:100%">
 	<tr>
 	  <td width="20"></td>
-	  <td>
+	  <td align=center>
 	  	<b>이웃집 똑똑이 로그인</b><br><br>
 	   	<table>
 	   	  <tr>
@@ -67,9 +68,9 @@ function userCreate(targetUri) {
 	    <br>	  
 	    <table style="width:100%">
 		  <tr>
-			<td align=left>
-			<input type="button" value="로그인" onClick="login()"> &nbsp;
-			<input type="button" value="회원가입" onClick="userCreate('<c:url value='/member/register/form'/>')">
+			<td align=center>
+			<input type="button" value="로그인" id="login" onClick="login()"> &nbsp;
+			<input type="button" value="회원가입" id="signup" onClick="userCreate('<c:url value='/member/register/form'/>')">
 			</td>						
 		  </tr>
 	    </table>
