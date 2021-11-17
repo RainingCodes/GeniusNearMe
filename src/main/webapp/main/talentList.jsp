@@ -24,6 +24,7 @@ function submitForm() {
 			</select> <input name="search_bar" size="50"></span> <input type="button" value="검색" onClick="submitForm()">
 		</form>
 	</div>
+	<br>
 	<table class="talentList">
 		<tr>
 			<td>

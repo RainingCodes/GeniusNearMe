@@ -121,6 +121,7 @@ public class UpdateTalentController implements Controller {
 			
 			
 			PriceService priceService = new PriceServiceImpl();
+			System.out.println(request.getParameter("inputPrice"));
 //			PriceDTO dto1 = new PriceDTO(talentId, 1, Integer.parseInt(request.getParameter("price")));
 //			result = priceService.insertPrice(dto1);
 //			

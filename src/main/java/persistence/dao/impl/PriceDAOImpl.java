@@ -129,4 +129,42 @@ public class PriceDAOImpl implements PriceDAO{
 		}
 		return result;
 	}
+	public int updatePrice(PriceDTO priceDto) {
+		int result = 0;
+		
+		String updateQuery = "UPDATE PRICE SET ";
+		int index = 0;
+		Object[] tempParam = new Object[10];
+		
+		if(priceDto.getPrice() != -1) {
+			updateQuery += "PRICE = ?, ";
+			tempParam[index++] = priceDto.getPrice();
+		}
+		
+		updateQuery += "WHERE TALENTID = ? AND HEADCOUNT = ? ";
+		updateQuery = updateQuery.replace(", WHERE", " WHERE");
+		
+		System.out.println(updateQuery);
+		
+		tempParam[index++] = priceDto.getTalentID();
+		tempParam[index++] = priceDto.getHeadCount();
+		
+		Object[] newParam = new Object[index];
+		for (int i = 0; i < newParam.length; i++)
+			newParam[i] = tempParam[i];
+		
+		jdbcUtil.setSqlAndParameters(updateQuery, newParam);
+
+		try {
+			result = jdbcUtil.executeUpdate();
+			return result;
+		} catch (Exception ex) {
+			jdbcUtil.rollback();
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.commit();
+			jdbcUtil.close();
+		}
+		return result;
+	}
 }

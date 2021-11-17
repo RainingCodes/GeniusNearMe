@@ -30,4 +30,7 @@ public class PriceServiceImpl implements PriceService{
 	public int deleteAllPriceById(int talentId) {
 		return dao.deleteAllPriceById(talentId);
 	}
+	public int updatePrice(PriceDTO priceDto) {
+		return dao.updatePrice(priceDto);
+	}
 }
