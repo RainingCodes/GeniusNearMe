@@ -35,6 +35,7 @@ public class RequestMapping {
         mappings.put("/talent/registerForm", new ForwardController("/talent/registerForm.jsp"));
         mappings.put("/talent/keywordSearch", new KeywordSearchController());
         mappings.put("/talent/detailedSearch", new DetailedSearchController());
+        mappings.put("/talent/update", new UpdateTalentController());
         
         mappings.put("/matching/choose", new ChooseMatchingController());
         
