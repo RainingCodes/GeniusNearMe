@@ -7,10 +7,14 @@
 </head>
 <script>
 function matching() {
-	var url = "talentTest.jsp";
+	var url = "/matching/choose";
 	var name = "talent test"
 	var option = "width = 500, height = 500, top = 100, left = 200, location = no"
 	window.open(url, name, option);
+	form.submit();
+}
+function gotoUri(targetUri) {
+	form.action = targetUri;
 	form.submit();
 }
 </script>
@@ -57,10 +61,10 @@ function matching() {
 			  <td>
 				<c:choose>
 				  	<c:when test="${state eq '0'}">
-				  		<form action="/matching/choose" method="post">
+				  		<form name="form" method="POST" action="<c:url value='/matching/choose' />">
 				  			<input type="hidden" name="matchingId" value="${li.matchingId}"/>
 				  			<input type="hidden" name="talentId" value="${li.talentId}"/>
-				  			<button type="button" onclick="matching()">매칭</button>
+				  			<button type="button" onclick="gotoUri()">매칭</button>
 				  		</form>
 				    </c:when>
 				    <c:when test="${state eq '1'}">
