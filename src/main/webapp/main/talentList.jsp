@@ -27,26 +27,29 @@ function submitForm() {
 	<table class="talentList">
 		<tr>
 			<td>
-				<button type="button" class="btn_all" value="all">
+				<a class="btn_all" href="<c:url value='/talent/categorySearch'>
+											<c:param name='category' value='all' />
+										</c:url>">
 					<img alt="모든 재능" src="img/talent.png">
 					<div>모든 재능</div>
-				</button>
+				</a>
 
 			</td>
 			<td>
-				<button type="submit" class="btn_IT" value="it">
+				<a class="btn_IT" href="<c:url value='/talent/categorySearch'>
+											<c:param name='category' value='it' />
+										</c:url>">
 					<img alt="IT" src="img/it.png">
 					<div>IT</div>
-				</button>
-
+				</a>
 			</td>
 			<td>
-				
-				<button type="submit" class="btn_cooking">
+				<a class="btn_cooking" href="<c:url value='/talent/categorySearch'>
+											<c:param name='category' value='cook' />
+										</c:url>">
 					<img alt="요리" src="img/cooking.png">
 					<div>요리</div>
-				</button>
-
+				</a>
 			</td>
 			<td>
 				<a class="btn_exercise" href="<c:url value='/talent/categorySearch'/>?category=excercise">
