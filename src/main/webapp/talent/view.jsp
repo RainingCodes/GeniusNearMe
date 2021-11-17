@@ -109,7 +109,6 @@ function goToURI(targetUri) {
                     <p>[상세 설명]</p>
                     <p style="text-align: center;">
                      ${talent.content}
-                       
                     </p>
                 </td>
             </tr>
@@ -131,7 +130,7 @@ function goToURI(targetUri) {
         </c:if>
                      	
         <p>
-		<input type="button" value="이전 페이지" onClick="history.go(-1)">
+		
         <hr/>
         <table>
             <tr>
@@ -140,5 +139,10 @@ function goToURI(targetUri) {
                 <th>리뷰</th>
             </tr>
         </table>
+        <div align = "center">
+        <br><br><br><br><br><br><br>
+    	    <input type="button" value="이전 페이지" onClick="history.go(-1)">
+
+        </div>
     </body>
 </html>
