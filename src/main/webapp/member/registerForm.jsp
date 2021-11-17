@@ -40,6 +40,7 @@ function userCreate() {
 </script>
 </head>
 <%@ include file="../main/head.jsp"  %>
+<link rel=stylesheet href="../css/register.css" type="text/css">
 <body>	
 <br>
 <!-- registration form  -->
@@ -47,7 +48,7 @@ function userCreate() {
   <table style="width: 100%">
     <tr>
       <td width="20"></td>
-	  <td>
+	  <td align="center">
 	    <table>
 		  <tr>
 		    <td class="title">&nbsp;&nbsp;<b>이웃집 똑똑이 회원가입</b>&nbsp;&nbsp;</td>
@@ -96,7 +97,7 @@ function userCreate() {
 	    <br>
 	    <table style="width: 100%">
 		  <tr>
-			<td align="left">
+			<td align="center">
 			<input type="button" value="가입하기" onClick="userCreate()"> &nbsp;
 			<input type="button" value="이전 페이지" onClick="history.go(-1)">
 			</td>
