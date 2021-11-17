@@ -109,12 +109,14 @@ function goToURI(targetUri) {
 				                     	   <c:param name='userId' value='${talent.writerId }'/>
 				                     	  </c:url>">재능글 수정하기</a>&nbsp;
        			</c:if>
-                <c:if test="${userId ne talent.writerId}"> 
-				         <a href="<c:url value='/matching/talent'>
-                     	   <c:param name='talentId' value='${talent.talentId}'/>
-                     	   <c:param name='userId' value='${userId}'/>
-                			</c:url>">1:1 매칭 신청하기</a>
-       			</c:if>
+       			<c:if test="${userId ne '-1'}"> 
+	                <c:if test="${userId ne talent.writerId}"> 
+					         <a href="<c:url value='/matching/talent'>
+	                     	   <c:param name='talentId' value='${talent.talentId}'/>
+	                     	   <c:param name='userId' value='${userId}'/>
+	                			</c:url>">1:1 매칭 신청하기</a>
+	       			</c:if>
+	       		</c:if>
                           	  
                     <!-- <button type="button" onclick="쪽지">쪽지보내기</button> -->
                 </td>
