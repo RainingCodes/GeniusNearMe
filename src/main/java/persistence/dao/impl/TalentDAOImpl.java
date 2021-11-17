@@ -52,40 +52,40 @@ public class TalentDAOImpl implements TalentDAO  {
 	}
 	
 	public List<TalentDTO> getTalentListByCategory(String[] category) {
-		String getByCategoryQuery = query + "FROM TALENT WHERE TALENTCNAME = ? ";
-		
-		Object[] param = new Object[] { category };
-		
-		jdbcUtil.setSql(getByCategoryQuery);
-		jdbcUtil.setParameters(param);
-		
-		try {
-			ResultSet rs = jdbcUtil.executeQuery();
-			List<TalentDTO> list = new ArrayList<TalentDTO>();
-			
-			while (rs.next()) {
-				TalentDTO dto = new TalentDTO();
-				dto.setTalentId(rs.getInt("TALENTID"));
-				dto.setTitle(rs.getString("TITLE"));
-				dto.setContent(rs.getString("CONTENT"));
-				dto.setStartDate(rs.getDate("STARTDATE"));
-				dto.setDeadLine(rs.getDate("DEADLINE"));
-				dto.setWrittenDate(rs.getDate("WRITTENDATE"));
-				dto.setMatchingCounts(rs.getInt("MATCHINGCOUNTS"));
-				dto.setWriterId(rs.getInt("WRITERID"));
-				dto.setTalentCategoryName(rs.getString("TALENTCNAME"));
-				dto.setPostType(rs.getInt("POSTTYPE"));
-				
-				list.add(dto);
-			}
-			return list;
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		} finally {
-			jdbcUtil.close();
-		} return null;
-	}
-	
+	      String getByCategoryQuery = query + "FROM TALENT WHERE ";
+	      int i;
+	      for(i = 0; i < category.length - 1; i++) {
+	         getByCategoryQuery += "TALENTCNAME='" + category[i] + "' or ";
+	      }
+	      getByCategoryQuery += "TALENTCNAME='" + category[i] + "' ";
+	      jdbcUtil.setSql(getByCategoryQuery);
+	      
+	      try {
+	         ResultSet rs = jdbcUtil.executeQuery();
+	         List<TalentDTO> list = new ArrayList<TalentDTO>();
+	         
+	         while (rs.next()) {
+	            TalentDTO dto = new TalentDTO();
+	            dto.setTalentId(rs.getInt("TALENTID"));
+	            dto.setTitle(rs.getString("TITLE"));
+	            dto.setContent(rs.getString("CONTENT"));
+	            dto.setStartDate(rs.getDate("STARTDATE"));
+	            dto.setDeadLine(rs.getDate("DEADLINE"));
+	            dto.setWrittenDate(rs.getDate("WRITTENDATE"));
+	            dto.setMatchingCounts(rs.getInt("MATCHINGCOUNTS"));
+	            dto.setWriterId(rs.getInt("WRITERID"));
+	            dto.setTalentCategoryName(rs.getString("TALENTCNAME"));
+	            dto.setPostType(rs.getInt("POSTTYPE"));
+	            
+	            list.add(dto);
+	         }
+	         return list;
+	      } catch (Exception ex) {
+	         ex.printStackTrace();
+	      } finally {
+	         jdbcUtil.close();
+	      } return null;
+	   }
 	
 	public List<TalentDTO> getTalentListByTitle(String Title) {
 		String getByTitleQuery = query + "FROM TALENT WHERE TITLE LIKE ? ";

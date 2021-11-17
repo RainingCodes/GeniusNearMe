@@ -133,7 +133,7 @@ public class UpdateTalentController implements Controller {
 //						Integer.parseInt(request.getParameter("num"+i)),
 //						Integer.parseInt(request.getParameter("price"+i))
 //						);
-//				result = priceService.insertPrice(dto2);
+//				result = priceService.updatePrice(dto2);
 //				System.out.println(result);
 //			}
 		
