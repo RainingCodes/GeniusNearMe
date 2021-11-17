@@ -2,6 +2,7 @@ package controller.talent;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -28,9 +29,10 @@ public class UpdateTalentController implements Controller {
 	
 	 SimpleDateFormat format1 = new SimpleDateFormat ("yyyy-MM-dd");
 	 long miliseconds = System.currentTimeMillis();
+
 	
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {	
-		
+		Date writtenDate = null;
 		if (request.getMethod().equals("GET")) {	
     		// GET request: 회원정보 수정 form 요청	
     		int talentId = Integer.parseInt(request.getParameter("talentId"));
@@ -44,11 +46,16 @@ public class UpdateTalentController implements Controller {
     		TalentService talentService = new TalentServiceImpl();
     		TalentDTO talent = talentService.findTalent(talentId);
 			request.setAttribute("talent", talent);			
+			writtenDate = talent.getWrittenDate();
 
 			HttpSession session = request.getSession();
 			if (UserSessionUtils.isLoginUser(email, session) ||
 				UserSessionUtils.isLoginUser("admin", session)) {
 				// 현재 로그인한 사용자가 수정 대상 사용자이거나 관리자인 경우 -> 수정 가능
+				
+				PriceService priceService = new PriceServiceImpl();
+				List<PriceDTO> list = priceService.PriceList(talentId);
+				request.setAttribute("priceList", list);
 							
 				return "/talent/updateForm.jsp"; 
 			}    
@@ -76,7 +83,7 @@ public class UpdateTalentController implements Controller {
 				request.getParameter("content"),
 				start,
 				deadline,
-				current,
+				writtenDate,
 				0,
 				userId,
 				request.getParameter("category"),
@@ -86,10 +93,10 @@ public class UpdateTalentController implements Controller {
 		log.debug("Create Talent : {}", dto.getTitle());
 		
 //		try {
-			System.out.println("재능 추가");
+			System.out.println("재능 수정");
 			TalentService talentService = new TalentServiceImpl();
 			System.out.println("here");
-			int talentId = talentService.insertTalent(dto);
+			int talentId = talentService.updateTalent(dto);
 			System.out.println(talentId+ "완료");
 			
 			
