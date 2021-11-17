@@ -30,7 +30,7 @@ function goToURI(targetUri) {
     </head>
     <%@ include file="../main/head.jsp"  %>
     <body>
-        <table>
+        <table style="width: 65%; margin: auto;">
             <tr>
                 <td colspan="3">
                 	${talent.title}
@@ -79,7 +79,7 @@ function goToURI(targetUri) {
                 </td>
                 <td>
                     <p>[가격]</p>
-                    <table border="1">
+                    <table border="1" style="width: 65%; margin: auto;">
                     <c:forEach var="price" items="${prices}">  			  	
 				  	    <tr>
 						  <td>
@@ -138,7 +138,7 @@ function goToURI(targetUri) {
         <p>
 		
         <hr/>
-        <table>
+        <table style="width: 50%; margin: auto;">
             <tr>
                 <th>공동구매하기</th>
                 <th>문의</th>
