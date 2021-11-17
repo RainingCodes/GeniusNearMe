@@ -44,17 +44,17 @@ function gotoUri(targetUri) {
 <form name="form" method="POST" action="<c:url value='/member/update' />">
   <input type="hidden" name="userId" value="${member.userId}"/>
   <input type="hidden" name="email" value="${member.email}"/>	  
-  <table style="width: 100%">
+  <table style="width: 100%;">
 	<tr>
 	  <td width="20"></td>
 	  <td>
-	    <table>
+	    <table style="margin:auto;">
 		  <tr>
-			<td class="title">&nbsp;&nbsp;<b>이웃집 똑똑이 회원정보 수정</b>&nbsp;&nbsp;</td>
+			<td class="title"><b>이웃집 똑똑이 회원정보 수정</b></td>
 		  </tr>
 	    </table>  
 	    <br>	  
-	    <table style="background-color: YellowGreen">
+	    <table style="margin:auto; background-color: YellowGreen;">
 	  	  <tr height="40">
 			<td width="150" align="center" bgcolor="E6ECDE">이메일 ID</td>
 			<td width="250" bgcolor="ffffff" style="padding-left: 10">
@@ -90,7 +90,7 @@ function gotoUri(targetUri) {
 	    <br>	  
 	    <table style="width: 100%">
 		  <tr>
-			<td align="left">
+			<td align="center">
 			<input type="button" value="수정" onClick="userModify()"> &nbsp;
 			<input type="button" value="내 정보로 돌아가기" onClick="gotoUri('<c:url value='/member/view' />')">
 			</td>
