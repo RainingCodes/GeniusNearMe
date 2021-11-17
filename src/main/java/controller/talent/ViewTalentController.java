@@ -32,6 +32,7 @@ public class ViewTalentController implements Controller{
 		request.setAttribute("talent", talent);		// 사용자 정보 저장
 		request.setAttribute("prices", price);
 		request.setAttribute("userId", userId);
+		
 		return "/talent/view.jsp";				// 사용자 보기 화면으로 이동
     }
 

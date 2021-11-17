@@ -18,6 +18,7 @@ public interface MemberDAO {
 		public boolean existingNickname(String nickname) throws SQLException;
 		public boolean existingNicknameForEdit(String nickname, int userId) throws SQLException;
 		public String getEmailByUserId(int userId);
+		public String getNicknameByUserId(int userId);
 
 		
 }

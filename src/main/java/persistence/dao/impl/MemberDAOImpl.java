@@ -347,4 +347,23 @@ public class MemberDAOImpl implements MemberDAO {
 		}
 		return false;
 	}
+	
+	public String getNicknameByUserId(int userId) {
+		String searchQuery = query+ "FROM MEMBERS WHERE USERID=? ";
+		
+		String nickName = null;
+		jdbcUtil.setSqlAndParameters(searchQuery, new Object[] {userId});
+		
+		try {
+			ResultSet rs = jdbcUtil.executeQuery();
+			if(rs.next()) {
+				nickName = rs.getString("NICKNAME");
+			}
+			return nickName;
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.close();
+		} return null;
+	}
 }
