@@ -52,6 +52,9 @@
             table{
                 width: 100%;
             }
+            .price{
+            	width: 50%;
+            }
         
         </style>
     </head>
@@ -101,8 +104,8 @@
                    </td>
                    <td>
                        <h5>가격 </h5>
-                       	<table border="1">
-                   		 <c:forEach var="price" items="${list}">  			  	
+                       	<table class="price" border="1">
+                   		 <c:forEach var="price" items="${priceList}">  			  	
 				  	    <tr>
 						  <td>
 						  	<c:set var="count" value="${price.headCount}" />
@@ -112,7 +115,7 @@
 						  	</c:choose>
 						  </td>
 						  <td>
-						  	${price.price}원
+						  	<input type="text" name="inputPrice" value="${price.price}">원
 						  </td>
 						</tr>
 					 </c:forEach>
@@ -130,7 +133,7 @@
                    </td>
                    <td>
                         <h5>세부 설명 및 주의사항</h5>
-                        <textarea rows="10" cols="50" name="content" value="${talent.content }"></textarea>
+                        <textarea rows="10" cols="50" name="content">${talent.content }</textarea>
                    </td>
                </tr>
            </table>
