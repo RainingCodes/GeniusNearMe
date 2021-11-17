@@ -21,4 +21,5 @@ public interface MemberService { // 유저 정보 관리 목적의 인터페이�
 	public List<MyMatchingDTO> ListingApplyMyMatchingByUserId(int userId) throws SQLException;
 	public List<MyMatchingDTO> ListingReceiveMyMatchingByUserId(int userId) throws SQLException;
 	public int getUserIdByMatchingId(int matchingId) throws SQLException;
+	public int getWriterIdByTalentId(int talentId) throws SQLException;
 }

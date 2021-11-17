@@ -15,12 +15,12 @@
       	<tr>
 		  <td>매칭 ID</td>
 		  <td>재능 제목</td>
-		  <td>재능 상태</td>
-		  <td>매칭 결과에 따른 상호작용</td>
+		  <td>매칭 상태</td>
+		  <td>매칭 정보</td>
 		</tr>
       </thead>
       <tbody> 
-		<c:forEach var="li" items="${list}">  			  	
+		<c:forEach var="li" items="${list}" varStatus="status">  			  	
 	  	    <tr>
 			  <td>
 			  	<c:out value="${li.matchingId}"/>     
@@ -46,7 +46,19 @@
 				</c:choose>
 			  </td>
 			  <td>
-				interact(후에 추가 ex:유저정보 본다던가)
+				  <c:set var="state" value="${li.matchingState}" />
+					  <c:choose>
+					  	<c:when test="${state eq '0'}">
+					  		아직 매칭 신청 중입니다.
+					    </c:when>
+					    <c:when test="${state eq '1'}">
+					    ${matchingWriterInfo[status.index].nickname}<br>
+					  		${matchingWriterInfo[status.index].phone}
+					    </c:when>
+					    <c:when test="${state eq '2'}">
+					  		매칭이 거절당했습니다.
+					    </c:when>
+					</c:choose>
 			  </td>
 			</tr>
 		 </c:forEach>

@@ -99,4 +99,26 @@ public class MyMatchingDAOImpl implements MyMatchingDAO {
 		}
 		return -1;
 	}
+	
+	public int getWriterIdByTalentId(int talentId) {
+		String searchQuery = "SELECT WRITERID FROM TALENT WHERE TALENTID = ? ";
+		jdbcUtil.setSql(searchQuery);
+		Object[] param = new Object[] { talentId };
+		jdbcUtil.setParameters(param);
+
+		try {
+			ResultSet rs = jdbcUtil.executeQuery();
+			int writerId = -1;
+
+			if (rs.next()) {
+				writerId = rs.getInt("WRITERID");
+			}
+			return writerId;
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.close();
+		}
+		return -1;
+	}
 }

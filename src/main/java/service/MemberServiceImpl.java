@@ -95,4 +95,8 @@ public class MemberServiceImpl implements MemberService {
 	public int getUserIdByMatchingId(int matchingId) throws SQLException {
 		return matchingDao.getUserIdByMatchingId(matchingId);
 	}
+	
+	public int getWriterIdByTalentId(int talentId) throws SQLException {
+		return matchingDao.getWriterIdByTalentId(talentId);
+	}
 }
