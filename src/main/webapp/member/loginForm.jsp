@@ -1,5 +1,7 @@
-<%@page contentType="text/html; charset=utf-8" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ include file="../main/head.jsp"  %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html>
 <head>
@@ -30,7 +32,7 @@ function userCreate(targetUri) {
 <body>
 <br>
 <!-- login form  -->
-<%@ include file="../main/head.jsp"  %>
+
 <form name="form" method="POST" action="<c:url value='/member/login' />">
   <table style="width:100%">
 	<tr>
