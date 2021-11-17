@@ -1,5 +1,8 @@
 package controller.user;
 
+import java.sql.SQLException;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -7,13 +10,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import controller.Controller;
-import service.UserNotFoundException;
-import service.dto.MemberDTO;
+import service.dto.MyMatchingDTO;
 import service.MemberService;
 import service.MemberServiceImpl;
 
-public class ViewMemberController implements Controller {
-	private static final Logger log = LoggerFactory.getLogger(ViewMemberController.class);
+public class ApplyMyMatchingListController implements Controller {
+	private static final Logger log = LoggerFactory.getLogger(ApplyMyMatchingListController.class);
+	
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {			
     	// 로그인 여부 확인
@@ -25,15 +28,16 @@ public class ViewMemberController implements Controller {
     	MemberService manager = new MemberServiceImpl();
 		String email = UserSessionUtils.getLoginUserId(request.getSession());
 		
-    	MemberDTO member = null;
+		int userId = manager.getuserIdByEmail(email);
+		List<MyMatchingDTO> myMatchingInfo = null;
     	
     	try {
-    		member = manager.findUserByEmail(email);	// 사용자 정보 검색
-		} catch (UserNotFoundException e) {				
+    		myMatchingInfo =  manager.ListingMyMatchingByUserId(userId);	// 사용자 정보 검색
+		} catch (SQLException e) {	
 	        return "redirect:/member/login/form";
-		}	
-		
-    	request.setAttribute("member", member);		// 사용자 정보 저장				
-		return "/member/view.jsp";				// 사용자 보기 화면으로 이동
+		}
+   		
+    	request.setAttribute("list", myMatchingInfo);		// 사용자 정보 저장				
+		return "/member/applyMatchingList.jsp";				// 사용자 보기 화면으로 이동
     }
 }

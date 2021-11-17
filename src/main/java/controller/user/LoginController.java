@@ -4,12 +4,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import controller.Controller;
 import service.MemberService;
 import service.MemberServiceImpl;
 import service.dto.MemberDTO;
 
 public class LoginController implements Controller {
+	private static final Logger log = LoggerFactory.getLogger(LoginController.class);
+	
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
     	String email = request.getParameter("email");

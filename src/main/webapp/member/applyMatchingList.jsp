@@ -3,12 +3,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>나의 매칭 리스트</title>
+<title>내가 신청한 매칭 리스트</title>
 </head>
 <body>
 <div>   
 	<br>
-	<h4>나의 매칭 리스트</h4>
+	<h4>내가 신청한 매칭 리스트</h4>
 	<br>
 	<table border = "1">
 	<thead class="thead-inverse">
