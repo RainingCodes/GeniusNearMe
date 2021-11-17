@@ -63,7 +63,7 @@ function submitForm() {
 				  		<form name="form" method="POST" action="<c:url value='/matching/choose' />">
 				  			<input type="hidden" name="matchingId" value="${li.matchingId}">
 				  			<input type="hidden" name="talentId" value="${li.talentId}">
-				  			<input type="button" onClick="submitForm()" value="매칭">
+				  			<input type="button" onClick="submitForm()" value="매칭ddddd">
 				  		</form>
 				    </c:when>
 				    <c:when test="${state eq '1'}">
