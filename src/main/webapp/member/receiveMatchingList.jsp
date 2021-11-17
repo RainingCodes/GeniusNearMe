@@ -38,7 +38,7 @@
 				${li.talentTitle}</a>
 			  </td>
 			  <td>
-			  	${nickList[status.index]}
+			  	${nickList[status.index] }
 			  </td>
 			  <td>
 				<c:set var="state" value="${li.matchingState}" />
