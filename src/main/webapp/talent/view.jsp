@@ -28,7 +28,7 @@ function goToURI(targetUri) {
         </style>
         
     </head>
-    
+    <%@ include file="../main/head.jsp"  %>
     <body>
         <table>
             <tr>

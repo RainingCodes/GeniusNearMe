@@ -38,8 +38,8 @@ function userCreate() {
 
 </script>
 </head>
+<%@ include file="../main/head.jsp"  %>
 <body>	
-<!-- 화면 로드 시 서버로부터 커뮤니티 목록을 가져와 commSelect 메뉴 생성 -->
 <br>
 <!-- registration form  -->
 <form name="form" method="POST" action="<c:url value='/member/register' />">

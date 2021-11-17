@@ -59,7 +59,7 @@
         </style>
     </head>
     <body>
-
+<%@ include file="../main/head.jsp"  %>
     <!-- talent registration form -->
        <form name = "form" method="POST" action="<c:url value='/talent/register' />">
        <input type="hidden" name="postType" value=0>

@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="../css/talent.css" type="text/css">
 </head>
 <body>
+<%@ include file="../../main/head.jsp"  %>
 	<%
 		// 카테고리값(체크박스)들을 모두 읽어와서 저장
 		String[] selectedCategory = request.getParameterValues("category");

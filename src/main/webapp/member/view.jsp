@@ -11,6 +11,7 @@ function userRemove() {
 </script>
 </head>
 <body>
+<%@ include file="../main/head.jsp"  %>
   <br>
   <table style="width:100%">
     <tr>
