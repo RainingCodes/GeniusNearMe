@@ -52,11 +52,7 @@ public class TalentDAOImpl implements TalentDAO  {
 	}
 	
 	public List<TalentDTO> getTalentListByCategory(String[] category) {
-		String getByCategoryQuery = query + "FROM TALENT WHERE ";
-		for(int i = 0; i < category.length - 1; i++) 
-			query += "TALENTCNAME=? OR ";
-		query += "TALENTCNAME=?";
-		
+		String getByCategoryQuery = query + "FROM TALENT WHERE TALENTCNAME = ? ";
 		
 		Object[] param = new Object[] { category };
 		
@@ -257,15 +253,15 @@ public class TalentDAOImpl implements TalentDAO  {
 		}
 		if (t.getStartDate() != null) {		
 			updateQuery += "STARTDATE = ?, ";		
-			tempParam[index++] = t.getStartDate();		
+			tempParam[index++] = new java.sql.Date(t.getStartDate().getTime());
 		}
 		if (t.getDeadLine() != null) {		
 			updateQuery += "DEADLINE = ?, ";	
-			tempParam[index++] = t.getDeadLine();	
+			tempParam[index++] = new java.sql.Date(t.getDeadLine().getTime());
 		}
 		if (t.getWrittenDate() != null) {		
 			updateQuery += "WRITTENDATE = ?, ";	
-			tempParam[index++] = t.getWrittenDate();	
+			tempParam[index++] = new java.sql.Date(t.getWrittenDate().getTime());
 		}
 		if (t.getMatchingCounts() != -1) {		
 			updateQuery += "MATCHINGCOUNTS = ?, ";	

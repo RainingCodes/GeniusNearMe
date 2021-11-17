@@ -15,6 +15,7 @@ public class TalentDTO {
 	
 	public TalentDTO() {	}
 	
+	
 	public TalentDTO(String title, String content, Date startDate, Date deadLine, Date writtenDate,
 			int writerId) {
 		super();
@@ -39,6 +40,24 @@ public class TalentDTO {
 		this.talentCName = talentCName;
 		this.postType = postType;
 	}
+	
+	
+
+	public TalentDTO(int talentId, String title, String content, Date startDate, Date deadLine, Date writtenDate,
+			int matchingCounts, int writerId, String talentCName, int postType) {
+		super();
+		this.talentId = talentId;
+		this.title = title;
+		this.content = content;
+		this.startDate = startDate;
+		this.deadLine = deadLine;
+		this.writtenDate = writtenDate;
+		this.matchingCounts = matchingCounts;
+		this.writerId = writerId;
+		this.talentCName = talentCName;
+		this.postType = postType;
+	}
+
 
 	public int getTalentId() {
 		return talentId;

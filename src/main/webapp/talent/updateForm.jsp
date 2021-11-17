@@ -27,7 +27,7 @@
             table{
                 width: 100%;
             }
-            .price{
+            .priceTable{
             	width: 50%;
             }
         
@@ -79,7 +79,7 @@
                    </td>
                    <td>
                        <h5>가격 </h5>
-                       	<table class="price" border="1">
+                       	<table class="priceTable" border="1">
                    		 <c:forEach var="price" items="${priceList}">  			  	
 				  	    <tr>
 						  <td>
