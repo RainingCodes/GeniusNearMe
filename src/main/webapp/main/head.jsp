@@ -38,13 +38,13 @@ function goHome() {
 	if(UserSessionUtils.hasLogined(request.getSession())) {
 %>
 		<td class="user" valign="bottom">
-			<a href="<c:url value='../member/view' />"><%=nickname %>님</a>
+			<a href="<c:url value='/member/view' />"><%=nickname %>님</a>
 		</td>
 		<td valign="bottom">
-			<a href="<c:url value='../member/logout' />">로그아웃</a>
+			<a href="<c:url value='/member/logout' />">로그아웃</a>
 		</td>
 		<td valign="bottom">
-			<a href="<c:url value='../talent/registerForm' />">재능 글 작성</a>
+			<a href="<c:url value='/talent/registerForm' />">재능 글 작성</a>
 		</td>
 		<!-- 
 		<td class="" valign="bottom">
