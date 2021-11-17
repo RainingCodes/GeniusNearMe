@@ -27,7 +27,7 @@ function goHome() {
 <table class="head_table">
 	<tr>
 		<td class="talent_test" valign="bottom">
-			<button type="button" class="btn_talent_test">관심 재능 검사<img alt="돋보기" src="/img/search.png" class="search_icon"></button>
+			<button type="button" class="btn_talent_test">관심 재능 검사 <!-- <img alt="돋보기" src="/img/search.png" class="search_icon"></button> -->
 		</td> 
 		<td class="logo" align="center">
 			<a href="<c:url value='/' />">
