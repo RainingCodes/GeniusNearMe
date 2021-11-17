@@ -30,6 +30,7 @@ function goToURI(targetUri) {
     </head>
     <%@ include file="../main/head.jsp"  %>
     <body>
+    	<br>
         <table style="width: 65%; margin: auto;">
             <tr>
                 <td colspan="3">
