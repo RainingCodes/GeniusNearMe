@@ -10,31 +10,7 @@
        <script>
       
         function talentUpdate(){
-        	if(from.title.value ==""){
-        		alert("제목를 입력하십시오.");
-        		form.title.focus();
-        		return false;
-        	} 
-        	if(from.student.value ==""){
-        		alert("학생 수를 입력하십시오.");
-        		form.student.focus();
-        		return false;
-        	} 
-        	if(from.cost.value ==""){
-        		alert("가격을 입력하십시오.");
-        		form.cost.focus();
-        		return false;
-        	} 
-        	if(from.startDate.value ==""){
-        		alert("모집 시작일을 입력하십시오.");
-        		form.startDate.focus();
-        		return false;
-        	} 
-        	if(from.deadline.value ==""){
-        		alert("모집마감일을 입력하십시오.");
-        		form.deadline.focus();
-        		return false;
-        	} 
+
         	if(from.content.value ==""){
         		alert("설명을 입력하십시오.");
         		form.content.focus();
@@ -138,7 +114,7 @@
                </tr>
            </table>
             <input type="button" value="수정하기" onClick="talentUpdate()"> &nbsp;
-			<input type="button" value="목록" onClick="talentList('<c:url value='/talent/list' />')">
+			<input type="button" value="이전 페이지" onClick="history.go(-1)">
        </form>
     </body>
 </html>
