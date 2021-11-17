@@ -337,32 +337,30 @@ public class MemberDAOImpl implements MemberDAO {
 			jdbcUtil.close();		// resource 반환
 		}
 		
-		if (result == false) {
-			return false;
-		}
-		
-		String sql2 = "SELECT USERID FROM MEMBERS WHERE NICKNAME = ?";     
-		jdbcUtil.setSqlAndParameters(sql2, new Object[] { nickname });	// JDBCUtil에 query문과 매개 변수 설정
-		
-		System.out.println(sql2);
-		try {
-			ResultSet rs = jdbcUtil.executeQuery();		// query 실행
-			if (rs.next()) {
-				int selectID = rs.getInt("USERID");
-				if (selectID == userId) {
-					System.out.println("유저==셀렉트아이디");
-					return false;
+		if (result == true) {
+			String sql2 = "SELECT USERID FROM MEMBERS WHERE NICKNAME = ?";     
+			jdbcUtil.setSqlAndParameters(sql2, new Object[] { nickname });	// JDBCUtil에 query문과 매개 변수 설정
+			
+			System.out.println(sql2);
+			try {
+				ResultSet rs = jdbcUtil.executeQuery();		// query 실행
+				if (rs.next()) {
+					int selectID = rs.getInt("USERID");
+					if (selectID == userId) {
+						System.out.println("유저==셀렉트아이디");
+						return false;
+					}
+					System.out.println("2차쿼리" + result);
+					return true;
 				}
-				System.out.println("2차쿼리" + result);
-				return true;
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			} finally {
+				jdbcUtil.close();		// resource 반환
 			}
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		} finally {
-			jdbcUtil.close();		// resource 반환
 		}
 		
-		return false;
+		return result;
 	}
 	
 	public String getNicknameByUserId(int userId) {

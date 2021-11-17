@@ -71,12 +71,12 @@ function goToURI(targetUri) {
 						  		IT
 						    </c:when>
 						</c:choose>
+                    <br/><br>
+                    <strong>모집 시작일:</strong><br>${talent.startDate }<br>
                     <br/>
-                    <strong>모집 시작일:</strong> ${talent.startDate }
+                    <strong>모집 마감일:</strong><br>${talent.deadLine}<br>
                     <br/>
-                    <strong>모집 마감일:</strong> ${talent.deadLine}
-                    <br/>
-                    <strong>작성일:</strong> ${talent.writtenDate}
+                    <strong>작성일:</strong><br>${talent.writtenDate}<br>
                 </td>
                 <td>
                     <p><strong>[가격]</strong></p>
@@ -103,11 +103,20 @@ function goToURI(targetUri) {
                	 <strong>작성자:</strong> ${nickName}
                 <br/>
                 <br>
-                <a href="<c:url value='/matching/talent'>
+                <c:if test="${userId eq talent.writerId}"> 
+				        <a href="<c:url value='/talent/update'>
+				                     	   <c:param name='talentId' value='${talent.talentId}'/>
+				                     	   <c:param name='userId' value='${talent.writerId }'/>
+				                     	  </c:url>">재능글 수정하기</a>&nbsp;
+       			</c:if>
+                <c:if test="${userId ne talent.writerId}"> 
+				         <a href="<c:url value='/matching/talent'>
                      	   <c:param name='talentId' value='${talent.talentId}'/>
                      	   <c:param name='writerId' value='${talent.writerId}'/>
                      	   <c:param name='userId' value='${userId}'/>
-                </c:url>">1:1 매칭 신청하기</a>                     	  
+                			</c:url>">1:1 매칭 신청하기</a>
+       			</c:if>
+                          	  
                     <!-- <button type="button" onclick="쪽지">쪽지보내기</button> -->
                 </td>
             </tr>
@@ -129,13 +138,7 @@ function goToURI(targetUri) {
                 </td>
             </tr>
         </table>
-        <c:if test="${userId eq talent.writerId}"> 
-	        <a href="<c:url value='/talent/update'>
-	                     	   <c:param name='talentId' value='${talent.talentId}'/>
-	                     	   <c:param name='userId' value='${talent.writerId }'/>
-	                     	  </c:url>">수정하기</a>&nbsp;
-        </c:if>
-                     	
+                          	
         <p>
 		
         <hr/>
