@@ -16,6 +16,7 @@ import service.MemberServiceImpl;
 
 public class ReceiveMyMatchingListController implements Controller {
 	private static final Logger log = LoggerFactory.getLogger(ReceiveMyMatchingListController.class);
+	
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {			
     	// 로그인 여부 확인
@@ -26,6 +27,8 @@ public class ReceiveMyMatchingListController implements Controller {
     	
     	MemberService manager = new MemberServiceImpl();
 		String email = UserSessionUtils.getLoginUserId(request.getSession());
+		
+		log.debug("receive my matching User : {}", email);
 		
 		int userId = manager.getuserIdByEmail(email);
 		List<MyMatchingDTO> myMatchingInfo = null;

@@ -25,8 +25,11 @@ public class ApplyMyMatchingListController implements Controller {
             return "redirect:/member/login/form";		// login form 요청으로 redirect
         }
     	
+    	
     	MemberService manager = new MemberServiceImpl();
 		String email = UserSessionUtils.getLoginUserId(request.getSession());
+		
+		log.debug("apply my matching User : {}", email);
 		
 		int userId = manager.getuserIdByEmail(email);
 		List<MyMatchingDTO> myMatchingInfo = null;

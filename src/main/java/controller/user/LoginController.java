@@ -34,6 +34,8 @@ public class LoginController implements Controller {
             session.setAttribute("nickname", member.getNickname());
             session.setAttribute("userId", member.getUserId());
             
+            log.debug("login User : {}", email);
+            
             return "redirect:/main"; // 홈으로 재이동		
 		} catch (Exception e) {
 			/* UserNotFoundException이나 PasswordMismatchException 발생 시
