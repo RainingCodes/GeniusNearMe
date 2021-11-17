@@ -39,6 +39,17 @@ public class MatchingDTO {
 	public void setMatchingState(int matchingState) {
 		this.matchingState = matchingState;
 	}
+	
+	public MatchingDTO(int matchingId, int matchingState, int talentId, int groupId, int userId) {
+		super();
+		this.matchingId = matchingId;
+		this.matchingState = matchingState;
+		this.talentId = talentId;
+		this.groupId = groupId;
+		this.userId = userId;
+	}
+	
+	public MatchingDTO() {
 		
-
+	}
 }

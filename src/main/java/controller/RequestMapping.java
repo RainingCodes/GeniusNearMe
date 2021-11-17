@@ -38,6 +38,7 @@ public class RequestMapping {
         mappings.put("/talent/detailedSearch", new DetailedSearchController());
         mappings.put("/talent/update", new UpdateTalentController());
         
+        mappings.put("/matching/talent", new ApplicationMatchingController());
         mappings.put("/matching/choose", new ChooseMatchingController());
         
         logger.info("Initialized Request Mapping!");

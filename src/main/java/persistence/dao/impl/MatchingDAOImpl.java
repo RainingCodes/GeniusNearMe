@@ -125,10 +125,9 @@ public class MatchingDAOImpl implements MatchingDAO {
 			int result = 0;
 			String insertQuery = "INSERT INTO MATCHING (MATCHINGID, TALENTID, "
 					+ "MATCHINGSTATE, GROUPID, USERID) "
-					+ "VALUES (matching_seq.nextval, ?, ?, ?, ?) ";
+					+ "VALUES (matching_seq.nextval, ?, ?, null, ?) ";
 			
-			Object[] param = new Object[] { matchingDto.getTalentId(), matchingDto.getMatchingState(), 
-					matchingDto.getGroupId(), matchingDto.getUserId()};
+			Object[] param = new Object[] { matchingDto.getTalentId(), matchingDto.getMatchingState(), matchingDto.getUserId()};
 			
 			jdbcUtil.setSql(insertQuery);
 			jdbcUtil.setParameters(param);

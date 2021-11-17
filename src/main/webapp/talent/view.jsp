@@ -101,6 +101,12 @@ function goToURI(targetUri) {
                 <br/>
                	 작성자: ${nickName}
                 <br/>
+                <br>
+                <a href="<c:url value='/matching/talent'>
+                     	   <c:param name='talentId' value='${talent.talentId}'/>
+                     	   <c:param name='writerId' value='${talent.writerId}'/>
+                     	   <c:param name='userId' value='${userId}'/>
+                </c:url>">1:1 매칭 신청하기</a>                     	  
                     <!-- <button type="button" onclick="쪽지">쪽지보내기</button> -->
                 </td>
             </tr>
