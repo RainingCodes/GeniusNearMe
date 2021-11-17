@@ -16,6 +16,7 @@ function matching() {
 }
 function submitForm() {
 	   form.submit();
+	   alert("실행");
 }
 </script>
 <body>
