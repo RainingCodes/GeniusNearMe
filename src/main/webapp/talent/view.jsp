@@ -34,13 +34,13 @@ function goToURI(targetUri) {
         <table style="width: 65%; margin: auto;">
             <tr>
                 <td colspan="3">
-                	${talent.title}
+                	<strong>${talent.title}</strong>
                     <hr/>
                 </td>
             </tr>
             <tr>
                 <td rowspan="3">
-                    분류:                    
+                    <strong>분류:</strong>                    
                     <c:set var="category" value="${talent.talentCategoryName}" />
 						<c:choose>
 						  	<c:when test="${category eq 'foreignLanguage'}">
@@ -72,14 +72,14 @@ function goToURI(targetUri) {
 						    </c:when>
 						</c:choose>
                     <br/>
-                    모집 시작일: ${talent.startDate }
+                    <strong>모집 시작일:</strong> ${talent.startDate }
                     <br/>
-                    모집 마감일: ${talent.deadLine}
+                    <strong>모집 마감일:</strong> ${talent.deadLine}
                     <br/>
-                    작성일: ${talent.writtenDate}
+                    <strong>작성일:</strong> ${talent.writtenDate}
                 </td>
                 <td>
-                    <p>[가격]</p>
+                    <p><strong>[가격]</strong></p>
                     <table border="1" style="width: 65%; margin: auto;">
                     <c:forEach var="price" items="${prices}">  			  	
 				  	    <tr>
@@ -100,7 +100,7 @@ function goToURI(targetUri) {
 
                 <td rowspan="3">
                 <br/>
-               	 작성자: ${nickName}
+               	 <strong>작성자:</strong> ${nickName}
                 <br/>
                 <br>
                 <a href="<c:url value='/matching/talent'>
@@ -113,7 +113,7 @@ function goToURI(targetUri) {
             </tr>
             <tr>
                 <td>
-                    <p>[상세 설명]</p>
+                    <p><strong>[상세 설명]</strong></p>
                     <p style="text-align: center;">
                      ${talent.content}
                     </p>
