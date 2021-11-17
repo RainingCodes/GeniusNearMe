@@ -53,7 +53,7 @@
 					<img id="thumbnail" src="../img/loopy/img1.jpg" width="120" height="120">
 				</div>
 				<p>
-					<a href="<c:url value='showTalent.jsp'>
+					<a href="<c:url value='talent/view.jsp'>
 						<c:param name='talentId' value='${talent.talentId}'/>
 						</c:url>"><strong>${ talent.title }</strong>
 					</a>
