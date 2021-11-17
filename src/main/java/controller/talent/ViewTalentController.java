@@ -7,7 +7,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import controller.Controller;
-
+import service.MemberService;
+import service.MemberServiceImpl;
 import service.PriceService;
 import service.PriceServiceImpl;
 
@@ -26,12 +27,16 @@ public class ViewTalentController implements Controller{
 		TalentService talentService = new TalentServiceImpl();
 		TalentDTO talent = talentService.findTalent(talentId);
 		
+		MemberService mService = new MemberServiceImpl();
+		String nickName = mService.getNicknameByUserId(talent.getWriterId());
+		
 		PriceService pService = new PriceServiceImpl();
 		List<PriceDTO> price = pService.PriceList(talentId);
 			
 		request.setAttribute("talent", talent);		// 사용자 정보 저장
 		request.setAttribute("prices", price);
 		request.setAttribute("userId", userId);
+		request.setAttribute("nickName", nickName);
 		
 		return "/talent/view.jsp";				// 사용자 보기 화면으로 이동
     }
