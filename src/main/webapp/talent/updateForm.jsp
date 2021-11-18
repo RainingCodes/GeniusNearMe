@@ -8,8 +8,8 @@
     <meta charset="UTF-8">
         <title>게시글 추가</title>
        <script>
-      
         function talentUpdate(){
+        	
         	if(form.content.value ==""){
         		alert("설명을 입력하십시오.");
         		form.content.focus();
@@ -37,8 +37,8 @@
     <!-- talent update form -->
     <%@ include file="../main/head.jsp"  %>  
        <form name = "form" method="POST" action="<c:url value='/talent/update' />">
-       <input type="hidden" name="talentId" value="${talent.talentId}"/>
-       <input type="hidden" name="title" value="${talent.title }"/>	
+	       <input type="hidden" name="talentId" value="${talent.talentId}"/>
+	       <input type="hidden" name="title" value="${talent.title }"/>	
            <h5>제목</h5>
            <p>${talent.title}</p>
            <hr/>
@@ -96,11 +96,17 @@
 						  <td>
 						  <script>
 						  	document.write("<input type='text' name='inputPrice" + i++ +"' value='${price.price}'>원");
+						  	
 						  </script>
+						  
 						  </td>
+						  
 						</tr>
 					 </c:forEach>
 					 </table>
+					 <script>
+					 document.write("<input type='hidden' name='num' value=" + i +">");
+					 </script>
                    </td>
                </tr>
                <tr>

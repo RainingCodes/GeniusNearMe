@@ -83,19 +83,13 @@ public class UpdateTalentController implements Controller {
 
 		Date start = format1.parse(request.getParameter("startDate"));
 		Date deadline = format1.parse(request.getParameter("deadline"));
-		System.out.println(start);
-		System.out.println(deadline);
 		
 		HttpSession session = request.getSession();    	
 		String email = UserSessionUtils.getLoginUserId(session);
-	
-		System.out.println(category);
-		System.out.println(postType);
 		
 		MemberService mem = new MemberServiceImpl();
 		userId = mem.getuserIdByEmail(email);
-		System.out.println("이제 시작");
-		System.out.println(userId);
+	
 		TalentDTO dto = new TalentDTO(
 				talentId,
 				request.getParameter("title"),
@@ -112,30 +106,20 @@ public class UpdateTalentController implements Controller {
 		
 		log.debug("Create Talent : {}", dto.getTitle());
 		
-//		try {
-			System.out.println("재능 수정");
-			
-			System.out.println("here");
-			int result = talentService.updateTalent(dto);
-			System.out.println(result+ "완료");
-			
+			int result = talentService.updateTalent(dto);			
 			
 			PriceService priceService = new PriceServiceImpl();
-			System.out.println(request.getParameter("inputPrice"));
-//			PriceDTO dto1 = new PriceDTO(talentId, 1, Integer.parseInt(request.getParameter("price")));
-//			result = priceService.insertPrice(dto1);
-//			
-//			System.out.println(result);
-//			int num = Integer.parseInt(request.getParameter("student"));
-//			for(int i = 1; i <= num; i++) {
-//				PriceDTO dto2 = new PriceDTO(
-//						talentId,
-//						Integer.parseInt(request.getParameter("num"+i)),
-//						Integer.parseInt(request.getParameter("price"+i))
-//						);
-//				result = priceService.updatePrice(dto2);
-//				System.out.println(result);
-//			}
+			System.out.println(request.getParameter("num"));
+			int num = Integer.parseInt(request.getParameter("num"));
+			List<PriceDTO> list = priceService.PriceList(talentId);
+			for(int i = 0; i < num; i++) {
+				PriceDTO dto1 = new PriceDTO(
+						talentId,
+						list.get(i).getHeadCount(),
+						Integer.parseInt(request.getParameter("inputPrice"+i))
+						);
+				result = priceService.updatePrice(dto1);
+			}
 		
 			request.setAttribute("talentId", talentId);
 			String src = "/talent/view?talentId=" +talentId; 
