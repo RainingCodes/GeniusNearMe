@@ -64,7 +64,7 @@
        <form name = "form" method="POST" action="<c:url value='/talent/register' />">
        <input type="hidden" name="postType" value=0>
            <h5>제목</h5>
-           <input type="text" name="title">
+           <input type="text" name="title" placeholder="제목을 입력하세요"/>
            <hr/>
            <table>
                <tr>
@@ -87,7 +87,7 @@
                    <td>
                        <h5>가격 </h5>
                        <p>학생 수 1:1 &nbsp; 가격
-                      <input type="number" name="price" >원</p> 
+                      <input type="number" name="price"  placeholder="가격을 입력하세요"/>원</p> 
                       <input type="button" name="add" value="추가하기" id="add_btn">
                    </td>
                </tr>
@@ -100,7 +100,7 @@
                    </td>
                    <td>
                         <h5>세부 설명 및 주의사항</h5>
-                        <textarea rows="10" cols="50" name="content"></textarea>
+                        <textarea rows="10" cols="50" name="content" placeholder="설명을 자세히 적어주세요     ex)횟수, 주의사항, 준비물"></textarea>
                    </td>
                </tr>
            </table>
