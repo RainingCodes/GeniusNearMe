@@ -45,9 +45,7 @@ public class UpdateMemberController implements Controller {
 			return "/member/view.jsp";	// 사용자 보기 화면으로 이동 (forwarding)
 	    }
     	
-    	
     	// POST request (회원정보가 parameter로 전송됨)
-    	
     	MemberDTO updateMember = new MemberDTO(
    	    	Integer.parseInt(request.getParameter("userId")),
    	    	request.getParameter("email"),
@@ -56,6 +54,9 @@ public class UpdateMemberController implements Controller {
    	    	request.getParameter("phone")
    		);
     	
+    	HttpSession session = request.getSession();
+    	session.setAttribute("nickname", updateMember.getNickname());
+    	session.setAttribute("userId", updateMember.getUserId());
     	System.out.println(updateMember);
 
     	
