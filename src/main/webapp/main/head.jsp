@@ -2,9 +2,6 @@
     pageEncoding="UTF-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="controller.user.UserSessionUtils" %>
-<%
-	String nickname = (String)session.getAttribute("nickname");
-%>
 <script language="JavaScript">
 function talentTest() {
 	var url = "talentTest.jsp";
@@ -27,7 +24,7 @@ function goHome() {
 <table class="head_table">
 	<tr>
 		<td class="talent_test" valign="bottom">
-			<button type="button" class="btn_talent_test">관심 재능 검사 <!-- <img alt="돋보기" src="/img/search.png" class="search_icon"></button> -->
+			<input type="button" class="btn_talent_test">관심 재능 검사 <!-- <img alt="돋보기" src="/img/search.png" class="search_icon"></button> -->
 		</td> 
 		<td class="logo" align="center">
 			<a href="<c:url value='/' />">
@@ -38,7 +35,7 @@ function goHome() {
 	if(UserSessionUtils.hasLogined(request.getSession())) {
 %>
 		<td class="user" valign="bottom">
-			<a href="<c:url value='/member/view' />"><%=nickname %>님</a>
+			<a href="<c:url value='/member/view' />"><c:out value="${nickname}" />님	</a>
 		</td>
 		<td valign="bottom">
 			<a href="<c:url value='/member/logout' />">로그아웃</a>
