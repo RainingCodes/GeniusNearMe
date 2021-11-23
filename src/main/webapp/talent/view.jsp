@@ -145,7 +145,7 @@ function goToURI(targetUri) {
         <hr/>
         <table style="width: 50%; margin: auto;">
             <tr>
-                <th>공동구매하기</th>
+                <th><a href="<c:url value='/talent/group' />">공동구매하기</a></th>
                 <th>문의</th>
                 <th>리뷰</th>
             </tr>
