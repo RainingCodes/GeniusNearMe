@@ -18,7 +18,7 @@ import service.PriceServiceImpl;
 
 import service.TalentService;
 import service.TalentServiceImpl;
-
+import service.dto.MemberDTO;
 import service.dto.PriceDTO;
 import service.dto.TalentDTO;
 
@@ -49,9 +49,13 @@ public class ViewTalentController implements Controller{
 		
 		//로그인 되있을때
 		HttpSession session = request.getSession();
+		MemberService mService = new MemberServiceImpl();
 		
-		log.debug("talent view");
-		int userId = (int) session.getAttribute("userId");
+		log.debug("talent view"+ session);
+		log.debug("email : {}",session.getAttribute("email"));
+		String email = (String) session.getAttribute("email");
+		MemberDTO member = mService.getMemberByEmail(email);
+		int userId = member.getUserId();
 		log.debug("UserId : {}", userId);
 
     	
@@ -59,7 +63,7 @@ public class ViewTalentController implements Controller{
 		TalentService talentService = new TalentServiceImpl();
 		TalentDTO talent = talentService.findTalent(talentId);
 		
-		MemberService mService = new MemberServiceImpl();
+		
 		String nickName = mService.getNicknameByUserId(talent.getWriterId());
 		
 		PriceService pService = new PriceServiceImpl();
