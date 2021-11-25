@@ -31,6 +31,9 @@ function goToURI(targetUri) {
     <%@ include file="../main/head.jsp"  %>
     <body>
     	<br>
+    	사진 저장 경로 : ${dir} <br/>
+		사진 파일 이름 : ${filename} <br/>
+		<img src="${dir}/${filename}" /> <br/>
         <table style="width: 65%; margin: auto;">
             <tr>
                 <td colspan="3">

@@ -1,6 +1,7 @@
 package controller.talent;
 
 import java.io.File;
+import java.util.List;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -36,9 +37,10 @@ import org.apache.commons.fileupload.servlet.*;
 public class RegisterTalentController implements Controller{
 	private static final Logger log = LoggerFactory.getLogger(RegisterTalentController.class);
 
-	 SimpleDateFormat format1 = new SimpleDateFormat ("yyyy-MM-dd");
-	 long miliseconds = System.currentTimeMillis();
-     Date current = new Date(miliseconds);
+	SimpleDateFormat format1 = new SimpleDateFormat ("yyyy-MM-dd");
+	long miliseconds = System.currentTimeMillis();
+    Date current = new Date(miliseconds);
+    String src = null;
      
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -46,6 +48,23 @@ public class RegisterTalentController implements Controller{
 		if (!UserSessionUtils.hasLogined(request.getSession())) {
             return "redirect:/member/login/form";	
         }
+		HttpSession session = request.getSession();
+		String email = UserSessionUtils.getLoginUserId(session);
+		MemberService mem = new MemberServiceImpl();
+		int userId = mem.getuserIdByEmail(email);
+		
+		String filename = null;
+		Date start = null;
+		Date deadline = null;
+		String title = null;
+		String content = null;
+		String category = null;
+		int postType = -1;
+		int price = -1;
+		int student = -1;
+		int num[] =new int[10];
+		int prices[] = new int[10];
+		int k = 1;
 		
 		
 		boolean check = ServletFileUpload.isMultipartContent(request);
@@ -93,12 +112,40 @@ public class RegisterTalentController implements Controller{
                 	//넘어온 값에 대한 한글 처리를 한다.
                 	
                 	if(item.isFormField()) {//일반 폼 데이터라면...                		
-                		if(item.getFieldName().equals("name")) name = value;
-                		//key 값이 name이면 name 변수에 값을 저장한다.
-                		else if(item.getFieldName().equals("id")) id = value;
-                		//key 값이 id이면 id 변수에 값을 저장한다.
-                		else if(item.getFieldName().equals("pw")) pw = value;
-                		//key 값이 pw이면 pw 변수에 값을 저장한다.
+                		if(item.getFieldName().equals("startDate")) {
+                			start = format1.parse(value);
+                		}
+                	
+                		else if(item.getFieldName().equals("deadline")) {
+                			deadline = format1.parse(value);
+                		}
+                		else if(item.getFieldName().equals("title")) {
+                			title = value;
+                		}
+                		else if(item.getFieldName().equals("content")) {
+                			content = value;
+                		}
+                		else if(item.getFieldName().equals("category")) {
+                			category = value;
+                		}
+                		else if(item.getFieldName().equals("postType")) {
+                			postType = Integer.parseInt(value);
+                		}
+                	
+                		else if(item.getFieldName().equals("price")) {
+                			price = Integer.parseInt(value);
+                		}
+                		else if(item.getFieldName().equals("student")) {
+                			student = Integer.parseInt(value);
+                		}
+                		else if(item.getFieldName().equals("num"+k)) {
+                			num[k] = Integer.parseInt(value);
+                		}
+                		else if(item.getFieldName().equals("price"+k)) {
+                			prices[k] = Integer.parseInt(value);
+                			k++;
+                		}
+                		
                 	}
                 	else {//파일이라면...
                 		if(item.getFieldName().equals("picture")) {
@@ -116,77 +163,60 @@ public class RegisterTalentController implements Controller{
                 		}
                 	}
                 }
-                
-		Date start = format1.parse(request.getParameter("startDate"));
-		Date deadline = format1.parse(request.getParameter("deadline"));
-		System.out.println(start);
-		System.out.println(deadline);
-		System.out.println(current);
-		
-		HttpSession session = request.getSession();
-		String email = UserSessionUtils.getLoginUserId(session);
-		MemberService mem = new MemberServiceImpl();
-		int userId = mem.getuserIdByEmail(email);
-		
-		TalentDTO dto = new TalentDTO(
-				request.getParameter("title"),
-				request.getParameter("content"),
-				start,
-				deadline,
-				current,
-				0,
-				userId,
-				request.getParameter("category"),
-				Integer.parseInt(request.getParameter("postType")));//0=selling, 1=demanding
-		System.out.println(dto);
-		
-		log.debug("Create Talent : {}", dto.getTitle());
-		
-		try {
+			}catch(SizeLimitExceededException e) {
+				//업로드 되는 파일의 크기가 지정된 최대 크기를 초과할 때 발생하는 예외처리
+					e.printStackTrace();           
+	        }catch(FileUploadException e) {
+	            //파일 업로드와 관련되어 발생할 수 있는 예외 처리
+	                e.printStackTrace();
+	        }catch(Exception e) {            
+	                e.printStackTrace();
+	        }
+			
+			TalentDTO dto = new TalentDTO(
+					title,
+					content,
+					start,
+					deadline,
+					current,
+					0,
+					userId,
+					category,
+					postType);//0=selling, 1=demanding
+			System.out.println(dto);
+			
+			log.debug("Create Talent : {}", dto.getTitle());
+			
 			System.out.println("재능 추가");
 			TalentService talentService = new TalentServiceImpl();
 			System.out.println("here");
 			int talentId = talentService.insertTalent(dto);
 			System.out.println(talentId+ "완료");
 			
-			
 			PriceService priceService = new PriceServiceImpl();
-			PriceDTO dto1 = new PriceDTO(talentId, 1, Integer.parseInt(request.getParameter("price")));
+			PriceDTO dto1 = new PriceDTO(talentId, 1, price);
 			int result = priceService.insertPrice(dto1);
 			
 			System.out.println(result);
-			System.out.println("student값: "+request.getParameter("student"));
-			int num = Integer.parseInt(request.getParameter("student"));
-			for(int i = 1; i <= num; i++) {
+			System.out.println("student값: "+student);
+			
+			for(int i = 1; i <= student; i++) {
 				PriceDTO dto2 = new PriceDTO(
 						talentId,
-						Integer.parseInt(request.getParameter("num"+i)),
-						Integer.parseInt(request.getParameter("price"+i))
+						num[i],
+						prices[i]
 						);
 				result = priceService.insertPrice(dto2);
 				System.out.println(result);
 			}
-		
+			
+			request.setAttribute("dir", dir);
+			request.setAttribute("filename", filename);
 			request.setAttribute("talentId", talentId);
-			String src = "/talent/view?talentId=" +talentId; 
+			src = "/talent/view?talentId=" +talentId; 
 			System.out.println(src);
-			return src;
-		}catch(SizeLimitExceededException e) {
-			//업로드 되는 파일의 크기가 지정된 최대 크기를 초과할 때 발생하는 예외처리
-				e.printStackTrace();           
-            }catch(FileUploadException e) {
-            //파일 업로드와 관련되어 발생할 수 있는 예외 처리
-//		}catch(ExistingTalentException e) {
-//			System.out.println("재능 추가 실패");
-//            request.setAttribute("registerFailed", true);
-//			request.setAttribute("exception", e);
-//			request.setAttribute("talent", dto);
-//			return "/talent/registerForm.jsp";
-//		}
 			
-			
-			
-			
+		}
+           return src;
 	}
-
 }
