@@ -79,7 +79,7 @@ public class RegisterTalentController implements Controller{
 			File dir = new File(path);
 			
 			// Tomcat 외부의 폴더에 저장하려면 아래와 같이 절대 경로로 폴더 이름을 지정함
-			// File dir = new File("C:/Temp");
+//			 File dir = new File("C:/Temp");
 			
 			if(!dir.exists()) dir.mkdir();
 			//전송된 파일을 저장할 실제 경로를 만든다.
