@@ -71,7 +71,7 @@ public class UpdateMemberController implements Controller {
 		} catch (ExistingUserException e) {	// 예외 발생 시 수정 form으로 forwarding
 			
 			System.out.println("수정불가");
-            request.setAttribute("registerFailed", true);
+            request.setAttribute("updateFailed", true);
 			request.setAttribute("exception", e);
 			request.setAttribute("member", updateMember);
 			return "/member/updateForm.jsp";

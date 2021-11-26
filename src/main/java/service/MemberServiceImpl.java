@@ -56,9 +56,10 @@ public class MemberServiceImpl implements MemberService {
 	public boolean login(String userId, String password)
 			throws SQLException, UserNotFoundException, PasswordMismatchException {
 		
-			System.out.println(userId +","+ password);
 			MemberDTO member = dao.getMemberByEmail(userId);
-			System.out.println(member);
+			if (member == null) {
+				throw new UserNotFoundException(userId+"는 존재하지 않는 아이디입니다.");
+			}
 
 			if (!member.matchPassword(password)) {
 				throw new PasswordMismatchException("비밀번호가 일치하지 않습니다.");
@@ -71,7 +72,7 @@ public class MemberServiceImpl implements MemberService {
 			MemberDTO member = dao.getMemberByEmail(email);
 
 			if (member == null) {
-				throw new UserNotFoundException("유저가 존재하지 않습니다.");
+				throw new UserNotFoundException(email+"는 존재하지 않는 아이디입니다.");
 			}
 			return member;
 	}
