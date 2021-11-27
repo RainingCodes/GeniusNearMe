@@ -5,22 +5,19 @@
 	var cnt = 0;
 	$(document).ready(function() {
 		$(document).on("click", "input[name='add'])", function() {
-			if(cnt >= 5)
-				alert("그룹 최대치를 초과했습니다.");
-			else {
-				cnt++;
-				$("#add_btn").before("<p id='group" + cnt +"'>" + cnt +"그룹<input type='hidden' name='group" + cnt + "'></p>");
-			}
-		}
-	})
+				$("#add_btn" + cnt).before("<p id='group" + cnt +"'>" + cnt +"그룹<input type='hidden' name='group" + cnt + "'></p>");
+		});
+	});
 </script>
-<body id='group'>
+<div id='group'>
 <h3>그룹 리스트</h3>
 <c:if test="${userId eq talent.writerId}"> 
 	<form name="form" method="get" action="<c:url value='group/register' />" >
-		<c:forEach var="n" items="${num}" varStatus="status">
-			${n.length}명 그룹
-			<input type="button" name="add" value="추가하기" id="add_btn">
+		<c:forEach var="price" items="${prices}" varStatus="status">
+			<c:out value="${price.headCount}" />명 그룹
+			<script>
+			cnt++;
+			document.write("<input type='button' name='add' value='추가하기' id='add_btn" + cnt +"' >");</script>
 		</c:forEach>
 	</form>
 </c:if>
@@ -35,4 +32,4 @@
 		</form>
 	</c:if>
 </c:if>
-</body>
+</div>
