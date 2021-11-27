@@ -13,7 +13,10 @@ public class DAOFactory {
 	public TalentDAO getTalentDAO() {
 		return new TalentDAOImpl(); 
 	}
-	
+	public CommentDAO getCommentDAO() {
+		return new CommentDAOImpl();
+		
+	}
 	public MatchingDAO getMatchingDAO() {
 		return new MatchingDAOImpl();		
 	}
