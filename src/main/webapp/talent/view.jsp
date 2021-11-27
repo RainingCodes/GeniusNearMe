@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <script>
 function goToURI(targetUri) {
@@ -112,14 +114,19 @@ function goToURI(targetUri) {
        			</c:if>
        			<c:if test="${userId ne '-1'}"> 
 	                <c:if test="${userId ne talent.writerId}"> 
-					         <a href="<c:url value='/matching/talent'>
-	                     	   <c:param name='talentId' value='${talent.talentId}'/>
-	                     	   <c:param name='userId' value='${userId}'/>
-	                			</c:url>">1:1 매칭 신청하기</a>
+		                <fmt:formatDate var="today" value="${now }" pattern="yyyy-MM-dd"/>
+		                <c:if test="today < ${talent.deadLine }">
+		                	<a href="<c:url value='/matching/talent'>
+		                    	<c:param name='talentId' value='${talent.talentId}'/>
+		                     	<c:param name='userId' value='${userId}'/>
+		                		</c:url>">1:1 매칭 신청하기</a>
+		                </c:if>
+		                <c:if test="today > ${talent.deadLine }">
+		                	<p>신청기한이 지났습니다.</p>
+		                </c:if>
 	       			</c:if>
 	       		</c:if>
-                          	  
-                    <!-- <button type="button" onclick="쪽지">쪽지보내기</button> -->
+                          	 
                 </td>
             </tr>
             <tr>

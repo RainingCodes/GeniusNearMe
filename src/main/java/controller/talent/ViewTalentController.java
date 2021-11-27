@@ -1,5 +1,6 @@
 package controller.talent;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -73,6 +74,9 @@ public class ViewTalentController implements Controller{
 		request.setAttribute("prices", price);
 		request.setAttribute("userId", userId);
 		request.setAttribute("nickName", nickName);
+		
+		Date now = new Date();
+		request.setAttribute("today", now);
 		
 		return "/talent/view.jsp";				// 사용자 보기 화면으로 이동
     }
