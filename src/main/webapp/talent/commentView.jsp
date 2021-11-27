@@ -1,18 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>comment View By talentId</title>
 <script>
 	function submitForm() {
 		form.submit();
 	}
 </script>
-</head>
-<body>
+<p id='comment'>
 	<div class="comment" align="center">
 		<table border = "1">
 		<thead class="thead-inverse">
@@ -66,7 +60,5 @@
 			</form>
 		</c:if>
 	</div>
-	
-	
-</body>
-</html>
+
+</p>

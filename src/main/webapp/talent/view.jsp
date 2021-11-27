@@ -181,7 +181,7 @@ function goToURI(targetUri) {
 		<span><input type='button' name='commentBtn' value='문의'></span>
 		<span><input type='button' name='reviewBtn' value='리뷰'></span>
 		<jsp:include page='/talent/groupMatching.jsp' flush='true' />
-
+		<jsp:include page='/talent/commentView.jsp' flush='true' />
         <div align = "center">
         <br><br><br><br><br><br><br>
         	
