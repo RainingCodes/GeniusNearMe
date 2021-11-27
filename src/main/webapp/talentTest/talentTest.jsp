@@ -57,7 +57,12 @@ h1 {
 </style>
 <script type="text/javascript">
 	var i = 0;
-	function stepFunc() {
+	var result = []
+	
+	function stepFunc(event) {
+		var eventTest = event;
+		result.push(eventTest);
+		
 		var questions = new Array("계획했던 과제를 다 못 끝냈을 땐?", "새로운 것을 배우는 것에 흥미를 느끼는 편인가요?", "정의 구현에 대한 생각은?");
 		var answers1 = new Array("내일하지 뭐", "그럼요", "내가 해야지");
 		var answers2 = new Array("더 하다 자야겠다.\n오늘 끝내고야 말겠어", "아니요..", "그런건 슈퍼맨이..");
@@ -65,8 +70,12 @@ h1 {
 		document.getElementById("answer1").value = answers1[i];
 		document.getElementById("answer2").value = answers2[i++];
 		document.getElementById("step").value += 25;
-		if (i == 4){			
-			document.write("끝"); //검사 결과 페이지로 이동(수정필요)
+		if (i == 4){
+			document.form.result0.value = result[0];
+			document.form.result1.value = result[1];
+			document.form.result2.value = result[2];
+			document.form.result3.value = result[3];
+			document.form.submit();
 		}
 	}
 </script>
@@ -78,9 +87,17 @@ h1 {
 	</div>
 	<div>
 		<input type="button" id="question" disabled="disabled" value="활동적인 것을 좋아하시나요?">
-		<input type="button" onClick="stepFunc()" id="answer1" value="그럼요!">
-		<input type="button" onClick="stepFunc()" id="answer2" value="아니요..">
+		<input type="button" onClick="stepFunc(1)" id="answer1" value="그럼요!">
+		<input type="button" onClick="stepFunc(2)" id="answer2" value="아니요..">
+		
 	</div>
+	
+	<form name = "form" method="get" action="<c:url value='/talentTest/result' />">
+		<input type="hidden" name="result0" value=0>
+		<input type="hidden" name="result1" value=0>
+		<input type="hidden" name="result2" value=0>
+		<input type="hidden" name="result3" value=0>
+	</form>
 
 	<progress value="25" max="100" id="step"> </progress>
 </body>

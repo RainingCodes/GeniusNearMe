@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 
 import controller.matching.*;
 import controller.talent.*;
+import controller.talentTest.ResultTalentTestController;
 import controller.user.*;
 
 public class RequestMapping {
@@ -44,6 +45,8 @@ public class RequestMapping {
         
         mappings.put("/matching/talent", new ApplicationMatchingController());
         mappings.put("/matching/choose", new ChooseMatchingController());
+        
+        mappings.put("/talentTest/result", new ResultTalentTestController());
         
         logger.info("Initialized Request Mapping!");
     }
