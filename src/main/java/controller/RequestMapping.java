@@ -38,7 +38,8 @@ public class RequestMapping {
         mappings.put("/talent/detailedSearch", new DetailedSearchController());
         mappings.put("/talent/update", new UpdateTalentController());
         mappings.put("/talent/group", new ForwardController("/talent/groupMatching.jsp"));
-        
+        mappings.put("/talent/comment", new CommentController());
+        mappings.put("/talent/comment/delete", new DeleteCommentController());
         
         mappings.put("/matching/talent", new ApplicationMatchingController());
         mappings.put("/matching/choose", new ChooseMatchingController());

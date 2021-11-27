@@ -6,6 +6,18 @@ public class CommentDTO {
 	private String content;
 	private int writerId;
 	
+	public CommentDTO() {
+		commentId = -1;
+		talentId = -1;
+		content = null;
+		writerId = -1;
+	}
+	public CommentDTO(int talentId, String content, int writerId) {
+		super();
+		this.talentId = talentId;
+		this.content = content;
+		this.writerId = writerId;
+	}
 	public int getCommentId() {
 		return commentId;
 	}
@@ -29,6 +41,11 @@ public class CommentDTO {
 	}
 	public void setWriterId(int writerId) {
 		this.writerId = writerId;
+	}
+	@Override
+	public String toString() {
+		return "CommentDTO [commentId=" + commentId + ", talentId=" + talentId + ", content=" + content + ", writerId="
+				+ writerId + "]";
 	}
 	
 	
