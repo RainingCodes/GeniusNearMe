@@ -46,7 +46,6 @@
 			</tbody>
 		</table>
 	</div>
-
 	<p>
 	<hr>
 	<div class="commentRegister" align="center">
