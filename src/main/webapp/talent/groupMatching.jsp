@@ -1,12 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>그룹 리스트</title>
 <script type="text/javascript">
 	var cnt = 0;
 	$(document).ready(function() {
@@ -20,7 +14,6 @@
 		}
 	})
 </script>
-</head>
 <body id='group'>
 <h3>그룹 리스트</h3>
 <c:if test="${userId eq talent.writerId}"> 
@@ -43,4 +36,3 @@
 	</c:if>
 </c:if>
 </body>
-</html>

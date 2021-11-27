@@ -14,11 +14,37 @@ function goToURI(targetUri) {
 var check = 1;
 $(document).ready(function () {
 	  $(document).on("click", "input[name='groupBtn']", function () {
-		  if(check == 1) 
-		  	$("#groupBtn").after("<%@ include file='/talent/groupMatching.jsp' %>");
+		  if(check != 1) { 
+		  	$("#group").show();
+		  	check = 1;
+		  }
 		  else {
-			  $("#comment").remove();
-			  $("#review").remove();
+			  $("#comment").hide();
+			  $("#review").hide();
+		  }
+	  });
+	});
+$(document).ready(function () {
+	  $(document).on("click", "input[name='commentBtn']", function () {
+		  if(check != 2) {
+		  	$("#coment").show();
+		  	check = 2;
+		  }
+		  else {
+			  $("#group").hide();
+			  $("#review").hide();
+		  }
+	  });
+	});
+$(document).ready(function () {
+	  $(document).on("click", "input[name='reviewBtn']", function () {
+		  if(check != 3) {
+		  	$("#review").show();
+		  	check = 3;
+		  }
+		  else {
+			  $("#group").hide();
+			  $("#comment").hide();
 		  }
 	  });
 	});
@@ -162,15 +188,13 @@ $(document).ready(function () {
         <p>
 		
         <hr/>
-        <table style="width: 50%; margin: auto;">
-            <tr>
-            	<th><input type='button' name='groupBtn" value='공동 구매하기' ></th>
-	            <th><input type='button' name='commentBtn" value='문의' ></th>
-	                <th><input type='button' name='reviewBtn" value='리뷰' ></th>
-            </tr>
-        </table>
+        <span><input type="button" name="groupBtn" value="공동 구매하기">	<jsp:include page='/talent/groupMatching.jsp' flush='true' /></span>
+		<span></span><input type='button' name='commentBtn' value='문의'></span>
+		<span><input type='button' name='reviewBtn' value='리뷰'></span>
+
         <div align = "center">
         <br><br><br><br><br><br><br>
+        	
     	    <input type="button" value="이전 페이지" onClick="history.go(-1)">
 
         </div>
