@@ -15,36 +15,36 @@ var check = 1;
 $(document).ready(function () {
 	  $(document).on("click", "input[name='groupBtn']", function () {
 		  if(check != 1) { 
-		  	$("#group").show();
+		  	$("#group").css("visibility", "visibility");
 		  	check = 1;
 		  }
 		  else {
-			  $("#comment").hide();
-			  $("#review").hide();
+			  $("#comment").css("visibility", "hidden");
+			  $("#review").css("visibility", "hidden");
 		  }
 	  });
 	});
 $(document).ready(function () {
 	  $(document).on("click", "input[name='commentBtn']", function () {
 		  if(check != 2) {
-		  	$("#coment").show();
+		  	$("#coment").css("visibility", "visibility");
 		  	check = 2;
 		  }
 		  else {
-			  $("#group").hide();
-			  $("#review").hide();
+			  $("#group").css("visibility", "hidden");
+			  $("#review").css("visibility", "hidden"));
 		  }
 	  });
 	});
 $(document).ready(function () {
 	  $(document).on("click", "input[name='reviewBtn']", function () {
 		  if(check != 3) {
-		  	$("#review").show();
+		  	$("#review").css("visibility", "visibility");
 		  	check = 3;
 		  }
 		  else {
-			  $("#group").hide();
-			  $("#comment").hide();
+			  $("#group").css("visibility", "hidden");
+			  $("#comment").css("visibility", "hidden");
 		  }
 	  });
 	});
