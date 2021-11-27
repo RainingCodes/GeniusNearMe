@@ -31,6 +31,7 @@
 				  	${commentList.content}
 				  	<c:if test="${commentWriterId ne '-1'}"> 
 					        <a href="<c:url value='/talent/comment/delete'>
+					        			<c:param name='talentId' value='${commentList.talentId}'/>
 					        			<c:param name='commentId' value='${commentList.commentId}'/>
 					       				</c:url>">&nbsp;&nbsp;&nbsp;삭제</a>&nbsp;
 	       			</c:if>
