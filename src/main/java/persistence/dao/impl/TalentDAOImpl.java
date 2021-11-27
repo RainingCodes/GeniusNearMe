@@ -121,11 +121,15 @@ public class TalentDAOImpl implements TalentDAO  {
 			jdbcUtil.close();
 		} return null;
 	}
-	
-	public List<TalentDTO> getTalentListByOptions(String reSearch, String[] categories, int price, Date startDate, Date deadLine) {
+		
+	public List<TalentDTO> getTalentListByOptions(String title, String reSearch, String[] categories, int price, Date startDate, Date deadLine) {
 		String getByOptionsQuery = query + "FROM TALENT WHERE TITLE LIKE ? AND CATEGORIES = ? AND PRICE = ? AND STARTDATE = ? AND ENDDATE = ? ";
 		
-		Object[] param = new Object[] { "%"+reSearch+"%", categories, price, startDate, deadLine };
+		
+		Object[] param = new Object[] { "%"+title+"%"+reSearch+"%", categories, price, startDate, deadLine };
+		if (param != null) {
+			param = new Object[] { "%"+reSearch+"%"+title+"%", categories, price, startDate, deadLine };
+		}
 		
 		jdbcUtil.setSql(getByOptionsQuery);
 		jdbcUtil.setParameters(param);
