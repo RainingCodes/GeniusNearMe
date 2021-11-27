@@ -24,9 +24,9 @@ public class DetailedSearchController implements Controller{
 		String[] categories = request.getParameterValues("category");
 		
 		TalentService manager = new TalentServiceImpl();
-		List<TalentDTO> searchedTalentList = manager.getTalentByOptions(reSearch, categories, price, startDate, deadLine);
+		List<TalentDTO> talentList = manager.getTalentByOptions(reSearch, categories, price, startDate, deadLine);
 		
-		request.setAttribute("searchedTalentList", searchedTalentList);
+		request.setAttribute("talentList", talentList);
 		
 		return "/talent/detailedSearch/list.jsp";
 	}

@@ -87,7 +87,7 @@
 		<div id="sort" style="margin-left: 680px;"><!-- | <button>리뷰많은순</button> -->
 		</div>
 		
-		<c:forEach var="talent" items="${searchedTalentList}">
+		<c:forEach var="talent" items="${talentList}">
 			<div class="post">
 				<div id="imgSection1">
 					<img id="thumbnail" src="../img/loopy/img<%=i++ %>.jpg">
