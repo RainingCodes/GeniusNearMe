@@ -15,7 +15,7 @@ var check = 1;
 $(document).ready(function () {
 	  $(document).on("click", "input[name='groupBtn']", function () {
 		  if(check == 1) {
-		  	$("#groupBtn").after("<%@ include file='/talent/group' %>");
+		  	$("#groupBtn").after("<%@ include file='/talent/groupMatching.jsp' %>");
 		  else {
 			  $("#comment").remove();
 			  $("#review").remove();
