@@ -25,8 +25,8 @@
 <h3>그룹 리스트</h3>
 <c:if test="${userId eq talent.writerId}"> 
 	<form name="form" method="get" action="<c:url value='group/register' />" >
-		<c:forEach var="num" items="${numList}" varStatus="status">
-			${num}명 그룹
+		<c:forEach var="n" items="${num}" varStatus="status">
+			${n.length}명 그룹
 			<input type="button" name="add" value="추가하기" id="add_btn">
 		</c:forEach>
 	</form>
