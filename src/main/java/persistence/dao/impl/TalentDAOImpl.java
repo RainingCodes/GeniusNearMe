@@ -365,5 +365,4 @@ public class TalentDAOImpl implements TalentDAO  {
 		}
 		return 0;
 	}
-	
 }
