@@ -14,7 +14,7 @@ function goToURI(targetUri) {
 var check = 1;
 $(document).ready(function () {
 	  $(document).on("click", "input[name='groupBtn']", function () {
-		  if(check == 1) {
+		  if(check == 1) 
 		  	$("#groupBtn").after("<%@ include file='/talent/groupMatching.jsp' %>");
 		  else {
 			  $("#comment").remove();
@@ -164,7 +164,7 @@ $(document).ready(function () {
         <hr/>
         <table style="width: 50%; margin: auto;">
             <tr>
-            	<th><input type='button' name='groupBtn" value='공동구매하기' ></th>
+            	<th><input type='button' name='groupBtn" value='공동 구매하기' ></th>
 	            <th><input type='button' name='commentBtn" value='문의' ></th>
 	                <th><input type='button' name='reviewBtn" value='리뷰' ></th>
             </tr>
