@@ -10,7 +10,7 @@ public interface TalentDAO {
 	public List<TalentDTO> getTalentListByCategory(String[] category); // 카테고리로
 	public List<TalentDTO> getTalentListByTitle(String Title); // 제목으로
 	public List<TalentDTO> getTalentListByWriterId(int userId); // 작성자로
-	public List<TalentDTO> getTalentListByOptions(String reSearch, String[] categories, int price, Date startDate, Date endDate); // 상세검색
+	public List<TalentDTO> getTalentListByOptions(String title, String reSearch, String[] categories, int price, Date startDate, Date endDate); // 상세검색
 	public TalentDTO getTalentView(int talentId); // 상세뷰
 	public int insertTalent(TalentDTO t); // 작성
 	public int updateTalent(TalentDTO t); // 수정
