@@ -17,17 +17,18 @@ public class DetailedSearchController implements Controller{
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		// 옵션들
+		String reSearch = request.getParameter("reSearch");
 		int price = Integer.parseInt(request.getParameter("price"));
 		Date startDate = Date.valueOf(request.getParameter("startDate"));
 		Date deadLine = Date.valueOf(request.getParameter("deadLine"));
 		String[] categories = request.getParameterValues("category");
 		
 		TalentService manager = new TalentServiceImpl();
-		//List<TalentDTO> talentList = manager.getTalentByOptions(categories, price, startDate, deadLine);
+		List<TalentDTO> searchedTalentList = manager.getTalentByOptions(reSearch, categories, price, startDate, deadLine);
 		
-		//request.setAttribute("talentList", talentList);
+		request.setAttribute("searchedTalentList", searchedTalentList);
 		
-		return "/talent/detailedSearch/list";
+		return "/talent/detailedSearch/list.jsp";
 	}
 	
 	

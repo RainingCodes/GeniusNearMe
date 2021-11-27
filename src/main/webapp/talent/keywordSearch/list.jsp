@@ -16,7 +16,7 @@
 <body>
 <%@ include file="../../main/head.jsp"  %>
 	<div class="nav">
-		<form method="post" action="../detailedSearch/list.jsp">
+		<form method="post" action="<c:url value='talent/detailedSearch'/>">
 			<p></p>
 			<input type="text" id="reSearch" name="reSearch" placeholder="결과내 재검색">
 			<p></p>
@@ -51,14 +51,13 @@
 			<!-- | <button>리뷰많은순</button> -->
 		</div>
 
-		<c:forEach var="talent" items="${talentList}">
+		<c:forEach var="talent" items="${searchedTalentList}">
 			<div class="post">
 				<div id="imgSection1">
 					<img id="thumbnail" src="../img/loopy/img<%=i++ %>.jpg">
 				</div>
 				<p>
-					<a
-						href="<c:url value='/talent/view'>
+					<a href="<c:url value='/talent/view'>
 						<c:param name='talentId' value='${talent.talentId}'/></c:url>">
 						<strong><c:out value="${talent.title}"/></strong>
 					</a>					
