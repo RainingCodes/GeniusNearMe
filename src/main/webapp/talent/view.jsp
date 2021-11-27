@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <!DOCTYPE html>
 <script>
 function goToURI(targetUri) {
@@ -11,6 +11,17 @@ function goToURI(targetUri) {
 	form.submit();
 	//goToURI('<c:url value='/talent/list'/>')
 }
+var check = 1;
+$(document).ready(function () {
+	  $(document).on("click", "input[name='groupBtn']", function () {
+		  if(check == 1) {
+		  	$("#groupBtn").after("<%@ include file='/talent/group' %>");
+		  else {
+			  $("#comment").remove();
+			  $("#review").remove();
+		  }
+	  });
+	});
 </script>
 <html>
     <head>
@@ -153,9 +164,9 @@ function goToURI(targetUri) {
         <hr/>
         <table style="width: 50%; margin: auto;">
             <tr>
-                <th><a href="<c:url value='/talent/group' />">공동구매하기</a></th>
-                <th>문의</th>
-                <th>리뷰</th>
+            	<th><input type='button' name='groupBtn" value='공동구매하기' ></th>
+	            <th><input type='button' name='commentBtn" value='문의' ></th>
+	                <th><input type='button' name='reviewBtn" value='리뷰' ></th>
             </tr>
         </table>
         <div align = "center">
