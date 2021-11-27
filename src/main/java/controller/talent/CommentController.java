@@ -54,13 +54,15 @@ public class CommentController implements Controller {
 			request.setAttribute("commentList", commentList);	
 			request.setAttribute("nickList", userNicekname);	
 			
+			System.out.print(userNicekname);
+			
 			return "/talent/commentView.jsp";	
 	    }
     	
 		
     	// POST request : 덧글 작성시 등록 (회원만 가능하게)
 		String talentId = request.getParameter("talentId");
-		
+		System.out.println(talentId);
 		CommentDTO comment = new CommentDTO(
    	    	Integer.parseInt(talentId),
    	    	request.getParameter("content"),
