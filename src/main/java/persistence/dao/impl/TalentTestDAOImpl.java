@@ -71,11 +71,11 @@ public class TalentTestDAOImpl implements TalentTestDAO {
 		Object[] tempParam = new Object[10];
 
 		if (t.getResultCategory() != null) {
-			updateQuery += "PW = ?, ";
+			updateQuery += "RESULTCATEGORY = ?, ";
 			tempParam[index++] = t.getResultCategory();
 		}
 		if (t.getResultType() != null) {
-			updateQuery += "PHONE = ?, ";
+			updateQuery += "RESULTTYPE = ?, ";
 			tempParam[index++] = t.getResultType();
 		}
 		
