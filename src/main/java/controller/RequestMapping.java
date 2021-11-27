@@ -46,6 +46,7 @@ public class RequestMapping {
         mappings.put("/matching/talent", new ApplicationMatchingController());
         mappings.put("/matching/choose", new ChooseMatchingController());
         
+        mappings.put("/talentTest", new ForwardController("/talentTest.jsp"));
         mappings.put("/talentTest/result", new ResultTalentTestController());
         
         logger.info("Initialized Request Mapping!");
