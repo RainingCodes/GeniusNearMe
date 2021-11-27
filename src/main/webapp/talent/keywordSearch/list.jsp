@@ -37,7 +37,7 @@
 			<strong>가격대</strong>
 			<p></p>
 			<input type="range" min="0" max="100000" step="1000" id="priceRange"
-				name="price" value="50000">
+				name="price" value="100000">
 			<p></p>
 			<p></p>
 			<strong>날짜</strong><br> <input type="date" name="startDate">~<input
