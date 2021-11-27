@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.List;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -199,7 +200,7 @@ public class RegisterTalentController implements Controller{
 			
 			System.out.println(result);
 			System.out.println("student값: "+student);
-			
+			ArrayList<PriceDTO> priceList = new ArrayList<>();
 			for(int i = 1; i <= student; i++) {
 				PriceDTO dto2 = new PriceDTO(
 						talentId,
@@ -207,13 +208,14 @@ public class RegisterTalentController implements Controller{
 						prices[i]
 						);
 				result = priceService.insertPrice(dto2);
+				priceList.add(dto2);
 				System.out.println(result);
 			}
 			
 			request.setAttribute("dir", dir);
 			request.setAttribute("filename", filename);
 			request.setAttribute("talentId", talentId);
-			request.setAttribute("num", num);
+			request.setAttribute("priceList", priceList);
 			src = "/talent/view?talentId=" +talentId; 
 			System.out.println(src);
 			

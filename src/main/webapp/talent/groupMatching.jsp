@@ -4,22 +4,40 @@
 <script type="text/javascript">
 	var cnt = 0;
 	$(document).ready(function() {
-		$(document).on("click", "input[name='add'])", function() {
-				$("#add_btn" + cnt).before("<p id='group" + cnt +"'>" + cnt +"그룹<input type='hidden' name='group" + cnt + "'></p>");
-		});
+		$(document).on("click", "input[name='add']", function () {
+			var thisGroup = $(this).attr('id');
+			if(inGroup[thisGroup] >= 5)
+				alert("더 이상 추가할 수 없습니다.");
+			else {
+				inGroup[thisGroup]++;
+				$(this).before("<p>" + "그룹" +inGroup[thisGroup] + "</p>");
+			}
+		 });
 	});
+
 </script>
 <div id='group'>
 <h3>그룹 리스트</h3>
 <c:if test="${userId eq talent.writerId}"> 
-	<form name="form" method="get" action="<c:url value='group/register' />" >
+	<form name="form" method="get" action="<c:url value='/group/register' />" >
 		<c:forEach var="price" items="${prices}" varStatus="status">
-			<c:out value="${price.headCount}" />명 그룹
-			<script>
-			cnt++;
-			document.write("<input type='button' name='add' value='추가하기' id='add_btn" + cnt +"' >");</script>
+			<p>
+				<c:out value="${price.headCount}" />명 그룹 리스트
+				<script>
+				document.write("<input type='button' name='add' value='추가하기' id='" + cnt +"' >");
+				cnt++;
+				</script>
+			</p>
 		</c:forEach>
+		<script>
+			var inGroup = new Array(cnt);
+			for(var i = 0; i< inGroup.length; i++)
+				inGroup[i] = 0;
+		</script>
+		<input type="hidden" id="group" name="group">
+    	<input type="submit" value="저장하기">
 	</form>
+	
 </c:if>
 <c:if test="${userId ne '-1'}"> 
 	<c:if test="${userId ne talent.writerId }">

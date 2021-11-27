@@ -55,17 +55,14 @@ public class GroupDTO {
 		this.talentId = talentId;
 	}
 	
-	public GroupDTO(int talentId) {
+	public GroupDTO(int talentId, int headCount) {
 		super();
 		this.talentId = talentId;
+		this.headCount = headCount;
 	}
 	public GroupDTO() {
 		
 	}
-	public GroupDTO(int matchingId, int talentId) {
-		super();
-		this.matchingId = matchingId;
-		this.talentId = talentId;
-	}
+	
 	
 }
