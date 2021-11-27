@@ -31,6 +31,4 @@ public class DetailedSearchController implements Controller{
 		
 		return "/talent/detailedSearch/list.jsp";
 	}
-	
-	
 }
