@@ -30,8 +30,7 @@ public class CreateGroupController implements Controller {
 		GroupService gService = new GroupServiceImpl();
 		
 		
-		for(int i = 0; i < priceList.size(); i++) {
-		
+		for(int i = 1; i < priceList.size(); i++) {
 			
 		}
 		

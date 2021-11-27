@@ -54,7 +54,7 @@ function submitForm() {
 			</td>
 			<td>
 				<a class="btn_excercise" href="<c:url value='/talent/categorySearch'>
-											<c:param name='category' value='excercise' />
+											<c:param name='category' value='sports' />
 										</c:url>">
 					<img alt="운동" src="img/exercise.png">
 					<div>운동</div>
