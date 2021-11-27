@@ -17,6 +17,13 @@ public class TalentTestDTO {
 		this.resultType = resultType;
 		this.userId = userId;
 	}
+	
+	@Override
+	public String toString() {
+		return "TalentTestDTO [resultCategory=" + resultCategory + ", resultType=" + resultType + ", userId=" + userId
+				+ "]";
+	}
+
 	public String getResultCategory() {
 		return resultCategory;
 	}
