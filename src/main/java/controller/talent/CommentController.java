@@ -54,9 +54,7 @@ public class CommentController implements Controller {
 			request.setAttribute("commentList", commentList);	
 			request.setAttribute("nickList", userNicekname);	
 			
-			String src = "/talent/view/comment?talentId=" +talentId; 
-			System.out.println(src);
-		    return src;
+			return "/talent/commentView.jsp";	
 	    }
     	
 		
@@ -85,7 +83,7 @@ public class CommentController implements Controller {
 //		}
     	
     	
-		String src = "/talent/view/comment?talentId=" +talentId ; 
+		String src = "/talent/view/comment?talentId="+talentId; 
 		System.out.println(src);
 	    return src;
 	}
