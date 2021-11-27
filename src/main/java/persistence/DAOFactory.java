@@ -31,4 +31,7 @@ public class DAOFactory {
 	public PriceDAO getPriceDAO() {
 		return new PriceDAOImpl();
 	}
+	public TalentTestDAO getTalentTestDAO() {
+		return new TalentTestDAOImpl();
+	}
 }

@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>재능찾기검사</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>재능 찾기 검사</title>
 <style>
 p {
 	margin: 20px;
@@ -66,17 +67,21 @@ h1 {
 		var questions = new Array("계획했던 과제를 다 못 끝냈을 땐?", "새로운 것을 배우는 것에 흥미를 느끼는 편인가요?", "정의 구현에 대한 생각은?");
 		var answers1 = new Array("내일하지 뭐", "그럼요", "내가 해야지");
 		var answers2 = new Array("더 하다 자야겠다.\n오늘 끝내고야 말겠어", "아니요..", "그런건 슈퍼맨이..");
+		
+		if (i == 3){
+			document.result.result0.value = result[0];
+			document.result.result1.value = result[1];
+			document.result.result2.value = result[2];
+			document.result.result3.value = result[3];
+			document.result.submit();
+			alert('결과 페이지로 이동합니다');
+			i--;
+		}
+		
 		document.getElementById("question").value = questions[i];
 		document.getElementById("answer1").value = answers1[i];
 		document.getElementById("answer2").value = answers2[i++];
 		document.getElementById("step").value += 25;
-		if (i == 4){
-			document.form.result0.value = result[0];
-			document.form.result1.value = result[1];
-			document.form.result2.value = result[2];
-			document.form.result3.value = result[3];
-			document.form.submit();
-		}
 	}
 </script>
 </head>
@@ -87,12 +92,12 @@ h1 {
 	</div>
 	<div>
 		<input type="button" id="question" disabled="disabled" value="활동적인 것을 좋아하시나요?">
-		<input type="button" onClick="stepFunc(1)" id="answer1" value="그럼요!">
-		<input type="button" onClick="stepFunc(2)" id="answer2" value="아니요..">
+		<input type="button" onClick="stepFunc(0)" id="answer1" value="그럼요!">
+		<input type="button" onClick="stepFunc(1)" id="answer2" value="아니요..">
 		
 	</div>
 	
-	<form name = "form" method="get" action="<c:url value='/talentTest/result' />">
+	<form name="result" method="post" action="<c:url value='/talentTest/result' />">
 		<input type="hidden" name="result0" value=0>
 		<input type="hidden" name="result1" value=0>
 		<input type="hidden" name="result2" value=0>
