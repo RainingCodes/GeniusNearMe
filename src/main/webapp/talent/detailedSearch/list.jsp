@@ -5,6 +5,7 @@
 <%@ page import="java.util.List"%>
 <%@ page import="java.util.Arrays" %>
 <%@ page import="java.util.Iterator" %>
+<%! int i = 1; %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,21 +22,11 @@
 		
 		List<TalentDTO> talentList = talentService.getTalentByTalentCategory(selectedCategory);
 		request.setAttribute("talentList", talentList);
-		
-		// 결과내 재검색 키워드 저장
-		String reSearch = request.getParameter("reSearch");
-		
-		//price값 저장
-		String price = request.getParameter("price");
-		
-		//시작날짜, 종료날짜 저장
-		String startDate = request.getParameter("startDate");
-		String endDate = request.getParameter("endDate");
 	%>
 		<div class="nav">
-		<form method="post" action="../detailedSearch/list.jsp">
+		<form method="GET" action="./list.jsp">
 		<p></p>
-		<input type="text" id="reSearch" name="reSearch" placeholder="결과내 재검색" value=<%=reSearch%>>
+		<input type="text" id="reSearch" name="reSearch" placeholder="결과내 재검색" value='${reSearch}'>
 		<p></p>
 		<strong>카테고리</strong><br>
 		<div class="category">
@@ -84,10 +75,10 @@
 		<p></p>
 		<strong>가격대</strong>
 		<p></p>
-		<input type="range" min="0" max="100000" step="1000" id="priceRange" name="price" value=<%=price%>>
+		<input type="range" min="0" max="100000" step="1000" id="priceRange" name="price" value='${price}'>
 		<p></p>
 		<p></p>
-		<strong>날짜</strong><br> <input type="date" name="startDate" value=<%=startDate%>>~<input type="date" name="endDate" value=<%=endDate%>>
+		<strong>날짜</strong><br> <input type="date" name="startDate" value='${startDate}'>>~<input type="date" name="deadLine" value='${deadLine}'>
 		<p></p>
 		<input type="submit" value="상세 검색" style="width: 150px;">
 		</form>
@@ -96,10 +87,10 @@
 		<div id="sort" style="margin-left: 680px;"><!-- | <button>리뷰많은순</button> -->
 		</div>
 		
-		<c:forEach var="talent" items="${talentList}">
+		<c:forEach var="talent" items="${searchedTalentList}">
 			<div class="post">
 				<div id="imgSection1">
-					<img id="thumbnail" src="../img/loopy/img1.jpg" width="120" height="120">
+					<img id="thumbnail" src="../img/loopy/img<%=i++ %>.jpg">
 				</div>
 				<p>
 					<a href="<c:url value='showTalent.jsp'>

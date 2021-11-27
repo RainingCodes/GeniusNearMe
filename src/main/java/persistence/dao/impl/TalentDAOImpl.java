@@ -1,6 +1,6 @@
 package persistence.dao.impl;
 
-//import java.sql.Date;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -122,11 +122,10 @@ public class TalentDAOImpl implements TalentDAO  {
 		} return null;
 	}
 	
-	/*
-	public List<TalentDTO> getTalentListByOptions(String[] categories, int price, Date startDate, Date endDate) {
-		String getByOptionsQuery = query + "FROM TALENT WHERE CATEGORIES = ? AND PRICE <= ? AND STARTDATE = ? AND ENDDATE = ? ";
+	public List<TalentDTO> getTalentListByOptions(String reSearch, String[] categories, int price, Date startDate, Date deadLine) {
+		String getByOptionsQuery = query + "FROM TALENT WHERE TITLE LIKE ? AND CATEGORIES = ? AND PRICE = ? AND STARTDATE = ? AND ENDDATE = ? ";
 		
-		Object[] param = new Object[] { categories, price, startDate, endDate };
+		Object[] param = new Object[] { "%"+reSearch+"%", categories, price, startDate, deadLine };
 		
 		jdbcUtil.setSql(getByOptionsQuery);
 		jdbcUtil.setParameters(param);
@@ -155,7 +154,6 @@ public class TalentDAOImpl implements TalentDAO  {
 			jdbcUtil.close();
 		} return null;
 	}
-	*/
 	
 	public TalentDTO getTalentView(int talentId) {
 		String getTalentQuery = query + "FROM TALENT WHERE TALENTID = ? ";
