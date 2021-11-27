@@ -6,7 +6,7 @@
 		form.submit();
 	}
 </script>
-<p id='comment'>
+<div id='comment'>
 	<div class="comment" align="center">
 		<table border = "1">
 		<thead class="thead-inverse">
@@ -60,5 +60,4 @@
 			</form>
 		</c:if>
 	</div>
-
-</p>
+</div>

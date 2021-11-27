@@ -16,7 +16,7 @@ $(document).ready(function () {
 	  });
 	  $(document).on("click", "input[name='commentBtn']", function () {
 		  	check = 2;
-		  	$("#coment").show();
+		  	$("#comment").show();
 			$("#group").hide();
 			$("#review").hide();
 	  });
