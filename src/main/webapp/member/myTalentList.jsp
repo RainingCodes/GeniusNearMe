@@ -10,6 +10,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" href="../css/talent.css" type="text/css">
 </head>
+<style>
+.content {
+	text-align:center;
+	float: none;
+	width: 900px;
+	margin: 0px auto;
+}
+</style>
 <body>
 <%@ include file="../main/head.jsp"  %>
 	<div class="content">
