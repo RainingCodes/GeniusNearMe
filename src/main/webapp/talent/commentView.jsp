@@ -25,7 +25,12 @@
 			<c:forEach var="li" items="${commentList}" varStatus="status">  			  	
 		  	    <tr>
 				  <td>
-				  	${nickList[status.index]}
+				  	<c:if test="${commentList.writerId eq talent.writerId}"> 
+				  		<span style="color:red">${nickList[status.index]}</span>
+				  	</c:if>
+				  	<c:if test="${nickList[status.index] ne talent.writerId}"> 
+				  		<span>${nickList[status.index]}</span>
+				  	</c:if>
 				  </td>
 				  <td>
 				  	${commentList.content}
@@ -45,16 +50,19 @@
 	<p>
 	<hr>
 	<div class="commentRegister" align="center">
+	<br>
+	덧글 등록
+	<br>
 		<c:if test="${commentWriterId eq '-1'}"> 
 			덧글 등록은 회원만 하실 수 있습니다.
 	    </c:if>
 	    
 	    <c:if test="${commentWriterId ne '-1'}">
-			덧글 등록
+			
 			<form name="form" method="post" action="<c:url value='/talent/comment' />">
 				<input type="hidden" name="email" value="${commentWriterId}"/>	  
 				<input type="hidden" name="email" value="${talnetId}"/>
-				<input name="content" size="50">
+				<textarea cols="30" rows="3" name="content" style="resize: none;"></textarea>
 				<input type="button" value="덧글 작성" onClick="submitForm()">
 			</form>
 		</c:if>
