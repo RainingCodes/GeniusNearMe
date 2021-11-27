@@ -7,6 +7,10 @@
 
 var check = 1;
 $(document).ready(function () {
+	if(check == 1) {
+		$("#comment").hide();
+		$("#review").hide();
+	}
 
 	  $(document).on("click", "input[name='groupBtn']", function () {
 		  	check = 1;
