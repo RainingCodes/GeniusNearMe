@@ -213,6 +213,7 @@ public class RegisterTalentController implements Controller{
 			request.setAttribute("dir", dir);
 			request.setAttribute("filename", filename);
 			request.setAttribute("talentId", talentId);
+			request.setAttribute("num", num);
 			src = "/talent/view?talentId=" +talentId; 
 			System.out.println(src);
 			

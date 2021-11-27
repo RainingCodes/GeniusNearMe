@@ -26,7 +26,7 @@
 <c:if test="${userId eq talent.writerId}"> 
 	<form name="form" method="get" action="<c:url value='group/register' />" >
 		<c:forEach var="num" items="${numList}" varStatus="status">
-			${num} 그룹
+			${num}명 그룹
 			<input type="button" name="add" value="추가하기" id="add_btn">
 		</c:forEach>
 	</form>
