@@ -150,19 +150,18 @@ $(document).ready(function () {
 				                     	  </c:url>">재능글 수정하기</a>&nbsp;
        			</c:if>
        			<c:if test="${userId ne '-1'}"> 
-	                <c:if test="${userId ne talent.writerId}"> 
-		                <fmt:formatDate var="today" value="${now }" pattern="yyyy-MM-dd"/>
-		                <c:if test="today < ${talent.deadLine }">
-		                	<a href="<c:url value='/matching/talent'>
-		                    	<c:param name='talentId' value='${talent.talentId}'/>
-		                     	<c:param name='userId' value='${userId}'/>
-		                		</c:url>">1:1 매칭 신청하기</a>
-		                </c:if>
-		                <c:if test="today > ${talent.deadLine }">
-		                	<p>신청기한이 지났습니다.</p>
-		                </c:if>
-	       			</c:if>
-	       		</c:if>
+                   <c:if test="${userId ne talent.writerId}"> 
+                      <fmt:formatDate var="today" value="${now }" pattern="yyyy-MM-dd"/>
+                      <c:choose>
+                          <c:when test="today < ${talent.deadLine }"><a href="<c:url value='/matching/talent'>
+                                <c:param name='talentId' value='${talent.talentId}'/>
+                                 <c:param name='userId' value='${userId}'/>
+                               </c:url>">1:1 매칭 신청하기</a>
+                            </c:when>
+                          <c:otherwise> <p>신청기한이 지났습니다.</p></c:otherwise>
+                  </c:choose>
+                   </c:if>
+                </c:if>
                           	 
                 </td>
             </tr>
