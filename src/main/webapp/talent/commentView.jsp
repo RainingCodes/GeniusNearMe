@@ -53,10 +53,10 @@
 	    <c:if test="${commentWriterId ne '-1'}">
 			
 			<form name="form" method="post" action="<c:url value='/talent/comment' />">
-				<input type="hidden" name="email" value="${commentWriterId}"/>	  
-				<input type="hidden" name="email" value="${talnetId}"/>
-				<textarea cols="30" rows="3" name="content" style="resize: none;"></textarea>
-				<input type="button" value="덧글 작성" onClick="submitForm()">
+				<input type="hidden" name="commentWriterId" value="${commentWriterId}"/>	  
+				<input type="hidden" name="talentId" value="${talentId}"/>
+				${userNicekname}<textarea cols="30" rows="3" name="content" style="resize: none;"></textarea>
+				<input type="button" value="덧글 작성" onClick="submit()">
 			</form>
 		</c:if>
 	</div>
