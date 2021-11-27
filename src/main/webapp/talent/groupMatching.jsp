@@ -3,6 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script type="text/javascript">
 	var cnt = 0;
+	var head = 0;
 	$(document).ready(function() {
 		$(document).on("click", "input[name='add']", function () {
 			var thisGroup = $(this).attr('id');
@@ -11,6 +12,10 @@
 			else {
 				inGroup[thisGroup]++;
 				$(this).before("<p>" + "그룹" +inGroup[thisGroup] + "</p>");
+				if(inGroup[thisGroup] == 1)
+					$(this).before("<input type='hidden' name='group" + head + "' id='group" + head + "' value='"+ inGroup[thisGroup] + "'>");
+				else
+					$("#group" + head).val(inGroup[thisGroup]);
 			}
 		 });
 	});
@@ -22,11 +27,14 @@
 	<form name="form" method="get" action="<c:url value='/group/register' />" >
 		<c:forEach var="price" items="${prices}" varStatus="status">
 			<p>
-				<c:out value="${price.headCount}" />명 그룹 리스트
-				<script>
-				document.write("<input type='button' name='add' value='추가하기' id='" + cnt +"' >");
-				cnt++;
-				</script>
+				<c:if test='${price.headCount ne 1}'>
+					<c:out value="${price.headCount}" />명 그룹 리스트
+					<script>
+					head = "${price.headCount}";
+					document.write("<input type='button' name='add' value='추가하기' id='" + cnt +"' >");
+					cnt++;
+					</script>
+				</c:if>
 			</p>
 		</c:forEach>
 		<script>
@@ -34,8 +42,8 @@
 			for(var i = 0; i< inGroup.length; i++)
 				inGroup[i] = 0;
 		</script>
-		<input type="hidden" id="group" name="group">
-    	<input type="submit" value="저장하기">
+		<input type="hidden" id="inGroup" name="inGroup">
+    	<input type="button" value="저장하기" onclick="save()">
 	</form>
 	
 </c:if>
