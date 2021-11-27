@@ -17,7 +17,9 @@ public class TalentServiceImpl implements TalentService {
 	public List<TalentDTO> ListingTalents() {
 		return dao.getAllTalentList();
 	}
-
+	public List<TalentDTO> getTalentListByWriterId(int userId){
+		return dao.getTalentListByWriterId(userId);
+	}
 	public List<TalentDTO> getTalent(String title) {
 		return dao.getTalentListByTitle(title);
 	}
