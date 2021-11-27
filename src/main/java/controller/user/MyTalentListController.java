@@ -34,7 +34,7 @@ public class MyTalentListController implements Controller{
 		int userId = manager.getuserIdByEmail(email);
 		
 		TalentService talentservice = new TalentServiceImpl();
-		List<TalentDTO> talentList = talentservice.getTalentByWriter(userId);
+		List<TalentDTO> talentList = talentservice.getTalentListByWriterId(userId);
 		
 		request.setAttribute("talentList", talentList);
 		

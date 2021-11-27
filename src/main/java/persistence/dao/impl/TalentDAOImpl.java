@@ -121,6 +121,40 @@ public class TalentDAOImpl implements TalentDAO  {
 			jdbcUtil.close();
 		} return null;
 	}
+	public List<TalentDTO> getTalentListByWriterId(int userId){
+		String getByWriterIdQuery = query + "FROM TALENT WHERE WRITERID = ? ";
+		
+		Object[] param = new Object[] { userId };
+		
+		jdbcUtil.setSql(getByWriterIdQuery);
+		jdbcUtil.setParameters(param);
+		
+		try {
+			ResultSet rs = jdbcUtil.executeQuery();
+			List<TalentDTO> list = new ArrayList<TalentDTO>();
+			
+			while (rs.next()) {
+				TalentDTO dto = new TalentDTO();
+				dto.setTalentId(rs.getInt("TALENTID"));
+				dto.setTitle(rs.getString("TITLE"));
+				dto.setContent(rs.getString("CONTENT"));
+				dto.setStartDate(rs.getDate("STARTDATE"));
+				dto.setDeadLine(rs.getDate("DEADLINE"));
+				dto.setWrittenDate(rs.getDate("WRITTENDATE"));
+				dto.setMatchingCounts(rs.getInt("MATCHINGCOUNTS"));
+				dto.setWriterId(rs.getInt("WRITERID"));
+				dto.setTalentCategoryName(rs.getString("TALENTCNAME"));
+				dto.setPostType(rs.getInt("POSTTYPE"));
+				
+				list.add(dto);
+			}
+			return list;
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.close();
+		} return null;
+	}
 		
 	public List<TalentDTO> getTalentListByOptions(String title, String reSearch, String[] categories, int price, Date startDate, Date deadLine) {
 		String getByOptionsQuery = query + "FROM TALENT WHERE TITLE LIKE ? AND CATEGORIES = ? AND PRICE = ? AND STARTDATE = ? AND ENDDATE = ? ";
