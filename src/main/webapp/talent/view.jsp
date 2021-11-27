@@ -3,7 +3,34 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-<!DOCTYPE html>
+<script>
+
+var check = 1;
+$(document).ready(function () {
+
+	  $(document).on("click", "input[name='groupBtn']", function () {
+		  	check = 1;
+			  $("#group").show();
+			  $("#comment").hide();
+			  $("#review").hide();
+	  });
+	  $(document).on("click", "input[name='commentBtn']", function () {
+		  	check = 2;
+		  	$("#coment").show();
+			$("#group").hide();
+			$("#review").hide();
+	  });
+	  
+	  $(document).on("click", "input[name='reviewBtn']", function () {
+		  check = 3;
+		  	$("#review").show();
+			  $("#group").hide();
+			  $("#comment").hide();
+	  });
+	  
+	});
+
+</script>
 <script>
 function goToURI(targetUri) {
 	form.action = targetUri;
@@ -11,43 +38,6 @@ function goToURI(targetUri) {
 	form.submit();
 	//goToURI('<c:url value='/talent/list'/>')
 }
-var check = 1;
-$(document).ready(function () {
-	  $(document).on("click", "input[name='groupBtn']", function () {
-		  if(check != 1) { 
-		  	$("#group").css("visibility", "visibility");
-		  	check = 1;
-		  }
-		  else {
-			  $("#comment").css("visibility", "hidden");
-			  $("#review").css("visibility", "hidden");
-		  }
-	  });
-	});
-$(document).ready(function () {
-	  $(document).on("click", "input[name='commentBtn']", function () {
-		  if(check != 2) {
-		  	$("#coment").css("visibility", "visibility");
-		  	check = 2;
-		  }
-		  else {
-			  $("#group").css("visibility", "hidden");
-			  $("#review").css("visibility", "hidden"));
-		  }
-	  });
-	});
-$(document).ready(function () {
-	  $(document).on("click", "input[name='reviewBtn']", function () {
-		  if(check != 3) {
-		  	$("#review").css("visibility", "visibility");
-		  	check = 3;
-		  }
-		  else {
-			  $("#group").css("visibility", "hidden");
-			  $("#comment").css("visibility", "hidden");
-		  }
-	  });
-	});
 </script>
 <html>
     <head>
@@ -187,9 +177,10 @@ $(document).ready(function () {
         <p>
 		
         <hr/>
-        <span><input type="button" name="groupBtn" value="공동 구매하기">	<jsp:include page='/talent/groupMatching.jsp' flush='true' /></span>
-		<span></span><input type='button' name='commentBtn' value='문의'></span>
+        <span><input type="button" name="groupBtn" value="공동 구매하기"></span>
+		<span><input type='button' name='commentBtn' value='문의'></span>
 		<span><input type='button' name='reviewBtn' value='리뷰'></span>
+		<jsp:include page='/talent/groupMatching.jsp' flush='true' />
 
         <div align = "center">
         <br><br><br><br><br><br><br>
