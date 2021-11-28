@@ -55,8 +55,7 @@ function userRemove() {
 		<a href="<c:url value='/member/ReceiveMatching'></c:url>">내가 받은 매칭 목록</a><p>
 		<a href="<c:url value='/member/myTalentList'></c:url>">내가 작성한 게시글 목록</a> &nbsp;
 		<a href="<c:url value='/member/wishList'></c:url>">내가 찜한 재능 목록</a> 
-		
- 	    <a href="<c:url value='/' />">이웃집 솜솜이 메인페이지</a> 	    
+		   
  	    <br><br>	   
  	    
  	    <!-- 수정 또는 삭제가  실패한 경우 exception 객체에 저장된 오류 메시지를 출력 -->

@@ -39,7 +39,7 @@
 				  <td>
 				  	<span>${li.content}</span>
 				  	<span style="display: inline-block; width: 100%; text-align: right;">
-				  	<c:if test="${commentWriterId ne '-1'}">
+				  	<c:if test="${commentWriterId eq li.writerId}">
 					        <a href="<c:url value='/talent/comment/delete'>
 					        			<c:param name='talentId' value='${li.talentId}'/>
 					        			<c:param name='commentId' value='${li.commentId}'/>
