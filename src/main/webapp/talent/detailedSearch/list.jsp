@@ -79,7 +79,7 @@
 		<input type="range" min="0" max="100000" step="1000" id="priceRange" name="price" value='${price}'>
 		<p></p>
 		<p></p>
-		<strong>날짜</strong><br> <input type="date" name="startDate" value='${startDate}'>>~<input type="date" name="deadLine" value='${deadLine}'>
+		<strong>날짜</strong><br> <input type="date" name="startDate" value='${startDate}'>~<input type="date" name="deadLine" value='${deadLine}'>
 		<p></p>
 		<input type="submit" value="상세 검색" style="width: 150px;">
 		</form>
@@ -94,7 +94,7 @@
 				</div>
 				<p>
 					<a href="<c:url value='showTalent.jsp'>
-						<c:param name='talentTitle' value='${talent.talentTitle}'/>
+						<c:param name='talentTitle' value='${talent.title}'/>
 						</c:url>"><strong>${ talent.title }</strong>
 					</a>
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%{talent.writtenDate}

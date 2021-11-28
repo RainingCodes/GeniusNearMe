@@ -1,6 +1,6 @@
 package service;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 import persistence.DAOFactory;
 import persistence.dao.TalentDAO;
@@ -23,8 +23,8 @@ public class TalentServiceImpl implements TalentService {
 	public List<TalentDTO> getTalent(String title) {
 		return dao.getTalentListByTitle(title);
 	}
-	public List<TalentDTO> getTalentByOptions(String reSearch, String[] categories, int price, Date startDate, Date endDate) {
-		return dao.getTalentListByOptions(reSearch, categories, price, startDate, endDate);
+	public List<TalentDTO> getTalentByOptions(String title, String reSearch, String[] categories, int price, Date startDate, Date endDate) throws Exception {
+		return dao.getTalentListByOptions(title, reSearch, categories, price, startDate, endDate);
 	}
 	
 	public List<TalentDTO> getTalentByTalentCategory(String[] category) {
@@ -45,5 +45,5 @@ public class TalentServiceImpl implements TalentService {
 	public TalentDTO findTalent(int talentId) {
 		return dao.getTalentView(talentId);
 	}
-
+	
 }
