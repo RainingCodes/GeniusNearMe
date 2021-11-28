@@ -163,7 +163,7 @@ $(document).ready(function () {
             </tr>
             <tr>
                 <td>
-                	<form method="get" action="<c:url value='/member/wishList' />">
+                	<form method="POST" action="<c:url value='/member/wishList' />">
                      	<button type="submit" name="talentId" value=${talent.talentId } >찜하기</button>
                     </form>
                 </td>

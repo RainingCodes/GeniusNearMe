@@ -32,25 +32,29 @@ public class WishListController implements Controller{
     	
     	MemberService memberService = new MemberServiceImpl();
     	String email = UserSessionUtils.getLoginUserId(request.getSession());
+		WishService wishService = new WishServiceImpl();
+		TalentService talentservice = new TalentServiceImpl();
 		
 		log.debug("wish List User : {}", email);
 		
 		int userId = memberService.getuserIdByEmail(email);
 		
-		TalentService talentservice = new TalentServiceImpl();
-		int talentId = Integer.parseInt(request.getParameter("talentId"));
-		
-		WishDTO wish = new WishDTO(talentId, userId);
-		
-		System.out.println(wish);
-		
-		WishService wishService = new WishServiceImpl();
-		int i = wishService.insertWish(wish);
-		System.out.println(i+"완료");
+		if (request.getMethod().equals("POST")) {	
+			
+			int talentId = Integer.parseInt(request.getParameter("talentId"));
+			
+			WishDTO wish = new WishDTO(talentId, userId);
+			
+			System.out.println(wish);
+			
+			
+			int k = wishService.insertWish(wish);
+			System.out.println(k+"완료");
+		}
 		
 		List<WishDTO> wishList = wishService.getWishListByUserId(userId);
 		List<TalentDTO> talentList = new ArrayList<>();
-		for(i = 0; i < wishList.size(); i++) {
+		for(int i = 0; i < wishList.size(); i++) {
 			int wishTalentId = wishList.get(i).getTalentID();
 			TalentDTO dto = talentservice.findTalent(wishTalentId);
 			talentList.add(dto);
