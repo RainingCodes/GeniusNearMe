@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,25 +25,35 @@ public class CreateGroupController implements Controller {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
-		System.out.println("호로로롥");
-		String talentId = request.getParameter("talentId");
-		System.out.println("가나다라마바사" + talentId);
-		System.out.println(request.getAttribute("prices"));
+		HttpSession session = request.getSession();
+		int talentId = Integer.parseInt(request.getParameter("talentId"));
+		int userId = (int)session.getAttribute("userId");
+		List<PriceDTO> priceList = (List<PriceDTO>) session.getAttribute("priceList");
 		GroupService gService = new GroupServiceImpl();
+		MatchingService mService = new MatchingServiceImpl();
+		ArrayList<GroupDTO> groupList = new ArrayList<GroupDTO>();
 		
-		System.out.println("와랄ㄹ랄라" + priceList.get(1).getHeadCount());
 		
-		//for(int i = 1; i < priceList.size(); i++) {
-		//	int n = (int) request.getAttribute("group" + priceList.get(i).getHeadCount());
-		//	System.out.println("와랄ㄹ랄라" + n);
-		//	for(int j = 0; j < n; j++) {
-		//		GroupDTO group = new GroupDTO(talentId, priceList.get(i).getHeadCount());
-		//		int result = gService.insertGroup(group);
-		//		log.debug("Create group : {}", group);
-		//	}
-		//}
+		for(int i = 1; i < priceList.size(); i++) {
+			String a = "group" + priceList.get(i).getHeadCount();
+			String n = request.getParameter(a);
+			log.debug(n);
+			if(n != null) {
+				for(int j = 0; j < Integer.parseInt(n); j++) {
+					MatchingDTO mDTO = new MatchingDTO(-1, 0, talentId, -1, userId);
+					int matchingId = mService.insertMatching(mDTO);
+					GroupDTO group = new GroupDTO(talentId, priceList.get(i).getHeadCount(), matchingId);
+					int result = gService.insertGroup(group);
+					groupList.add(group);
+					log.debug("Create group : {}", group);
+				}
+			}
+		}
 		
-	    return "/talent/groupMatching.jsp";	
+		if(groupList != null)
+			request.setAttribute("groupList", groupList);
+		
+	    return "/talent/view";	
 	}
 
 }

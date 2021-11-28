@@ -11,7 +11,6 @@
 	$(document).ready(function() {
 		$(document).on("click", "input[name='add']", function () {
 			var thisGroup = $(this).attr('id');
-			alert(thisGroup + " " + head[thisGroup]);
 			if(inGroup[thisGroup] >= 5)
 				alert("더 이상 추가할 수 없습니다.");
 			else {
@@ -27,40 +26,44 @@
 </script>
 <div id='group'>
 <h3>그룹 리스트</h3>
-<c:if test="${userId eq talent.writerId}"> 
-	<form name="form" method="get" action="<c:url value='/group/register' />" >
-		<c:forEach var="price" items="${prices}" varStatus="status">
-			<p>
-				<c:if test='${price.headCount ne 1}'>
-					<c:out value="${price.headCount}" />명 그룹 리스트
-					<script>
-					head[i++] = "${price.headCount}";
-					document.write("<input type='button' name='add' value='추가하기' id='" + cnt +"' >");
-					cnt++;
-					</script>
-				</c:if>
-			</p>
-		</c:forEach>
-		
-		<script>
-			var inGroup = new Array(cnt);
-			for(var i = 0; i< inGroup.length; i++)
-				inGroup[i] = 0;
-		</script>
-		<input type="hidden" name="talentId" value="<%=talentId %>">
-    	<input type="submit" value="저장하기">
-	</form>
-	
-</c:if>
-<c:if test="${userId ne '-1'}"> 
-	<c:if test="${userId ne talent.writerId }">
-		<form name="form" method="get" action="<c:url value='/user/register' />">
-			<c:forEach var="group" items="${groupList}" varStatus="status">
-				<c:forEach var="a" begin="1" end="${group.headCount}">
-					<input type="button" name="join" value="참가하기" id="join_btn"> 
-				</c:forEach>
+<c:if test="${groupList eq null}">
+	<c:if test="${userId eq talent.writerId}"> 
+		<form name="form" method="get" action="<c:url value='/group/register' />" >
+			<c:forEach var="price" items="${prices}" varStatus="status">
+				<p>
+					<c:if test='${price.headCount ne 1}'>
+						<c:out value="${price.headCount}" />명 그룹 리스트
+						<script>
+						head[i++] = "${price.headCount}";
+						document.write("<input type='button' name='add' value='추가하기' id='" + cnt +"' >");
+						cnt++;
+						</script>
+					</c:if>
+				</p>
 			</c:forEach>
+			
+			<script>
+				var inGroup = new Array(cnt);
+				for(var i = 0; i< inGroup.length; i++)
+					inGroup[i] = 0;
+			</script>
+			<input type="hidden" name="talentId" value="<%=talentId %>">
+	    	<input type="submit" value="저장하기">
+	    	<c:set var="priceList" scope="session" value="${prices}" />
 		</form>
 	</c:if>
 </c:if>
+<c:if test="${userId ne '-1'}"> 
+	<form name="form" method="get" action="<c:url value='/user/register' />">
+		<c:forEach var="group" items="${groupList}" varStatus="status">
+			<c:out value="${group.headCount}" />명 그룹 리스트
+			<c:forEach var="a" begin="1" end="${group.headCount}">
+				<c:if test="${userId ne talent.writerId }">
+					<input type="button" name="join" value="참가하기" id="join_btn"> 
+				</c:if>
+			</c:forEach>
+		</c:forEach>
+	</form>
+</c:if>
+
 </div>

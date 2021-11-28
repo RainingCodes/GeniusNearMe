@@ -55,10 +55,11 @@ public class GroupDTO {
 		this.talentId = talentId;
 	}
 	
-	public GroupDTO(int talentId, int headCount) {
+	public GroupDTO(int talentId, int headCount, int matchingId) {
 		super();
 		this.talentId = talentId;
 		this.headCount = headCount;
+		this.matchingId = matchingId;
 	}
 	public GroupDTO() {
 		

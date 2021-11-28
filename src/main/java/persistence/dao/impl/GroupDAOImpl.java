@@ -17,8 +17,8 @@ public class GroupDAOImpl implements GroupDAO {
 	private static String query = "SELECT GROUPING.GROUPID AS GROUP_ID, "
 			+ "GROUPING.MATCHINGID AS MATCHING_ID, "
 			+ "GROUPING.TALENTID AS TALENT_ID, "
-			+ "GROUPING.REPRESENTATIVEID AS REPRESENTATIVE_ID "
-			+ "GROUPING.HEADCOUNT AS HEAD_COUNT ";
+			+ "GROUPING.REPRESENTATIVEID AS REPRESENTATIVE_ID, "
+			+ "GROUPING.HEADCOUNT AS HEAD_COUNT FROM GROUPING ";
 	
 	public GroupDAOImpl() {
 		jdbcUtil = new JDBCUtil();
@@ -29,22 +29,23 @@ public class GroupDAOImpl implements GroupDAO {
 		// TODO Auto-generated method stub
 		int result = 0;
 		String insertGroupQuery = "INSERT INTO GROUPING (GROUPID, MATCHINGID, TALENTID, REPRESENTATIVEID, HEADCOUNT) "
-				+ "Values (group_seq.nextval, ?, ?, ?, ?) ";
-		
-		Object[] param = new Object[] { group.getMatchingId(), group.getTalentId(), group.getRepresentativeId(), group.getHeadCount()  };
+				+ "Values (group_seq.nextval, ?, ?, null, ?) ";
+		System.out.println(insertGroupQuery);
+		Object[] param = new Object[] { group.getMatchingId(), group.getTalentId(), group.getHeadCount()  };
 		jdbcUtil.setSqlAndParameters(insertGroupQuery, param);
 		
 		try {
 			result = jdbcUtil.executeUpdate();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			return result;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
+			jdbcUtil.rollback();
 			e.printStackTrace();
+		} finally {
+			// TODO Auto-generated catch block
+			jdbcUtil.commit();
+			jdbcUtil.close();
 		}
-		
-		jdbcUtil.close();
 		
 		return result;
 	}
@@ -129,24 +130,29 @@ public class GroupDAOImpl implements GroupDAO {
 				+ "WHERE TALENTID=? ";
 		Object[] param = new Object[] { talentId };
 		jdbcUtil.setSqlAndParameters(listQuery, param);
-		ResultSet rs = jdbcUtil.executeQuery();
-		List<GroupDTO> list = new ArrayList<GroupDTO>();
+		
 		try {
+			ResultSet rs = jdbcUtil.executeQuery();
+			List<GroupDTO> list = new ArrayList<GroupDTO>();
 			while (rs.next()) {
 				GroupDTO dto = new GroupDTO();
 				dto.setGroupId(rs.getInt("GROUP_ID"));
+				dto.setMatchingId(rs.getInt("MATCHING_ID"));
 				dto.setTalentId(talentId);
 				dto.setRepresentativeId(rs.getInt("REPRESENTATIVE_ID"));
 				dto.setHeadCount(rs.getInt("HEAD_COUNT"));
-				dto.setUserId(getGroupMembers(dto.getGroupId(), talentId));
+				
 				list.add(dto);
 			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			return list;
+		} catch (Exception e) {
+			jdbcUtil.rollback();
 			e.printStackTrace();
+		} finally {
+			jdbcUtil.commit();
+			jdbcUtil.close();
 		}
-		jdbcUtil.close();
-		return list;
+		return null;
 	
 	}
 

@@ -11,6 +11,8 @@ public class GroupServiceImpl implements GroupService {
 	private GroupDAO groupDao = null;
 	private JDBCUtil jdbcUtil = null;
 	public GroupServiceImpl() {
+		DAOFactory factory = new DAOFactory();
+		groupDao = factory.getGroupDAO();
 		jdbcUtil = new JDBCUtil();
 	}
 	
@@ -35,6 +37,7 @@ public class GroupServiceImpl implements GroupService {
 	@Override
 	public int insertGroup(GroupDTO group) {
 		// TODO Auto-generated method stub
+		System.out.println("로호호혹");
 		return groupDao.insertGroup(group);
 	}
 
@@ -61,7 +64,6 @@ public class GroupServiceImpl implements GroupService {
 		// TODO Auto-generated method stub
 		return groupDao.getGroupMembers(groupId, talentId);
 	}
-
 
 
 }

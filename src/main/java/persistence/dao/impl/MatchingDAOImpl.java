@@ -123,6 +123,7 @@ public class MatchingDAOImpl implements MatchingDAO {
 		//��Ī apply
 		public int insertMatching(MatchingDTO matchingDto) {
 			int result = 0;
+			int generatedKey = 0;
 			String insertQuery = "INSERT INTO MATCHING (MATCHINGID, TALENTID, "
 					+ "MATCHINGSTATE, GROUPID, USERID) "
 					+ "VALUES (matching_seq.nextval, ?, ?, null, ?) ";
@@ -132,9 +133,16 @@ public class MatchingDAOImpl implements MatchingDAO {
 			jdbcUtil.setSql(insertQuery);
 			jdbcUtil.setParameters(param);
 			
+			String key[] = {"MATCHINGID"};
+			
 			try {
 				
-				result = jdbcUtil.executeUpdate();
+				result = jdbcUtil.executeUpdate(key);
+				ResultSet rs = jdbcUtil.getGeneratedKeys();
+				
+				if(rs.next())
+					generatedKey = rs.getInt(1);
+				
 			}catch(Exception ex) {
 				jdbcUtil.rollback();
 				ex.printStackTrace();
@@ -142,7 +150,7 @@ public class MatchingDAOImpl implements MatchingDAO {
 				jdbcUtil.commit();
 				jdbcUtil.close();
 			}
-			return result;	
+			return generatedKey;	
 			
 		}
 		//��Ī ����

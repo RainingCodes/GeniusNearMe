@@ -1,5 +1,7 @@
 package controller.talent;
 
+import java.util.ArrayList;
+import service.dto.GroupDTO;
 import java.util.Date;
 import java.util.List;
 
@@ -16,7 +18,8 @@ import service.MemberService;
 import service.MemberServiceImpl;
 import service.PriceService;
 import service.PriceServiceImpl;
-
+import service.GroupService;
+import service.GroupServiceImpl;
 import service.TalentService;
 import service.TalentServiceImpl;
 import service.WishService;
@@ -61,11 +64,15 @@ public class ViewTalentController implements Controller{
 		MemberDTO member = mService.getMemberByEmail(email);
 		int userId = member.getUserId();
 		log.debug("UserId : {}", userId);
-
+		
+		
     	
 		int talentId = Integer.parseInt(request.getParameter("talentId"));
 		TalentService talentService = new TalentServiceImpl();
 		TalentDTO talent = talentService.findTalent(talentId);
+		
+		GroupService gService = new GroupServiceImpl();
+		List<GroupDTO> groupList = gService.GroupList(talentId);
 		
 		
 		String nickName = mService.getNicknameByUserId(talent.getWriterId());
@@ -86,6 +93,7 @@ public class ViewTalentController implements Controller{
 		request.setAttribute("prices", price);
 		request.setAttribute("userId", userId);
 		request.setAttribute("nickName", nickName);
+		request.setAttribute("groupList", groupList);
 		
 		Date now = new Date();
 		request.setAttribute("today", now);
