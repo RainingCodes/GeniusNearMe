@@ -32,14 +32,10 @@ $(document).ready(function () {
 	  });
 	  
 	});
-
 </script>
 <script>
-function goToURI(targetUri) {
-	form.action = targetUri;
-	form.method="GET";		// register form 요청
-	form.submit();
-	//goToURI('<c:url value='/talent/list'/>')
+function submitForm() {
+	   form.submit();
 }
 </script>
 <html>
@@ -191,5 +187,12 @@ function goToURI(targetUri) {
     	    <input type="button" value="이전 페이지" onClick="history.go(-1)">
 
         </div>
+        
+        <div>
+			<form name="form" method="get" action="<c:url value='/talent/comment' />">
+				<input type="hidden" name="talentId" value="${talent.talentId}"/>
+				<input type="button" value="덧글 작성" onClick="submit()">
+			</form>
+		</div>
     </body>
 </html>
