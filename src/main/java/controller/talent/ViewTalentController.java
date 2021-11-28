@@ -78,7 +78,8 @@ public class ViewTalentController implements Controller{
 		Date now = new Date();
 		request.setAttribute("today", now);
 		
-		return "/talent/view.jsp";				// 사용자 보기 화면으로 이동
+		return "/talent/comment";
+//		return "/talent/view.jsp";				// 사용자 보기 화면으로 이동
     }
 
 }

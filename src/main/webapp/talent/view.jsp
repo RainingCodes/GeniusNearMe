@@ -25,6 +25,7 @@ $(document).ready(function () {
 		  	$("#comment").show();
 			$("#group").hide();
 			$("#review").hide();
+			
 	  });
 	  
 	  $(document).on("click", "input[name='reviewBtn']", function () {
@@ -179,8 +180,8 @@ $(document).ready(function () {
 		<jsp:include page="/talent/groupMatching.jsp">
 			<jsp:param name="talentId" value="<%=talentId %>" />
 		</jsp:include>
-		<jsp:include page="commentSend.jsp">
-			<jsp:param name="talentId" value="<%=talentId %>" />
+		<jsp:include page="commentView.jsp">
+			<jsp:param name="commentTalentId" value="<%=talentId %>" />
 		</jsp:include>
 		
         <div align = "center">

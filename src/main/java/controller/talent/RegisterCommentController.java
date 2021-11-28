@@ -32,7 +32,7 @@ public class RegisterCommentController implements Controller {
     	
     	
     	request.setAttribute("talentId", talentId);
-		String src = "/talent/comment?talentId=" +talentId; 
+		String src = "/talent/view?talentId=" +talentId; 
 		System.out.println(src);
 		return src;
     	

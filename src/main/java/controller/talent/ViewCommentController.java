@@ -66,7 +66,8 @@ public class ViewCommentController implements Controller {
 			System.out.println(commentWriterId);
 			System.out.println(talentId);
 			
-			return "/talent/commentView.jsp";
+			return "/talent/view.jsp";
+//			return "/talent/commentView.jsp";
  
 	}
 

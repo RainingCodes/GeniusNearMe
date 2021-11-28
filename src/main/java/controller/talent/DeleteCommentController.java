@@ -23,9 +23,13 @@ public class DeleteCommentController implements Controller {
 		int result = manager.deleteComment(commentId);
 		System.out.println("덧글 삭제 결과 : "+result);
 		
-		String src = "/talent/comment?talentId=" +Integer.parseInt(request.getParameter("talentId")); 
+		String src = "/talent/view?talentId=" +request.getParameter("talentId"); 
 		System.out.println(src);
-	    return src;
+		return src;
+		
+//		String src = "/talent/comment?talentId=" +Integer.parseInt(request.getParameter("talentId")); 
+//		System.out.println(src);
+//	    return src;
 	}
 
 }
