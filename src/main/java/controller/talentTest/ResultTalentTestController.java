@@ -33,9 +33,6 @@ public class ResultTalentTestController implements Controller  {
         	userNickname = manager.getNicknameByUserId(userId);
         }
     	
-    	
-    	
-    	
     	//일단 기존DB 있는지 구해옴
 		TalentTestService manager = new TalentTestServiceImpl();
 		TalentTestDTO lastDTO = manager.talentTestResultByUserId(userId);
@@ -53,6 +50,7 @@ public class ResultTalentTestController implements Controller  {
 		
 		String myTypeString = myTypeToString(type);
 		String myCategory = myCategory(type);
+		String myCategoryByKorean = myCategoryByKorean(type);
 		
 				
 		TalentTestDTO newDTO = new TalentTestDTO(myCategory, type, userId);
@@ -67,6 +65,7 @@ public class ResultTalentTestController implements Controller  {
 		}
 		
 		request.setAttribute("category", myCategory);
+		request.setAttribute("categoryByKorean", myCategoryByKorean);
 		request.setAttribute("myType", myTypeString);
 		request.setAttribute("userId", userId);
 		request.setAttribute("nickName", userNickname);
@@ -107,9 +106,29 @@ public class ResultTalentTestController implements Controller  {
 		} else if (type.equals("1001") || type.equals("1011")) {
 			myCategory = "cook";
 		} else if (type.equals("1010") || type.equals("1110") || type.equals("1111")) {
-			myCategory = "sport";
+			myCategory = "sports";
 		} else if (type.equals("1100") || type.equals("1101")) {
 			myCategory = "foreignLanguage";
+		}
+		
+		return myCategory;
+	}
+	
+	public static String myCategoryByKorean(String type) {
+		String myCategory = null;
+		
+		if (type.equals("0000") || type.equals("0001") || type.equals("0011")) {
+			myCategory = "법률";
+		} else if (type.equals("0010") || type.equals("0111") || type.equals("1001")) {
+			myCategory = "IT";
+		} else if (type.equals("0101") || type.equals("0110") || type.equals("0111")) {
+			myCategory = "예술";
+		} else if (type.equals("1001") || type.equals("1011")) {
+			myCategory = "요리";
+		} else if (type.equals("1010") || type.equals("1110") || type.equals("1111")) {
+			myCategory = "운동";
+		} else if (type.equals("1100") || type.equals("1101")) {
+			myCategory = "외국어";
 		}
 		
 		return myCategory;

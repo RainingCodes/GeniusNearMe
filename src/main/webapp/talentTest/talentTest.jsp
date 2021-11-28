@@ -98,10 +98,10 @@ h1 {
 	</div>
 	
 	<form name="result" method="post" action="<c:url value='/talentTest/result' />">
-		<input type="hidden" name="result0" value=0>
-		<input type="hidden" name="result1" value=0>
-		<input type="hidden" name="result2" value=0>
-		<input type="hidden" name="result3" value=0>
+		<input type="hidden" name="result0" value=9>
+		<input type="hidden" name="result1" value=9>
+		<input type="hidden" name="result2" value=9>
+		<input type="hidden" name="result3" value=9>
 	</form>
 
 	<progress value="25" max="100" id="step"> </progress>

@@ -73,36 +73,15 @@
 			<c:if test="${userId eq '-1'}"> 
 				비회원
 			</c:if>
-			님과 어울리는 카테고리는 바로 
-			<c:choose>
-			 	<c:when test="${category eq 'foreignLanguage'}">
-			  		외국어
-			    </c:when>
-			    <c:when test="${category eq 'sports'}">
-			  		운동
-			    </c:when>
-			    <c:when test="${category eq 'game'}">
-			  		게임
-			    </c:when>
-			    <c:when test="${category eq 'law'}">
-			  		법률
-			    </c:when>
-			    <c:when test="${category eq 'cook'}">
-			  		요리
-			    </c:when>
-			    <c:when test="${category eq 'mechanic'}">
-			  		수리
-			    </c:when>
-			    <c:when test="${category eq 'art'}">
-			  		예술
-			    </c:when>
-			    <c:when test="${category eq 'beauty'}">
-			  		뷰티
-			    </c:when>
-			    <c:when test="${category eq 'it'}">
-			  		IT
-			    </c:when>
-			</c:choose>입니다!
+			님과 어울리는 카테고리는 바로 ${categoryByKorean} 입니다!<br>
+			${categoryByKorean} 카테고리를 한번 살펴보시겠어요? 
+			
+			
+			<a href="<c:url value='/talent/categorySearch'>
+						<c:param name='category' value='${category}'/>
+					</c:url>">보러가기
+			</a>
+
 		</div>
 		<p><br><p>
 		<div>
