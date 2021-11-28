@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%! int i = 1; %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,6 +10,11 @@
 <title>내가 찜한 재능 목록</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" href="../css/talent.css" type="text/css">
+<script>
+	function deleteWish(){
+		
+	}
+</script>
 </head>
 <style>
 .content {
@@ -35,7 +41,12 @@
 				<p></p>
 				<p></p>
 				<p><c:out value="${talent.content}"/></p>
-			</div>
+
+				<form method="POST" action="<c:url value='/member/deleteWish' />">
+					<input type="hidden" name="talentId" value="${talent.talentId }">
+					<input type="button" value="찜 취소하기" onClick="submit()">
+				</form>
+				</div>
 		</c:forEach>
 	</div>
 </body>

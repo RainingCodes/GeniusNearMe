@@ -24,6 +24,7 @@ public class WishListController implements Controller{
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
+		
 		// 로그인 여부 확인
     	if (!UserSessionUtils.hasLogined(request.getSession())) {
     		System.out.println("not Logined");
@@ -38,10 +39,11 @@ public class WishListController implements Controller{
 		log.debug("wish List User : {}", email);
 		
 		int userId = memberService.getuserIdByEmail(email);
-		
+
+		int talentId = -1;
 		if (request.getMethod().equals("POST")) {	
 			
-			int talentId = Integer.parseInt(request.getParameter("talentId"));
+			talentId = Integer.parseInt(request.getParameter("talentId"));
 			
 			WishDTO wish = new WishDTO(talentId, userId);
 			
@@ -59,6 +61,7 @@ public class WishListController implements Controller{
 			TalentDTO dto = talentservice.findTalent(wishTalentId);
 			talentList.add(dto);
 		}
+		request.setAttribute("talentId", talentId);
 		request.setAttribute("talentList", talentList);
 		
 		return "/member/wishList.jsp";
