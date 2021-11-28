@@ -173,7 +173,7 @@ public class TalentDAOImpl implements TalentDAO  {
 			titleQuery = "FROM TALENT WHERE TITLE LIKE '%" + title + "%' AND ";
 		}
 		else {// 제목+결과내 재검색 옵션
-			titleQuery = "FROM TALENT WHERE (TITLE LIKE '%" + title + "%" + reSearch + "%' OR TITLE LIKE '%" + reSearch + "%" + title + "%')";
+			titleQuery = "FROM TALENT WHERE (TITLE LIKE '%" + title + "%" + reSearch + "%' OR TITLE LIKE '%" + reSearch + "%" + title + "%') AND ";
 		}
 		resultQuery += titleQuery;
 		
@@ -184,11 +184,11 @@ public class TalentDAOImpl implements TalentDAO  {
 			categoryQuery= "";
 		}
 		else {
-			categoryQuery = " AND (";
+			categoryQuery = "(";
 			for (i = 0; i < categories.length - 1; i++) {
 				categoryQuery += "TALENTCNAME='" + categories[i] + "' OR ";
 			}
-			categoryQuery += "TALENTCNAME='" + categories[i] + "') ";			
+			categoryQuery += "TALENTCNAME='" + categories[i] + "') AND ";			
 		}
 		resultQuery += categoryQuery;
 
@@ -197,10 +197,10 @@ public class TalentDAOImpl implements TalentDAO  {
 //		resultQuery += priceQuery;
 //		
 		// 날짜 옵션
-		String dateQuery = " AND STARTDATE BETWEEN TO_DATE('" + new java.sql.Date(startDate.getTime()) + "', 'YYYY-MM-DD') AND TO_DATE('" + new java.sql.Date(deadLine.getTime()) + "', 'YYYY-MM-DD')";
+		String dateQuery = "(STARTDATE BETWEEN TO_DATE('" + new java.sql.Date(startDate.getTime()) + "', 'YYYY-MM-DD') AND TO_DATE('" + new java.sql.Date(deadLine.getTime()) + "', 'YYYY-MM-DD'))";
 		resultQuery += dateQuery;	
 		
-		System.out.println("\n==TalentDAOImpl.java==");
+		System.out.println("\n==LOG OF 'TalentDAOImpl.java'==");
 		System.out.println(resultQuery);
 	
 		jdbcUtil.setSql(resultQuery);

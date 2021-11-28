@@ -24,7 +24,6 @@ public class DetailedSearchController implements Controller{
 		// 옵션들
 		String reSearch = request.getParameter("reSearch");
 		int price = Integer.parseInt(request.getParameter("price"));
-		
 	
 		String strStartDate = request.getParameter("startDate"); //시작일, 마감일을 문자열로 전달받음
 		String strDeadLine = request.getParameter("deadLine");
@@ -46,7 +45,7 @@ public class DetailedSearchController implements Controller{
 		
 		String[] categories = request.getParameterValues("category");
 		
-		System.out.println("==DetailedSearchController.java==");
+		System.out.println("\n==LOG OF 'DetailedSearchController.java'==");
 		System.out.println("검색창 전달됐는지 확인 => "+ search_bar);
 		System.out.println("research 전달됐는지 확인 => "+ reSearch);
 		System.out.println("가격 전달됐는지 확인 => "+ price);
@@ -59,6 +58,7 @@ public class DetailedSearchController implements Controller{
 		
 		request.setAttribute("talentList", talentList);
 		request.setAttribute("search_bar", search_bar);
+		request.setAttribute("price", price);
 		
 		return "/talent/detailedSearch/list.jsp";
 	}
