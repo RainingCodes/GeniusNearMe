@@ -9,6 +9,7 @@ import controller.matching.*;
 import controller.talent.*;
 import controller.talentTest.ResultTalentTestController;
 import controller.user.*;
+import controller.group.*;
 
 public class RequestMapping {
     private static final Logger logger = LoggerFactory.getLogger(DispatcherServlet.class);
@@ -40,6 +41,7 @@ public class RequestMapping {
         mappings.put("/talent/detailedSearch", new DetailedSearchController());
         mappings.put("/talent/update", new UpdateTalentController());
         mappings.put("/talent/group", new ForwardController("/talent/groupMatching.jsp"));
+        mappings.put("/group/register", new CreateGroupController());
         mappings.put("/talent/comment", new CommentController());
         mappings.put("/talent/comment/delete", new DeleteCommentController());
         

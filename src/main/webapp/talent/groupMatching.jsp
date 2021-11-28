@@ -43,7 +43,7 @@
 				inGroup[i] = 0;
 		</script>
 		<input type="hidden" id="inGroup" name="inGroup">
-    	<input type="button" value="저장하기" onclick="save()">
+    	<input type="submit" value="저장하기">
 	</form>
 	
 </c:if>

@@ -31,19 +31,15 @@ public class CreateGroupController implements Controller {
 		
 		
 		for(int i = 1; i < priceList.size(); i++) {
-			
+			int n = (int) request.getAttribute("group" + priceList.get(i).getHeadCount());
+			for(int j = 0; j < n; j++) {
+				GroupDTO group = new GroupDTO(talentId, priceList.get(i).getHeadCount());
+				int result = gService.insertGroup(group);
+				log.debug("Create group : {}", group);
+			}
 		}
 		
-		
-		
-		
-		GroupDTO group = new GroupDTO(talentId);
-		log.debug("Create group : {}", group);
-		
-		
-		
-		int result = gService.insertGroup(group);
-	    return "redirect:/talent";	
+	    return "redirect:/talent/view";	
 	}
 
 }
