@@ -166,12 +166,14 @@ $(document).ready(function () {
                 <td>
                 	<c:if test="${isAlreadyInWish eq 'no'}">
 	                	<form method="POST" action="<c:url value='/member/wishList' />">
-	                     	<button type="submit" name="talentId" value=${talent.talentId } >찜하기</button>
+	                		<input type="hidden" name="talentId" value="${talent.talentId }">
+							<input type="button" value="찜하기" onClick="submit()">
 	                    </form>
                     </c:if>
                     <c:if test="${isAlreadyInWish eq 'yes' }">
                     	<form method="POST" action="<c:url value='/member/deleteWish' />">
-	                     	<button type="submit" name="talentId" value=${talent.talentId } >찜 취소하기</button>
+                    		<input type="hidden" name="talentId" value="${talent.talentId }">
+							<input type="button" value="찜 취소하기" onClick="submit()">
 	                    </form>
                     </c:if>
                 </td>

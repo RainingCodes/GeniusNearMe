@@ -21,6 +21,7 @@
 <body>
 <%@ include file="../main/head.jsp"  %>
 	<div class="content">
+	<h3>내가 작성한 게시글</h3>
 		<c:forEach var="talent" items="${talentList}">
 			<div class="post">
 				<div id="imgSection1">
