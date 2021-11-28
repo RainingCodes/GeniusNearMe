@@ -25,13 +25,13 @@ public class CreateGroupController implements Controller {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
-		System.out.println("홓로로록");
+		System.out.println("호로로롥");
 		int talentId = (int)request.getAttribute("talentId");
 		System.out.println("가나다라마바사" + talentId);
-		List<PriceDTO> priceList = (List<PriceDTO>) request.getAttribute("prices");
-		GroupService gService = new GroupServiceImpl();
+		//List<PriceDTO> priceList = (List<PriceDTO>) request.getAttribute("prices");
+		//GroupService gService = new GroupServiceImpl();
 		
-		System.out.println("와랄ㄹ랄라" + priceList.get(1).getHeadCount());
+		//System.out.println("와랄ㄹ랄라" + priceList.get(1).getHeadCount());
 		
 		//for(int i = 1; i < priceList.size(); i++) {
 		//	int n = (int) request.getAttribute("group" + priceList.get(i).getHeadCount());
@@ -43,7 +43,7 @@ public class CreateGroupController implements Controller {
 		//	}
 		//}
 		
-	    return "redirect:/talent/view";	
+	    return "/talent/groupMatching.jsp";	
 	}
 
 }

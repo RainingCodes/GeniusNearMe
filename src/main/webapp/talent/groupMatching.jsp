@@ -17,7 +17,7 @@
 				if(inGroup[thisGroup] == 1)
 					$(this).before("<input type='hidden' name='group" + head[thisGroup] + "' id='group" + head[thisGroup] + "' value='"+ inGroup[thisGroup] + "'>");
 				else
-					$("#group" + head).val(inGroup[thisGroup]);
+					$("#group" + head[thisGroup]).val(inGroup[thisGroup]);
 			}
 		 });
 	});

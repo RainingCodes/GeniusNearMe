@@ -2,6 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%
+	int talentId = Integer.parseInt(request.getParameter("talentId"));
+	request.setAttribute("talentId", talentId);
+%>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script>
 var check = 1;
