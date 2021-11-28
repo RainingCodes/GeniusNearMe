@@ -167,21 +167,21 @@ public class TalentDAOImpl implements TalentDAO  {
 	public List<TalentDTO> getTalentListByOptions(String title, String reSearch, String[] categories, int price, Date startDate, Date deadLine) throws Exception {
 		String resultQuery = query;
 		
-		if (reSearch==null && categories==null && startDate==null && deadLine == null) { //상세검색 옵션이 없으면 제목(keyword)으로 다시 검색
+		if (reSearch==null || categories==null || startDate==null || deadLine==null) { //상세검색 옵션이 없으면 제목(keyword)만으로 검색한 결과 반환
 			return getTalentListByTitle(title);
 		}
 			
 		// 제목 옵션
-		String titleQuery = "FROM TALENT WHERE (TITLE LIKE '%" + title + "%" + reSearch + "%' OR TITLE LIKE '%" + reSearch + "%" + title + "%') AND ";
+		String titleQuery = "FROM TALENT WHERE (TITLE LIKE '%" + title + "%" + reSearch + "%' OR TITLE LIKE '%" + reSearch + "%" + title + "%') AND ";			
 		resultQuery += titleQuery;
 		
 		// 카테고리 옵션
-		String categoryQuery = "";
-		int i;
+		String categoryQuery = "(";
+		int i;		
 		for (i = 0; i < categories.length - 1; i++) {
-			categoryQuery += "TALENTCNAME='" + categories[i] + "' or ";
+			categoryQuery += "TALENTCNAME='" + categories[i] + "' OR ";
 		}
-		categoryQuery += "TALENTCNAME='" + categories[i] + "' ";
+		categoryQuery += "TALENTCNAME='" + categories[i] + "') ";
 		resultQuery += categoryQuery;
 
 //		// 가격 옵션
@@ -189,8 +189,10 @@ public class TalentDAOImpl implements TalentDAO  {
 //		resultQuery += priceQuery;
 //		
 		// 날짜 옵션
-		if (startDate == null || deadLine == null) {
+		if (startDate == null) { // 날짜 상세 설정이 없을 경우
 			startDate = format1.parse("2000-01-01");
+		}
+		if (deadLine == null) {
 			deadLine = format1.parse("2030-12-31");		
 		}
 		
