@@ -35,26 +35,18 @@ $(document).ready(function () {
 	  });
 	  
 	});
-	
-	function goWish(){
-		
+	function gotarget(targetUri) {
+        	form.action = targetUri;
+        	form.submit();
+        }
+	function submitForm() {
+		   form.submit();
 	}
-</script>
-<script>
-function submitForm() {
-	   form.submit();
-}
 </script>
 <html>
     <head>
     <meta charset="UTF-8">
         <title>${talent.title }</title>
-        <script>
-        function userList(targetUri) {
-        	form.action = targetUri;
-        	form.submit();
-        }
-        </script>
         <style>
             table {
                 width: 100%;
@@ -66,7 +58,7 @@ function submitForm() {
     <%@ include file="../main/head.jsp"  %>
     <body>
     	<br>
-		<img src="${dir}/${filename}" /> <br/>
+		<!--  <img src="${dir}/${filename}" /> <br/>-->
         <table style="width: 65%; margin: auto;">
             <tr>
                 <td colspan="3">
@@ -149,7 +141,7 @@ function submitForm() {
                    <c:if test="${userId ne talent.writerId}"> 
                       <fmt:formatDate var="today" value="${now }" pattern="yyyy-MM-dd"/>
                       <c:choose>
-                          <c:when test="today < ${talent.deadLine }"><a href="<c:url value='/matching/talent'>
+                          <c:when test="${today lt talent.deadLine }"><a href="<c:url value='/matching/talent'>
                                 <c:param name='talentId' value='${talent.talentId}'/>
                                  <c:param name='userId' value='${userId}'/>
                                </c:url>">1:1 매칭 신청하기</a>
@@ -171,12 +163,9 @@ function submitForm() {
             </tr>
             <tr>
                 <td>
-                	 <input type="hidden" name="talentId" value=${talent.talentId }>
-                     <input type="button" onclick="goWish()" value = "❤❤찜하기">
-                    <!--  <a href="<c:url value='/talent/matching'>
-                     	   <c:param name='talentId' value='${talent.talentId}'/>
-                     	   <c:param name='userId' value='${userId}'/>
-                     	  </c:url>">1:1 매칭</a> &nbsp; -->
+                	<form method="get" action="<c:url value='/member/wishList' />">
+                     	<button type="submit" name="talentId" value=${talent.talentId } >찜하기</button>
+                    </form>
                 </td>
             </tr>
         </table>
