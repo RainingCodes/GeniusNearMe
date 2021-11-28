@@ -19,7 +19,7 @@ public class KeywordSearchController implements Controller{
 		List<TalentDTO> talentList = manager.getTalent(search_bar);
 		
 		request.setAttribute("talentList", talentList);
-		
+		request.setAttribute("search_bar", search_bar);		
 		return "/talent/keywordSearch/list.jsp";
 	}
 	

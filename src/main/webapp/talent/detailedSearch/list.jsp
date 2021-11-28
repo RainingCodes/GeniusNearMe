@@ -24,7 +24,8 @@
 		request.setAttribute("talentList", talentList);
 	%>
 		<div class="nav">
-		<form method="GET" action="./list.jsp">
+		<form method="post" action="<c:url value='/talent/detailedSearch'/>">
+		<input type="hidden" name="search_bar" value='${search_bar}'> <!-- 검색창에 입력했던 keyword도 submit할 때 넘김 -->
 		<p></p>
 		<input type="text" id="reSearch" name="reSearch" placeholder="결과내 재검색" value='${reSearch}'>
 		<p></p>
