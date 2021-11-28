@@ -84,7 +84,7 @@ public class CommentDAOImpl implements CommentDAO  {
 		int result = 0;
 		String insertQuery = "INSERT INTO COMMENTARY (COMMENTID, TALENTID, "
 				+ "CONTENT, WRITERID) "
-				+ "VALUES (comment_seq.nextval, ?, ?, null, ?) ";
+				+ "VALUES (comment_seq.nextval, ?, ?, ?) ";
 		
 		Object[] param = new Object[] { commentDTO.getTalentId(), commentDTO.getContent(), commentDTO.getWriterId()};
 		
@@ -109,9 +109,12 @@ public class CommentDAOImpl implements CommentDAO  {
 		String DeleteQuery = "DELETE FROM COMMENTARY WHERE COMMENTID = ? ";
 		
 		Object[] param = new Object[] {commentId};
+		
+		jdbcUtil.setSqlAndParameters(DeleteQuery, param);
+		
 		try {
-			jdbcUtil.setSqlAndParameters(DeleteQuery, param);
-			result = 1;
+			result = jdbcUtil.executeUpdate();
+			return result;
 		}catch(Exception ex) {
 			ex.printStackTrace();
 		}finally {
