@@ -1,6 +1,7 @@
 package controller.group;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -24,20 +25,23 @@ public class CreateGroupController implements Controller {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
-		int talentId = Integer.parseInt(request.getParameter("talentId"));
-		ArrayList<PriceDTO> priceList = (ArrayList<PriceDTO>) request.getAttribute("priceList");
-		int[] inGroup = new int[5];
+		System.out.println("홓로로록");
+		int talentId = (int)request.getAttribute("talentId");
+		System.out.println("가나다라마바사" + talentId);
+		List<PriceDTO> priceList = (List<PriceDTO>) request.getAttribute("prices");
 		GroupService gService = new GroupServiceImpl();
 		
+		System.out.println("와랄ㄹ랄라" + priceList.get(1).getHeadCount());
 		
-		for(int i = 1; i < priceList.size(); i++) {
-			int n = (int) request.getAttribute("group" + priceList.get(i).getHeadCount());
-			for(int j = 0; j < n; j++) {
-				GroupDTO group = new GroupDTO(talentId, priceList.get(i).getHeadCount());
-				int result = gService.insertGroup(group);
-				log.debug("Create group : {}", group);
-			}
-		}
+		//for(int i = 1; i < priceList.size(); i++) {
+		//	int n = (int) request.getAttribute("group" + priceList.get(i).getHeadCount());
+		//	System.out.println("와랄ㄹ랄라" + n);
+		//	for(int j = 0; j < n; j++) {
+		//		GroupDTO group = new GroupDTO(talentId, priceList.get(i).getHeadCount());
+		//		int result = gService.insertGroup(group);
+		//		log.debug("Create group : {}", group);
+		//	}
+		//}
 		
 	    return "redirect:/talent/view";	
 	}
