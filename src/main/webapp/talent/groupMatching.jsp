@@ -53,17 +53,19 @@
 		</form>
 	</c:if>
 </c:if>
-<c:if test="${userId ne '-1'}"> 
-	<form name="form" method="get" action="<c:url value='/user/register' />">
-		<c:forEach var="group" items="${groupList}" varStatus="status">
-			<c:out value="${group.headCount}" />명 그룹 리스트
-			<c:forEach var="a" begin="1" end="${group.headCount}">
-				<c:if test="${userId ne talent.writerId }">
-					<input type="button" name="join" value="참가하기" id="join_btn"> 
-				</c:if>
+<c:if test="${groupList ne null }">
+	<c:if test="${userId ne '-1'}"> 
+		<form name="form" method="get" action="<c:url value='/user/register' />">
+			<c:forEach var="group" items="${groupList}" varStatus="status">
+				<c:out value="${group.headCount}" />명 그룹 리스트
+				<c:forEach var="a" begin="1" end="${group.headCount}">
+					<c:if test="${userId ne talent.writerId }">
+						<input type="button" name="join" value="참가하기" id="join_btn"> 
+					</c:if>
+				</c:forEach>
 			</c:forEach>
-		</c:forEach>
-	</form>
+		</form>
+	</c:if>
 </c:if>
 
 </div>

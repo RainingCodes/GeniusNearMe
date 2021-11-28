@@ -99,7 +99,7 @@ public class ViewTalentController implements Controller{
 		request.setAttribute("today", now);
 		
 		return "/talent/comment";
-//		return "/talent/view.jsp";				// 사용자 보기 화면으로 이동
+		//return "/talent/view.jsp";				// 사용자 보기 화면으로 이동
     }
 
 }
