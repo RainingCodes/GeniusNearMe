@@ -19,9 +19,12 @@ import service.PriceServiceImpl;
 
 import service.TalentService;
 import service.TalentServiceImpl;
+import service.WishService;
+import service.WishServiceImpl;
 import service.dto.MemberDTO;
 import service.dto.PriceDTO;
 import service.dto.TalentDTO;
+import service.dto.WishDTO;
 
 public class ViewTalentController implements Controller{
 	 private static final Logger log = LoggerFactory.getLogger(ViewTalentController.class);
@@ -69,6 +72,15 @@ public class ViewTalentController implements Controller{
 		
 		PriceService pService = new PriceServiceImpl();
 		List<PriceDTO> price = pService.PriceList(talentId);
+		
+		WishService wService = new WishServiceImpl();
+		WishDTO wish = wService.getWish(talentId, userId);
+		if(wish == null) {
+			request.setAttribute("isAlreadyInWish", "no");
+		}
+		else {
+			request.setAttribute("isAlreadyInWish","yes");
+		}
 			
 		request.setAttribute("talent", talent);		// 사용자 정보 저장
 		request.setAttribute("prices", price);

@@ -88,6 +88,27 @@ public class WishDAOImpl implements WishDAO{
 		}return null;
 	}
 	public WishDTO getWish(int talentId, int userId) {
+		String getWishQuery = query + "FROM WISH WHERE TALENTID = ? AND USERID = ? ";
+
+		Object[] param = new Object[] { talentId, userId};
 		
+		jdbcUtil.setSql(getWishQuery);
+		jdbcUtil.setParameters(param);
+		
+		try {
+			ResultSet rs = jdbcUtil.executeQuery();
+			WishDTO dto = null;
+			
+			if (rs.next()) {
+				dto = new WishDTO();
+				dto.setTalentID(rs.getInt("TALENTID"));
+				dto.setUserId(rs.getInt("USERID"));
+			}
+			return dto;
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.close();
+		} return null;
 	}
 }

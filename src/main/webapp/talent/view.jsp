@@ -148,7 +148,7 @@ $(document).ready(function () {
                                </c:url>">1:1 매칭 신청하기</a>
                             </c:when>
                           <c:otherwise> <p>신청기한이 지났습니다.</p></c:otherwise>
-                  </c:choose>
+                 	 </c:choose>
                    </c:if>
                 </c:if>
                           	 
@@ -164,9 +164,16 @@ $(document).ready(function () {
             </tr>
             <tr>
                 <td>
-                	<form method="POST" action="<c:url value='/member/wishList' />">
-                     	<button type="submit" name="talentId" value=${talent.talentId } >찜하기</button>
-                    </form>
+                	<c:if test="${isAlreadyInWish eq 'no'}">
+	                	<form method="POST" action="<c:url value='/member/wishList' />">
+	                     	<button type="submit" name="talentId" value=${talent.talentId } >찜하기</button>
+	                    </form>
+                    </c:if>
+                    <c:if test="${isAlreadyInWish eq 'yes' }">
+                    	<form method="POST" action="<c:url value='/member/deleteWish' />">
+	                     	<button type="submit" name="talentId" value=${talent.talentId } >찜 취소하기</button>
+	                    </form>
+                    </c:if>
                 </td>
             </tr>
         </table>

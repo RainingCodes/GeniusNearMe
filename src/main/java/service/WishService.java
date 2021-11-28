@@ -8,4 +8,5 @@ public interface WishService {
 	public int insertWish(WishDTO wishDto);  
 	public int deleteWish(int talentId, int userId);
 	public List<WishDTO> getWishListByUserId(int userId); 
+	public WishDTO getWish(int talentId, int userId);
 }

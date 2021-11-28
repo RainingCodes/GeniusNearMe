@@ -31,4 +31,9 @@ public class WishServiceImpl implements WishService{
 		return dao.getWishListByUserId(userId);
 	}
 
+	@Override
+	public WishDTO getWish(int talentId, int userId) {
+		return dao.getWish(talentId, userId);
+	}
+
 }
