@@ -4,7 +4,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script>
-
 var check = 1;
 $(document).ready(function () {
 	if(check == 1) {
@@ -184,8 +183,8 @@ function goToURI(targetUri) {
         <span><input type="button" name="groupBtn" value="공동 구매하기"></span>
 		<span><input type='button' name='commentBtn' value='문의'></span>
 		<span><input type='button' name='reviewBtn' value='리뷰'></span>
-		<jsp:include page='/talent/groupMatching.jsp' flush='true' />
-		<jsp:include page='/talent/commentView.jsp' flush='true' />
+		<%@ include file="/talent/groupMatching.jsp"  %>
+		<%@ include file="/talent/commentView.jsp"  %>
         <div align = "center">
         <br><br><br><br><br><br><br>
         	
