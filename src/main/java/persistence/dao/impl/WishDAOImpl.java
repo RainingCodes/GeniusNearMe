@@ -87,5 +87,7 @@ public class WishDAOImpl implements WishDAO{
 			jdbcUtil.close();
 		}return null;
 	}
-
+	public WishDTO getWish(int talentId, int userId) {
+		
+	}
 }

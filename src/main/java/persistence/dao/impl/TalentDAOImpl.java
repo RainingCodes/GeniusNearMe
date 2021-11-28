@@ -230,9 +230,7 @@ public class TalentDAOImpl implements TalentDAO  {
 	
 	public TalentDTO getTalentView(int talentId) {
 		String getTalentQuery = query + "FROM TALENT WHERE TALENTID = ? ";
-		
-		List<TalentDTO> list = new ArrayList<TalentDTO>();
-		
+
 		Object[] param = new Object[] { talentId };
 		
 		jdbcUtil.setSql(getTalentQuery);
@@ -254,8 +252,6 @@ public class TalentDAOImpl implements TalentDAO  {
 				dto.setWriterId(rs.getInt("WRITERID"));
 				dto.setTalentCategoryName(rs.getString("TALENTCNAME"));
 				dto.setPostType(rs.getInt("POSTTYPE"));
-				
-				list.add(dto);
 			}
 			return dto;
 		} catch (Exception ex) {
