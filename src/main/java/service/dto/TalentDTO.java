@@ -119,5 +119,4 @@ public class TalentDTO {
 	public void setTalentCategoryName(String talentCName) {
 		this.talentCName = talentCName;
 	}
-
 }

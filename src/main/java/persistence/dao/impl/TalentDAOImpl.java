@@ -3,6 +3,8 @@ package persistence.dao.impl;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +13,11 @@ import persistence.util.JDBCUtil;
 import service.dto.TalentDTO;
 
 public class TalentDAOImpl implements TalentDAO  {
+	
+	SimpleDateFormat format1 = new SimpleDateFormat ("yyyy-MM-dd");
+	long miliseconds = System.currentTimeMillis();
+    Date current = new Date(miliseconds);
+	
 	private JDBCUtil jdbcUtil = null;
 	
 	private static String query = "SELECT TALENTID, TITLE, CONTENT, STARTDATE, DEADLINE, "
@@ -121,6 +128,7 @@ public class TalentDAOImpl implements TalentDAO  {
 			jdbcUtil.close();
 		} return null;
 	}
+	
 	public List<TalentDTO> getTalentListByWriterId(int userId){
 		String getByWriterIdQuery = query + "FROM TALENT WHERE WRITERID = ? ";
 		
@@ -157,20 +165,51 @@ public class TalentDAOImpl implements TalentDAO  {
 	}
 		
 	public List<TalentDTO> getTalentListByOptions(String title, String reSearch, String[] categories, int price, Date startDate, Date deadLine) {
-		String getByOptionsQuery = query + "FROM TALENT WHERE TITLE LIKE ? AND CATEGORIES = ? AND PRICE = ? AND STARTDATE = ? AND ENDDATE = ? ";
+		String resultQuery = query;
 		
+		if (reSearch==null && categories==null && startDate==null && deadLine == null) { //상세검색 옵션이 없으면 제목(keyword)으로 다시 검색
+			return getTalentListByTitle(title);
+		}
+			
+		// 제목 옵션
+		String titleQuery = "FROM TALENT WHERE TITLE LIKE %" + title + "%" + reSearch + "% AND ";
+		resultQuery += titleQuery;
 		
-		Object[] param = new Object[] { "%"+title+"%"+reSearch+"%", categories, price, startDate, deadLine };
-		if (param != null) {
-			param = new Object[] { "%"+reSearch+"%"+title+"%", categories, price, startDate, deadLine };
+		// 카테고리 옵션
+		String categoryQuery = "";
+		int i;
+		for (i = 0; i < categories.length - 1; i++) {
+			categoryQuery += "TALENTCNAME='" + categories[i] + "' or ";
+		}
+		categoryQuery += "TALENTCNAME='" + categories[i] + "' ";
+		resultQuery += categoryQuery;
+
+		// 가격 옵션
+		String priceQuery = " AND PRICE <= " + price;
+		resultQuery += priceQuery;
+		
+		// 날짜 옵션
+		if (startDate == null || deadLine == null) {
+			startDate = current;
+			deadLine = current;			
 		}
 		
-		jdbcUtil.setSql(getByOptionsQuery);
-		jdbcUtil.setParameters(param);
+		String dateQuery = " AND STARTDATE = " + startDate + " AND ENDDATE = " + deadLine;
+		resultQuery += dateQuery;
+	
+		jdbcUtil.setSql(resultQuery);
 		
 		try {
 			ResultSet rs = jdbcUtil.executeQuery();
 			List<TalentDTO> list = new ArrayList<TalentDTO>();
+			
+			if (rs == null) { // rs값이 없을경우(상세검색 결과가 없을 경우)
+				resultQuery = query; // 초기상태로 되돌려서
+				resultQuery = query + "FROM TALENT WHERE TITLE LIKE %" + reSearch + "%" + title + "%"; //검색 조건(제목 옵션)을 바꿔서 다시 실행해본다
+				resultQuery += categoryQuery + priceQuery + dateQuery;
+				jdbcUtil.setSql(resultQuery);
+				rs = jdbcUtil.executeQuery();
+			}
 			
 			while (rs.next()) {
 				TalentDTO dto = new TalentDTO();
@@ -312,7 +351,7 @@ public class TalentDAOImpl implements TalentDAO  {
 			tempParam[index++] = t.getTalentCategoryName();	
 		}
 		if (t.getPostType() != -1) {		
-			updateQuery += "POSTTYPE = ?, ";	
+			updateQuery += "POSTTYPE = ?, ";
 			tempParam[index++] = t.getPostType();	
 		}
 	

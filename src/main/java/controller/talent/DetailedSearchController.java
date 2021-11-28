@@ -16,7 +16,7 @@ public class DetailedSearchController implements Controller{
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		String title = request.getParameter("title");
+		String search_bar = request.getParameter("search_bar");
 		// 옵션들
 		String reSearch = request.getParameter("reSearch");
 		int price = Integer.parseInt(request.getParameter("price"));
@@ -25,9 +25,10 @@ public class DetailedSearchController implements Controller{
 		String[] categories = request.getParameterValues("category");
 		
 		TalentService manager = new TalentServiceImpl();
-		List<TalentDTO> talentList = manager.getTalentByOptions(title, reSearch, categories, price, startDate, deadLine);
+		List<TalentDTO> talentList = manager.getTalentByOptions(search_bar, reSearch, categories, price, startDate, deadLine);
 		
 		request.setAttribute("talentList", talentList);
+		request.setAttribute("search_bar", search_bar);
 		
 		return "/talent/detailedSearch/list.jsp";
 	}
