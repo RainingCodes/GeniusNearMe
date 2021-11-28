@@ -66,7 +66,7 @@
 				<input type="hidden" name="talentId" value="${talentId}"/>
 				<span style="color:red">${userNicekname}</span>
 				<textarea cols="30" rows="3" name="content" style="resize: none;"></textarea>
-				<input type="button" value="덧글 작성" onClick="submitForm()">
+				<input type="button" value="덧글 작성" onClick="submit()">
 			</form>
 		</c:if>
 	</div>

@@ -179,7 +179,10 @@ $(document).ready(function () {
 		<jsp:include page="/talent/groupMatching.jsp">
 			<jsp:param name="talentId" value="<%=talentId %>" />
 		</jsp:include>
-		<%@ include file="/talent/commentView.jsp"  %>
+		<jsp:include page="commentSend.jsp">
+			<jsp:param name="talentId" value="<%=talentId %>" />
+		</jsp:include>
+		
         <div align = "center">
         <br><br><br><br><br><br><br>
         	

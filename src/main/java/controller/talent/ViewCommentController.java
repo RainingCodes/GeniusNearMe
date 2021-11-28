@@ -40,8 +40,7 @@ public class ViewCommentController implements Controller {
 				userNickname = Mmanager.getNicknameByUserId(commentWriterId);
 			}
 						
-			//전달받은 현재 게시글 Id
-			System.out.println(request.getParameter("talentId"));			
+			//전달받은 현재 게시글 Id		
 			int talentId = Integer.parseInt(request.getParameter("talentId"));
     		log.debug("Comment Get Request : {}", talentId);
     		
