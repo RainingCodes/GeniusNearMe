@@ -14,28 +14,34 @@ import service.dto.TalentDTO;
 
 public class DetailedSearchController implements Controller{
 
-	SimpleDateFormat format1 = new SimpleDateFormat ("yyyy-MM-dd");
+	SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
 	
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		String search_bar = request.getParameter("search_bar");
+		System.out.println("검색창 전달됐는지 확인 => "+ search_bar);
+		
 		// 옵션들
 		String reSearch = request.getParameter("reSearch");
 		int price = Integer.parseInt(request.getParameter("price"));
 		
-		Date startDate = null;
-		Date deadLine = null;
+	
 		String strStartDate = request.getParameter("startDate");
 		String strDeadLine = request.getParameter("deadLine");
-		if (strStartDate == null) {
-			startDate = format1.parse("2000-01-01");
-		}
-		if (strDeadLine == null) {
-			deadLine = format1.parse("2030-12-31");
-		}
+		
+		Date startDate = null;
+		Date deadLine = null;
+		startDate = format1.parse(strStartDate);			
+		deadLine = format1.parse(strDeadLine);
 		
 		String[] categories = request.getParameterValues("category");
+		
+		System.out.println("research 전달됐는지 확인 => "+ reSearch);
+		System.out.println("가격 전달됐는지 확인 => "+ price);
+		System.out.println("시작일 전달됐는지 확인 => "+ startDate);
+		System.out.println("마감일 전달됐는지 확인 => "+ deadLine);
+		System.out.println("카테고리 전달됐는지 확인 => "+ categories.length);
 		
 		TalentService manager = new TalentServiceImpl();
 		List<TalentDTO> talentList = manager.getTalentByOptions(search_bar, reSearch, categories, price, startDate, deadLine);

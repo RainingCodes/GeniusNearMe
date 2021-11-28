@@ -37,12 +37,10 @@
 			<p></p>
 			<strong>가격대</strong>
 			<p></p>
-			<input type="range" min="0" max="100000" step="1000" id="priceRange"
-				name="price" value="100000">
+			<input type="range" min="0" max="100000" step="1000" id="priceRange" name="price" value="100000">
 			<p></p>
 			<p></p>
-			<strong>날짜</strong><br> <input type="date" name="startDate">~<input
-				type="date" name="endDate">
+			<strong>날짜</strong><br> <input type="date" name="startDate">~<input type="date" name="deadLine">
 			<p></p>
 			<input type="submit" value="상세 검색" style="width: 150px;">
 		</form>

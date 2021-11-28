@@ -167,11 +167,10 @@ public class TalentDAOImpl implements TalentDAO  {
 	public List<TalentDTO> getTalentListByOptions(String title, String reSearch, String[] categories, int price, Date startDate, Date deadLine) throws Exception {
 		String resultQuery = query;
 		
-		if (reSearch==null || categories==null || startDate==null || deadLine==null) { //상세검색 옵션이 없으면 제목(keyword)만으로 검색한 결과 반환
+		if (reSearch==null) { //결과내 재검색 옵션이 없으면 제목(keyword)만으로 검색한 결과 반환
 			return getTalentListByTitle(title);
 		}
-			
-		// 제목 옵션
+		// 제목+결과내 재검색 옵션
 		String titleQuery = "FROM TALENT WHERE (TITLE LIKE '%" + title + "%" + reSearch + "%' OR TITLE LIKE '%" + reSearch + "%" + title + "%') AND ";			
 		resultQuery += titleQuery;
 		
@@ -196,7 +195,7 @@ public class TalentDAOImpl implements TalentDAO  {
 			deadLine = format1.parse("2030-12-31");		
 		}
 		
-		String dateQuery = "AND WRITTENDATE BETWEEN TO_DATE('" + startDate + "', 'YYYY-MM-DD') AND TO_DATE('" + deadLine + "', 'YYYY-MM-DD')";
+		String dateQuery = "AND STARTDATE BETWEEN TO_DATE('" + startDate + "', 'YYYY-MM-DD') AND TO_DATE('" + deadLine + "', 'YYYY-MM-DD')";
 		resultQuery += dateQuery;
 	
 		jdbcUtil.setSql(resultQuery);
