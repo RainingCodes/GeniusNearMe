@@ -34,4 +34,7 @@ public class DAOFactory {
 	public TalentTestDAO getTalentTestDAO() {
 		return new TalentTestDAOImpl();
 	}
+	public WishDAO getWishDAO() {
+		return new WishDAOImpl();
+	}
 }
