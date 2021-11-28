@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import persistence.dao.TalentDAO;
@@ -167,20 +168,28 @@ public class TalentDAOImpl implements TalentDAO  {
 	public List<TalentDTO> getTalentListByOptions(String title, String reSearch, String[] categories, int price, Date startDate, Date deadLine) throws Exception {
 		String resultQuery = query;
 		
-		if (reSearch==null) { //결과내 재검색 옵션이 없으면 제목(keyword)만으로 검색한 결과 반환
-			return getTalentListByTitle(title);
+		String titleQuery;
+		if (reSearch==null) { //결과내 재검색 옵션이 없으면 제목(keyword)만으로 검색
+			titleQuery = "FROM TALENT WHERE TITLE LIKE '%" + title + "%' AND ";
 		}
-		// 제목+결과내 재검색 옵션
-		String titleQuery = "FROM TALENT WHERE (TITLE LIKE '%" + title + "%" + reSearch + "%' OR TITLE LIKE '%" + reSearch + "%" + title + "%') AND ";			
+		else {// 제목+결과내 재검색 옵션
+			titleQuery = "FROM TALENT WHERE (TITLE LIKE '%" + title + "%" + reSearch + "%' OR TITLE LIKE '%" + reSearch + "%" + title + "%')";
+		}
 		resultQuery += titleQuery;
 		
 		// 카테고리 옵션
-		String categoryQuery = "(";
-		int i;		
-		for (i = 0; i < categories.length - 1; i++) {
-			categoryQuery += "TALENTCNAME='" + categories[i] + "' OR ";
+		String categoryQuery;
+		int i;
+		if (Arrays.asList(categories).contains("all")) {
+			categoryQuery= "";
 		}
-		categoryQuery += "TALENTCNAME='" + categories[i] + "') ";
+		else {
+			categoryQuery = " AND (";
+			for (i = 0; i < categories.length - 1; i++) {
+				categoryQuery += "TALENTCNAME='" + categories[i] + "' OR ";
+			}
+			categoryQuery += "TALENTCNAME='" + categories[i] + "') ";			
+		}
 		resultQuery += categoryQuery;
 
 //		// 가격 옵션
@@ -188,8 +197,11 @@ public class TalentDAOImpl implements TalentDAO  {
 //		resultQuery += priceQuery;
 //		
 		// 날짜 옵션
-		String dateQuery = "AND STARTDATE BETWEEN TO_DATE('" + startDate + "', 'YYYY-MM-DD') AND TO_DATE('" + deadLine + "', 'YYYY-MM-DD')";
-		resultQuery += dateQuery;
+		String dateQuery = " AND STARTDATE BETWEEN TO_DATE('" + new java.sql.Date(startDate.getTime()) + "', 'YYYY-MM-DD') AND TO_DATE('" + new java.sql.Date(deadLine.getTime()) + "', 'YYYY-MM-DD')";
+		resultQuery += dateQuery;	
+		
+		System.out.println("\n==TalentDAOImpl.java==");
+		System.out.println(resultQuery);
 	
 		jdbcUtil.setSql(resultQuery);
 		

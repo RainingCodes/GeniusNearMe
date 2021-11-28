@@ -20,7 +20,6 @@ public class DetailedSearchController implements Controller{
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		String search_bar = request.getParameter("search_bar");
-		System.out.println("검색창 전달됐는지 확인 => "+ search_bar);
 		
 		// 옵션들
 		String reSearch = request.getParameter("reSearch");
@@ -31,14 +30,14 @@ public class DetailedSearchController implements Controller{
 		String strDeadLine = request.getParameter("deadLine");
 		
 		Date startDate, deadLine;
-		if (strStartDate == null) { // 날짜 상세 설정이 없을 경우
+		if (strStartDate == "") { // 날짜 상세 설정이 없을 경우
 			startDate = format1.parse("2000-01-01");
 		}
 		else {
 			startDate = format1.parse(strStartDate); // Date형으로 변환
 		}
 		
-		if (strDeadLine == null) {
+		if (strDeadLine == "") {
 			deadLine = format1.parse("2030-12-31");		
 		}
 		else {			
@@ -47,6 +46,8 @@ public class DetailedSearchController implements Controller{
 		
 		String[] categories = request.getParameterValues("category");
 		
+		System.out.println("==DetailedSearchController.java==");
+		System.out.println("검색창 전달됐는지 확인 => "+ search_bar);
 		System.out.println("research 전달됐는지 확인 => "+ reSearch);
 		System.out.println("가격 전달됐는지 확인 => "+ price);
 		System.out.println("시작일 전달됐는지 확인 => "+ startDate);

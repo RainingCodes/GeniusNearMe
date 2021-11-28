@@ -97,7 +97,7 @@
 						<c:param name='talentTitle' value='${talent.title}'/>
 						</c:url>"><strong>${ talent.title }</strong>
 					</a>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%{talent.writtenDate}
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<c:out value="${talent.writtenDate}"/>
 				</p>
 				<p></p>
 				<p></p>
