@@ -1,5 +1,8 @@
 package controller.user;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -13,6 +16,7 @@ import service.TalentService;
 import service.TalentServiceImpl;
 import service.WishService;
 import service.WishServiceImpl;
+import service.dto.TalentDTO;
 import service.dto.WishDTO;
 
 public class WishListController implements Controller{
@@ -26,12 +30,12 @@ public class WishListController implements Controller{
             return "redirect:/member/login/form";		// login form 요청으로 redirect
         }
     	
-    	MemberService manager = new MemberServiceImpl();
+    	MemberService memberService = new MemberServiceImpl();
     	String email = UserSessionUtils.getLoginUserId(request.getSession());
 		
 		log.debug("wish List User : {}", email);
 		
-		int userId = manager.getuserIdByEmail(email);
+		int userId = memberService.getuserIdByEmail(email);
 		
 		TalentService talentservice = new TalentServiceImpl();
 		int talentId = Integer.parseInt(request.getParameter("talentId"));
@@ -40,8 +44,18 @@ public class WishListController implements Controller{
 		
 		System.out.println(wish);
 		
-		WishService manager = new WishServiceImpl();
+		WishService wishService = new WishServiceImpl();
+		int i = wishService.insertWish(wish);
+		System.out.println(i+"완료");
 		
+		List<WishDTO> wishList = wishService.getWishListByUserId(userId);
+		List<TalentDTO> talentList = new ArrayList<>();
+		for(i = 0; i < wishList.size(); i++) {
+			int wishTalentId = wishList.get(i).getTalentID();
+			TalentDTO dto = talentservice.findTalent(wishTalentId);
+			talentList.add(dto);
+		}
+		request.setAttribute("talentList", talentList);
 		
 		return "/member/wishList.jsp";
 	}

@@ -32,6 +32,10 @@ $(document).ready(function () {
 	  });
 	  
 	});
+	
+	function goWish(){
+		
+	}
 </script>
 <script>
 function submitForm() {
@@ -164,8 +168,9 @@ function submitForm() {
             </tr>
             <tr>
                 <td>
-                     <!--  <button type="button" onclick="찜하기">🖤찜하기</button>
-                     <a href="<c:url value='/talent/matching'>
+                	 <input type="hidden" name="talentId" value=${talent.talentId }>
+                     <button type="button" onclick="goWish()">🖤찜하기</button>
+                    <!--  <a href="<c:url value='/talent/matching'>
                      	   <c:param name='talentId' value='${talent.talentId}'/>
                      	   <c:param name='userId' value='${userId}'/>
                      	  </c:url>">1:1 매칭</a> &nbsp; -->
