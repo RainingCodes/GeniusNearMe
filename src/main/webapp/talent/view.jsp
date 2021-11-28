@@ -169,7 +169,7 @@ function submitForm() {
             <tr>
                 <td>
                 	 <input type="hidden" name="talentId" value=${talent.talentId }>
-                     <button type="button" onclick="goWish()">🖤찜하기</button>
+                     <input type="button" onclick="goWish()" value = "❤❤찜하기">
                     <!--  <a href="<c:url value='/talent/matching'>
                      	   <c:param name='talentId' value='${talent.talentId}'/>
                      	   <c:param name='userId' value='${userId}'/>
