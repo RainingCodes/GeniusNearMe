@@ -27,10 +27,10 @@ public class CreateGroupController implements Controller {
 		System.out.println("호로로롥");
 		String talentId = request.getParameter("talentId");
 		System.out.println("가나다라마바사" + talentId);
-		//List<PriceDTO> priceList = (List<PriceDTO>) request.getAttribute("prices");
-		//GroupService gService = new GroupServiceImpl();
+		List<PriceDTO> priceList = (List<PriceDTO>) request.getAttribute("prices");
+		GroupService gService = new GroupServiceImpl();
 		
-		//System.out.println("와랄ㄹ랄라" + priceList.get(1).getHeadCount());
+		System.out.println("와랄ㄹ랄라" + priceList.get(1).getHeadCount());
 		
 		//for(int i = 1; i < priceList.size(); i++) {
 		//	int n = (int) request.getAttribute("group" + priceList.get(i).getHeadCount());

@@ -189,6 +189,7 @@ function submitForm() {
 		<span><input type='button' name='reviewBtn' value='리뷰'></span>
 		<jsp:include page="/talent/groupMatching.jsp">
 			<jsp:param name="talentId" value="<%=talentId %>" />
+			<jsp:param name="prices" value="${prices}" />
 		</jsp:include>
 		<%@ include file="/talent/commentView.jsp"  %>
         <div align = "center">
