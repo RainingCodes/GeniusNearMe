@@ -188,13 +188,6 @@ public class TalentDAOImpl implements TalentDAO  {
 //		resultQuery += priceQuery;
 //		
 		// 날짜 옵션
-		if (startDate == null) { // 날짜 상세 설정이 없을 경우
-			startDate = format1.parse("2000-01-01");
-		}
-		if (deadLine == null) {
-			deadLine = format1.parse("2030-12-31");		
-		}
-		
 		String dateQuery = "AND STARTDATE BETWEEN TO_DATE('" + startDate + "', 'YYYY-MM-DD') AND TO_DATE('" + deadLine + "', 'YYYY-MM-DD')";
 		resultQuery += dateQuery;
 	

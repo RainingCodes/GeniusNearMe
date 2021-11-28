@@ -27,13 +27,23 @@ public class DetailedSearchController implements Controller{
 		int price = Integer.parseInt(request.getParameter("price"));
 		
 	
-		String strStartDate = request.getParameter("startDate");
+		String strStartDate = request.getParameter("startDate"); //시작일, 마감일을 문자열로 전달받음
 		String strDeadLine = request.getParameter("deadLine");
 		
-		Date startDate = null;
-		Date deadLine = null;
-		startDate = format1.parse(strStartDate);			
-		deadLine = format1.parse(strDeadLine);
+		Date startDate, deadLine;
+		if (strStartDate == null) { // 날짜 상세 설정이 없을 경우
+			startDate = format1.parse("2000-01-01");
+		}
+		else {
+			startDate = format1.parse(strStartDate); // Date형으로 변환
+		}
+		
+		if (strDeadLine == null) {
+			deadLine = format1.parse("2030-12-31");		
+		}
+		else {			
+			deadLine = format1.parse(strDeadLine);
+		}
 		
 		String[] categories = request.getParameterValues("category");
 		
