@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+	String talentId = request.getParameter("talentId");
+%>
 <script type="text/javascript">
 	var cnt = 0;
 	var head = new Array("${prices.size()}");
@@ -21,7 +24,6 @@
 			}
 		 });
 	});
-
 </script>
 <div id='group'>
 <h3>그룹 리스트</h3>
@@ -45,6 +47,7 @@
 			for(var i = 0; i< inGroup.length; i++)
 				inGroup[i] = 0;
 		</script>
+		<input type="hidden" name="talentId" value="<%=talentId %>">
     	<input type="submit" value="저장하기">
 	</form>
 	

@@ -2,7 +2,6 @@ package controller.group;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -26,7 +25,7 @@ public class CreateGroupController implements Controller {
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
 		System.out.println("호로로롥");
-		int talentId = (int)request.getAttribute("talentId");
+		String talentId = request.getParameter("talentId");
 		System.out.println("가나다라마바사" + talentId);
 		//List<PriceDTO> priceList = (List<PriceDTO>) request.getAttribute("prices");
 		//GroupService gService = new GroupServiceImpl();

@@ -3,6 +3,9 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<%
+	String talentId = request.getParameter("talentId");
+%>
 <script>
 var check = 1;
 $(document).ready(function () {
@@ -184,7 +187,9 @@ function submitForm() {
         <span><input type="button" name="groupBtn" value="공동 구매하기"></span>
 		<span><input type='button' name='commentBtn' value='문의'></span>
 		<span><input type='button' name='reviewBtn' value='리뷰'></span>
-		<%@ include file="/talent/groupMatching.jsp"  %>
+		<jsp:include page="/talent/groupMatching.jsp">
+			<jsp:param name="talentId" value="<%=talentId %>" />
+		</jsp:include>
 		<%@ include file="/talent/commentView.jsp"  %>
         <div align = "center">
         <br><br><br><br><br><br><br>
