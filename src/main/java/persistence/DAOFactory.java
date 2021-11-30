@@ -40,4 +40,7 @@ public class DAOFactory {
 	public MessageDAO getMessageDAO() {
 		return new MessageDAOImpl();
 	}
+	public ReviewDAO getReviewDAO() {
+		return new ReviewDAOImpl();
+	}
 }
