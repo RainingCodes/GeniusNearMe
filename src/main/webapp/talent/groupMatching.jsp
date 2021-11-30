@@ -3,6 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 	String talentId = request.getParameter("talentId");
+	
 %>
 <script type="text/javascript">
 	var cnt = 0;
@@ -26,18 +27,20 @@
 </script>
 <div id='group'>
 <h3>그룹 리스트</h3>
-<c:if test="${groupList eq null}">
+<c:if test="${groupList.size() eq 0}">
 	<c:if test="${userId eq talent.writerId}"> 
 		<form name="form" method="get" action="<c:url value='/group/register' />" >
 			<c:forEach var="price" items="${prices}" varStatus="status">
 				<p>
 					<c:if test='${price.headCount ne 1}'>
-						<c:out value="${price.headCount}" />명 그룹 리스트
-						<script>
-						head[i++] = "${price.headCount}";
-						document.write("<input type='button' name='add' value='추가하기' id='" + cnt +"' >");
-						cnt++;
-						</script>
+						<p>
+							<c:out value="${price.headCount}" />명 그룹 리스트
+							<script>
+							head[i++] = "${price.headCount}";
+							document.write("<input type='button' name='add' value='추가하기' id='" + cnt +"' >");
+							cnt++;
+							</script>
+						</p>
 					</c:if>
 				</p>
 			</c:forEach>
@@ -67,5 +70,4 @@
 		</form>
 	</c:if>
 </c:if>
-
 </div>

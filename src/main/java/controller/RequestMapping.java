@@ -44,6 +44,7 @@ public class RequestMapping {
         mappings.put("/talent/update", new UpdateTalentController());
         mappings.put("/talent/group", new ForwardController("/talent/groupMatching.jsp"));
         mappings.put("/group/register", new CreateGroupController());
+        mappings.put("/talent/group/match", new InsertGroupMemberController());
         mappings.put("/talent/comment", new ViewCommentController());
         mappings.put("/talent/comment/register", new RegisterCommentController());
         mappings.put("/talent/comment/delete", new DeleteCommentController());
