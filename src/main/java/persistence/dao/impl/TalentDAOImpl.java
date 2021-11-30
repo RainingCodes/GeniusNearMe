@@ -180,7 +180,8 @@ public class TalentDAOImpl implements TalentDAO  {
 		// 카테고리 옵션
 		String categoryQuery;
 		int i;
-		if (Arrays.asList(categories).contains("all")) {
+		if (categories == null || Arrays.asList(categories).contains("all")) {
+			//System.out.println("all이 선택되었습니다");
 			categoryQuery= "";
 		}
 		else {
@@ -198,7 +199,7 @@ public class TalentDAOImpl implements TalentDAO  {
 //		
 		// 날짜 옵션
 		String dateQuery = "(STARTDATE BETWEEN TO_DATE('" + new java.sql.Date(startDate.getTime()) + "', 'YYYY-MM-DD') AND TO_DATE('" + new java.sql.Date(deadLine.getTime()) + "', 'YYYY-MM-DD'))";
-		resultQuery += dateQuery;	
+		resultQuery += dateQuery;
 		
 		System.out.println("\n==LOG OF 'TalentDAOImpl.java'==");
 		System.out.println(resultQuery);
@@ -226,10 +227,13 @@ public class TalentDAOImpl implements TalentDAO  {
 			}
 			return list;
 		} catch (Exception ex) {
+			jdbcUtil.rollback();
 			ex.printStackTrace();
 		} finally {
+			jdbcUtil.commit();
 			jdbcUtil.close();
-		} return null;
+		}
+		return null;
 	}
 	
 	public TalentDTO getTalentView(int talentId) {

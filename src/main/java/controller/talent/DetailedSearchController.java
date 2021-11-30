@@ -23,20 +23,27 @@ public class DetailedSearchController implements Controller{
 		
 		// 옵션들
 		String reSearch = request.getParameter("reSearch");
-		int price = Integer.parseInt(request.getParameter("price"));
+		
+		int price;
+		if (request.getParameter("price") == null) {
+			price = 100000;
+		}
+		else{
+			price = Integer.parseInt(request.getParameter("price"));		
+		}
 	
 		String strStartDate = request.getParameter("startDate"); //시작일, 마감일을 문자열로 전달받음
 		String strDeadLine = request.getParameter("deadLine");
 		
 		Date startDate, deadLine;
-		if (strStartDate == "") { // 날짜 상세 설정이 없을 경우
+		if (strStartDate == "" || strStartDate == null) { // 날짜 상세 설정이 없을 경우
 			startDate = format1.parse("2000-01-01");
 		}
 		else {
 			startDate = format1.parse(strStartDate); // Date형으로 변환
 		}
 		
-		if (strDeadLine == "") {
+		if (strDeadLine == "" || strDeadLine == null) {
 			deadLine = format1.parse("2030-12-31");		
 		}
 		else {			
@@ -51,7 +58,9 @@ public class DetailedSearchController implements Controller{
 		System.out.println("가격 전달됐는지 확인 => "+ price);
 		System.out.println("시작일 전달됐는지 확인 => "+ startDate);
 		System.out.println("마감일 전달됐는지 확인 => "+ deadLine);
-		System.out.println("카테고리 전달됐는지 확인 => "+ categories.length);
+		if (categories != null) {
+			System.out.println("카테고리 전달됐는지 확인 => "+ categories.length);			
+		}
 		
 		TalentService manager = new TalentServiceImpl();
 		List<TalentDTO> talentList = manager.getTalentByOptions(search_bar, reSearch, categories, price, startDate, deadLine);
