@@ -18,9 +18,8 @@ public class MessageDTO {
 		this.receiverId = receiverId;
 	}
 	
-	public MessageDTO(int messageId, String content, Date writtenDate, int senderId, int receiverId) {
+	public MessageDTO(String content, Date writtenDate, int senderId, int receiverId) {
 		super();
-		this.messageId = messageId;
 		this.content = content;
 		this.writtenDate = writtenDate;
 		this.senderId = senderId;

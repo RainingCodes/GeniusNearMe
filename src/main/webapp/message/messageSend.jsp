@@ -15,7 +15,7 @@
 	<br>
 	<h1>메세지 보내기</h1>
 	<p>
-	받는 이 : ${talentWriterNickname}
+	받는 이 : ${rNickname}
 	<br>    
 	<form name="form" method="post" action="<c:url value='/comment' />">
 		<input type="hidden" name="senderId" value="${senderId}"/>	  

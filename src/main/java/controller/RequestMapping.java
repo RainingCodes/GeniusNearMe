@@ -51,6 +51,7 @@ public class RequestMapping {
         mappings.put("/talent/comment/delete", new DeleteCommentController());
         
         mappings.put("/message", new SendMessageController());
+        mappings.put("/member/messageList", new ViewMessageListController());
         
         mappings.put("/matching/talent", new ApplicationMatchingController());
         mappings.put("/matching/choose", new ChooseMatchingController());
