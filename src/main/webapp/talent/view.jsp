@@ -215,12 +215,17 @@ $(document).ready(function () {
     	    <input type="button" value="이전 페이지" onClick="history.go(-1)">
 
         </div>
-        
-        <div>
+        <div id="review_container">
+        	<jsp:include page="reviewView.jsp">
+        		<jsp:param name="talentId" value="${talent.talentId}" />
+        	</jsp:include>
+        	
+        </div>
+        <!-- <div>
 			<form name="form" method="get" action="<c:url value='/talent/comment' />">
 				<input type="hidden" name="talentId" value="${talent.talentId}"/>
 				<input type="button" value="덧글 작성" onClick="submit()">
 			</form>
-		</div>
+		</div>-->
     </body>
 </html>
