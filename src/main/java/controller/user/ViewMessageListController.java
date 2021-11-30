@@ -1,18 +1,24 @@
 package controller.user;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import controller.Controller;
 import service.MemberService;
 import service.MemberServiceImpl;
-import service.dto.MyMatchingDTO;
+import service.MessageService;
+import service.MessageServiceImpl;
+import service.dto.MessageDTO;
 
 public class ViewMessageListController implements Controller {
+
+	private static final Logger log = LoggerFactory.getLogger(ViewMemberController.class);
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -22,38 +28,49 @@ public class ViewMessageListController implements Controller {
             return "redirect:/member/login/form";		// login form 요청으로 redirect
         }
     	
-    	MemberService manager = new MemberServiceImpl();
+    	MemberService memberManager = new MemberServiceImpl();
+    	MessageService messageManager = new MessageServiceImpl();
 		String email = UserSessionUtils.getLoginUserId(request.getSession());
 		
-		log.debug("receive my matching User : {}", email);
+		log.debug("ViewMessageListController : {}", email);
+		int userId = memberManager.getuserIdByEmail(email);
 		
-		int userId = manager.getuserIdByEmail(email);
-		List<MyMatchingDTO> myMatchingInfo = null;
-		List<String> userNicekname = null;
+		//보낸 쪽지함 리스트 : send 기준 읽고, receiver의 nickname을 띄워야함
+		//받은 쪽지함 리스트 : receive 기준 읽고, sender의 nickname을 띄워야함
+		List<MessageDTO> sendList = null;
+		List<MessageDTO> receiveList = null;
+		List<String> sendListNicekname = null;
+		List<String> receiveListNicekname = null;
     	
-    	try {
-    		myMatchingInfo =  manager.ListingReceiveMyMatchingByUserId(userId);	// 사용자 정보 검색
-    		userNicekname = new ArrayList<String>();
+//    	try {
+    		sendList = messageManager.SenderMessageList(userId);
+    		receiveList = messageManager.ReceiverMessageList(userId);
     		
-    		for (int i = 0; i < myMatchingInfo.size(); i++) {
-    			int mId = myMatchingInfo.get(i).getMatchingId();
-    			
-    			
-    			//매칭 아이디 통해서 userId 구해오고, userNickname 구해오기 (와 진짜 미친 조인)
-    			int mUserId = manager.getUserIdByMatchingId(mId);
-    			String nickname = manager.getNicknameByUserId(mUserId);
-    			
-    			userNicekname.add(nickname);
+    		sendListNicekname = new ArrayList<String>();
+    		receiveListNicekname = new ArrayList<String>();
+    		
+    		for (int i = 0; i < sendList.size(); i++) {
+    			int receiverId = sendList.get(i).getReceiverId();
+    			String nickname = memberManager.getNicknameByUserId(receiverId);
+    			sendListNicekname.add(nickname);
     		}
     		
-		} catch (SQLException e) {	
-	        return "redirect:/member/login/form";
-		}
+    		for (int i = 0; i < receiveList.size(); i++) {
+    			int senderId = receiveList.get(i).getSenderId();
+    			String nickname = memberManager.getNicknameByUserId(senderId);
+    			receiveListNicekname.add(nickname);
+    		}
+//		} catch (SQLException e) {	
+//	        return "redirect:/member/login/form";
+//		}
     	
     	
-    	request.setAttribute("list", myMatchingInfo);		// 사용자 정보 저장	
-    	request.setAttribute("nickList", userNicekname);
-		return "/member/receiveMatchingList.jsp";				// 사용자 보기 화면으로 이동
+    	request.setAttribute("sendList", sendList);
+    	request.setAttribute("receiveList", receiveList);
+    	request.setAttribute("sendListNicekname", sendListNicekname);
+    	request.setAttribute("receiveListNicekname", receiveListNicekname);
+    	
+		return "/member/message/viewMessageList.jsp";				// 사용자 보기 화면으로 이동
 	}
 
 }

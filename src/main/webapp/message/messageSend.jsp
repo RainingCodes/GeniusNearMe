@@ -17,7 +17,7 @@
 	<p>
 	받는 이 : ${rNickname}
 	<br>    
-	<form name="form" method="post" action="<c:url value='/comment' />">
+	<form name="form" method="post" action="<c:url value='/message' />">
 		<input type="hidden" name="senderId" value="${senderId}"/>	  
 		<input type="hidden" name="receiverId" value="${receiverId}"/>
 		<textarea cols="30" rows="15" name="content" style="resize: none;"></textarea>

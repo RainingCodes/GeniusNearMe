@@ -52,6 +52,7 @@ public class RequestMapping {
         
         mappings.put("/message", new SendMessageController());
         mappings.put("/member/messageList", new ViewMessageListController());
+        mappings.put("/message/read", new ReadMessageController());
         
         mappings.put("/matching/talent", new ApplicationMatchingController());
         mappings.put("/matching/choose", new ChooseMatchingController());

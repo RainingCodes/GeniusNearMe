@@ -3,7 +3,6 @@ package persistence.dao.impl;
 import java.util.List;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.Date;
 
 import persistence.dao.MessageDAO;
 import persistence.util.JDBCUtil;
@@ -113,12 +112,14 @@ public class MessageDAOImpl implements MessageDAO {
 	//4.메세지 insert하기(insert에선 state 무조건 0임)
 	public int InsertMessage(MessageDTO message) {
 		int result = 0;
-		String insertQuery = "INSERT INTO MEMBERS (MESSAGEID, STATE, CONTENT, WRITTENDATE, SENDERID, RECEIVERID) "
-							+ "VALUES (message_seq.nextval, ?, ?, ?, ?, ?)";
-
-		Object[] param = new Object[] { 0, message.getContent(), new Date(message.getWrittenDate().getTime()), message.getSenderId(), message.getReceiverId() };
+		String insertQuery = "INSERT INTO MESSAGE (MESSAGEID, STATE, CONTENT, WRITTENDATE, SENDERID, RECEIVERID) "
+							+ "VALUES (message_seq.nextval, 0, ?, ?, ?, ?) ";
+		System.out.println(insertQuery);
+		System.out.println(new java.sql.Date(message.getWrittenDate().getTime()));
+		
+		Object[] param = new Object[] { message.getContent(), new java.sql.Date(message.getWrittenDate().getTime()), message.getSenderId(), message.getReceiverId() };
 		jdbcUtil.setSqlAndParameters(insertQuery, param);
-
+		
 		try {
 			result = jdbcUtil.executeUpdate();
 		} catch (Exception ex) {

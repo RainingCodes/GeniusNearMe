@@ -55,6 +55,7 @@ function userRemove() {
 		<a href="<c:url value='/member/ReceiveMatching'></c:url>">내가 받은 매칭 목록</a><p>
 		<a href="<c:url value='/member/myTalentList'></c:url>">내가 작성한 게시글 목록</a> &nbsp;
 		<a href="<c:url value='/member/wishList'></c:url>">내가 찜한 재능 목록</a> 
+		<a href="<c:url value='/member/messageList'></c:url>">나의 메세지 보관함</a> 
 		   
  	    <br><br>	   
  	    

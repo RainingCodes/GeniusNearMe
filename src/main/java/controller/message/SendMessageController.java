@@ -40,19 +40,23 @@ public class SendMessageController implements Controller {
 	    }
     	
 		
+		
 		//보내는 사람 입장이므로 senderId가 userId랑 일맥상통함
 		int senderId = Integer.parseInt(request.getParameter("senderId"));
 		int receiverId = Integer.parseInt(request.getParameter("receiverId"));
 		long miliseconds = System.currentTimeMillis();
 	    Date current = new Date(miliseconds);
 	    
+	    log.debug("Send Message POST Request : {}", senderId);
+	    
     	// POST request (회원정보가 parameter로 전송됨)
     	MessageDTO dto = new MessageDTO(
-   	    	request.getParameter(request.getParameter("content")),
+   	    	request.getParameter("content"),
    	    	current,
    	    	senderId,
    	    	receiverId
    		);
+    	System.out.println(dto);
     	
     	MessageService manager = new MessageServiceImpl();
     	int i = manager.sendMessage(dto);
