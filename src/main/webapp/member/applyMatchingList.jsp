@@ -19,6 +19,7 @@
 		  <td>재능 제목</td>
 		  <td>매칭 상태</td>
 		  <td>매칭 정보</td>
+		  <td>리뷰</td>
 		</tr>
       </thead>
       <tbody> 
@@ -61,6 +62,22 @@
 					  		매칭이 거절당했습니다.
 					    </c:when>
 					</c:choose>
+			  </td>
+			  <td>
+			  	<c:set var="state" value="${li.matchingState}" />
+			  		<c:choose>
+			  			<c:when test="${state eq '0'}">
+					  		아직 리뷰 작성이 불가합니다
+					    </c:when>
+					    <c:when test="${state eq '1'}">
+					    	<a href="<c:url value='/talent/view'>
+					    	<c:param name='talentId' value='${li.talentId}'/>
+                               </c:url>">리뷰하기</a>
+					    </c:when>
+					    <c:when test="${state eq '2'}">
+					  		X
+					    </c:when>
+			  		</c:choose>
 			  </td>
 			</tr>
 		 </c:forEach>
