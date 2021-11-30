@@ -60,15 +60,25 @@
 	<c:if test="${userId ne '-1'}"> 
 		<form name="form" method="get" action="<c:url value='/user/register' />">
 			<c:forEach var="group" items="${groupList}" varStatus="status">
-				<c:out value="${group.headCount}" />명 그룹 리스트
-				<c:forEach var="a" begin="1" end="${group.headCount}">
-					<c:if test="${userId ne talent.writerId }">
-						<input type="hidden" name="headCount" value="${group.headCount}">
-						<input type="button" name="join" value="참가하기" id="join_btn"> 
-					</c:if>
-				</c:forEach>
+				<p>
+					<c:out value="${group.headCount}" />명 그룹 / 그룹 아이디 : <c:out value="${group.groupId }" /> <br>
+					<c:forEach var="a" begin="1" end="${group.headCount}">
+						<c:if test="${userId ne talent.writerId }">
+							<a href="<c:url value='/group/matching'>
+								<c:param name='talentId' value='${talent.talentId}'/>
+                                 <c:param name='groupId' value='${group.groupId }' />
+                               	</c:url>">그룹 매칭 신청하기 </a>
+						</c:if>
+					</c:forEach>
+				</p>
 			</c:forEach>
 		</form>
+		<c:if test="${userId eq talent.writerId }">
+							<a herf="<c:url value='/group/update'>
+								<c:param name='talentId' value='${talent.talentId}'/>
+				                <c:param name='userId' value='${talent.writerId }'/>
+				              </c:url>">그룹 수정하기</a>
+						</c:if>
 	</c:if>
 </c:if>
 </div>
