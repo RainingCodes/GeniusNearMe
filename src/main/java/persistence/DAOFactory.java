@@ -37,4 +37,7 @@ public class DAOFactory {
 	public WishDAO getWishDAO() {
 		return new WishDAOImpl();
 	}
+	public MessageDAO getMessageDAO() {
+		return new MessageDAOImpl();
+	}
 }

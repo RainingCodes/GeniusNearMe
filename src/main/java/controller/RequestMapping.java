@@ -10,6 +10,7 @@ import controller.talent.*;
 import controller.talentTest.*;
 import controller.user.*;
 import controller.group.*;
+import controller.message.*;
 
 public class RequestMapping {
     private static final Logger logger = LoggerFactory.getLogger(DispatcherServlet.class);
@@ -48,6 +49,8 @@ public class RequestMapping {
         mappings.put("/talent/comment", new ViewCommentController());
         mappings.put("/talent/comment/register", new RegisterCommentController());
         mappings.put("/talent/comment/delete", new DeleteCommentController());
+        
+        mappings.put("/message", new SendMessageController());
         
         mappings.put("/matching/talent", new ApplicationMatchingController());
         mappings.put("/matching/choose", new ChooseMatchingController());

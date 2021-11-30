@@ -15,11 +15,10 @@ public interface MessageDAO {
 	//3.messageId로 메세지 하나 가져오기
 	public MessageDTO getMessageById(int messageId);
 	
-	
 	//4.메세지 insert하기(insert에선 state 무조건 0임)
 	public int InsertMessage(MessageDTO message);
 	
-	//5.메세지 state read로 update하기(insert에선 무조건 0임)
+	//5.메세지 state read로 update하기(insert에선 무조건 0임 > 1로)
 	public int updateMessageStateToRead(int messageId);
 	
 	//6.메세지 delete하기
@@ -27,5 +26,4 @@ public interface MessageDAO {
 	
 	//7.메세지 id로 state감별
 	public int stateByMessageId(int messageId);
-		
 }
