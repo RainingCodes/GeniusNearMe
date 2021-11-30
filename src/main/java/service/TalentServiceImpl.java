@@ -23,6 +23,9 @@ public class TalentServiceImpl implements TalentService {
 	public List<TalentDTO> getTalent(String title) {
 		return dao.getTalentListByTitle(title);
 	}
+	public List<TalentDTO> getTalentListByNickname(String nickname) {
+		return dao.getTalentListByNickname(nickname);
+	}
 	public List<TalentDTO> getTalentByOptions(String title, String reSearch, String[] categories, int price, Date startDate, Date endDate) throws Exception {
 		return dao.getTalentListByOptions(title, reSearch, categories, price, startDate, endDate);
 	}
@@ -45,5 +48,6 @@ public class TalentServiceImpl implements TalentService {
 	public TalentDTO findTalent(int talentId) {
 		return dao.getTalentView(talentId);
 	}
+
 	
 }
