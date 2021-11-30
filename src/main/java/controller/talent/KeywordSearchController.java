@@ -15,11 +15,26 @@ public class KeywordSearchController implements Controller{
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {		
 
 		String search_bar = request.getParameter("search_bar");
-		TalentService manager = new TalentServiceImpl();
-		List<TalentDTO> talentList = manager.getTalent(search_bar);
+		int search_options = Integer.parseInt(request.getParameter("search_options"));
 		
-		request.setAttribute("talentList", talentList);
-		request.setAttribute("search_bar", search_bar);		
+		TalentService manager = new TalentServiceImpl();
+		
+		List<TalentDTO> talentList;
+		switch(search_options) {
+		case 0:
+			talentList = manager.getTalent(search_bar);
+			request.setAttribute("talentList", talentList);			
+			break;
+		case 1:
+			talentList = manager.getTalentListByNickname(search_bar);
+			request.setAttribute("talentList", talentList);
+			break;
+		}
+		
+		request.setAttribute("search_bar", search_bar);	
+		
+		System.out.println("선택한 옵션: "+search_options);
+		
 		return "/talent/keywordSearch/list.jsp";
 	}
 	
