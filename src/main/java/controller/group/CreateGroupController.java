@@ -24,8 +24,11 @@ public class CreateGroupController implements Controller {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
+		
 		HttpSession session = request.getSession();
+		System.out.println(request.getParameter("talentId"));
 		int talentId = Integer.parseInt(request.getParameter("talentId"));
+		System.out.println(session.getAttribute("userId"));
 		int userId = (int)session.getAttribute("userId");
 		List<PriceDTO> priceList = (List<PriceDTO>) session.getAttribute("priceList");
 		GroupService gService = new GroupServiceImpl();

@@ -14,6 +14,15 @@ public class ReviewDTO {
 		
 	}
 	
+	public ReviewDTO( Date writtenDate, int likes, int writerId, int talentId, String reviewContent) {
+		super();
+		this.writtenDate = writtenDate;
+		this.likes = likes;
+		this.writerId = writerId;
+		this.talentId = talentId;
+		this.reviewContent = reviewContent;
+	}
+	
 	public ReviewDTO(int reviewId, Date writtenDate, int likes, int writerId, int talentId, String reviewContent) {
 		super();
 		this.reviewId = reviewId;

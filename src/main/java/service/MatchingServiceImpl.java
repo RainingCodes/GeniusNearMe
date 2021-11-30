@@ -36,4 +36,9 @@ public class MatchingServiceImpl implements MatchingService{
 		// TODO Auto-generated method stub
 		return dao.updateGroupId(matchingId, groupId);
 	}
+	@Override
+	public int updateUserId(int matchingId, int userId) {
+		// TODO Auto-generated method stub
+		return dao.updateUserId(matchingId, userId);
+	}
 }

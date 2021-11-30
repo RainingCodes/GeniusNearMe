@@ -66,8 +66,8 @@ public class WishDAOImpl implements WishDAO{
 		String searchQuery = query + "FROM WISH WHERE USERID = ? ";
 		
 		Object[] param = new Object[] { userId };
-		jdbcUtil.setSql(searchQuery);
-		jdbcUtil.setParameters(param);
+
+
 		
 		try {
 			ResultSet rs = jdbcUtil.executeQuery();
