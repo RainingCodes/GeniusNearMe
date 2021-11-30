@@ -79,7 +79,7 @@ public class ResultTalentTestController implements Controller  {
 		
 		if (type.equals("0000") || type.equals("0001") || type.equals("0011")) {
 			myTypeString = "철두철미 완벽주의자형";
-		} else if (type.equals("0010") || type.equals("0111") || type.equals("1001")) {
+		} else if (type.equals("0010") || type.equals("0100") || type.equals("1001")) {
 			myTypeString = "논리적인 전략가형";
 		} else if (type.equals("0101") || type.equals("0110") || type.equals("0111")) {
 			myTypeString = "게으른 예술가형";
@@ -99,7 +99,7 @@ public class ResultTalentTestController implements Controller  {
 		
 		if (type.equals("0000") || type.equals("0001") || type.equals("0011")) {
 			myCategory = "law";
-		} else if (type.equals("0010") || type.equals("0111") || type.equals("1001")) {
+		} else if (type.equals("0010") || type.equals("0100") || type.equals("1001")) {
 			myCategory = "it";
 		} else if (type.equals("0101") || type.equals("0110") || type.equals("0111")) {
 			myCategory = "art";
