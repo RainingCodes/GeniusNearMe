@@ -40,7 +40,7 @@
 							document.write("<input type='button' name='add' value='추가하기' id='" + cnt +"' >");
 							cnt++;
 							</script>
-						</p>
+						</p> 
 					</c:if>
 				</p>
 			</c:forEach>

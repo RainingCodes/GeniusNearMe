@@ -25,7 +25,7 @@ public class InsertGroupMemberController implements Controller {
 		List<GroupDTO> groupList = gService.GroupList(talentId);
 		int result = gService.insertGroupMember(talentId, talentId, talentId)
 		
-		
+		 
 		return "/talent/view";
 	}
 
