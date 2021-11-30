@@ -119,7 +119,7 @@ public class ResultTalentTestController implements Controller  {
 		
 		if (type.equals("0000") || type.equals("0001") || type.equals("0011")) {
 			myCategory = "법률";
-		} else if (type.equals("0010") || type.equals("0111") || type.equals("1001")) {
+		} else if (type.equals("0010") || type.equals("0100") || type.equals("1001")) {
 			myCategory = "IT";
 		} else if (type.equals("0101") || type.equals("0110") || type.equals("0111")) {
 			myCategory = "예술";
