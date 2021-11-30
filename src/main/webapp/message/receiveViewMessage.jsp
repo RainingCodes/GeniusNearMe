@@ -5,14 +5,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>메세지 보내기</title>
+<title>받은 쪽지 확인</title>
 </head>
 <body>
-	<div class="messageSend" align="center">
+	<div class="receiveView" align="center">
 	<br>
-	<h1>메세지 보내기</h1>
+	<h2>받은 쪽지 확인</h2>
 	<p>
-	받는 이 : ${rNickname}
+	보낸 이 : ${nickname}
 	<br>    
 	<form name="form" method="post" action="<c:url value='/message' />">
 		<input type="hidden" name="senderId" value="${senderId}"/>	  
