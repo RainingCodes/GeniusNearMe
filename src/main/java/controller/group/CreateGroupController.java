@@ -42,8 +42,11 @@ public class CreateGroupController implements Controller {
 					MatchingDTO mDTO = new MatchingDTO(-1, 0, talentId, -1, userId);
 					int matchingId = mService.insertMatching(mDTO);
 					GroupDTO group = new GroupDTO(talentId, priceList.get(i).getHeadCount(), matchingId);
-					int result = gService.insertGroup(group);
+					int groupId = gService.insertGroup(group);
+					group.setGroupId(groupId);
+					group.setMembers(0);
 					groupList.add(group);
+					int result = mService.updateGroupId(matchingId, groupId);
 					log.debug("Create group : {}", group);
 				}
 			}

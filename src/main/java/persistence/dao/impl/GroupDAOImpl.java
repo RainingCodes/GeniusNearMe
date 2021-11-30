@@ -28,26 +28,32 @@ public class GroupDAOImpl implements GroupDAO {
 	public int insertGroup(GroupDTO group) {
 		// TODO Auto-generated method stub
 		int result = 0;
+		int generatedKey = 0;
+		
 		String insertGroupQuery = "INSERT INTO GROUPING (GROUPID, MATCHINGID, TALENTID, REPRESENTATIVEID, HEADCOUNT) "
 				+ "Values (group_seq.nextval, ?, ?, null, ?) ";
-		System.out.println(insertGroupQuery);
+		
 		Object[] param = new Object[] { group.getMatchingId(), group.getTalentId(), group.getHeadCount()  };
-		jdbcUtil.setSqlAndParameters(insertGroupQuery, param);
+		jdbcUtil.setSql(insertGroupQuery);
+		jdbcUtil.setParameters(param);
+		String key[] = {"GROUPID"};
 		
 		try {
-			result = jdbcUtil.executeUpdate();
-			return result;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			
+			result = jdbcUtil.executeUpdate(key);
+			ResultSet rs = jdbcUtil.getGeneratedKeys();
+			
+			if(rs.next())
+				generatedKey = rs.getInt(1);
+			
+		}catch(Exception ex) {
 			jdbcUtil.rollback();
-			e.printStackTrace();
-		} finally {
-			// TODO Auto-generated catch block
+			ex.printStackTrace();
+		}finally {
 			jdbcUtil.commit();
 			jdbcUtil.close();
 		}
-		
-		return result;
+		return generatedKey;	
 	}
 
 	@Override
@@ -90,14 +96,13 @@ public class GroupDAOImpl implements GroupDAO {
 		jdbcUtil.setSqlAndParameters(insertMemberQuery, param);
 		try {
 			result = jdbcUtil.executeUpdate();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		jdbcUtil.close();				
+		} catch(Exception ex) {
+			jdbcUtil.rollback();
+			ex.printStackTrace();
+		}finally {
+			jdbcUtil.commit();
+			jdbcUtil.close();
+		}				
 		
 		return result;
 	}
@@ -112,14 +117,14 @@ public class GroupDAOImpl implements GroupDAO {
 		jdbcUtil.setSqlAndParameters(setRepreQuery, param);
 		try {
 			result = jdbcUtil.executeUpdate();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		jdbcUtil.close();
+		} catch(Exception ex) {
+			jdbcUtil.rollback();
+			ex.printStackTrace();
+		}finally {
+			jdbcUtil.commit();
+			jdbcUtil.close();
+		}				
+		
 		return result;
 	}
 

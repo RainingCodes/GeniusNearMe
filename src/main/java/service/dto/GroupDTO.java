@@ -7,6 +7,16 @@ public class GroupDTO {
 	private int matchingId = -1;
 	private int headCount = 0;
 	private Integer representativeId = null;
+	private int members = 0;
+	public int getMembers() {
+		return members;
+	}
+	public void setMembers(int members) {
+		this.members = members;
+	}
+	public void setRepresentativeId(Integer representativeId) {
+		this.representativeId = representativeId;
+	}
 	public int getMatchingId() {
 		return matchingId;
 	}
