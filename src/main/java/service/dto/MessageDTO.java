@@ -17,6 +17,15 @@ public class MessageDTO {
 		this.senderId = senderId;
 		this.receiverId = receiverId;
 	}
+	
+	public MessageDTO(int messageId, String content, Date writtenDate, int senderId, int receiverId) {
+		super();
+		this.messageId = messageId;
+		this.content = content;
+		this.writtenDate = writtenDate;
+		this.senderId = senderId;
+		this.receiverId = receiverId;
+	}
 
 	public MessageDTO() {
 		this.messageId = -1;

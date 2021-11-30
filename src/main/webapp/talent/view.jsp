@@ -130,6 +130,23 @@ $(document).ready(function () {
                 <td rowspan="3">
                 <br/>
                	 <strong>작성자:</strong> ${nickName}
+               	 <br><p>
+               	 <c:if test="${userId ne '-1'}"> 
+                   <c:if test="${userId ne talent.writerId}"> 
+                   		<form name="form" method="get" action="<c:url value='/message' />">
+							<input type="hidden" name="senderId" value="${userId}"/>
+							<input type="hidden" name="receiverId" value="${talent.talentId}"/>
+							<input type="button" value="작성자에게 쪽지 보내기" onClick="submit()">
+						</form>
+                  	
+                   <!-- 
+                   		<a href="<c:url value='/matching/talent'>
+                            <c:param name='talentId' value='${talent.talentId}'/>
+                        	<c:param name='userId' value='${userId}'/>
+                        </c:url>">작성자에게 쪽지 보내기</a>
+                   -->
+                   </c:if>
+                </c:if>
                 <br/>
                 <br>
                 <c:if test="${userId eq talent.writerId}"> 
