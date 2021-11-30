@@ -25,6 +25,7 @@
 }
 </style>
 <%@ include file="../main/head.jsp"  %>
+<body>
 	<div class="content">
 	<h3>내가 찜한 재능 목록</h3>
 		<c:forEach var="talent" items="${talentList}">
