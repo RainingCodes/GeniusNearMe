@@ -140,18 +140,17 @@ $(document).ready(function () {
        			</c:if>
        			<c:if test="${userId ne '-1'}"> 
                    <c:if test="${userId ne talent.writerId}"> 
-                      <fmt:formatDate var="today" value="${now }" pattern="yyyy-MM-dd"/>
+                      <fmt:formatDate var="today" value="${today }" pattern="yyyy-MM-dd"/>
                       <c:choose>
-                          <c:when test="${today lt talent.deadLine }"><a href="<c:url value='/matching/talent'>
+                          <c:when test="${today le talent.deadLine }"><a href="<c:url value='/matching/talent'>
                                 <c:param name='talentId' value='${talent.talentId}'/>
                                  <c:param name='userId' value='${userId}'/>
                                </c:url>">1:1 매칭 신청하기</a>
-                            </c:when>
+                          </c:when>
                           <c:otherwise> <p>신청기한이 지났습니다.</p></c:otherwise>
                  	 </c:choose>
                    </c:if>
                 </c:if>
-                          	 
                 </td>
             </tr>
             <tr>

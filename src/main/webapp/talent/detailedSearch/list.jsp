@@ -12,6 +12,7 @@
 <meta charset="UTF-8">
 <title>상세검색 결과페이지</title>
 <link rel="stylesheet" href="../css/talent.css" type="text/css">
+<link rel="shortcut icon" href="#">
 </head>
 <body>
 <%@ include file="../../main/head.jsp"  %>
@@ -20,8 +21,8 @@
 		String[] selectedCategory = request.getParameterValues("category");
 		TalentService talentService = new TalentServiceImpl();
 		
-		List<TalentDTO> talentList = talentService.getTalentByTalentCategory(selectedCategory);
-		request.setAttribute("talentList", talentList);
+		//List<TalentDTO> talentList = talentService.getTalentByTalentCategory(selectedCategory);
+		//request.setAttribute("talentList", talentList);
 	%>
 		<div class="nav">
 		<form method="post" action="<c:url value='/talent/detailedSearch'/>">
@@ -94,10 +95,10 @@
 				</div>
 				<p>
 					<a href="<c:url value='showTalent.jsp'>
-						<c:param name='talentTitle' value='${talent.title}'/>
+						<c:param name='talentTitle' value='${talent.talentId}'/>
 						</c:url>"><strong>${ talent.title }</strong>
 					</a>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<c:out value="${talent.writtenDate}"/>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${talent.writtenDate}
 				</p>
 				<p></p>
 				<p></p>
