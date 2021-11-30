@@ -10,4 +10,5 @@ public interface MatchingService{
 	public int denyMatching(int matchingId);
 	public int insertMatching(MatchingDTO matchingDto);
 	public int deleteMatching(int matchindId);
+	public int updateGroupId(int matchingId, int groupId);
 }

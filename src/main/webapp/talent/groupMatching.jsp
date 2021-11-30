@@ -63,6 +63,7 @@
 				<c:out value="${group.headCount}" />명 그룹 리스트
 				<c:forEach var="a" begin="1" end="${group.headCount}">
 					<c:if test="${userId ne talent.writerId }">
+						<input type="hidden" name="headCount" value="${group.headCount}">
 						<input type="button" name="join" value="참가하기" id="join_btn"> 
 					</c:if>
 				</c:forEach>

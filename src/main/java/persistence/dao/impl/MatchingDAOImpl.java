@@ -171,4 +171,26 @@ public class MatchingDAOImpl implements MatchingDAO {
 			
 			return result;	
 		}
+		@Override
+		public int updateGroupId(int matchingId, int groupId) {
+			// TODO Auto-generated method stub
+			int result = 0;
+			
+			String updateGroupIdQuery = "UPDATE MATCHING SET GROUPID=? WHERE MATCHINGID=? ";
+			
+			Object[] param = new Object[] {groupId, matchingId};
+			System.out.println("으아아ㅏㅇㄺ");
+			try {
+				jdbcUtil.setSqlAndParameters(updateGroupIdQuery, param);
+				result = jdbcUtil.executeUpdate();
+			}catch(Exception ex) {
+				ex.printStackTrace();
+			}finally {
+				jdbcUtil.commit();
+				jdbcUtil.close();
+			}
+			
+			return result;	
+			
+		}
 }

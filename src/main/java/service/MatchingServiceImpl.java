@@ -31,4 +31,9 @@ public class MatchingServiceImpl implements MatchingService{
 	public int deleteMatching(int matchindId) {
 		return dao.deleteMatching(matchindId);
 	}
+	@Override
+	public int updateGroupId(int matchingId, int groupId) {
+		// TODO Auto-generated method stub
+		return dao.updateGroupId(matchingId, groupId);
+	}
 }

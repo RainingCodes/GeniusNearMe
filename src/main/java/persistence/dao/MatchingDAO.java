@@ -22,5 +22,7 @@ public interface MatchingDAO {
 
 	//매칭 정보 delete By matchingId
 	public int deleteMatching(int matchindId);
+	
+	public int updateGroupId(int matchingId, int groupId);
 
 }
