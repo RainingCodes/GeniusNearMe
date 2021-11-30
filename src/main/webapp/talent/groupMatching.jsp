@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+
 <%
 	String talentId = request.getParameter("talentId");
 	
@@ -65,10 +67,10 @@
 					<c:forEach var="a" begin="1" end="${group.headCount}">
 						<c:if test="${userId ne talent.writerId }">
 							<a href="<c:url value='/group/matching'>
-								<c:param name='talentId' value='${talent.talentId}'/>
-                                 <c:param name='groupId' value='${group.groupId }' />
-                               	</c:url>">그룹 매칭 신청하기 </a>
-						</c:if>
+							<c:param name='talentId' value='${talent.talentId}'/>
+                            <c:param name='groupId' value='${group.groupId }' />
+                            </c:url>">그룹 매칭 신청하기 </a>
+                        </c:if>
 					</c:forEach>
 				</p>
 			</c:forEach>

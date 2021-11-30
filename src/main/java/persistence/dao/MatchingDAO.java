@@ -24,5 +24,7 @@ public interface MatchingDAO {
 	public int deleteMatching(int matchindId);
 	
 	public int updateGroupId(int matchingId, int groupId);
+	
+	public int updateUserId(int matchingId, int userId);
 
 }

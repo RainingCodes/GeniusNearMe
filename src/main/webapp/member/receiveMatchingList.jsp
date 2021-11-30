@@ -26,7 +26,6 @@
       </thead>
       <tbody> 
 		<c:forEach var="li" items="${list}" varStatus="status">
-		
 	  	    <tr>
 			  <td>
 			  	<c:out value="${li.matchingId}"/>     
