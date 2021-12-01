@@ -13,6 +13,7 @@
 	<h1>메세지 보내기</h1>
 	<p>
 	받는 이 : ${rNickname}
+	<p>
 	<br>    
 	<form name="form" method="post" action="<c:url value='/message' />">
 		<input type="hidden" name="senderId" value="${senderId}"/>	  

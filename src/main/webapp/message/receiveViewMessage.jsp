@@ -14,6 +14,7 @@
 	<p>
 	보낸 이 : ${nickname}
 	<br>전송 날짜 : ${message.writtenDate}
+	<p>
 	<br>    
 	<textarea cols="30" rows="15" name="content"style="resize: none; readonly">${message.content}</textarea>
 		<form name="form" method="get" action="<c:url value='/message' />">

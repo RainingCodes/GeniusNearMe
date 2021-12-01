@@ -33,13 +33,17 @@
 						<strong><c:out value="${talent.title}"/></strong>
 					</a>					
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<c:out value="${talent.writtenDate}"/>
-				</p>
 				<p></p>
 				<p></p>
 				<p><c:out value="${talent.content}"/></p>
 				</td>
-			</div>
+			
 		</c:forEach>
+	
+	</table>
+	<p><br>
+	<a href="<c:url value='/member/view' />">목록으로 이동하기</a>   
 	</div>
+	
 </body>
 </html>

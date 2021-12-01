@@ -17,7 +17,7 @@
 </head>
 <body>
 <div id="sender">
-<h2>보낸 쪽지함</h2>
+<h3>보낸 쪽지함</h3>
 	<table border = "1" align="center">
 	<thead class="thead-inverse">
       	<tr>

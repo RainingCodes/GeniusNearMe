@@ -9,7 +9,7 @@
 </head>
 <body>
 <div id="receive">
-<h2>받은 쪽지함</h2>
+<h3>받은 쪽지함</h3>
 	<div class = "receive" align="center">
 		<table border = "1" align="center">
 		<thead class="thead-inverse">

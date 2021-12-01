@@ -25,7 +25,8 @@
 	<p>
 	받는 이 : ${nickname}
 	<br>전송 날짜 : ${message.writtenDate}
-	<br>    
+	<p>
+	<br>
 	<textarea cols="30" rows="15" name="content"style="resize: none; readonly">${message.content}</textarea>
 	
 	<c:if test="${message.state eq 0}">       

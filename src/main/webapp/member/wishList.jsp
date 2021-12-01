@@ -52,6 +52,9 @@
 			</tr>
 		</c:forEach>
 	</table>
+	<p><br>
+	<a href="<c:url value='/member/view' />">목록으로 이동하기</a>   
 	</div>
+	
 </body>
 </html>
