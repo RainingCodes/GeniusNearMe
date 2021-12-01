@@ -216,12 +216,12 @@ $(document).ready(function () {
     	    <input type="button" value="이전 페이지" onClick="history.go(-1)">
 
         </div>
-       <!--  <div id="review_container">
+         <div id="review_container">
         	<c:import url="reviewView.jsp">
    				<c:param name="reviewList" value="${reviewList}" />
 			</c:import>
         </div>
-        -->
+        
         <!-- <div>
 			<form name="form" method="get" action="<c:url value='/talent/comment' />">
 				<input type="hidden" name="talentId" value="${talent.talentId}"/>

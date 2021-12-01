@@ -36,7 +36,7 @@
 		리뷰 등록 폼 보여주기 / 안보여주기-->
 		<form name = "form" method="POST" action="<c:url value='/talent/reviewRegister' />">
 			 <textarea rows="5" cols="50" name="content" placeholder="리뷰를 적어주세요"></textarea>
-			  <input type="button" value="등록" onClick="reviewCreate()">
+			 <input type="button" value="등록" onClick="reviewCreate()">
 		</form>
 </body>
 </html>
