@@ -55,7 +55,8 @@
         </tr>
         <c:forEach var="talent" items="${talentList}">
 			<tr style="text-align:center;">
-				<td><a
+				<td>
+					<a
 						href="<c:url value='/talent/view'>
 						<c:param name='talentId' value='${talent.talentId}'/>
 						</c:url>"><strong>${ talent.title }</strong>
