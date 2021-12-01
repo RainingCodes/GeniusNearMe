@@ -29,7 +29,6 @@ public class InsertGroupMemberController implements Controller {
 		HttpSession session = request.getSession();
 		int talentId = Integer.parseInt(request.getParameter("talentId"));
 		int userId = (int)session.getAttribute("userId");
-
 		int groupId = Integer.parseInt(request.getParameter("groupId"));
 
 		MatchingService mService = new MatchingServiceImpl();
@@ -39,16 +38,14 @@ public class InsertGroupMemberController implements Controller {
 		MemberService m2Service = new MemberServiceImpl();
 		
 		if(group.getMembers() == 0) {
-			System.out.println(gService.setRepresentative(groupId, talentId, userId) + "1번과정");
-			System.out.println(mService.updateUserId(groupId, userId) + "2번 과정");
-			
+			gService.setRepresentative(groupId, talentId, userId);
+			mService.updateUserId(groupId, userId);
 		}
 		
 		int result = gService.insertGroupMember(groupId, talentId, userId);
-		System.out.println(result);
-		group.setMembers(group.getMembers() + 1);
-		HashMap<Integer, Integer> memberChange = new HashMap<>();
-		memberChange.put(groupId, group.getMembers());
+		if(result > 0)
+			gService.updateCurrent(groupId);
+
 		//System.out.println(group.getMembers() + "호롤ㄹ록");
 		
 		List<GroupDTO> groupList = gService.GroupList(talentId);
@@ -56,8 +53,7 @@ public class InsertGroupMemberController implements Controller {
 		
 		
 		request.setAttribute("groupList", groupList);
-		request.setAttribute("memberChange", memberChange);
-		
+
 		return "/talent/view";
 	}
 

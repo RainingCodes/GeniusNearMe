@@ -45,7 +45,6 @@ public class CreateGroupController implements Controller {
 					GroupDTO group = new GroupDTO(talentId, priceList.get(i).getHeadCount(), matchingId);
 					int groupId = gService.insertGroup(group);
 					group.setGroupId(groupId);
-					group.setMembers(0);
 					groupList.add(group);
 					int result = mService.updateGroupId(matchingId, groupId);
 					log.debug("Create group : {}", group);

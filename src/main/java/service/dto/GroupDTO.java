@@ -33,12 +33,6 @@ public class GroupDTO implements Serializable{
 	public void setHeadCount(int headCount) {
 		this.headCount = headCount;
 	}
-	public int getCountMembers() {
-		return headCount;
-	}
-	public void setCountMembers(int membersCount) {
-		this.headCount = membersCount;
-	}
 	public int getGroupId() {
 		return groupId;
 	}

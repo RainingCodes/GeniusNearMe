@@ -18,7 +18,9 @@ public class GroupDAOImpl implements GroupDAO {
 			+ "GROUPING.MATCHINGID AS MATCHING_ID, "
 			+ "GROUPING.TALENTID AS TALENT_ID, "
 			+ "GROUPING.REPRESENTATIVEID AS REPRESENTATIVE_ID, "
-			+ "GROUPING.HEADCOUNT AS HEAD_COUNT FROM GROUPING ";
+			+ "GROUPING.HEADCOUNT AS HEAD_COUNT, "
+			+ "GROUPING.CURRENTHEAD AS CURRENT_HEAD "
+			+ "FROM GROUPING ";
 	
 	public GroupDAOImpl() {
 		jdbcUtil = new JDBCUtil();
@@ -30,8 +32,8 @@ public class GroupDAOImpl implements GroupDAO {
 		int result = 0;
 		int generatedKey = 0;
 		
-		String insertGroupQuery = "INSERT INTO GROUPING (GROUPID, MATCHINGID, TALENTID, REPRESENTATIVEID, HEADCOUNT) "
-				+ "Values (group_seq.nextval, ?, ?, null, ?) ";
+		String insertGroupQuery = "INSERT INTO GROUPING (GROUPID, MATCHINGID, TALENTID, REPRESENTATIVEID, HEADCOUNT, CURRENTHEAD) "
+				+ "Values (group_seq.nextval, ?, ?, null, ?, default) ";
 		
 		Object[] param = new Object[] { group.getMatchingId(), group.getTalentId(), group.getHeadCount()  };
 		jdbcUtil.setSql(insertGroupQuery);
@@ -146,6 +148,7 @@ public class GroupDAOImpl implements GroupDAO {
 				dto.setTalentId(talentId);
 				dto.setRepresentativeId(rs.getInt("REPRESENTATIVE_ID"));
 				dto.setHeadCount(rs.getInt("HEAD_COUNT"));
+				dto.setMembers(rs.getInt("CURRENT_HEAD"));
 				list.add(dto);
 			}
 			return list;
@@ -179,9 +182,9 @@ public class GroupDAOImpl implements GroupDAO {
 		jdbcUtil.close();
 		if(result > 0) {
 			GroupDTO group = getGroup(groupId, talentId);
-			group.setCountMembers(group.getCountMembers() - 1);
+			group.setHeadCount(group.getHeadCount() - 1);
 			String updateMembersQuery = "UPDATE GROUP SET MEMBERSCOUNT=? WHERE GROUPID=? ";
-			param = new Object[] { group.getCountMembers(), group.getGroupId() };
+			param = new Object[] { group.getHeadCount(), group.getGroupId() };
 			jdbcUtil.setSqlAndParameters(updateMembersQuery, param);
 			try {
 				jdbcUtil.executeUpdate();
@@ -276,6 +279,26 @@ public class GroupDAOImpl implements GroupDAO {
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	@Override
+	public int updateCurrent(int groupId) {
+		// TODO Auto-generated method stub
+		int result = 0;
+		String setRepreQuery = "UPDATE GROUPING SET CURRENTHEAD=CURRENTHEAD+1 WHERE GROUPID=?";
+		Object[] param = new Object[] { groupId };
+		jdbcUtil.setSqlAndParameters(setRepreQuery, param);
+		try {
+			result = jdbcUtil.executeUpdate();
+		} catch(Exception ex) {
+			jdbcUtil.rollback();
+			ex.printStackTrace();
+		}finally {
+			jdbcUtil.commit();
+			jdbcUtil.close();
+		}				
+		
+		return result;
 	}
 	
 	

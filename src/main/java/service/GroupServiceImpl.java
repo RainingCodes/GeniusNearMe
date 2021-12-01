@@ -64,6 +64,12 @@ public class GroupServiceImpl implements GroupService {
 		// TODO Auto-generated method stub
 		return groupDao.getGroupMembers(groupId, talentId);
 	}
+
+	@Override
+	public int updateCurrent(int groupId) {
+		// TODO Auto-generated method stub
+		return groupDao.updateCurrent(groupId);
+	}
 	
 
 }
