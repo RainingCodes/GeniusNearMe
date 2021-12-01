@@ -82,7 +82,7 @@ public class ViewTalentController implements Controller{
 					for(int j = 0; j < id.length; j++)
 						groupMembersNick.add(mService.getNicknameByUserId(id[j]));
 					groupMemberList.put(groupList.get(i).getGroupId(), groupMembersNick);
-				} else break;
+				} 
 			}
 		
 		
