@@ -101,36 +101,31 @@ public class ViewTalentController implements Controller{
 			}
 		
 		
-		String nickName = mService.getNicknameByUserId(talent.getWriterId());
-		
-		PriceService pService = new PriceServiceImpl();
-		List<PriceDTO> price = pService.PriceList(talentId);
-		
-		WishService wService = new WishServiceImpl();
-		WishDTO wish = wService.getWish(talentId, userId);
-		if(wish == null) {
-			request.setAttribute("isAlreadyInWish", "no");
-		}
-		else {
-			request.setAttribute("isAlreadyInWish","yes");
-		}
-		ReviewService reviewService = new ReviewServiceImpl();
-		List<ReviewDTO> reviewList = reviewService.getReviewListByTalent(talentId);
-		
-		request.setAttribute("reviewList", reviewList);
+			String nickName = mService.getNicknameByUserId(talent.getWriterId());
 			
-		request.setAttribute("talent", talent);		// 사용자 정보 저장
-		request.setAttribute("prices", price);
-		request.setAttribute("userId", userId);
-		request.setAttribute("nickName", nickName);
-		request.setAttribute("groupList", groupList);
-		request.setAttribute("groupMemberList", groupMemberList);
-		
-		Date now = new Date();
-		request.setAttribute("today", now);
-		
-		return "/talent/comment";
-		//return "/talent/view.jsp";				// 사용자 보기 화면으로 이동
-    }
+			PriceService pService = new PriceServiceImpl();
+			List<PriceDTO> price = pService.PriceList(talentId);
+			
+			WishService wService = new WishServiceImpl();
+			WishDTO wish = wService.getWish(talentId, userId);
+			if(wish == null) {
+				request.setAttribute("isAlreadyInWish", "no");
+			}
+			else {
+				request.setAttribute("isAlreadyInWish","yes");
+			}
+				
+			request.setAttribute("talent", talent);		// 사용자 정보 저장
+			request.setAttribute("prices", price);
+			request.setAttribute("userId", userId);
+			request.setAttribute("nickName", nickName);
+			request.setAttribute("groupList", groupList);
+			
+			Date now = new Date();
+			request.setAttribute("today", now);
+			
+			return "/talent/comment";
+			//return "/talent/view.jsp";				// 사용자 보기 화면으로 이동
+	    }
 
-}
+	}
