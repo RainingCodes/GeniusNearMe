@@ -24,5 +24,8 @@
 		</c:forEach>
 		유저아이디와 매칭 상태, 게시글 아이디를 비교하여 리뷰를 달 수 있는 사용자인지 아닌지에 따라서
 		리뷰 등록 폼 보여주기 / 안보여주기
+		<form action="talent/reviewView">
+			
+		</form>
 </body>
 </html>

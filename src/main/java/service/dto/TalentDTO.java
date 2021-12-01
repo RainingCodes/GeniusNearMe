@@ -1,7 +1,7 @@
 package service.dto;
 import java.util.Date;
 
-public class TalentDTO {
+public class TalentDTO{
 	private int talentId = -1;
 	private String title = null;
 	private String content = null;
@@ -119,4 +119,5 @@ public class TalentDTO {
 	public void setTalentCategoryName(String talentCName) {
 		this.talentCName = talentCName;
 	}
+
 }

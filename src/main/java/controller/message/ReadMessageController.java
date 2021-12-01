@@ -38,7 +38,7 @@ public class ReadMessageController implements Controller {
 			return "/message/receiveviewMessage.jsp";
 			
 			
-		} else if (type.equals("send")) { //보낸 쪽지함(단순히 그냥 보여주기만 하면된다, 내가 보냈음(sender))
+		} else if (type.equals("send")) { //보낸 쪽지함(내가 보냈음(sender))
 			nickname = Mmanager.getNicknameByUserId(dto.getReceiverId());
 			request.setAttribute("nickname", nickname);
 			return "/message/sendviewMessage.jsp";

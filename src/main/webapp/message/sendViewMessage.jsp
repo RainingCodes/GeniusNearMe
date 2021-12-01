@@ -6,22 +6,34 @@
 <head>
 <meta charset="UTF-8">
 <title>보낸 쪽지 확인</title>
+<script type="text/javascript">
+	function delete_check(){
+		var answer;
+		answer = confirm("메세지 전송을 정말 취소하겠습니까? 되돌릴 수 없습니다.");
+		if(answer == true){
+			 document.form.submit();
+		} else {
+			return;
+		}
+	}
+</script>
 </head>
 <body>
 	<div class="sendView" align="center">
 	<br>
-	<h1>메세지 보내기</h1>
+	<h1>보낸 쪽지 확인</h1>
 	<p>
 	받는 이 : ${nickname}
 	<br>    
-	<form name="form" method="post" action="<c:url value='/message' />">
-		<input type="hidden" name="senderId" value="${senderId}"/>	  
-		<input type="hidden" name="receiverId" value="${receiverId}"/>
-		<textarea cols="30" rows="15" name="content" style="resize: none;"></textarea>
-		
-		<p><input type="button" value="쪽지 전송" onClick="submit()">
-		<input type="button" value="취소하기" onClick="history.go(-1)">
-	</form>
+	<textarea cols="30" rows="15" name="content"style="resize: none; readonly">${message.content}</textarea>
+	
+	<c:if test="${message.state ne 0}">       
+		<form name="form" method="post" action="<c:url value='/message/delete' />">
+			<input type="hidden" name="messageId" value="${message.messageId}"/>
+			<input type="button" value="전송 취소" onClick="delete_check()">
+		</form>
+	</c:if>
+	<input type="button" value="뒤로 돌아가기" onClick="history.go(-1)">
 	</div>
 </body>
 </html>

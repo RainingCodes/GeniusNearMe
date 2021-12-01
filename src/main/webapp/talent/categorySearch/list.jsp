@@ -5,7 +5,6 @@
 <%@ page import="java.util.List"%>
 <%@ page import="java.util.Iterator" %>
 <% request.setCharacterEncoding("UTF-8"); %>
-<% int j = 1; %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,14 +39,11 @@
 		</form>
 	</div>
 	<div class="content">
-		<div id="sort" style="margin-left: 680px;"><!-- | <button>리뷰많은순</button> -->
+		<div id="sort" style="margin-left: 680px;">
 		</div>
 		
 		<c:forEach var="talent" items="${talentList}">
 			<div class="post">
-				<div id="imgSection1">
-					<img id="thumbnail" src="../img/loopy/img<%=j++ %>.jpg" width="120" height="120">
-				</div>
 				<p>
 					<a href="<c:url value='/talent/view'>
 						<c:param name='talentId' value='${talent.talentId}'/>

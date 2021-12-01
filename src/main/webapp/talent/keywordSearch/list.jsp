@@ -5,7 +5,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="java.util.List"%>
 <%@ page import="java.util.Iterator"%>
-<%! int i = 1; %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,14 +45,11 @@
 		</form>
 	</div>
 	<div class="content">
-		<div id="sort" style="margin-left: 680px;"><button>최신순</button> | <button>리뷰많은순</button>
+		<form name="list" method="post" action="/talent/latestSort.jsp">		
+		<div id="sort" style="margin-left: 680px;">
 		</div>
-
 		<c:forEach var="talent" items="${talentList}">
 			<div class="post">
-				<div id="imgSection1">
-					<img id="thumbnail" src="../img/loopy/img<%=i++ %>.jpg">
-				</div>
 				<p>
 					<a href="<c:url value='/talent/view'>
 						<c:param name='talentId' value='${talent.talentId}'/></c:url>">
@@ -66,6 +62,7 @@
 				<p><c:out value="${talent.content}"/></p>
 			</div>
 		</c:forEach>
+		</form>
 	</div>
 	<br>
 </body>
