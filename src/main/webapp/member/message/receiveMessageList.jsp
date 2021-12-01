@@ -16,7 +16,7 @@
 	      	<tr>
 			  <td>보낸 사람</td>
 			  <td>내용</td>
-			  <td>보낸 시간</td>
+			  <td>보낸 날짜</td>
 			</tr>
 	      </thead>
 	      <tbody> 
@@ -25,14 +25,23 @@
 				  <td>
 				  	${receiveListNicekname[status.index]}
 				  </td>
-				  <td>	
-					<a href="<c:url value='/message/read'>
+				  <td>
+				 	 <c:if test="${li.state eq 0}"> 
+			  		<a href="<c:url value='/message/read'>
 						<c:param name='message' value='${li.messageId}'/>
 						<c:param name='type' value='receive'/>
 				 		</c:url>">		
-				 		<div class="ellipsis" style="width: 170px"><c:out value="${li.content}" /></div>
+				 		<div style="color:red;" class="ellipsis" style="width: 170px"><c:out value="${li.content}" /></div>
 					</a>
-					
+			  		</c:if>
+			  		<c:if test="${li.state eq 1}"> 
+			  			<a href="<c:url value='/message/read'>
+						<c:param name='message' value='${li.messageId}'/>
+						<c:param name='type' value='receive'/>
+				 		</c:url>">		
+				 		<div style="color:black;" class="ellipsis" style="width: 170px"><c:out value="${li.content}" /></div>
+					</a>
+			  		</c:if>					
 				  </td>
 				  <td>
 				  	${li.writtenDate}

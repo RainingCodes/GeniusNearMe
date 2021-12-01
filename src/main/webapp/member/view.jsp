@@ -23,19 +23,19 @@
 				 	</td>
 	  			</tr>
 	  			<tr>
-	  				<td><a href="<c:url value='/member/ApplyMatching'></c:url>">내가 신청한 매칭 목록</a></td>
+	  				<td><a href="<c:url value='/member/ApplyMatching'></c:url>">신청 매칭 목록</a></td>
 	  			</tr>
 	  			<tr>
-	  				<td><a href="<c:url value='/member/ReceiveMatching'></c:url>">내가 받은 매칭 목록</a></td>
+	  				<td><a href="<c:url value='/member/ReceiveMatching'></c:url>">받은 매칭 목록</a></td>
 	  			</tr>
 	  			<tr>
-	  				<td><a href="<c:url value='/member/myTalentList'></c:url>">내가 작성한 게시글 목록</a></td>
+	  				<td><a href="<c:url value='/member/myTalentList'></c:url>">작성한 재능 목록</a></td>
 	  			</tr>
 	  			<tr>
-	  				<td><a href="<c:url value='/member/wishList'></c:url>">내가 찜한 재능 목록</a></td>
+	  				<td><a href="<c:url value='/member/wishList'></c:url>">위시리스트</a></td>
 	  			</tr>
 	  			<tr>
-	  				<td><a href="<c:url value='/member/messageList'></c:url>">나의 메세지 보관함</a> </td>
+	  				<td><a href="<c:url value='/member/messageList'></c:url>">메세지 보관함</a> </td>
 	  			</tr>
 	  		</table>
 	  	</td>
