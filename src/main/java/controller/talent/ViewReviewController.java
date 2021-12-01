@@ -25,7 +25,7 @@ public class ViewReviewController implements Controller{
 		
 		request.setAttribute("reviewList", reviewList);
 		
-		return "";
+		return "talent/reviewView.jsp";
 	}
 	
 }
