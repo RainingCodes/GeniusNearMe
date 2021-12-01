@@ -20,9 +20,8 @@
 }
 
 .content {
-	float: left;
 	width: 900px;
-	margin: 10px 0px 0px 10px;
+	margin: auto;
 }
 
 button {
@@ -34,15 +33,6 @@ button {
 .category {
 	display: inline-block;
 	line-height: 30px;
-}
-
-th {
-	background-color: #eaeaea;
-	text-align: center;
-}
-
-td {
-	text-align: center;
 }
 
 #priceRange {
