@@ -45,8 +45,9 @@ public class RegisterReviewController implements Controller{
 		int key = service.insertReview(review);
 		
 		System.out.println("리뷰 생성 키: "+ key);
+		request.setAttribute("talentId", talentId);
 		
-		src = "/talent/view?talentId=" +talentId;
+		src = "/talent/reviewView";
 		
 		return src;
 	}

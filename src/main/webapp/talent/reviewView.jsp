@@ -24,7 +24,7 @@
 </head>
 <body>
 	<h4>리뷰 목록</h4>
-		<c:forEach var="review" items="${reviewList }">
+		<c:forEach var="review" items="${param.reviewList }">
 			<div class="view">
 			<p>${review.content }</p>
 			<p>작성자ID: ${review.writerId }</p>
