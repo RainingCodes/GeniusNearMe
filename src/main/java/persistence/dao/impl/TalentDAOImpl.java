@@ -170,7 +170,7 @@ public class TalentDAOImpl implements TalentDAO  {
 	
 	public List<TalentDTO> getTalentListByNickname(String nickname){
 		String getByWriterIdQuery = query + "FROM TALENT, MEMBERS WHERE (TALENT.WRITERID = MEMBERS.USERID) "
-				+ "AND (UPPER(MEMBERS.NICKNAME) = UPPER(?)) OR LOWER(MEMBERS.NICKNAME) = LOWER(?) ";
+				+ "AND ((UPPER(MEMBERS.NICKNAME) = UPPER(?)) OR (LOWER(MEMBERS.NICKNAME) = LOWER(?))) ";
 		
 		Object[] param = new Object[] { nickname, nickname };
 		
