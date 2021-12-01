@@ -61,7 +61,7 @@
     <body>
 <%@ include file="../main/head.jsp"  %>
     <!-- talent registration form -->
-       <form name = "form" method="POST" action="<c:url value='/talent/register' />"enctype="multipart/form-data">
+       <form name = "form" method="POST" action="<c:url value='/talent/register' />">
        <input type="hidden" name="postType" value=0>
            <h5>제목</h5>
            <input type="text" name="title" placeholder="제목을 입력하세요"/>
@@ -101,7 +101,6 @@
                    <td>
                         <h5>세부 설명 및 주의사항</h5>
                         <textarea rows="10" cols="50" name="content" placeholder="설명을 자세히 적어주세요     ex)횟수, 주의사항, 준비물"></textarea>
-                        	사진: <input type="file" name="picture" size="11"/>
                    </td>
                </tr>
            </table>
