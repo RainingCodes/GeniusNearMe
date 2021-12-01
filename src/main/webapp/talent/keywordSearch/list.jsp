@@ -54,7 +54,7 @@
           <th width = "350px">내용</th>
         </tr>
         <c:forEach var="talent" items="${talentList}">
-			<tr>
+			<tr style="text-align:center;">
 				<td><a
 						href="<c:url value='/talent/view'>
 						<c:param name='talentId' value='${talent.talentId}'/>
