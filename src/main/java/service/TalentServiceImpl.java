@@ -48,6 +48,10 @@ public class TalentServiceImpl implements TalentService {
 	public TalentDTO findTalent(int talentId) {
 		return dao.getTalentView(talentId);
 	}
+	
+	public int isExistMatching(int talentId) {
+		return dao.isExistMatching(talentId);
+	}
 
 	
 }

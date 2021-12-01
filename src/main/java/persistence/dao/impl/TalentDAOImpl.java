@@ -428,15 +428,18 @@ public class TalentDAOImpl implements TalentDAO  {
 	}
 	
 	public int deleteTalent(int talentId) {
-		String deleteQuery = "DELETE FROM TALENT WHERE TALENTID = ?";
+		int result = -1;
 		
-		jdbcUtil.setSql(deleteQuery);			// JDBCUtil 에 query 문 설정
-		Object[] param = new Object[] {talentId};
-		jdbcUtil.setParameters(param);			// JDBCUtil 에 매개변수 설정
+		String Query1 = "DELETE FROM PRICE WHERE (SELECT count(*) FROM TALENT, MATCHING "
+				+ "WHERE MATCHING.TALENTID = TALENT.TALENTID and TALENT.TALENTID = ?) = 0 and TALENTID = ?";
+		String Query2 = "DELETE FROM PRICE WHERE (SELECT count(*) FROM TALENT, MATCHING "
+				+ "WHERE MATCHING.TALENTID = TALENT.TALENTID and TALENT.TALENTID = ?) = 0 and TALENTID = ?";
 		
+		Object[] param = new Object[] {talentId, talentId};
+		jdbcUtil.setSqlAndParameters(Query1, param);			// JDBCUtil 에 매개변수 설정
+			
 		try {
-			int result = jdbcUtil.executeUpdate();		// delete 문 실행
-			return result;						// delete 에 의해 반영된 레코드 수 반환
+			result = jdbcUtil.executeUpdate();		// delete 문 실행
 		} catch (Exception ex) {
 			jdbcUtil.rollback();
 			ex.printStackTrace();		
@@ -444,6 +447,45 @@ public class TalentDAOImpl implements TalentDAO  {
 			jdbcUtil.commit();
 			jdbcUtil.close();		// ResultSet, PreparedStatement, Connection 반환
 		}
-		return 0;
+
+			
+		if (result == 1) {
+			jdbcUtil.setSqlAndParameters(Query2, param);			// JDBCUtil 에 매개변수 설정
+			try {
+				result = jdbcUtil.executeUpdate();		// delete 문 실행
+				return result;
+			} catch (Exception ex) {
+				jdbcUtil.rollback();
+				ex.printStackTrace();		
+			} finally {
+				jdbcUtil.commit();
+				jdbcUtil.close();		// ResultSet, PreparedStatement, Connection 반환
+			}
+			return -1;
+		}
+		
+		return result;
+	}
+	
+	public int isExistMatching(int talentId) { 
+		String searchQuery = "SELECT count(*) AS count FROM TALENT, MATCHING "
+				+ "WHERE MATCHING.TALENTID = TALENT.TALENTID and TALENT.TALENTID = ?";
+		
+		Object[] param = new Object[] { talentId };
+		jdbcUtil.setSql(searchQuery);
+		jdbcUtil.setParameters(param);
+		int result = -1;
+		
+		try {
+			ResultSet rs = jdbcUtil.executeQuery();
+			
+			if (rs.next()) {
+				result = rs.getInt("count");
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.close();
+		} return result;
 	}
 }

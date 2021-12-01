@@ -16,4 +16,5 @@ public interface TalentDAO{
 	public int insertTalent(TalentDTO t); // 작성
 	public int updateTalent(TalentDTO t); // 수정
 	public int deleteTalent(int talentId); // 삭제
+	public int isExistMatching(int talentId);
 }

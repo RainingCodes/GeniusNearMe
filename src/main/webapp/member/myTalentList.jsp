@@ -25,7 +25,7 @@
 	<h3>내가 작성한 게시글</h3>
 	<p>
 	<table border="1">
-		<c:forEach var="talent" items="${talentList}">
+		<c:forEach var="talent" items="${talentList}" varStatus="status">
 			<tr>
 				<td>
 					<a href="<c:url value='/talent/view'>
@@ -37,11 +37,21 @@
 				<p></p>
 				<p><c:out value="${talent.content}"/></p>
 				</td>
-			
+				<td>
+					<c:if test="${matchingInfo[status.index] eq 0}"> 
+						<a href="<c:url value='/talent/delete'>
+							<c:param name='talentId' value='${talent.talentId}'/></c:url>">	
+				  			게시글 삭제하기</a>
+				  	</c:if>
+				  	<c:if test="${matchingInfo[status.index] ne 0}"> 
+				  		삭제 불가
+				  	</c:if>
+				</td>
 		</c:forEach>
 	
 	</table>
 	<p><br>
+	매칭이 존재하면 게시글을 삭제할 수 없습니다.
 	<a href="<c:url value='/member/view' />">목록으로 이동하기</a>   
 	</div>
 	

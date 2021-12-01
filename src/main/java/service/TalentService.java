@@ -16,4 +16,6 @@ public interface TalentService{
 	public List<TalentDTO> getTalentByOptions(String title, String reSearch, String[] categories, int price, Date startDate, Date deadLine) throws Exception;
 	public List<TalentDTO> getTalentListByWriterId(int userId);
 	public List<TalentDTO> getTalentListByNickname(String nickname);
+	
+	public int isExistMatching(int talentId);
 }

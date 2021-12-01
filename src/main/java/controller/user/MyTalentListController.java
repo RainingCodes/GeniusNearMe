@@ -1,5 +1,6 @@
 package controller.user;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -36,7 +37,19 @@ public class MyTalentListController implements Controller{
 		TalentService talentservice = new TalentServiceImpl();
 		List<TalentDTO> talentList = talentservice.getTalentListByWriterId(userId);
 		
+		List<Integer> isExistMatchingList = null;
+		
+		if (talentList != null) {
+			isExistMatchingList = new ArrayList<Integer>();
+			
+			for (int i = 0; i < talentList.size(); i++) {
+				int isExist = talentservice.isExistMatching(talentList.get(i).getTalentId());
+				isExistMatchingList.add(isExist);
+			}
+		}
+		
 		request.setAttribute("talentList", talentList);
+		request.setAttribute("matchingInfo", isExistMatchingList);
 		
 		return "/member/myTalentList.jsp";
 	}
