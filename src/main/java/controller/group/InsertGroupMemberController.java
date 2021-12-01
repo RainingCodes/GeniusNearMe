@@ -24,11 +24,13 @@ public class InsertGroupMemberController implements Controller {
 		HttpSession session = request.getSession();
 		int talentId = Integer.parseInt(request.getParameter("talentId"));
 		int userId = (int)session.getAttribute("userId");
+		System.out.println(userId + "이것도 안나오냐고");
 		int groupId = Integer.parseInt(request.getParameter("groupId"));
+		System.out.println(groupId + "오라ㅗ라라ㅜㄹㄹ");
 		MatchingService mService = new MatchingServiceImpl();
 		GroupService gService = new GroupServiceImpl();
 		GroupDTO group = gService.getGroup(groupId, talentId);
-		
+		System.out.println(group.getMembers() + "왈랄ㄹ랄ㄹ");
 		
 		if(group.getMembers() == 0) {
 			gService.setRepresentative(groupId, talentId, userId);
