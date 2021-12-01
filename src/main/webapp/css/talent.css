@@ -1,9 +1,4 @@
 @charset "UTF-8";
-<style type="text/css">
-body {
-	font: 14p, sans-serif;
-}
-
 .nav {
 	float: left;
 	width: 10%;
@@ -67,4 +62,3 @@ button {
 p {
 	margin: 15px;
 }
-</style>

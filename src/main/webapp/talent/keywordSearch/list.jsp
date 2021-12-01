@@ -46,9 +46,9 @@
 		</form>
 	</div>
 	<div class="content">
-		<div id="sort" style="margin-left: 680px;"><button>최신순</button> | <button>리뷰많은순</button>
+		<form name="list" method="post" action="/talent/latestSort.jsp">		
+		<div id="sort" style="margin-left: 680px;">
 		</div>
-
 		<c:forEach var="talent" items="${talentList}">
 			<div class="post">
 				<div id="imgSection1">
@@ -66,6 +66,7 @@
 				<p><c:out value="${talent.content}"/></p>
 			</div>
 		</c:forEach>
+		</form>
 	</div>
 	<br>
 </body>

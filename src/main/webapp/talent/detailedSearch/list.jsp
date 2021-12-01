@@ -86,7 +86,7 @@
 		</form>
 	</div>
 	<div class="content">
-		<div id="sort" style="margin-left: 680px;"><!-- | <button>리뷰많은순</button> -->
+		<div id="sort" style="margin-left: 680px;">
 		</div>
 		<c:forEach var="talent" items="${talentList}">
 			<div class="post">
