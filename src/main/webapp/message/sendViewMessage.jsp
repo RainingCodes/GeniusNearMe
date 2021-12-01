@@ -24,16 +24,19 @@
 	<h1>보낸 쪽지 확인</h1>
 	<p>
 	받는 이 : ${nickname}
+	<br>전송 날짜 : ${message.writtenDate}
 	<br>    
 	<textarea cols="30" rows="15" name="content"style="resize: none; readonly">${message.content}</textarea>
 	
-	<c:if test="${message.state ne 0}">       
+	<c:if test="${message.state eq 0}">       
 		<form name="form" method="post" action="<c:url value='/message/delete' />">
 			<input type="hidden" name="messageId" value="${message.messageId}"/>
 			<input type="button" value="전송 취소" onClick="delete_check()">
 		</form>
 	</c:if>
-	<input type="button" value="뒤로 돌아가기" onClick="history.go(-1)">
+	<form name="go" method="post" action="<c:url value='/member/messageList' />">
+		<input type="button" value="뒤로 돌아가기" onClick="submit()">
+	</form>
 	</div>
 </body>
 </html>

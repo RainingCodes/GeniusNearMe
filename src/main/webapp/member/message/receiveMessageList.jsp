@@ -27,10 +27,10 @@
 				  </td>
 				  <td>	
 					<a href="<c:url value='/message/read'>
-						   <c:param name='message' value='${li.messageId}'/>
-						   <c:param name='type' value='receive'/>
-				 		 </c:url>">		
-				 		 <div class="ellipsis" style="width: 170px"><c:out value="${li.content}" /></div>
+						<c:param name='message' value='${li.messageId}'/>
+						<c:param name='type' value='receive'/>
+				 		</c:url>">		
+				 		<div class="ellipsis" style="width: 170px"><c:out value="${li.content}" /></div>
 					</a>
 					
 				  </td>

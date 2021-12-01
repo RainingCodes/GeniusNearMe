@@ -6,6 +6,14 @@
 <head>
 <meta charset="UTF-8">
 <title>보낸 쪽지함</title>
+<script type="text/javascript">
+	function goSubmit() {
+		var gsWin = window.open("about:blank", "winName");
+		var frm = document.form;
+		frm.target="winName";
+		frm.submit();
+	}
+</script>
 </head>
 <body>
 <div id="sender">
@@ -27,9 +35,9 @@
 			  </td>
 			  <td>
 			  	<a href="<c:url value='/message/read'>
-						   <c:param name='message' value='${li}'/>
-						   <c:param name='type' value='send'/>
-				 		 </c:url>">	
+					<c:param name='message' value='${li.messageId}'/>
+					<c:param name='type' value='send'/>
+					</c:url>">	
 				 	<div class="ellipsis" style="width: 170px"><c:out value="${li.content}" /></div>	
 				</a>
 				

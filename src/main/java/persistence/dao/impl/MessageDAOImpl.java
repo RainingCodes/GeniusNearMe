@@ -136,7 +136,7 @@ public class MessageDAOImpl implements MessageDAO {
 	public int updateMessageStateToRead(int messageId) {
 		int result = 0;
 
-		String updateQuery = "UPDATE MEMBERS SET STATE = ? WHERE MESSAGEID = ? ";
+		String updateQuery = "UPDATE MESSAGE SET STATE = ? WHERE MESSAGEID = ? ";
 		
 		System.out.println(updateQuery);
 		Object[] newParam = {1, messageId};
@@ -162,10 +162,13 @@ public class MessageDAOImpl implements MessageDAO {
 		String DeleteQuery = "DELETE FROM MESSAGE WHERE MESSAGEID = ? ";
 		
 		Object[] param = new Object[] {messageId};
+		jdbcUtil.setSqlAndParameters(DeleteQuery, param);
+		
 		try {
-			jdbcUtil.setSqlAndParameters(DeleteQuery, param);
-			result = 1;
+			result = jdbcUtil.executeUpdate();
+			return result;
 		}catch(Exception ex) {
+			jdbcUtil.rollback();
 			ex.printStackTrace();
 		}finally {
 			jdbcUtil.commit();
@@ -186,7 +189,10 @@ public class MessageDAOImpl implements MessageDAO {
 		
 		try {
 			ResultSet rs = jdbcUtil.executeQuery();
-			result = rs.getInt("STATE");
+			
+			if (rs.next()) {
+				result = rs.getInt("STATE");
+			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {

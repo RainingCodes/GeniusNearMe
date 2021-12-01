@@ -15,9 +15,9 @@ public class ReadMessageController implements Controller {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String type = request.getParameter("type");
+		System.out.println(type);
 		int messageId = Integer.parseInt(request.getParameter("message"));
-		
-		System.out.println(type+", "+messageId);
+		System.out.println(messageId);
 		
 		MessageService manager = new MessageServiceImpl();
     	MessageDTO dto = manager.ViewMessage(messageId);
@@ -33,15 +33,16 @@ public class ReadMessageController implements Controller {
 				
 				nickname = Mmanager.getNicknameByUserId(dto.getSenderId());//보낸사람 닉네임 가져와
 				request.setAttribute("nickname", nickname);
-				System.out.println("읽힌걸로 상태 변경"+result);
+				
+				System.out.println("읽힌걸로 상태 변경 : "+result);
 			}
-			return "/message/receiveviewMessage.jsp";
+			return "/message/receiveViewMessage.jsp";
 			
 			
 		} else if (type.equals("send")) { //보낸 쪽지함(내가 보냈음(sender))
 			nickname = Mmanager.getNicknameByUserId(dto.getReceiverId());
 			request.setAttribute("nickname", nickname);
-			return "/message/sendviewMessage.jsp";
+			return "/message/sendViewMessage.jsp";
 		}
 		
 		return "redirect:/main";
