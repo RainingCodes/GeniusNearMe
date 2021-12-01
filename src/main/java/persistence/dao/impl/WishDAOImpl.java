@@ -67,7 +67,8 @@ public class WishDAOImpl implements WishDAO{
 		
 		Object[] param = new Object[] { userId };
 
-
+		jdbcUtil.setSql(searchQuery);
+		jdbcUtil.setParameters(param);
 		
 		try {
 			ResultSet rs = jdbcUtil.executeQuery();
