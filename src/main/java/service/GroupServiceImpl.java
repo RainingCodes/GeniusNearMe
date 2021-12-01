@@ -65,6 +65,5 @@ public class GroupServiceImpl implements GroupService {
 		return groupDao.getGroupMembers(groupId, talentId);
 	}
 	
-	public int getGroup
 
 }
