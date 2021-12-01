@@ -5,7 +5,6 @@
 <%@ page import="java.util.List"%>
 <%@ page import="java.util.Arrays" %>
 <%@ page import="java.util.Iterator" %>
-<%! int i = 1; %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -90,9 +89,6 @@
 		</div>
 		<c:forEach var="talent" items="${talentList}">
 			<div class="post">
-				<div id="imgSection1">
-					<img id="thumbnail" src="../img/loopy/img<%=i++ %>.jpg">
-				</div>
 				<p>
 					<a href="<c:url value='showTalent.jsp'>
 						<c:param name='talentTitle' value='${talent.talentId}'/>
