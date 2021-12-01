@@ -24,8 +24,9 @@ public class ViewReviewController implements Controller{
 		List<ReviewDTO> reviewList = reviewService.getReviewListByTalent(talentId);
 		
 		request.setAttribute("reviewList", reviewList);
+		request.setAttribute("talentId", talentId);
 		
-		return "redirect:talent/reviewView.jsp";
+		return "/talent/view.jsp";
 	}
 	
 }

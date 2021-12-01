@@ -219,6 +219,7 @@ $(document).ready(function () {
          <div id="review_container">
         	<c:import url="reviewView.jsp">
    				<c:param name="reviewList" value="${reviewList}" />
+   				<c:param name="talentId" value="${talent.talentId}" />
 			</c:import>
         </div>
         
