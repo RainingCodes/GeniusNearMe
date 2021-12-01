@@ -7,9 +7,9 @@
 <meta charset="UTF-8">
 <title>리뷰</title>
 	<script>
-	function talentCreate(){
+	function reviewCreate(){
 		if(form.content.value ==""){
-			alert("설명을 입력하십시오.");
+			alert("리뷰를 입력하십시오.");
 			form.content.focus();
 			return false;
 		} 

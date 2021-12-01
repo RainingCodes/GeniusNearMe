@@ -49,6 +49,7 @@ public class RequestMapping {
         mappings.put("/group/register", new CreateGroupController());
         mappings.put("/group/matching", new InsertGroupMemberController());
         mappings.put("/talent/comment", new ViewCommentController());
+        
         mappings.put("/talent/comment/register", new RegisterCommentController());
         mappings.put("/talent/comment/delete", new DeleteCommentController());
         
