@@ -218,7 +218,7 @@ $(document).ready(function () {
         </div>
         <div id="review_container">
         	<jsp:include page="reviewView.jsp">
-        		<jsp:param name="talentId" value="${talent.talentId}" />
+        		<jsp:param name="reviewList" value="${reviewList}" />
         	</jsp:include>
         	
         </div>

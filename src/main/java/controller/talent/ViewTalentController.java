@@ -20,6 +20,8 @@ import service.MemberService;
 import service.MemberServiceImpl;
 import service.PriceService;
 import service.PriceServiceImpl;
+import service.ReviewService;
+import service.ReviewServiceImpl;
 import service.GroupService;
 import service.GroupServiceImpl;
 import service.TalentService;
@@ -28,6 +30,7 @@ import service.WishService;
 import service.WishServiceImpl;
 import service.dto.MemberDTO;
 import service.dto.PriceDTO;
+import service.dto.ReviewDTO;
 import service.dto.TalentDTO;
 import service.dto.WishDTO;
 
@@ -111,6 +114,10 @@ public class ViewTalentController implements Controller{
 		else {
 			request.setAttribute("isAlreadyInWish","yes");
 		}
+		ReviewService reviewService = new ReviewServiceImpl();
+		List<ReviewDTO> reviewList = reviewService.getReviewListByTalent(talentId);
+		
+		request.setAttribute("reviewList", reviewList);
 			
 		request.setAttribute("talent", talent);		// 사용자 정보 저장
 		request.setAttribute("prices", price);
