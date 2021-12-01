@@ -25,7 +25,7 @@ public class DeleteTalentController implements Controller {
 		
 		System.out.println("삭제 결과 : " + result);
 		
-		return "redirect:/member/myTalentList";
+		return "/member/myTalentList";
 	}
 
 }

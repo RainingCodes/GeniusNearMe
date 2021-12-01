@@ -432,11 +432,11 @@ public class TalentDAOImpl implements TalentDAO  {
 		
 		String Query1 = "DELETE FROM PRICE WHERE (SELECT count(*) FROM TALENT, MATCHING "
 				+ "WHERE MATCHING.TALENTID = TALENT.TALENTID and TALENT.TALENTID = ?) = 0 and TALENTID = ?";
-		String Query2 = "DELETE FROM PRICE WHERE (SELECT count(*) FROM TALENT, MATCHING "
+		String Query2 = "DELETE FROM TALENT WHERE (SELECT count(*) FROM TALENT, MATCHING "
 				+ "WHERE MATCHING.TALENTID = TALENT.TALENTID and TALENT.TALENTID = ?) = 0 and TALENTID = ?";
 		
-		Object[] param = new Object[] {talentId, talentId};
-		jdbcUtil.setSqlAndParameters(Query1, param);			// JDBCUtil 에 매개변수 설정
+		Object[] param1 = new Object[] {talentId, talentId};
+		jdbcUtil.setSqlAndParameters(Query1, param1);			// JDBCUtil 에 매개변수 설정
 			
 		try {
 			result = jdbcUtil.executeUpdate();		// delete 문 실행
@@ -447,24 +447,22 @@ public class TalentDAOImpl implements TalentDAO  {
 			jdbcUtil.commit();
 			jdbcUtil.close();		// ResultSet, PreparedStatement, Connection 반환
 		}
-
-			
-		if (result == 1) {
-			jdbcUtil.setSqlAndParameters(Query2, param);			// JDBCUtil 에 매개변수 설정
-			try {
-				result = jdbcUtil.executeUpdate();		// delete 문 실행
-				return result;
-			} catch (Exception ex) {
-				jdbcUtil.rollback();
-				ex.printStackTrace();		
-			} finally {
-				jdbcUtil.commit();
-				jdbcUtil.close();		// ResultSet, PreparedStatement, Connection 반환
-			}
-			return -1;
-		}
+		System.out.println("결과1 : "+result);
 		
-		return result;
+		Object[] param2 = new Object[] {talentId, talentId};
+		jdbcUtil.setSqlAndParameters(Query2, param2);			// JDBCUtil 에 매개변수 설정
+		try {
+			result = jdbcUtil.executeUpdate();		// delete 문 실행
+			System.out.println("결과2 : "+result);
+			return result;
+		} catch (Exception ex) {
+			jdbcUtil.rollback();
+			ex.printStackTrace();		
+		} finally {
+			jdbcUtil.commit();
+			jdbcUtil.close();		// ResultSet, PreparedStatement, Connection 반환
+		}
+		return -1;
 	}
 	
 	public int isExistMatching(int talentId) { 
