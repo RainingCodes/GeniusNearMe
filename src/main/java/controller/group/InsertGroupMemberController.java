@@ -47,6 +47,8 @@ public class InsertGroupMemberController implements Controller {
 		int result = gService.insertGroupMember(groupId, talentId, userId);
 		System.out.println(result);
 		group.setMembers(group.getMembers() + 1);
+		HashMap<Integer, Integer> memberChange = new HashMap<>();
+		memberChange.put(groupId, group.getMembers());
 		//System.out.println(group.getMembers() + "호롤ㄹ록");
 		
 		List<GroupDTO> groupList = gService.GroupList(talentId);
@@ -54,6 +56,7 @@ public class InsertGroupMemberController implements Controller {
 		
 		
 		request.setAttribute("groupList", groupList);
+		request.setAttribute("memberChange", memberChange);
 		
 		return "/talent/view";
 	}

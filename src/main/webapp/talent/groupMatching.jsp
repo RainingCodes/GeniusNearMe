@@ -62,7 +62,6 @@
 				<p>
 					<c:out value="${group.headCount}" />명 그룹 / 그룹 아이디 : <c:out value="${group.groupId }" /> <br>
 					<c:forEach var="a" begin="1" end="${group.headCount}">
-						<c:out value="${group.members}" />
 						<c:if test="${a <= group.members }">
 							<c:out value="${groupMemberList.get(group.groupId).get(a - 1)}" />
 						</c:if>

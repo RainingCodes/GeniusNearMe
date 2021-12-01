@@ -146,7 +146,6 @@ public class GroupDAOImpl implements GroupDAO {
 				dto.setTalentId(talentId);
 				dto.setRepresentativeId(rs.getInt("REPRESENTATIVE_ID"));
 				dto.setHeadCount(rs.getInt("HEAD_COUNT"));
-				
 				list.add(dto);
 			}
 			return list;
@@ -240,9 +239,10 @@ public class GroupDAOImpl implements GroupDAO {
 		String countMembersQuery = "SELECT * FROM GROUPMEMBERS WHERE GROUPID=? AND TALENTID=?";
 		Object[] param = new Object[] { groupId, talentId };
 		jdbcUtil.setSqlAndParameters(countMembersQuery, param);
-		ResultSet rs = jdbcUtil.executeQuery();
+		
 		int count = 0;
 		try {
+			ResultSet rs = jdbcUtil.executeQuery();
 			while(rs.next()) {
 				count++;
 			}
@@ -250,6 +250,7 @@ public class GroupDAOImpl implements GroupDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 		return count;
 	}
 
@@ -276,5 +277,6 @@ public class GroupDAOImpl implements GroupDAO {
 		}
 		return null;
 	}
+	
 	
 }
