@@ -10,18 +10,17 @@
 <body>
 	<div class="receiveView" align="center">
 	<br>
-	<h2>받은 쪽지 확인</h2>
+	<h1>보낸 쪽지 확인</h1>
 	<p>
-	보낸 이 : ${nickname}
+	받는 이 : ${nickname}
 	<br>    
-	<form name="form" method="post" action="<c:url value='/message' />">
-		<input type="hidden" name="senderId" value="${senderId}"/>	  
-		<input type="hidden" name="receiverId" value="${receiverId}"/>
-		<textarea cols="30" rows="15" name="content" style="resize: none;"></textarea>
-		
-		<p><input type="button" value="쪽지 전송" onClick="submit()">
-		<input type="button" value="취소하기" onClick="history.go(-1)">
-	</form>
+	<textarea cols="30" rows="15" name="content"style="resize: none; readonly">${message.content}</textarea>
+		<form name="form" method="get" action="<c:url value='/message' />">
+			<input type="hidden" name="senderId" value="${message.receiverId}"/>
+			<input type="hidden" name="receiverId" value="${talent.talentId}"/>
+			<input type="button" value="답장하기" onClick="submit()">
+		</form>
+	<input type="button" value="뒤로 돌아가기" onClick="history.go(-1)">
 	</div>
 </body>
 </html>
