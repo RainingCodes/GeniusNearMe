@@ -159,6 +159,7 @@ $(document).ready(function () {
                    <c:if test="${userId ne talent.writerId}"> 
                       <fmt:formatDate var="today" value="${today }" pattern="yyyy-MM-dd"/>
                       <c:choose>
+                      	  <c:when test="${today lt talent.startDate }"> 아직 신청 기간이 아닙니다.</c:when>
                           <c:when test="${today le talent.deadLine }"><a href="<c:url value='/matching/talent'>
                                 <c:param name='talentId' value='${talent.talentId}'/>
                                  <c:param name='userId' value='${userId}'/>
