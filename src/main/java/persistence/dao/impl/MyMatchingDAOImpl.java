@@ -53,7 +53,7 @@ public class MyMatchingDAOImpl implements MyMatchingDAO {
 		String searchQuery = query + "FROM MATCHING, TALENT "+
 				"WHERE MATCHING.TALENTID = TALENT.TALENTID AND TALENT.WRITERID = ? ";
 		
-		jdbcUtil.setSqlAndParameters(searchQuery, new Object[] { userId, userId });
+		jdbcUtil.setSqlAndParameters(searchQuery, new Object[] { userId });
 		
 		try {
 			ResultSet rs = jdbcUtil.executeQuery();
