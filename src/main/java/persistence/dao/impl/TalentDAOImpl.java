@@ -96,9 +96,9 @@ public class TalentDAOImpl implements TalentDAO  {
 	   }
 	
 	public List<TalentDTO> getTalentListByTitle(String Title) {
-		String getByTitleQuery = query + "FROM TALENT WHERE TITLE LIKE ? ";
+		String getByTitleQuery = query + "FROM TALENT WHERE UPPER(TITLE) LIKE UPPER(?) OR LOWER(TITLE) LIKE LOWER(?) ";
 		
-		Object[] param = new Object[] { "%"+Title+"%" };
+		Object[] param = new Object[] { "%"+Title+"%", "%"+Title+"%" };
 		
 		jdbcUtil.setSql(getByTitleQuery);
 		jdbcUtil.setParameters(param);
@@ -169,9 +169,10 @@ public class TalentDAOImpl implements TalentDAO  {
 	}
 	
 	public List<TalentDTO> getTalentListByNickname(String nickname){
-		String getByWriterIdQuery = query + "FROM TALENT, MEMBERS WHERE (TALENT.WRITERID = MEMBERS.USERID) AND (MEMBERS.NICKNAME = ?) ";
+		String getByWriterIdQuery = query + "FROM TALENT, MEMBERS WHERE (TALENT.WRITERID = MEMBERS.USERID) "
+				+ "AND (UPPER(MEMBERS.NICKNAME) = UPPER(?)) OR LOWER(MEMBERS.NICKNAME) = LOWER(?) ";
 		
-		Object[] param = new Object[] { nickname };
+		Object[] param = new Object[] { nickname, nickname };
 		
 		jdbcUtil.setSql(getByWriterIdQuery);
 		jdbcUtil.setParameters(param);
