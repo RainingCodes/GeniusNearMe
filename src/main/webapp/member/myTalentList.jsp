@@ -17,6 +17,7 @@
 	width: 900px;
 	margin: 0px auto;
 }
+.ellipsis { overflow:hidden; text-overflow:ellipsis; -o-text-overflow:ellipsis; white-space:nowrap; max-width:95%; } 
 </style>
 <body>
 <%@ include file="../main/head.jsp"  %>
@@ -35,7 +36,7 @@
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<c:out value="${talent.writtenDate}"/>
 				<p></p>
 				<p></p>
-				<p><c:out value="${talent.content}"/></p>
+				<p><div class="ellipsis" style="width: 170px"><c:out value="${talent.content}"/></div>
 				</td>
 				<td>
 					<c:if test="${matchingInfo[status.index] eq 0}"> 
