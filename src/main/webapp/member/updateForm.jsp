@@ -31,6 +31,16 @@ function userModify() {
 	form.submit();
 }
 
+function delete_check(){
+	var answer;
+	answer = confirm("정말로 탈퇴하시겠습니까? 되돌릴 수 없습니다.");
+	if(answer == true){
+		 document.form2.submit();
+	} else {
+		return;
+	}
+}
+
 function gotoUri(targetUri) {
 	form.action = targetUri;
 	form.submit();
@@ -53,7 +63,12 @@ function gotoUri(targetUri) {
 			<td class="title"><b>이웃집 똑똑이 회원정보 수정</b></td>
 		  </tr>
 	    </table>  
-	    <br>	  
+	    <br>	 
+	    <div align="center">
+		    <c:if test="${updateFailed}">
+		  	  <font color="red"><c:out value="${exception.getMessage()}" /></font><br><br>
+		    </c:if>
+	    </div>
 	    <table style="margin:auto; background-color: YellowGreen;">
 	  	  <tr height="40">
 			<td width="150" align="center" bgcolor="E6ECDE">이메일 ID</td>
@@ -92,13 +107,19 @@ function gotoUri(targetUri) {
 		  <tr>
 			<td align="center">
 			<input type="button" value="수정" onClick="userModify()"> &nbsp;
-			<input type="button" value="내 정보로 돌아가기" onClick="gotoUri('<c:url value='/member/view' />')">
+			<input type="button" value="회원 탈퇴" onClick="delete_check()">
 			</td>
 		  </tr>
 	    </table>
 	  </td>
 	</tr>
-  </table>  
+  </table>    
 </form>
+<div align = "center">
+<form name="form2" method="post" action="<c:url value='/member/delete' />">
+	<input type="hidden" name="userEmail" value="${member.email}"/>
+</form>
+<input type="button" value="내 정보로 돌아가기" onClick="gotoUri('<c:url value='/member/view' />')">
+</div>
 </body>
 </html>

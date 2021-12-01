@@ -21,13 +21,13 @@
 <body>
 <%@ include file="../main/head.jsp"  %>
 	<div class="content">
+	<p>
 	<h3>내가 작성한 게시글</h3>
+	<p>
+	<table border="1">
 		<c:forEach var="talent" items="${talentList}">
-			<div class="post">
-				<div id="imgSection1">
-					<img id="thumbnail" src="../img/loopy/img<%=i++ %>.jpg">
-				</div>
-				<p>
+			<tr>
+				<td>
 					<a href="<c:url value='/talent/view'>
 						<c:param name='talentId' value='${talent.talentId}'/></c:url>">
 						<strong><c:out value="${talent.title}"/></strong>
@@ -37,6 +37,7 @@
 				<p></p>
 				<p></p>
 				<p><c:out value="${talent.content}"/></p>
+				</td>
 			</div>
 		</c:forEach>
 	</div>

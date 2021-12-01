@@ -26,29 +26,32 @@
 </style>
 <%@ include file="../main/head.jsp"  %>
 	<div class="content">
+	<p>
 	<h3>내가 찜한 재능 목록</h3>
+	<p>
+	<table border="1">
 		<c:forEach var="talent" items="${talentList}">
-			<div class="post">
-				<div id="imgSection1">
-					<img id="thumbnail" src="../img/loopy/img<%=i++ %>.jpg">
-				</div>
-				<p>
+			<tr>
+				<td>
 					<a href="<c:url value='/talent/view'>
 						<c:param name='talentId' value='${talent.talentId}'/></c:url>">
 						<strong><c:out value="${talent.title}"/></strong>
 					</a>					
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<c:out value="${talent.writtenDate}"/>
-				</p>
+				
 				<p></p>
 				<p></p>
 				<p><c:out value="${talent.content}"/></p>
-
+				</td>
+				<td>
 				<form method="POST" action="<c:url value='/member/deleteWish' />">
 					<input type="hidden" name="talentId" value="${talent.talentId }">
 					<input type="button" value="찜 취소하기" onClick="submit()">
 				</form>
-				</div>
+				</td>
+			</tr>
 		</c:forEach>
+	</table>
 	</div>
 </body>
 </html>
