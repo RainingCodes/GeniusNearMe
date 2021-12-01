@@ -55,7 +55,16 @@
 						</c:url>"><strong>${ talent.title }</strong>
 					</a>
 				</td>
-				<td>${talent.writerId }</td>
+				<td>
+					<c:set var="writerId" value="${talent.writerId}"/>		
+					<%
+					String writerId = String.valueOf(pageContext.getAttribute("writerId"));
+				
+					MemberService mManager = new MemberServiceImpl();
+					String nickname = mManager.getNicknameByUserId(Integer.parseInt(writerId));
+					out.print(nickname);
+					%>
+				</td>
 				<td>${talent.writtenDate}</td>
 				<td>${talent.content}</td>
 			</tr>
