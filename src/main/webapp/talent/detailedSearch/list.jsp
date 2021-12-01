@@ -84,8 +84,9 @@
 		<input type="submit" value="상세 검색" style="width: 150px;">
 		</form>
 	</div>
-	<div class="content">
-		<div align="center"><h2>검색 목록</h2></div>		
+	<div class="content" align="center">
+		<div align="center">
+		<h2>검색 목록</h2></div>		
 		<table border="1">
         <tr>
           <th width = "200px">제목</th>
