@@ -36,7 +36,7 @@ public class MyMatchingDAOImpl implements MyMatchingDAO {
 				dto.setTalentId(rs.getInt("TALENTID"));
 				dto.setTalentTitle(rs.getString("TITLE"));
 				dto.setMatchingState(rs.getInt("MATCHINGSTATE"));
-				
+
 				System.out.println(dto);
 				
 				list.add(dto);
