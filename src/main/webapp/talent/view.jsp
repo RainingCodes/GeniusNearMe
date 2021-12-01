@@ -217,10 +217,9 @@ $(document).ready(function () {
 
         </div>
         <div id="review_container">
-        	<jsp:include page="reviewView.jsp">
-        		<jsp:param name="reviewList" value="${reviewList}" />
-        	</jsp:include>
-        	
+        	<c:import url="reviewView.jsp">
+   				<c:param name="reviewList" value="${reviewList}" />
+			</c:import>
         </div>
         <!-- <div>
 			<form name="form" method="get" action="<c:url value='/talent/comment' />">
