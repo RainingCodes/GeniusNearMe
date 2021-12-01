@@ -85,22 +85,28 @@
 		</form>
 	</div>
 	<div class="content">
-		<div id="sort" style="margin-left: 680px;">
-		</div>
-		<c:forEach var="talent" items="${talentList}">
-			<div class="post">
-				<p>
-					<a href="<c:url value='showTalent.jsp'>
-						<c:param name='talentTitle' value='${talent.talentId}'/>
+		<div align="center"><h2>검색 목록</h2></div>		
+		<table border="1">
+        <tr>
+          <th width = "200px">제목</th>
+          <th width = "100px">작성자</th>
+          <th width = "100px">작성일</th>
+          <th width = "350px">내용</th>
+        </tr>
+        <c:forEach var="talent" items="${talentList}">
+			<tr>
+				<td><a
+						href="<c:url value='/talent/view'>
+						<c:param name='talentId' value='${talent.talentId}'/>
 						</c:url>"><strong>${ talent.title }</strong>
 					</a>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${talent.writtenDate}
-				</p>
-				<p></p>
-				<p></p>
-				<p>${ talent.content }</p>
-			</div>
+				</td>
+				<td>${talent.writerId }</td>
+				<td>${talent.writtenDate}</td>
+				<td>${talent.content}</td>
+			</tr>
 		</c:forEach>
+      </table>
 	</div>
 </body>
 </html>
