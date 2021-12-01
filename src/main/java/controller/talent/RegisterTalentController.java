@@ -90,7 +90,12 @@ public class RegisterTalentController implements Controller{
 			System.out.println(result);
 			System.out.println("student값: "+request.getParameter("student"));
 			ArrayList<PriceDTO> priceList = new ArrayList<>();
-			int num = Integer.parseInt(request.getParameter("student"));
+			int num = -1;
+			if(request.getParameter("student") == "") {
+				num = 0;
+			}else {
+				num = Integer.parseInt(request.getParameter("student"));
+			} 
 			for(int i = 1; i <= num; i++) {
 				PriceDTO dto2 = new PriceDTO(
 						talentId,
