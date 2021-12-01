@@ -78,11 +78,11 @@
 			</c:forEach>
 		</form>
 		<c:if test="${userId eq talent.writerId }">
-							<a herf="<c:url value='/group/update'>
-								<c:param name='talentId' value='${talent.talentId}'/>
-				                <c:param name='userId' value='${talent.writerId }'/>
-				              </c:url>">그룹 수정하기</a>
-						</c:if>
+			<a herf="<c:url value='/group/update'>
+					<c:param name='talentId' value='${talent.talentId}'/>
+				    <c:param name='userId' value='${talent.writerId }'/>
+				  </c:url>">그룹 수정하기</a>
+		</c:if>
 	</c:if>
 </c:if>
 </div>

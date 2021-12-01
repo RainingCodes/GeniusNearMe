@@ -1,6 +1,8 @@
 package service.dto;
 
-public class PriceDTO {
+import java.io.Serializable;
+
+public class PriceDTO implements Serializable{
 	private int talentID = -1;
 	private int headCount = -1;
 	private int price = -1;

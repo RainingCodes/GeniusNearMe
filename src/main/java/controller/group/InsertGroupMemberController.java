@@ -29,6 +29,7 @@ public class InsertGroupMemberController implements Controller {
 		GroupService gService = new GroupServiceImpl();
 		GroupDTO group = gService.getGroup(groupId, talentId);
 		
+		
 		if(group.getMembers() == 0) {
 			gService.setRepresentative(groupId, talentId, userId);
 			mService.updateUserId(groupId, userId);

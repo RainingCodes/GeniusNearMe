@@ -1,6 +1,8 @@
 package service.dto;
 
-public class GroupDTO {
+import java.io.Serializable;
+
+public class GroupDTO implements Serializable{
 	private int[] userId = null;
 	private int groupId = -1;
 	private int talentId = -1;

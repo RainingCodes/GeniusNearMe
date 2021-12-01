@@ -75,14 +75,16 @@ public class ViewTalentController implements Controller{
 		GroupService gService = new GroupServiceImpl();
 		List<GroupDTO> groupList = gService.GroupList(talentId);
 		HashMap<Integer, ArrayList<String>> groupMemberList = new HashMap<Integer, ArrayList<String>>();
-		for(int i = 0; i < groupList.size(); i++) {
-			int[] id = groupList.get(i).getUserId();
-			ArrayList<String> groupMembersNick = new ArrayList<>();
-			for(int j = 0; j < id.length; j++)
-				groupMembersNick.add(mService.getNicknameByUserId(id[j]));
-			groupMemberList.put(groupList.get(i).getGroupId(), groupMembersNick);
-		}
-			
+			for(int i = 0; i < groupList.size(); i++) {
+				int[] id = groupList.get(i).getUserId();
+				if(id != null) {
+					ArrayList<String> groupMembersNick = new ArrayList<>();
+					for(int j = 0; j < id.length; j++)
+						groupMembersNick.add(mService.getNicknameByUserId(id[j]));
+					groupMemberList.put(groupList.get(i).getGroupId(), groupMembersNick);
+				} else break;
+			}
+		
 		
 		String nickName = mService.getNicknameByUserId(talent.getWriterId());
 		
