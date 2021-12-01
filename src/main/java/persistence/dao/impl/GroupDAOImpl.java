@@ -268,7 +268,6 @@ public class GroupDAOImpl implements GroupDAO {
 				group.setTalentId(talentId);
 				group.setHeadCount(rs.getInt("HEAD_COUNT"));
 				group.setRepresentativeId(rs.getInt("REPRESENTATIVE_ID"));
-				group.setUserId(getGroupMembers(groupId, talentId));
 				return group;
 			}
 		} catch (SQLException e) {

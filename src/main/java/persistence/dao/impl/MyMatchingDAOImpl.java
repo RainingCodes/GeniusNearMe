@@ -22,9 +22,9 @@ public class MyMatchingDAOImpl implements MyMatchingDAO {
 	
 	public List<MyMatchingDTO> getApplyMyMatchingListByUserId(int userId) {
 		String searchQuery = query + "FROM MATCHING, TALENT "+
-				"WHERE MATCHING.GROUPID = null AND MATCHING.TALENTID = TALENT.TALENTID AND USERID = ? ";
+				"WHERE TALENT.WRITERID != ? AND MATCHING.TALENTID = TALENT.TALENTID AND USERID = ? ";
 		
-		jdbcUtil.setSqlAndParameters(searchQuery, new Object[] { userId });
+		jdbcUtil.setSqlAndParameters(searchQuery, new Object[] { userId, userId });
 		
 		try {
 			ResultSet rs = jdbcUtil.executeQuery();
@@ -51,9 +51,9 @@ public class MyMatchingDAOImpl implements MyMatchingDAO {
 	
 	public List<MyMatchingDTO> getReceiveMyMatchingListByUserId(int userId) {
 		String searchQuery = query + "FROM MATCHING, TALENT "+
-				"WHERE MATCHING.GROUPID=null AND MATCHING.TALENTID = TALENT.TALENTID AND TALENT.WRITERID = ? ";
+				"WHERE TALENT.WRITERID != ? AND MATCHING.TALENTID = TALENT.TALENTID AND TALENT.WRITERID = ? ";
 		
-		jdbcUtil.setSqlAndParameters(searchQuery, new Object[] { userId });
+		jdbcUtil.setSqlAndParameters(searchQuery, new Object[] { userId, userId });
 		
 		try {
 			ResultSet rs = jdbcUtil.executeQuery();

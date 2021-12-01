@@ -1,11 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-
 <%
 	String talentId = request.getParameter("talentId");
-	
 %>
 <script type="text/javascript">
 	var cnt = 0;
@@ -60,17 +57,22 @@
 </c:if>
 <c:if test="${groupList ne null }">
 	<c:if test="${userId ne '-1'}"> 
-		<form name="form" method="get" action="<c:url value='/user/register' />">
+		<form name="form" method="get" action="<c:url value='/group/register' />">
 			<c:forEach var="group" items="${groupList}" varStatus="status">
 				<p>
 					<c:out value="${group.headCount}" />명 그룹 / 그룹 아이디 : <c:out value="${group.groupId }" /> <br>
 					<c:forEach var="a" begin="1" end="${group.headCount}">
-						<c:if test="${userId ne talent.writerId }">
-							<a href="<c:url value='/group/matching'>
-							<c:param name='talentId' value='${talent.talentId}'/>
-                            <c:param name='groupId' value='${group.groupId }' />
-                            </c:url>">그룹 매칭 신청하기 </a>
-                        </c:if>
+						<c:if test="${a <= group.members }">
+							<c:out value="${groupMemberList.get(group.groupId).get(a - 1)}" />
+						</c:if>
+						<c:if test="${a > group.members }">
+							<c:if test="${userId ne talent.writerId }">
+								<a href="<c:url value='/group/matching'>
+								<c:param name='talentId' value='${talent.talentId}'/>
+	                            <c:param name='groupId' value='${group.groupId }' />
+	                            </c:url>">그룹 매칭 신청하기 </a>
+	                        </c:if>
+	                    </c:if>
 					</c:forEach>
 				</p>
 			</c:forEach>

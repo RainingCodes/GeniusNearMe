@@ -37,6 +37,7 @@ public class InsertGroupMemberController implements Controller {
 		int result = gService.insertGroupMember(groupId, talentId, userId);
 		if(result > 0)
 			group.setMembers(group.getMembers() + 1);
+		System.out.println(group.getMembers() + "호롤ㄹ록");
 		
 		List<GroupDTO> groupList = gService.GroupList(talentId);
 		request.setAttribute("groupList", groupList);
