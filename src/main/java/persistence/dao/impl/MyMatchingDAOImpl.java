@@ -51,7 +51,7 @@ public class MyMatchingDAOImpl implements MyMatchingDAO {
 	
 	public List<MyMatchingDTO> getReceiveMyMatchingListByUserId(int userId) {
 		String searchQuery = query + "FROM MATCHING, TALENT "+
-				"MATCHING.TALENTID = TALENT.TALENTID AND TALENT.WRITERID = ? ";
+				"WHERE MATCHING.TALENTID = TALENT.TALENTID AND TALENT.WRITERID = ? ";
 		
 		jdbcUtil.setSqlAndParameters(searchQuery, new Object[] { userId, userId });
 		
