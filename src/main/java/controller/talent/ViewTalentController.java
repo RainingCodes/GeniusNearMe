@@ -75,16 +75,16 @@ public class ViewTalentController implements Controller{
 		
 		GroupService gService = new GroupServiceImpl();
 		List<GroupDTO> groupList = gService.GroupList(talentId);
-		//HashMap<Integer, Integer> memberChange = (HashMap<Integer, Integer>) request.getAttribute("memberChange");
-		//if(memberChange != null) {
-		//	Iterator<Integer> keys = memberChange.keySet().iterator();
-		//	if(keys.hasNext()) {
-		//		int key = keys.next();
-		//		for(GroupDTO group : groupList)
-		//			if(group.getGroupId() == key)
-		//				group.setMembers(memberChange.get(key));
-		//	}
-		//}
+		HashMap<Integer, Integer> memberChange = (HashMap<Integer, Integer>) request.getAttribute("memberChange");
+		if(memberChange != null) {
+			Iterator<Integer> keys = memberChange.keySet().iterator();
+			if(keys.hasNext()) {
+				int key = keys.next();
+				for(GroupDTO group : groupList)
+					if(group.getGroupId() == key)
+						group.setMembers(memberChange.get(key));
+			}
+		}
 			
 		HashMap<Integer, ArrayList<String>> groupMemberList = new HashMap<Integer, ArrayList<String>>();
 			for(int i = 0; i < groupList.size(); i++) {
