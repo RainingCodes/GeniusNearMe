@@ -114,6 +114,10 @@ public class ViewTalentController implements Controller{
 			else {
 				request.setAttribute("isAlreadyInWish","yes");
 			}
+			ReviewService reviewService = new ReviewServiceImpl();
+			List<ReviewDTO> reviewList = reviewService.getReviewListByTalent(talentId);
+
+			request.setAttribute("reviewList", reviewList);
 				
 			request.setAttribute("talent", talent);		// 사용자 정보 저장
 			request.setAttribute("prices", price);

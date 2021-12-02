@@ -28,7 +28,7 @@
 			<div class="view">
 			<p>${review.reviewContent }</p>
 			<p>작성자ID: ${review.writerId }</p>
-			<p>하트 개수: ${review.likes }</p>
+			<!-- <p>하트 개수: ${review.likes }</p> -->
 			<p>작성일: ${review.writtenDate }
 			</div>
 		</c:forEach>
