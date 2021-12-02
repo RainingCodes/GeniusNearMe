@@ -39,7 +39,8 @@ public class InsertGroupMemberController implements Controller {
 		
 		if(group.getMembers() == 0) {
 			gService.setRepresentative(groupId, talentId, userId);
-			mService.updateUserId(groupId, userId);
+			int result1 = mService.updateUserId(groupId, userId);
+			System.out.println("이건 되는 건지요" + result1);
 		}
 		
 		int result = gService.insertGroupMember(groupId, talentId, userId);

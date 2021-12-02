@@ -193,13 +193,13 @@ public class MatchingDAOImpl implements MatchingDAO {
 			
 		}
 		@Override
-		public int updateUserId(int matchingId, int userId) {
+		public int updateUserId(int groupId, int userId) {
 			// TODO Auto-generated method stub
 			int result = 0;
 			
-			String updateUserIdQuery = "UPDATE MATCHING SET USERID=? WHERE MATCHINGID=? ";
+			String updateUserIdQuery = "UPDATE MATCHING SET USERID=? WHERE GROUPID=? ";
 			
-			Object[] param = new Object[] {userId, matchingId};
+			Object[] param = new Object[] {userId, groupId};
 			try {
 				jdbcUtil.setSqlAndParameters(updateUserIdQuery, param);
 				result = jdbcUtil.executeUpdate();
