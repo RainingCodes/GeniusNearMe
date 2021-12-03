@@ -74,7 +74,6 @@ public class ViewTalentController implements Controller{
 		TalentService talentService = new TalentServiceImpl();
 		TalentDTO talent = talentService.findTalent(talentId);
 		
-		Object select = request.getAttribute("select");
 		
 		
 		PriceService pService = new PriceServiceImpl();
