@@ -59,30 +59,26 @@ public class GroupDAOImpl implements GroupDAO {
 	}
 
 	@Override
-	public int[] getGroupMembers(int groupId, int talentId) {
+	public int[] getGroupMembers(int groupId) {
 		// TODO Auto-generated method stub
 		String MembersQuery = "SELECT GROUPMEMBERS.USERID "
 				+ "FROM GROUPMEMBERS "
-				+ "WHERE GROUPID=? AND TALENTID=?";
-		Object[] param = new Object[] { groupId, talentId };
+				+ "WHERE GROUPID=? ";
+		Object[] param = new Object[] { groupId };
 		jdbcUtil.setSqlAndParameters(MembersQuery, param);
+		
 		ResultSet rs = jdbcUtil.executeQuery();
-		int count = countGroupMembers(groupId, talentId);
-		if(count != 0) {
-			int[] memberList = new int[count];
-			int i = 0;
-			try {
-				while(rs.next()) {
-					memberList[i++] = rs.getInt("USER_ID");
-				}
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+		try {
+			while (rs.next()) {
+				
 			}
-			return memberList;
+		}catch (Exception e) {
+			jdbcUtil.rollback();
+			e.printStackTrace();
+		} finally {
+			jdbcUtil.commit();
+			jdbcUtil.close();
 		}
-		jdbcUtil.executeQuery();
-		jdbcUtil.close();
 		
 		return null;
 	}
@@ -111,11 +107,11 @@ public class GroupDAOImpl implements GroupDAO {
 
 
 	@Override
-	public int setRepresentative(int groupId, int talentId, int userId) {
+	public int setRepresentative(int groupId, int userId) {
 		// TODO Auto-generated method stub
 		int result = 0;
-		String setRepreQuery = "UPDATE GROUPING SET REPRESENTATIVEID=? WHERE GROUPID=? AND TALENTID=?";
-		Object[] param = new Object[] { userId, groupId, talentId };
+		String setRepreQuery = "UPDATE GROUPING SET REPRESENTATIVEID=? WHERE GROUPID=? ";
+		Object[] param = new Object[] { userId, groupId };
 		jdbcUtil.setSqlAndParameters(setRepreQuery, param);
 		try {
 			result = jdbcUtil.executeUpdate();
@@ -164,7 +160,7 @@ public class GroupDAOImpl implements GroupDAO {
 	}
 
 	@Override
-	public int deleteGroupMember(int groupId, int talentId, int userId) {
+	public int deleteGroupMember(int groupId, int userId) {
 		// TODO Auto-generated method stub
 		int result = 0;
 		String deleteMemQuery = "DELETE FROM GROUPMEMBERS WHERE USERID=? ";
@@ -181,7 +177,7 @@ public class GroupDAOImpl implements GroupDAO {
 		}
 		jdbcUtil.close();
 		if(result > 0) {
-			GroupDTO group = getGroup(groupId, talentId);
+			GroupDTO group = getGroup(groupId);
 			group.setHeadCount(group.getHeadCount() - 1);
 			String updateMembersQuery = "UPDATE GROUP SET MEMBERSCOUNT=? WHERE GROUPID=? ";
 			param = new Object[] { group.getHeadCount(), group.getGroupId() };
@@ -239,7 +235,7 @@ public class GroupDAOImpl implements GroupDAO {
 	@Override
 	public int countGroupMembers(int groupId, int talentId) {
 		// TODO Auto-generated method stub
-		String countMembersQuery = "SELECT * FROM GROUPMEMBERS WHERE GROUPID=? AND TALENTID=?";
+		String countMembersQuery = "SELECT * FROM GROUPMEMBERS WHERE GROUPID=? AND TALENTID=? ";
 		Object[] param = new Object[] { groupId, talentId };
 		jdbcUtil.setSqlAndParameters(countMembersQuery, param);
 		
@@ -258,10 +254,10 @@ public class GroupDAOImpl implements GroupDAO {
 	}
 
 	@Override
-	public GroupDTO getGroup(int groupId, int talentId) {
+	public GroupDTO getGroup(int groupId) {
 		// TODO Auto-generated method stub
-		String getGroupQuery = query + "WHERE GROUPID=? AND TALENTID=? ";
-		Object[] param = new Object[] { groupId, talentId};
+		String getGroupQuery = query + "WHERE GROUPID=? ";
+		Object[] param = new Object[] { groupId};
 		jdbcUtil.setSqlAndParameters(getGroupQuery, param);
 		ResultSet rs = jdbcUtil.executeQuery();
 		try {
@@ -269,9 +265,10 @@ public class GroupDAOImpl implements GroupDAO {
 				GroupDTO group = new GroupDTO();
 				group.setGroupId(groupId);
 				group.setMatchingId(rs.getInt("MATCHING_ID"));
-				group.setTalentId(talentId);
+				group.setTalentId(rs.getInt("TALENT_ID"));
 				group.setHeadCount(rs.getInt("HEAD_COUNT"));
 				group.setRepresentativeId(rs.getInt("REPRESENTATIVE_ID"));
+				group.setMembers(rs.getInt("CURRENT_HEAD"));
 				return group;
 			}
 		} catch (SQLException e) {
@@ -280,7 +277,9 @@ public class GroupDAOImpl implements GroupDAO {
 		}
 		return null;
 	}
-
+	
+	
+	// group에 사람 추가되었을 때 인원수 + 1
 	@Override
 	public int updateCurrent(int groupId) {
 		// TODO Auto-generated method stub

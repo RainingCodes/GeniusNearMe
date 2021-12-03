@@ -23,9 +23,9 @@ public class GroupServiceImpl implements GroupService {
 	}
 
 	@Override
-	public GroupDTO getGroup(int groupId, int talentId) {
+	public GroupDTO getGroup(int groupId) {
 		// TODO Auto-generated method stub
-		return groupDao.getGroup(groupId, talentId);
+		return groupDao.getGroup(groupId);
 	}
 
 	@Override
@@ -42,9 +42,9 @@ public class GroupServiceImpl implements GroupService {
 	}
 
 	@Override
-	public int deleteGroupMember(int groupId, int talentId, int userId) {
+	public int deleteGroupMember(int groupId, int userId) {
 		// TODO Auto-generated method stub
-		return groupDao.deleteGroupMember(groupId, talentId, userId);
+		return groupDao.deleteGroupMember(groupId, userId);
 	}
 
 	@Override
@@ -54,15 +54,15 @@ public class GroupServiceImpl implements GroupService {
 	}
 
 	@Override
-	public int setRepresentative(int groupId, int talentId, int userId) {
+	public int setRepresentative(int groupId, int userId) {
 		// TODO Auto-generated method stub
-		return groupDao.setRepresentative(groupId, talentId, userId);
+		return groupDao.setRepresentative(groupId, userId);
 	}
 
 	@Override
-	public int[] getGroupMembers(int groupId, int talentId) {
+	public int[] getGroupMembers(int groupId) {
 		// TODO Auto-generated method stub
-		return groupDao.getGroupMembers(groupId, talentId);
+		return groupDao.getGroupMembers(groupId);
 	}
 
 	@Override

@@ -215,7 +215,7 @@ public class MatchingDAOImpl implements MatchingDAO {
 		@Override
 		public boolean checkMatching(int talentId, int userId) {
 			// TODO Auto-generated method stub
-			String checkMatchingQuery = "SELECT MATCHINGID FROM MATCHING M, TALENT T"
+			String checkMatchingQuery = "SELECT MATCHINGID FROM MATCHING M, TALENT T "
 					+ "WHERE M.TALENTID=T.TALENTID AND T.WRITERID!=? AND M.TALENTID=? AND M.USERID=? AND MATCHINGSTATE=0 ";
 			Object[] param = new Object[] {userId, talentId, userId};
 			jdbcUtil.setSqlAndParameters(checkMatchingQuery, param);
@@ -227,7 +227,6 @@ public class MatchingDAOImpl implements MatchingDAO {
 				jdbcUtil.rollback();
 				ex.printStackTrace();
 			}finally {
-				jdbcUtil.commit();
 				jdbcUtil.close();
 			}
 			

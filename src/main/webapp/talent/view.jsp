@@ -161,15 +161,14 @@ $(document).ready(function () {
                       	  <c:when test="${today lt talent.startDate }"> 아직 신청 기간이 아닙니다.</c:when>
                       	  
                           <c:when test="${today le talent.deadLine }">
-                          
-	                          <c:if test="${infoOnetoOneMatching ne true }">
+	                          <c:if test="${matchingCheck ne true }">
 		                          <a href="<c:url value='/matching/talent'>
 		                                <c:param name='talentId' value='${talent.talentId}'/>
 		                                 <c:param name='userId' value='${userId}'/>
 		                               </c:url>">1:1 매칭 신청하기</a>
 	                          </c:if>
-	                          <c:if test="${infoOnetoOneMatching eq true }">
-	                          	진행중인 1:1매칭이 있습니다.
+	                          <c:if test="${matchingCheck eq true }">
+	                          	진행중인 매칭이 있습니다.
 	                          </c:if>
                           
                           </c:when>

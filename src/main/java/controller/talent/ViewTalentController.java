@@ -88,7 +88,7 @@ public class ViewTalentController implements Controller{
 		request.setAttribute("prices", price);
 		request.setAttribute("userId", userId);
 		request.setAttribute("nickName", nickName);
-		request.setAttribute("machingCheck", matchingCheck);
+		request.setAttribute("matchingCheck", matchingCheck);
 		request.setAttribute("infoOnetoOneMatching", existWorkOnetoOneMatching);
 	
 			
