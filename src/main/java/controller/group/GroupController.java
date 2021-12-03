@@ -51,7 +51,7 @@ public class GroupController implements Controller {
 		 
 		request.setAttribute("groupList", groupList);
 		
-		return "talent/view.jsp";
+		return "/talent/view.jsp";
 	}
 
 }
