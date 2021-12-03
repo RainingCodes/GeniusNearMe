@@ -74,7 +74,7 @@ public class ViewTalentController implements Controller{
 		TalentService talentService = new TalentServiceImpl();
 		TalentDTO talent = talentService.findTalent(talentId);
 		
-		String select = request.getParameter("select");
+		Object select = request.getAttribute("select");
 		
 		
 		PriceService pService = new PriceServiceImpl();
@@ -90,18 +90,6 @@ public class ViewTalentController implements Controller{
 		request.setAttribute("nickName", nickName);
 		request.setAttribute("machingCheck", matchingCheck);
 	
-		
-		if(select == null) {
-			request.setAttribute("select", 1);
-			return "/talent/group";
-		}
-		else {
-			switch(select) {
-				case "1" :
-					return "/talent/group";
-			}
-		}
-		
 			
 			
 			WishService wService = new WishServiceImpl();
