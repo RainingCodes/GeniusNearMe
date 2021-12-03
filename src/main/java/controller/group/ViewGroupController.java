@@ -26,32 +26,21 @@ public class ViewGroupController implements Controller {
 		
 		GroupService gService = new GroupServiceImpl();
 		List<GroupDTO> groupList = gService.GroupList(talentId);
-		HashMap<Integer, Integer> memberChange = (HashMap<Integer, Integer>) request.getAttribute("memberChange");
-		if(memberChange != null) {
-			Iterator<Integer> keys = memberChange.keySet().iterator();
-			if(keys.hasNext()) {
-				int key = keys.next();
-				for(GroupDTO group : groupList)
-					if(group.getGroupId() == key)
-						group.setMembers(memberChange.get(key));
-			}
-		}
 			
-		HashMap<Integer, ArrayList<String>> groupMemberList = new HashMap<Integer, ArrayList<String>>();
-			for(int i = 0; i < groupList.size(); i++) {
-				int[] id = groupList.get(i).getUserId();
-				if(id != null) {
-					ArrayList<String> groupMembersNick = new ArrayList<>();
-					for(int j = 0; j < id.length; j++)
-						groupMembersNick.add(mService.getNicknameByUserId(id[j]));
-					groupMemberList.put(groupList.get(i).getGroupId(), groupMembersNick);
-				} 
-			}
+		for(int i = 0; i < groupList.size(); i++) {
+			int[] id = groupList.get(i).getUserId();
+			if(id != null) {
+				ArrayList<String> groupMembersNick = new ArrayList<>();
+				for(int j = 0; j < id.length; j++)
+					groupMembersNick.add(mService.getNicknameByUserId(id[j]));
+				//groupMemberList.put(groupList.get(i).getGroupId(), groupMembersNick);
+			} 
+		}
 		
-		 
+		request.setAttribute("talentId", talentId);
 		request.setAttribute("groupList", groupList);
 		
-		return "/talent/view.jsp";
+		return "/talent/review";
 	}
 
 }
