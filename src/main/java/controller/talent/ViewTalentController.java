@@ -24,6 +24,8 @@ import service.ReviewService;
 import service.ReviewServiceImpl;
 import service.GroupService;
 import service.GroupServiceImpl;
+import service.MatchingService;
+import service.MatchingServiceImpl;
 import service.TalentService;
 import service.TalentServiceImpl;
 import service.WishService;
@@ -62,6 +64,7 @@ public class ViewTalentController implements Controller{
 		//로그인 되있을때
 		HttpSession session = request.getSession();
 		MemberService mService = new MemberServiceImpl();
+		MatchingService maService = new MatchingServiceImpl();
 		
 		log.debug("talent view"+ session);
 		log.debug("email : {}",session.getAttribute("email"));

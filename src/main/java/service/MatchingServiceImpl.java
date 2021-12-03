@@ -41,4 +41,9 @@ public class MatchingServiceImpl implements MatchingService{
 		// TODO Auto-generated method stub
 		return dao.updateUserId(matchingId, userId);
 	}
+	@Override
+	public boolean checkMatching(int talentId, int userId) {
+		// TODO Auto-generated method stub
+		return dao.checkMatching(talentId, userId);
+	}
 }

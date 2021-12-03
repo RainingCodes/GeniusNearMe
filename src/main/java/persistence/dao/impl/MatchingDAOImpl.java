@@ -212,4 +212,27 @@ public class MatchingDAOImpl implements MatchingDAO {
 			
 			return result;	
 		}
+		@Override
+		public boolean checkMatching(int talentId, int userId) {
+			// TODO Auto-generated method stub
+			String checkMatchingQuery = "SELECT MATCHINGID FROM MATCHING WHERE TALENTID=? AND USERID=? AND MATCHINGSTATE=0 ";
+			Object[] param = new Object[] {talentId, userId};
+			jdbcUtil.setSqlAndParameters(checkMatchingQuery, param);
+			try {
+				ResultSet rs = jdbcUtil.executeQuery();
+				if(rs.next())
+					return true;
+			} catch(Exception ex) {
+				jdbcUtil.rollback();
+				ex.printStackTrace();
+			}finally {
+				jdbcUtil.commit();
+				jdbcUtil.close();
+			}
+			
+			return false;
+		}
+		
+		
+		
 }

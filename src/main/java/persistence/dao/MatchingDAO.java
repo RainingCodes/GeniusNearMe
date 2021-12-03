@@ -26,5 +26,7 @@ public interface MatchingDAO {
 	public int updateGroupId(int matchingId, int groupId);
 	
 	public int updateUserId(int groupId, int userId);
+	
+	public boolean checkMatching(int talentId, int userId);
 
 }
