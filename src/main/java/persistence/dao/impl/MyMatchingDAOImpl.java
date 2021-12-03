@@ -20,9 +20,9 @@ public class MyMatchingDAOImpl implements MyMatchingDAO {
 		jdbcUtil = new JDBCUtil();
 	}
 	
-	public List<MyMatchingDTO> getApplyMyMatchingListByUserId(int userId) {
+	public List<MyMatchingDTO> getApplyMyOneMatchingListByUserId(int userId) {
 		String searchQuery = query + "FROM MATCHING, TALENT "+
-				"WHERE TALENT.WRITERID != ? AND MATCHING.TALENTID = TALENT.TALENTID AND USERID = ? ";
+				"WHERE TALENT.WRITERID != ? AND MATCHING.TALENTID = TALENT.TALENTID AND USERID = ? AND MATCHING.GROUPID IS NULL";
 		
 		jdbcUtil.setSqlAndParameters(searchQuery, new Object[] { userId, userId });
 		
@@ -50,9 +50,68 @@ public class MyMatchingDAOImpl implements MyMatchingDAO {
 		}return null;
 	}
 	
-	public List<MyMatchingDTO> getReceiveMyMatchingListByUserId(int userId) {
+	public List<MyMatchingDTO> getReceiveMyOneMatchingListByUserId(int userId) {
 		String searchQuery = query + "FROM MATCHING, TALENT "+
-				"WHERE MATCHING.TALENTID = TALENT.TALENTID AND TALENT.WRITERID = ? ";
+				"WHERE MATCHING.TALENTID = TALENT.TALENTID AND TALENT.WRITERID = ? AND MATCHING.GROUPID IS NULL";
+		
+		jdbcUtil.setSqlAndParameters(searchQuery, new Object[] { userId });
+		
+		try {
+			ResultSet rs = jdbcUtil.executeQuery();
+			List<MyMatchingDTO> list = new ArrayList<MyMatchingDTO>();
+			
+			while (rs.next()) {
+				MyMatchingDTO dto = new MyMatchingDTO();
+				dto.setMatchingId(rs.getInt("MATCHINGID"));
+				dto.setTalentId(rs.getInt("TALENTID"));
+				dto.setTalentTitle(rs.getString("TITLE"));
+				dto.setMatchingState(rs.getInt("MATCHINGSTATE"));
+				
+				System.out.println(dto);
+				
+				list.add(dto);
+			}
+			return list;
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			jdbcUtil.close();
+		}return null;
+	}
+	
+	public List<MyMatchingDTO> getApplyMyGroupMatchingListByUserId(int userId) {
+		String searchQuery = query + "FROM MATCHING, TALENT "+
+				"WHERE TALENT.WRITERID != ? AND MATCHING.TALENTID = TALENT.TALENTID AND USERID = ? AND MATCHING.GROUPID IS NOT NULL";
+		
+		jdbcUtil.setSqlAndParameters(searchQuery, new Object[] { userId, userId });
+		
+		try {
+			ResultSet rs = jdbcUtil.executeQuery();
+			List<MyMatchingDTO> list = new ArrayList<MyMatchingDTO>();
+			
+			while (rs.next()) {
+				MyMatchingDTO dto = new MyMatchingDTO();
+				dto.setMatchingId(rs.getInt("MATCHINGID"));
+				dto.setTalentId(rs.getInt("TALENTID"));
+				dto.setTalentTitle(rs.getString("TITLE"));
+				dto.setMatchingState(rs.getInt("MATCHINGSTATE"));
+				
+
+				System.out.println(dto);
+				
+				list.add(dto);
+			}
+			return list;
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			jdbcUtil.close();
+		}return null;
+	}
+	
+	public List<MyMatchingDTO> getReceiveMyGroupMatchingListByUserId(int userId) {
+		String searchQuery = query + "FROM MATCHING, TALENT "+
+				"WHERE MATCHING.TALENTID = TALENT.TALENTID AND TALENT.WRITERID = ? AND MATCHING.GROUPID IS NOT NULL";
 		
 		jdbcUtil.setSqlAndParameters(searchQuery, new Object[] { userId });
 		

@@ -85,12 +85,20 @@ public class MemberServiceImpl implements MemberService {
 		return nickName;
 	}
 	
-	public List<MyMatchingDTO> ListingApplyMyMatchingByUserId(int userId) throws SQLException {
-		return matchingDao.getApplyMyMatchingListByUserId(userId);
+	public List<MyMatchingDTO> ListingApplyMyOneMatchingByUserId(int userId) throws SQLException {
+		return matchingDao.getApplyMyOneMatchingListByUserId(userId);
 	}
 	
-	public List<MyMatchingDTO> ListingReceiveMyMatchingByUserId(int userId) throws SQLException {
-		return matchingDao.getReceiveMyMatchingListByUserId(userId);
+	public List<MyMatchingDTO> ListingReceiveMyOneMatchingByUserId(int userId) throws SQLException {
+		return matchingDao.getReceiveMyOneMatchingListByUserId(userId);
+	}
+	
+	public List<MyMatchingDTO> ListingApplyMyGroupMatchingByUserId(int userId) throws SQLException {
+		return matchingDao.getApplyMyGroupMatchingListByUserId(userId);
+	}
+	
+	public List<MyMatchingDTO> ListingReceiveMyGroupMatchingByUserId(int userId) throws SQLException {
+		return matchingDao.getReceiveMyGroupMatchingListByUserId(userId);
 	}
 	
 	public int getUserIdByMatchingId(int matchingId) throws SQLException {

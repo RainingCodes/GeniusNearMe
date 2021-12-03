@@ -51,8 +51,8 @@
 		</c:forEach>
 	
 	</table>
-	<p><br>
-	매칭이 존재하면 게시글을 삭제할 수 없습니다.<br>
+	<p><br><br>
+	매칭이 존재하면 게시글을 삭제할 수 없습니다.<br><br>
 	<a href="<c:url value='/member/view' />">목록으로 이동하기</a>   
 	</div>
 	

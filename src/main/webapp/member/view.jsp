@@ -23,10 +23,7 @@
 				 	</td>
 	  			</tr>
 	  			<tr>
-	  				<td><a href="<c:url value='/member/ApplyMatching'></c:url>">신청 매칭 목록</a></td>
-	  			</tr>
-	  			<tr>
-	  				<td><a href="<c:url value='/member/ReceiveMatching'></c:url>">받은 매칭 목록</a></td>
+	  				<td><a href="<c:url value='/member/OneMatching'></c:url>">1:1 매칭 관리</a></td>
 	  			</tr>
 	  			<tr>
 	  				<td><a href="<c:url value='/member/myTalentList'></c:url>">작성한 재능 목록</a></td>

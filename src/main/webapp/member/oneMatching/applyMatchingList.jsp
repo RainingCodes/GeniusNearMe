@@ -7,15 +7,13 @@
 <title>내가 신청한 매칭 리스트</title>
 </head>
 <body>
-<%@ include file="../main/head.jsp"  %>
+<div id="apply">
 <div>   
-	<br>
-	<h4 style="text-align: center;">내가 신청한 매칭 리스트</h4>
+	<h3 style="text-align: center;">신청한 1:1 매칭 리스트</h3>
 	<br>
 	<table border = "1"  align="center">
 	<thead class="thead-inverse">
       	<tr>
-		  <td>매칭 ID</td>
 		  <td>재능 제목</td>
 		  <td>매칭 상태</td>
 		  <td>매칭 정보</td>
@@ -23,12 +21,9 @@
 		</tr>
       </thead>
       <tbody> 
-		<c:forEach var="li" items="${list}" varStatus="status">  	
+		<c:forEach var="li" items="${applyList}" varStatus="status">  	
 	  	
 	  	    <tr>
-			  <td>
-			  	<c:out value="${li.matchingId}"/>     
-			  </td>
 			  <td>
 			  	<a href="<c:url value='/talent/view'>
 						   <c:param name='talentId' value='${li.talentId}'/>
@@ -85,10 +80,8 @@
 		</tbody>
 	</table>		  	 
 	<br>
-	<div style="text-align:center;">
-	<a href="<c:url value='/member/view' />">목록으로 이동하기</a>    		     
-	</div>   
+	 
 </div>
-
+</div>
 </body>
 </html>
