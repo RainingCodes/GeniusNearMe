@@ -13,20 +13,17 @@ $(document).ready(function () {
 		$("#comment").hide();
 		$("#review").hide();
 	}
-
 	  $(document).on("click", "input[name='groupBtn']", function () {
 		  	check = 1;
 			  $("#group").show();
 			  $("#comment").hide();
 			  $("#review").hide();
-			  $("#select").val(check);
 	  });
 	  $(document).on("click", "input[name='commentBtn']", function () {
 		  	check = 2;
 		  	$("#comment").show();
 			$("#group").hide();
 			$("#review").hide();
-			$("#select").val(check);
 			
 	  });
 	  
@@ -35,7 +32,6 @@ $(document).ready(function () {
 		  	$("#review").show();
 			  $("#group").hide();
 			  $("#comment").hide();
-			  $("#select").val(check);
 	  });
 	  
 	});
@@ -216,7 +212,6 @@ $(document).ready(function () {
 			<jsp:param name="talentId" value="<%=talentId %>" />
 			<jsp:param name="reviewList" value="${reviewList }" />
 		</jsp:include>
-		<input type="hidden" name="select" id="select" />
 		
         <div align = "center">
         <br><br><br><br><br><br><br>
