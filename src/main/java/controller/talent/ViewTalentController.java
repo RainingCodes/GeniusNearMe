@@ -76,8 +76,18 @@ public class ViewTalentController implements Controller{
 		TalentService talentService = new TalentServiceImpl();
 		TalentDTO talent = talentService.findTalent(talentId);
 		
+		String select = request.getParameter("request");
 		
-		int select = Integer.parseInt(request.getParameter("select"));
+		if(select == null) {
+			request.setAttribute("select", 1);
+			return "/talent/group";
+		}
+		else {
+			switch(select) {
+				case "1" :
+					return "/talent/group";
+			}
+		}
 		PriceService pService = new PriceServiceImpl();
 		List<PriceDTO> price = pService.PriceList(talentId);
 		String nickName = mService.getNicknameByUserId(talent.getWriterId());
@@ -87,11 +97,6 @@ public class ViewTalentController implements Controller{
 		request.setAttribute("prices", price);
 		request.setAttribute("userId", userId);
 		request.setAttribute("nickName", nickName);
-		
-		
-		if(select == 1) {
-			return "/talent/group";
-		}
 			
 		
 		
