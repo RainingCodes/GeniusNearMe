@@ -36,7 +36,8 @@ public class RegisterReviewController implements Controller{
 				0,
 				userId,
 				talentId,
-				request.getParameter("content")
+				request.getParameter("content"),
+				0
 		);
 		
 		log.debug("RegisterReviewController Request : {}", review);

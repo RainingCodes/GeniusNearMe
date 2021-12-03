@@ -12,26 +12,43 @@ import service.dto.ReviewDTO;
 public class ReviewDAOImpl implements ReviewDAO{
 	
 	private JDBCUtil jdbcUtil = null;
+	private JDBCUtil jdbcUtil2 = null;
 	
 	private static String query = "SELECT REVIEWID, WRITTENDATE, LIKES, WRITERID, TALENTID, REVIEWCONTENT ";
 
 	public ReviewDAOImpl() {
 		jdbcUtil = new JDBCUtil();
+		jdbcUtil2 = new JDBCUtil();
 	}
 	
-	public int insertReview(ReviewDTO reviewDto) {
+	public int insertReview(ReviewDTO reviewDto){
 		int result = -1;
 		int generatedKey = -1;
 		
-		String insertQuery = "INSERT INTO REVIEW (REVIEWID, WRITTENDATE,"
-				+ " LIKES, WRITERID, TALENTID, REVIEWCONTENT) "
-				+ "VALUES (review_seq.nextval, ?, ?, ?, ?, ?) ";
+		String matchingIdQuery = "SELECT MATCHINGID FROM MATCHING WHERE TALENTID=? AND USERID=?";		
+		jdbcUtil2.setSql(matchingIdQuery);
+		
+		int matchingId = -1;
+		try {
+			ResultSet rs = jdbcUtil2.executeQuery();
+			matchingId = rs.getInt("MATCHINGID");
+		}catch(Exception e) {
+			e.getStackTrace();
+		}finally {
+			jdbcUtil2.close();
+		}
+	
+		String insertQuery = "INSERT INTO REVIEW (REVIEWID, WRITTENDATE, LIKES, WRITERID, TALENTID, REVIEWCONTENT, MATCHINGID) "
+							+ "VALUES (review_seq.nextval, ?, ?, ?, ?, ?, ?)";
+		
+		System.out.println(insertQuery);
 		
 		Object[] param = new Object[] { 
 				new java.sql.Date(reviewDto.getWrittenDate().getTime()),
 				reviewDto.getLikes(), reviewDto.getWriterId(),
-				reviewDto.getTalentId(), reviewDto.getReviewContent()
+				reviewDto.getTalentId(), reviewDto.getReviewContent(), matchingId
 				};
+		
 		jdbcUtil.setSql(insertQuery);
 		jdbcUtil.setParameters(param);
 		
@@ -163,7 +180,7 @@ public class ReviewDAOImpl implements ReviewDAO{
 		}return null;
 	}
 	public List<ReviewDTO> getReviewListByTalent(int talentId){
-String searchQuery = query + "FROM REVIEW WHERE TALENTID = ? ";
+		String searchQuery = query + "FROM REVIEW WHERE TALENTID = ? ";
 		
 		Object[] param = new Object[] {talentId};
 		jdbcUtil.setSql(searchQuery);

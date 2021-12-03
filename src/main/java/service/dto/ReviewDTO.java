@@ -9,21 +9,23 @@ public class ReviewDTO {
 	private int writerId = -1;
 	private int talentId = -1;
 	private String reviewContent = null;
+	private int matchingId = -1;
 	
 	public ReviewDTO() {
 		
 	}
 	
-	public ReviewDTO( Date writtenDate, int likes, int writerId, int talentId, String reviewContent) {
+	public ReviewDTO( Date writtenDate, int likes, int writerId, int talentId, String reviewContent, int matchingId) {
 		super();
 		this.writtenDate = writtenDate;
 		this.likes = likes;
 		this.writerId = writerId;
 		this.talentId = talentId;
 		this.reviewContent = reviewContent;
+		this.matchingId = matchingId;
 	}
 	
-	public ReviewDTO(int reviewId, Date writtenDate, int likes, int writerId, int talentId, String reviewContent) {
+	public ReviewDTO(int reviewId, Date writtenDate, int likes, int writerId, int talentId, String reviewContent, int matchingId) {
 		super();
 		this.reviewId = reviewId;
 		this.writtenDate = writtenDate;
@@ -31,6 +33,7 @@ public class ReviewDTO {
 		this.writerId = writerId;
 		this.talentId = talentId;
 		this.reviewContent = reviewContent;
+		this.matchingId = matchingId;
 	}
 
 
@@ -80,6 +83,14 @@ public class ReviewDTO {
 
 	public void setReviewContent(String reviewContent) {
 		this.reviewContent = reviewContent;
+	}
+
+	public int getMatchingId() {
+		return matchingId;
+	}
+
+	public void setMatchingId(int matchingId) {
+		this.matchingId = matchingId;
 	}
 
 }
