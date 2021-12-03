@@ -35,9 +35,9 @@
 						<p>
 							<c:out value="${price.headCount}" />명 그룹 리스트
 							<script>
-							head[i++] = "${price.headCount}";
-							document.write("<input type='button' name='add' value='추가하기' id='" + cnt +"' >");
-							cnt++;
+								head[i++] = "${price.headCount}";
+								document.write("<input type='button' name='add' value='추가하기' id='" + cnt +"' >");
+								cnt++;
 							</script>
 						</p> 
 					</c:if>
