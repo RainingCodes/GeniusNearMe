@@ -77,7 +77,6 @@ public class GroupDAOImpl implements GroupDAO {
 			e.printStackTrace();
 		} finally {
 			jdbcUtil.commit();
-			jdbcUtil.close();
 		}
 		
 		return null;
@@ -153,7 +152,6 @@ public class GroupDAOImpl implements GroupDAO {
 			e.printStackTrace();
 		} finally {
 			jdbcUtil.commit();
-			jdbcUtil.close();
 		}
 		return null;
 	
@@ -274,6 +272,8 @@ public class GroupDAOImpl implements GroupDAO {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			jdbcUtil.close();
 		}
 		return null;
 	}
