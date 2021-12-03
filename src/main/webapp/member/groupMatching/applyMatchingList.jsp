@@ -9,7 +9,7 @@
 <body>
 <div id="apply">
 <div>   
-	<h3 style="text-align: center;">신청한 1:1 매칭 리스트</h3>
+	<h3 style="text-align: center;">신청한 그룹 매칭 리스트</h3>
 	<br>
 	<table border = "1"  align="center">
 	<thead class="thead-inverse">

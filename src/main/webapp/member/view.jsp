@@ -26,6 +26,9 @@
 	  				<td><a href="<c:url value='/member/OneMatching'></c:url>">1:1 매칭 관리</a></td>
 	  			</tr>
 	  			<tr>
+	  				<td><a href="<c:url value='/member/GroupMatching'></c:url>">그룹 매칭 관리</a></td>
+	  			</tr>
+	  			<tr>
 	  				<td><a href="<c:url value='/member/myTalentList'></c:url>">작성한 재능 목록</a></td>
 	  			</tr>
 	  			<tr>

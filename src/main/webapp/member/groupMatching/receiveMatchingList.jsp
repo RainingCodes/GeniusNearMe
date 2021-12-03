@@ -11,13 +11,13 @@
 <body>
 <div id="receive">
 <div>   
-	<h3 style="text-align: center;">받은 1:1 매칭 리스트</h3>
+	<h3 style="text-align: center;">받은 그룹 매칭 리스트</h3>
 	<br>
 	<table border = "1" align="center">
 	<thead class="thead-inverse">
       	<tr>
 		  <td>재능 제목</td>
-		  <td>매칭 신청자</td>
+		  <td>매칭 대표자</td>
 		  <td>재능 상태</td>
 		  <td>매칭 결정하기</td>
 		</tr>

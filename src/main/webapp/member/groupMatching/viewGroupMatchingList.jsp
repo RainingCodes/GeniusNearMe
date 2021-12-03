@@ -24,7 +24,7 @@ $(document).ready(function () {
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>1:1 매칭 관리</title>
+<title>그룹 매칭 관리</title>
 <style>
 .ellipsis { overflow:hidden; text-overflow:ellipsis; -o-text-overflow:ellipsis; white-space:nowrap; max-width:95%; } 
 </style>

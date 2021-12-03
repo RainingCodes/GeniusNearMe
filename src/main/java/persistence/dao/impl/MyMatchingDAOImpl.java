@@ -103,7 +103,8 @@ public class MyMatchingDAOImpl implements MyMatchingDAO {
 	
 	public List<MyMatchingDTO> getReceiveMyGroupMatchingListByUserId(int userId) {
 		String searchQuery = query + "FROM MATCHING, TALENT "+
-				"WHERE MATCHING.TALENTID = TALENT.TALENTID AND TALENT.WRITERID = ? AND MATCHING.GROUPID IS NOT NULL";
+				"WHERE MATCHING.TALENTID = TALENT.TALENTID AND TALENT.WRITERID = ? "
+				+"AND MATCHING.GROUPID IS NOT NULL AND MATCHING.USERID != TALENT.WRITERID";
 		
 		jdbcUtil.setSqlAndParameters(searchQuery, new Object[] { userId });
 		
