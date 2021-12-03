@@ -78,16 +78,7 @@ public class ViewTalentController implements Controller{
 		
 		String select = request.getParameter("request");
 		
-		if(select == null) {
-			request.setAttribute("select", 1);
-			return "/talent/group";
-		}
-		else {
-			switch(select) {
-				case "1" :
-					return "/talent/group";
-			}
-		}
+		
 		PriceService pService = new PriceServiceImpl();
 		List<PriceDTO> price = pService.PriceList(talentId);
 		String nickName = mService.getNicknameByUserId(talent.getWriterId());
@@ -99,7 +90,16 @@ public class ViewTalentController implements Controller{
 		request.setAttribute("nickName", nickName);
 			
 		
-		
+		if(select == null) {
+			request.setAttribute("select", 1);
+			return "/talent/group";
+		}
+		else {
+			switch(select) {
+				case "1" :
+					return "/talent/group";
+			}
+		}
 		
 			
 			
