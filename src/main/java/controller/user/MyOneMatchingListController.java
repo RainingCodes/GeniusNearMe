@@ -39,7 +39,7 @@ public class MyOneMatchingListController implements Controller {
     	
     	try {
     		myApplyMatchingInfo =  manager.ListingApplyMyOneMatchingByUserId(userId);	// 사용자 정보 검색
-    		myApplyMatchingInfo.sort(Comparator.naturalOrder());
+    		myApplyMatchingInfo.sort(Comparator.reverseOrder());
     		
     		matchingWriterInfo = new ArrayList<MemberDTO>();
     		
@@ -65,7 +65,7 @@ public class MyOneMatchingListController implements Controller {
     	
     	try {
     		myReceiveMatchingInfo =  manager.ListingReceiveMyOneMatchingByUserId(userId);	// 사용자 정보 검색
-    		myReceiveMatchingInfo.sort(Comparator.naturalOrder());
+    		myReceiveMatchingInfo.sort(Comparator.reverseOrder());
     		
     		ReceiveUserNicekname = new ArrayList<String>();
     		

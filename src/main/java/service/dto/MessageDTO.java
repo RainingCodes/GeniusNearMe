@@ -1,7 +1,7 @@
 package service.dto;
 import java.util.Date;
 
-public class MessageDTO {
+public class MessageDTO implements Comparable<MessageDTO> {
 	private int messageId;
 	private int state;
 	private String content;
@@ -87,6 +87,11 @@ public class MessageDTO {
 	public String toString() {
 		return "MessageDTO [messageId=" + messageId + ", state=" + state + ", content=" + content + ", writtenDate="
 				+ writtenDate + ", senderId=" + senderId + ", receiverId=" + receiverId + "]";
+	}
+
+	@Override
+	public int compareTo(MessageDTO o) {
+		return Integer.compare(this.messageId, o.getMessageId());
 	}
 
 	

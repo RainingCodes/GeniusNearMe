@@ -1,6 +1,7 @@
-package controller.user;
+package controller.message;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import controller.Controller;
+import controller.user.UserSessionUtils;
 import service.MemberService;
 import service.MemberServiceImpl;
 import service.MessageService;
@@ -18,7 +20,7 @@ import service.dto.MessageDTO;
 
 public class ViewMessageListController implements Controller {
 
-	private static final Logger log = LoggerFactory.getLogger(ViewMemberController.class);
+	private static final Logger log = LoggerFactory.getLogger(ViewMessageListController.class);
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -45,6 +47,8 @@ public class ViewMessageListController implements Controller {
 //    	try {
     		sendList = messageManager.SenderMessageList(userId);
     		receiveList = messageManager.ReceiverMessageList(userId);
+    		sendList.sort(Comparator.reverseOrder());
+    		receiveList.sort(Comparator.reverseOrder());
     		
     		sendListNicekname = new ArrayList<String>();
     		receiveListNicekname = new ArrayList<String>();

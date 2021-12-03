@@ -31,8 +31,6 @@ public class RequestMapping {
         mappings.put("/member/update", new UpdateMemberController());
         mappings.put("/member/delete", new DeleteMemberController());    
         mappings.put("/member/OneMatching", new MyOneMatchingListController());
-//        mappings.put("/member/ApplyMatching", new ApplyMyMatchingListController());    
-//        mappings.put("/member/ReceiveMatching", new ReceiveMyMatchingListController());
         mappings.put("/member/myTalentList", new MyTalentListController());
         mappings.put("/member/wishList", new WishListController());
         mappings.put("/member/deleteWish", new DeleteWishController());
