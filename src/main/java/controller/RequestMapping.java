@@ -54,7 +54,7 @@ public class RequestMapping {
         mappings.put("/talent/comment/delete", new DeleteCommentController());
         
         mappings.put("/talent/reviewRegister", new RegisterReviewController());
-        mappings.put("/talent/reviewView", new ViewReviewController());
+        mappings.put("/talent/review", new ViewReviewController());
         
         mappings.put("/message", new SendMessageController());
         mappings.put("/member/messageList", new ViewMessageListController());
