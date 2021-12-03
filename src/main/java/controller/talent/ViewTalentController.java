@@ -1,10 +1,7 @@
 package controller.talent;
 
-import java.util.ArrayList;
-import service.dto.GroupDTO;
+
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,8 +19,6 @@ import service.PriceService;
 import service.PriceServiceImpl;
 import service.ReviewService;
 import service.ReviewServiceImpl;
-import service.GroupService;
-import service.GroupServiceImpl;
 import service.MatchingService;
 import service.MatchingServiceImpl;
 import service.TalentService;
@@ -86,12 +81,15 @@ public class ViewTalentController implements Controller{
 		List<PriceDTO> price = pService.PriceList(talentId);
 		String nickName = mService.getNicknameByUserId(talent.getWriterId());
 		
+		boolean matchingCheck = maService.checkMatching(talentId, userId);
+		
 		
 		request.setAttribute("talent", talent);		// 사용자 정보 저장
 		request.setAttribute("prices", price);
 		request.setAttribute("userId", userId);
 		request.setAttribute("nickName", nickName);
-			
+		request.setAttribute("machingCheck", matchingCheck);
+	
 		
 		if(select == null) {
 			request.setAttribute("select", 1);

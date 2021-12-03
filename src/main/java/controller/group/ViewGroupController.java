@@ -15,7 +15,7 @@ import service.MemberService;
 import service.MemberServiceImpl;
 import service.dto.GroupDTO;
 
-public class GroupController implements Controller {
+public class ViewGroupController implements Controller {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
