@@ -2,6 +2,7 @@ package controller.user;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -38,6 +39,8 @@ public class MyOneMatchingListController implements Controller {
     	
     	try {
     		myApplyMatchingInfo =  manager.ListingApplyMyOneMatchingByUserId(userId);	// 사용자 정보 검색
+    		myApplyMatchingInfo.sort(Comparator.naturalOrder());
+    		
     		matchingWriterInfo = new ArrayList<MemberDTO>();
     		
     		for (int i = 0; i < myApplyMatchingInfo.size(); i++) {
@@ -62,6 +65,8 @@ public class MyOneMatchingListController implements Controller {
     	
     	try {
     		myReceiveMatchingInfo =  manager.ListingReceiveMyOneMatchingByUserId(userId);	// 사용자 정보 검색
+    		myReceiveMatchingInfo.sort(Comparator.naturalOrder());
+    		
     		ReceiveUserNicekname = new ArrayList<String>();
     		
     		for (int i = 0; i < myReceiveMatchingInfo.size(); i++) {

@@ -29,7 +29,7 @@ public class ApplicationMatchingController implements Controller {
 		int result = mService.insertMatching(mDTO);
 		System.out.println("결과"+result);
 		
-		return "/member/ApplyMatching";		//매칭 신청 화면으로 이동
+		return "/member/OneMatching";		//매칭 신청 화면으로 이동
     }
 	
 }

@@ -234,6 +234,24 @@ public class MatchingDAOImpl implements MatchingDAO {
 			return false;
 		}
 		
-		
+		//진행중인 1:1매칭 확인 dao
+		public boolean existWorkOnetoOneMatchingByTalentId(int userId, int talentId) {
+			String  query = "SELECT MATCHINGID FROM MATCHING M, TALENT T "
+					+ "WHERE M.TALENTID = T.TALENTID AND M.MATCHINGSTATE = 0 AND M.USERID = ? AND T.TALENTID = ?";
+			
+			Object[] param = new Object[] {userId, talentId};
+			jdbcUtil.setSqlAndParameters(query, param);
+			try {
+				ResultSet rs = jdbcUtil.executeQuery();
+				if(rs.next())
+					return true;
+			} catch(Exception ex) {
+				ex.printStackTrace();
+			}finally {
+				jdbcUtil.close();
+			}
+			
+			return false;
+		}
 		
 }

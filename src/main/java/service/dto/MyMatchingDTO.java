@@ -1,6 +1,6 @@
 package service.dto;
 
-public class MyMatchingDTO {
+public class MyMatchingDTO  implements Comparable<MyMatchingDTO> {
 	int matchingId;
 	int talentId;
 	String talentTitle;
@@ -36,4 +36,11 @@ public class MyMatchingDTO {
 				+ ", matchingState=" + matchingState + "]";
 	}
 	
+
+	public int compareTo(MyMatchingDTO dto) { 
+		int targetId = dto.getMatchingId();
+		if (matchingId == targetId) return 0;
+		else if (matchingId == targetId) return 1;
+		else return -1;
+	}
 }

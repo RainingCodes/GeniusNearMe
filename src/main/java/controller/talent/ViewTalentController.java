@@ -81,6 +81,7 @@ public class ViewTalentController implements Controller{
 		String nickName = mService.getNicknameByUserId(talent.getWriterId());
 		
 		boolean matchingCheck = maService.checkMatching(talentId, userId);
+		boolean existWorkOnetoOneMatching = maService.existWorkOnetoOneMatchingByTalentId(userId, talentId);
 		
 		
 		request.setAttribute("talent", talent);		// 사용자 정보 저장
@@ -88,6 +89,7 @@ public class ViewTalentController implements Controller{
 		request.setAttribute("userId", userId);
 		request.setAttribute("nickName", nickName);
 		request.setAttribute("machingCheck", matchingCheck);
+		request.setAttribute("infoOnetoOneMatching", existWorkOnetoOneMatching);
 	
 			
 			

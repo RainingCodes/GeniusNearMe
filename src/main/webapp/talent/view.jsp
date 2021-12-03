@@ -159,10 +159,19 @@ $(document).ready(function () {
                       <fmt:formatDate var="today" value="${today }" pattern="yyyy-MM-dd"/>
                       <c:choose>
                       	  <c:when test="${today lt talent.startDate }"> 아직 신청 기간이 아닙니다.</c:when>
-                          <c:when test="${today le talent.deadLine }"><a href="<c:url value='/matching/talent'>
-                                <c:param name='talentId' value='${talent.talentId}'/>
-                                 <c:param name='userId' value='${userId}'/>
-                               </c:url>">1:1 매칭 신청하기</a>
+                      	  
+                          <c:when test="${today le talent.deadLine }">
+                          
+	                          <c:if test="${infoOnetoOneMatching ne true }">
+		                          <a href="<c:url value='/matching/talent'>
+		                                <c:param name='talentId' value='${talent.talentId}'/>
+		                                 <c:param name='userId' value='${userId}'/>
+		                               </c:url>">1:1 매칭 신청하기</a>
+	                          </c:if>
+	                          <c:if test="${infoOnetoOneMatching eq true }">
+	                          	진행중인 1:1매칭이 있습니다.
+	                          </c:if>
+                          
                           </c:when>
                           <c:otherwise> <p>신청기한이 지났습니다.</p></c:otherwise>
                  	 </c:choose>

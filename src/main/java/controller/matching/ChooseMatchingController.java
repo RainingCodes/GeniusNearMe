@@ -36,7 +36,7 @@ public class ChooseMatchingController implements Controller {
 		
 		System.out.println("결과"+result);
 		
-		return "/member/ReceiveMatching";				// 사용자 보기 화면으로 이동
+		return "/member/OneMatching";				// 사용자 보기 화면으로 이동
     }
 	
 }

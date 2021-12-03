@@ -46,4 +46,8 @@ public class MatchingServiceImpl implements MatchingService{
 		// TODO Auto-generated method stub
 		return dao.checkMatching(talentId, userId);
 	}
+	
+	public boolean existWorkOnetoOneMatchingByTalentId(int userId, int talentId) {
+		return dao.existWorkOnetoOneMatchingByTalentId(userId, talentId);
+	}
 }

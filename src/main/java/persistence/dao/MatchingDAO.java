@@ -28,5 +28,8 @@ public interface MatchingDAO {
 	public int updateUserId(int groupId, int userId);
 	
 	public boolean checkMatching(int talentId, int userId);
+	
+	//진행중인 1:1매칭 확인 dao
+	public boolean existWorkOnetoOneMatchingByTalentId(int userId, int talentId);
 
 }

@@ -13,4 +13,5 @@ public interface MatchingService{
 	public int updateGroupId(int matchingId, int groupId);
 	public int updateUserId(int matchingId, int userId);
 	public boolean checkMatching(int talentId, int userId);
+	public boolean existWorkOnetoOneMatchingByTalentId(int userId, int talentId);
 }

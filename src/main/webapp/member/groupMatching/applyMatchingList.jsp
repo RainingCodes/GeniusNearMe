@@ -14,7 +14,6 @@
 	<table border = "1"  align="center">
 	<thead class="thead-inverse">
       	<tr>
-      		<td>매칭 id</td>
 		  <td>재능 제목</td>
 		  <td>매칭 상태</td>
 		  <td>매칭 정보</td>
@@ -25,7 +24,6 @@
 		<c:forEach var="li" items="${applyList}" varStatus="status">  	
 	  	
 	  	    <tr>
-	  	    <td>${li.matchingId }</td>
 			  <td>
 			  	<a href="<c:url value='/talent/view'>
 						   <c:param name='talentId' value='${li.talentId}'/>
