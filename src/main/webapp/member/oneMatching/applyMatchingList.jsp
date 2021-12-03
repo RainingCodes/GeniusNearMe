@@ -68,9 +68,7 @@
 					  		아직 리뷰 작성이 불가합니다
 					    </c:when>
 					    <c:when test="${state eq '1'}">
-					    	<a href="<c:url value='/talent/view'>
-					    	<c:param name='talentId' value='${li.talentId}'/>
-                               </c:url>">리뷰하기</a>
+					    	<a href="../talent/registerReviewForm.jsp?talentId=${li.talentId}">리뷰하기</a>
 					    </c:when>
 					    <c:when test="${state eq '2'}">
 					  		X

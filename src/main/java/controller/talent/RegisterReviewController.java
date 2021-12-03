@@ -47,7 +47,7 @@ public class RegisterReviewController implements Controller{
 		System.out.println("리뷰 생성 키: "+ key);
 		request.setAttribute("talentId", talentId);
 		
-		src = "/talent/reviewView";
+		src = "/talent/view.jsp"; 
 		
 		return src;
 	}

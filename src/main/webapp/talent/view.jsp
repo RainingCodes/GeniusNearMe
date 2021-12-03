@@ -216,7 +216,7 @@ $(document).ready(function () {
 		<jsp:include page="commentView.jsp">
 			<jsp:param name="commentTalentId" value="<%=talentId %>" />
 		</jsp:include>
-		<jsp:include page="reviewView.jsp">
+		<jsp:include page="reviewList.jsp">
 			<jsp:param name="talentId" value="<%=talentId %>" />
 			<jsp:param name="reviewList" value="${reviewList }" />
 		</jsp:include>
