@@ -206,11 +206,15 @@ $(document).ready(function () {
         <span><input type="button" name="groupBtn" value="공동 구매하기"></span>
 		<span><input type='button' name='commentBtn' value='문의'></span>
 		<span><input type='button' name='reviewBtn' value='리뷰'></span>
-		<jsp:include page="/talent/groupMatching.jsp">
+		<jsp:include page="groupMatching.jsp">
 			<jsp:param name="talentId" value="<%=talentId %>" />
 		</jsp:include>
 		<jsp:include page="commentView.jsp">
 			<jsp:param name="commentTalentId" value="<%=talentId %>" />
+		</jsp:include>
+		<jsp:include page="reviewView.jsp">
+			<jsp:param name="talentId" value="<%=talentId %>" />
+			<jsp:param name="reviewList" value="${reviewList }" />
 		</jsp:include>
 		<input type="hidden" name="select" id="select" />
 		
@@ -220,18 +224,7 @@ $(document).ready(function () {
     	    <input type="button" value="이전 페이지" onClick="history.go(-1)">
 
         </div>
-         <div id="review_container">
-        	<c:import url="reviewView.jsp">
-   				<c:param name="reviewList" value="${reviewList}" />
-   				<c:param name="talentId" value="${talent.talentId}" />
-			</c:import>
-        </div>
         
-        <!-- <div>
-			<form name="form" method="get" action="<c:url value='/talent/comment' />">
-				<input type="hidden" name="talentId" value="${talent.talentId}"/>
-				<input type="button" value="덧글 작성" onClick="submit()">
-			</form>
-		</div>-->
+     
     </body>
 </html>
