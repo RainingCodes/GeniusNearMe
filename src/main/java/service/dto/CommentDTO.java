@@ -1,6 +1,6 @@
 package service.dto;
 
-public class CommentDTO {
+public class CommentDTO implements Comparable<CommentDTO> {
 	private int commentId;
 	private int talentId;
 	private String content;
@@ -46,6 +46,10 @@ public class CommentDTO {
 	public String toString() {
 		return "CommentDTO [commentId=" + commentId + ", talentId=" + talentId + ", content=" + content + ", writerId="
 				+ writerId + "]";
+	}
+	@Override
+	public int compareTo(CommentDTO o) {
+		return Integer.compare(this.commentId, o.getCommentId());
 	}
 	
 	

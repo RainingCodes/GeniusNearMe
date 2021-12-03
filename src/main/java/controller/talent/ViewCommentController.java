@@ -1,6 +1,7 @@
 package controller.talent;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -46,6 +47,7 @@ public class ViewCommentController implements Controller {
     		
        		
 			List<CommentDTO> commentList = manager.CommentListByTalentId(talentId);
+			commentList.sort(Comparator.naturalOrder());
 			List<String> userNicekname = new ArrayList<String>();
     		
     		for (int i = 0; i < commentList.size(); i++) {

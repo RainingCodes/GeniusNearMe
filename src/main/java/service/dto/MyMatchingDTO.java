@@ -35,12 +35,11 @@ public class MyMatchingDTO  implements Comparable<MyMatchingDTO> {
 		return "MyMatchingDTO [matchingId=" + matchingId + ", talentId=" + talentId + ", talentTitle=" + talentTitle
 				+ ", matchingState=" + matchingState + "]";
 	}
+	@Override
+	public int compareTo(MyMatchingDTO o) {
+		return Integer.compare(this.matchingId, o.getMatchingId());
+	}
 	
 
-	public int compareTo(MyMatchingDTO dto) { 
-		int targetId = dto.getMatchingId();
-		if (matchingId == targetId) return 0;
-		else if (matchingId == targetId) return 1;
-		else return -1;
-	}
+	
 }
