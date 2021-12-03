@@ -26,7 +26,7 @@ public class ViewReviewController implements Controller{
 		request.setAttribute("reviewList", reviewList);
 		request.setAttribute("talentId", talentId);
 		
-		String src = "/talent/view";
+		String src = "/talent/view.jsp"; 
 		System.out.println(src);
 		
        return src;
