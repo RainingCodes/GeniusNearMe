@@ -76,35 +76,27 @@ public class ViewTalentController implements Controller{
 		TalentService talentService = new TalentServiceImpl();
 		TalentDTO talent = talentService.findTalent(talentId);
 		
-		GroupService gService = new GroupServiceImpl();
-		List<GroupDTO> groupList = gService.GroupList(talentId);
-		HashMap<Integer, Integer> memberChange = (HashMap<Integer, Integer>) request.getAttribute("memberChange");
-		if(memberChange != null) {
-			Iterator<Integer> keys = memberChange.keySet().iterator();
-			if(keys.hasNext()) {
-				int key = keys.next();
-				for(GroupDTO group : groupList)
-					if(group.getGroupId() == key)
-						group.setMembers(memberChange.get(key));
-			}
+		
+		int select = Integer.parseInt(request.getParameter("select"));
+		PriceService pService = new PriceServiceImpl();
+		List<PriceDTO> price = pService.PriceList(talentId);
+		String nickName = mService.getNicknameByUserId(talent.getWriterId());
+		
+		
+		request.setAttribute("talent", talent);		// 사용자 정보 저장
+		request.setAttribute("prices", price);
+		request.setAttribute("userId", userId);
+		request.setAttribute("nickName", nickName);
+		
+		
+		if(select == 1) {
+			return "/talent/group";
 		}
 			
-		HashMap<Integer, ArrayList<String>> groupMemberList = new HashMap<Integer, ArrayList<String>>();
-			for(int i = 0; i < groupList.size(); i++) {
-				int[] id = groupList.get(i).getUserId();
-				if(id != null) {
-					ArrayList<String> groupMembersNick = new ArrayList<>();
-					for(int j = 0; j < id.length; j++)
-						groupMembersNick.add(mService.getNicknameByUserId(id[j]));
-					groupMemberList.put(groupList.get(i).getGroupId(), groupMembersNick);
-				} 
-			}
 		
 		
-			String nickName = mService.getNicknameByUserId(talent.getWriterId());
+		
 			
-			PriceService pService = new PriceServiceImpl();
-			List<PriceDTO> price = pService.PriceList(talentId);
 			
 			WishService wService = new WishServiceImpl();
 			WishDTO wish = wService.getWish(talentId, userId);
@@ -114,16 +106,14 @@ public class ViewTalentController implements Controller{
 			else {
 				request.setAttribute("isAlreadyInWish","yes");
 			}
+			/*
 			ReviewService reviewService = new ReviewServiceImpl();
 			List<ReviewDTO> reviewList = reviewService.getReviewListByTalent(talentId);
 
 			request.setAttribute("reviewList", reviewList);
 				
-			request.setAttribute("talent", talent);		// 사용자 정보 저장
-			request.setAttribute("prices", price);
-			request.setAttribute("userId", userId);
-			request.setAttribute("nickName", nickName);
-			request.setAttribute("groupList", groupList);
+			*/
+			
 			
 			Date now = new Date();
 			request.setAttribute("today", now);

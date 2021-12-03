@@ -36,6 +36,7 @@ public class RequestMapping {
         mappings.put("/member/wishList", new WishListController());
         mappings.put("/member/deleteWish", new DeleteWishController());
         
+        mappings.put("/talent/group", new GroupController());
         mappings.put("/talent/register", new RegisterTalentController());
         mappings.put("/talent/view", new ViewTalentController());
         mappings.put("/talent/registerForm", new ForwardController("/talent/registerForm.jsp"));
@@ -45,7 +46,7 @@ public class RequestMapping {
         mappings.put("/talent/update", new UpdateTalentController());
         mappings.put("/talent/delete", new DeleteTalentController());
         
-        mappings.put("/talent/group", new ForwardController("/talent/groupMatching.jsp"));
+        mappings.put("/talent/group", new GroupController());
         mappings.put("/group/register", new CreateGroupController());
         mappings.put("/group/matching", new InsertGroupMemberController());
         mappings.put("/talent/comment", new ViewCommentController());

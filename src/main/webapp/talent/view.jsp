@@ -19,12 +19,14 @@ $(document).ready(function () {
 			  $("#group").show();
 			  $("#comment").hide();
 			  $("#review").hide();
+			  $("#select").val(check);
 	  });
 	  $(document).on("click", "input[name='commentBtn']", function () {
 		  	check = 2;
 		  	$("#comment").show();
 			$("#group").hide();
 			$("#review").hide();
+			$("#select").val(check);
 			
 	  });
 	  
@@ -33,6 +35,7 @@ $(document).ready(function () {
 		  	$("#review").show();
 			  $("#group").hide();
 			  $("#comment").hide();
+			  $("#select").val(check);
 	  });
 	  
 	});
@@ -209,6 +212,7 @@ $(document).ready(function () {
 		<jsp:include page="commentView.jsp">
 			<jsp:param name="commentTalentId" value="<%=talentId %>" />
 		</jsp:include>
+		<input type="hidden" name="select" id="select" />
 		
         <div align = "center">
         <br><br><br><br><br><br><br>
