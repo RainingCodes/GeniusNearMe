@@ -74,7 +74,7 @@ public class ViewTalentController implements Controller{
 		TalentService talentService = new TalentServiceImpl();
 		TalentDTO talent = talentService.findTalent(talentId);
 		
-		String select = request.getParameter("request");
+		String select = request.getParameter("select");
 		
 		
 		PriceService pService = new PriceServiceImpl();
@@ -115,7 +115,6 @@ public class ViewTalentController implements Controller{
 			/*
 			ReviewService reviewService = new ReviewServiceImpl();
 			List<ReviewDTO> reviewList = reviewService.getReviewListByTalent(talentId);
-
 			request.setAttribute("reviewList", reviewList);
 				
 			*/
