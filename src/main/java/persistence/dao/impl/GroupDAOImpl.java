@@ -59,19 +59,21 @@ public class GroupDAOImpl implements GroupDAO {
 	}
 
 	@Override
-	public int[] getGroupMembers(int groupId) {
+	public Integer[] getGroupMembers(int groupId) {
 		// TODO Auto-generated method stub
-		String MembersQuery = "SELECT GROUPMEMBERS.USERID "
+		String MembersQuery = "SELECT USERID "
 				+ "FROM GROUPMEMBERS "
 				+ "WHERE GROUPID=? ";
 		Object[] param = new Object[] { groupId };
 		jdbcUtil.setSqlAndParameters(MembersQuery, param);
 		
 		ResultSet rs = jdbcUtil.executeQuery();
+		ArrayList<Integer> list = new ArrayList<Integer>();
 		try {
 			while (rs.next()) {
-				
+				list.add(rs.getInt("USERID"));
 			}
+			return list.toArray(new Integer[list.size()]);
 		}catch (Exception e) {
 			jdbcUtil.rollback();
 			e.printStackTrace();

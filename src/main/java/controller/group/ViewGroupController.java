@@ -17,6 +17,8 @@ import service.dto.GroupDTO;
 
 public class ViewGroupController implements Controller {
 
+	private static final Object[] String = null;
+
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
@@ -26,19 +28,24 @@ public class ViewGroupController implements Controller {
 		
 		GroupService gService = new GroupServiceImpl();
 		List<GroupDTO> groupList = gService.GroupList(talentId);
-			
+		
+		HashMap<Integer, String[]> groupMemberList = new HashMap<Integer, String[]>();
+		
+		
 		for(int i = 0; i < groupList.size(); i++) {
-			int[] id = groupList.get(i).getUserId();
+			Integer[] id = gService.getGroupMembers(groupList.get(i).getGroupId());
 			if(id != null) {
-				ArrayList<String> groupMembersNick = new ArrayList<>();
-				for(int j = 0; j < id.length; j++)
+				ArrayList<String> groupMembersNick = new ArrayList<String>();
+				for(int j = 0; j < id.length; j++) {
 					groupMembersNick.add(mService.getNicknameByUserId(id[j]));
-				//groupMemberList.put(groupList.get(i).getGroupId(), groupMembersNick);'
+				}
+				groupMemberList.put(groupList.get(i).getGroupId(), groupMembersNick.toArray(new String[groupMembersNick.size()]));
 			} 
 		}
 		
 		request.setAttribute("talentId", talentId);
 		request.setAttribute("groupList", groupList);
+		request.setAttribute("groupMemberList", groupMemberList);
 		
 		return "/talent/review";
 	}

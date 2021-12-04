@@ -60,7 +60,7 @@ public class GroupServiceImpl implements GroupService {
 	}
 
 	@Override
-	public int[] getGroupMembers(int groupId) {
+	public Integer[] getGroupMembers(int groupId) {
 		// TODO Auto-generated method stub
 		return groupDao.getGroupMembers(groupId);
 	}

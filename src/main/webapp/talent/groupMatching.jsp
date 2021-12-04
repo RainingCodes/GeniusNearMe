@@ -61,23 +61,43 @@
 			<c:forEach var="group" items="${groupList}" varStatus="status">
 				<p>
 					<c:out value="${group.headCount}" />명 그룹 / 그룹 아이디 : <c:out value="${group.groupId }" /> <br>
-						<c:forEach var="a" begin="1" end="${group.headCount}">
-							<c:if test="${userId ne talent.writerId}">
-								<a href="<c:url value='/group/matching'>
-								<c:param name='talentId' value='${talent.talentId}'/>
-		                        <c:param name='groupId' value='${group.groupId }' />
-		                        </c:url>">그룹 매칭 신청하기 </a>
-		                    </c:if>
-						</c:forEach>
+						<c:set var="a" value="1" />
+						<c:if test="${groupMemberList.get(group.groupId) ne null }">
+							<c:forEach var="member" items="${groupMemberList.get(group.groupId) }">
+								<span><c:out value="${member }" /></span>
+								<c:set var="a"  value="${a + 1 }" />
+							</c:forEach>
+							
+							<!-- 
+							<c:forEach var="b" begin="${a}" end="${groupMemberList.get(group.groupId).length + 1}">
+								<c:if test="${matchingCheck ne true }">
+									<a href="<c:url value='/group/matching'>
+									<c:param name='talentId' value='${talent.talentId}'/>
+				                    <c:param name='groupId' value='${group.groupId }' />
+				                    </c:url>">그룹 매칭 신청하기 </a>
+			                    </c:if>
+		                    </c:forEach>
+		                     -->
+						</c:if>
+						<c:if test="${groupMemberList.get(group.groupId) eq null }">
+							<c:forEach var="a" begin="1" end="${group.headCount}">
+								<c:if test="${userId ne talent.writerId}">
+									<a href="<c:url value='/group/matching'>
+									<c:param name='talentId' value='${talent.talentId}'/>
+			                        <c:param name='groupId' value='${group.groupId }' />
+			                        </c:url>">그룹 매칭 신청하기 </a>
+			                    </c:if>
+							</c:forEach>
+						</c:if>
 				</p>
 			</c:forEach>
-		</form>
 		<c:if test="${userId eq talent.writerId }">
-			<a herf="<c:url value='/group/update'>
+			<a href="<c:url value='/group/update'>
 					<c:param name='talentId' value='${talent.talentId}'/>
 				    <c:param name='userId' value='${talent.writerId }'/>
 				  </c:url>">그룹 수정하기</a>
 		</c:if>
+		</form>
 	</c:if>
 </c:if>
 </div>

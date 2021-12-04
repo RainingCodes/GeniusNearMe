@@ -12,6 +12,6 @@ public interface GroupService {
 	public int deleteGroupMember(int groupId, int userId);
 	public int deleteGroup(int groupId);
 	public int setRepresentative(int groupId, int userId);
-	public int[] getGroupMembers(int groupId);
+	public Integer[] getGroupMembers(int groupId);
 	public int updateCurrent(int groupId);
 }

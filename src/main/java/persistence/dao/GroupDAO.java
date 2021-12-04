@@ -5,7 +5,7 @@ import service.dto.GroupDTO;
 
 public interface GroupDAO {
 	public int insertGroup(GroupDTO group);
-	public int[] getGroupMembers(int groupId);
+	public Integer[] getGroupMembers(int groupId);
 	public int insertGroupMember(int groupId, int talentId, int userId);
 	public int setRepresentative(int groupId, int userId);
 	public List<GroupDTO> getGroupList(int talentId);
