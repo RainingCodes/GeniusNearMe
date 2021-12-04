@@ -26,6 +26,7 @@ public class RegisterReviewController implements Controller{
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		int talentId = Integer.parseInt(request.getParameter("talentId"));
+		int matchingId = Integer.parseInt(request.getParameter("matchingId"));
 		
 		String email = UserSessionUtils.getLoginUserId(request.getSession());
 		MemberService memberService = new MemberServiceImpl();
@@ -36,7 +37,8 @@ public class RegisterReviewController implements Controller{
 				0,
 				userId,
 				talentId,
-				request.getParameter("content")
+				request.getParameter("content"),
+				matchingId
 		);
 		
 		log.debug("RegisterReviewController Request : {}", review);
@@ -47,7 +49,7 @@ public class RegisterReviewController implements Controller{
 		System.out.println("리뷰 생성 키: "+ key);
 		request.setAttribute("talentId", talentId);
 		
-		src = "/talent/view.jsp"; 
+		src = "/talent/view"; 
 		
 		return src;
 	}
