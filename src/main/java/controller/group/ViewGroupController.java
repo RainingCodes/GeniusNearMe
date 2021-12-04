@@ -33,7 +33,7 @@ public class ViewGroupController implements Controller {
 				ArrayList<String> groupMembersNick = new ArrayList<>();
 				for(int j = 0; j < id.length; j++)
 					groupMembersNick.add(mService.getNicknameByUserId(id[j]));
-				//groupMemberList.put(groupList.get(i).getGroupId(), groupMembersNick);
+				//groupMemberList.put(groupList.get(i).getGroupId(), groupMembersNick);'
 			} 
 		}
 		

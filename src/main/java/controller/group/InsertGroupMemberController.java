@@ -33,12 +33,12 @@ public class InsertGroupMemberController implements Controller {
 
 		MatchingService mService = new MatchingServiceImpl();
 		GroupService gService = new GroupServiceImpl();
-		GroupDTO group = gService.getGroup(groupId, talentId);
+		GroupDTO group = gService.getGroup(groupId);
 
 		MemberService m2Service = new MemberServiceImpl();
 		
 		if(group.getMembers() == 0) {
-			gService.setRepresentative(groupId, talentId, userId);
+			gService.setRepresentative(groupId, userId);
 			int result1 = mService.updateUserId(groupId, userId);
 			System.out.println("이건 되는 건지요" + result1);
 		}
