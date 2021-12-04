@@ -184,6 +184,7 @@ public class ReviewDAOImpl implements ReviewDAO{
 				dto.setWriterId(rs.getInt("WRITERID"));
 				dto.setTalentId(rs.getInt("TALENTID"));
 				dto.setReviewContent(rs.getString("REVIEWCONTENT"));
+				dto.setMatchingId(rs.getInt("MATCHINGID"));
 
 				list.add(dto);
 			}
