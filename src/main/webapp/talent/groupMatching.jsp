@@ -93,10 +93,15 @@
 				</p>
 			</c:forEach>
 		<c:if test="${userId eq talent.writerId }">
-			<a href="<c:url value='/group/update'>
-					<c:param name='talentId' value='${talent.talentId}'/>
-				    <c:param name='userId' value='${talent.writerId }'/>
-				  </c:url>">그룹 수정하기</a>
+			<c:if test="${a eq null}">
+				<a href="<c:url value='/group/update'>
+						<c:param name='talentId' value='${talent.talentId}'/>
+					    <c:param name='userId' value='${talent.writerId }'/>
+					  </c:url>">그룹 수정하기</a>
+			</c:if>
+			<c:if test="${a ne null }">
+				매칭 신청한 사람이 있으므로 그룹 수정이 불가합니다.
+			</c:if>
 		</c:if>
 		</form>
 	</c:if>

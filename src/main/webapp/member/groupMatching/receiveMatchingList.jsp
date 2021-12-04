@@ -18,11 +18,14 @@
       	<tr>
 		  <td>재능 제목</td>
 		  <td>매칭 대표자</td>
+		  <td>신청 인원</td>
+		  <td>그룹 정원</td>
 		  <td>재능 상태</td>
 		  <td>매칭 결정하기</td>
 		</tr>
       </thead>
       <tbody> 
+      	<c:set var="a" value="0" />
 		<c:forEach var="li" items="${receiveList}" varStatus="status">
 	  	    <tr>
 			  <td>
@@ -33,6 +36,12 @@
 			  </td>
 			  <td>
 			  	${nickList[status.index] }
+			  </td>
+			  <td>
+			  	<c:out value="${headList.get(receiveGroupIds.get(a))[0]}" /> 명
+			  </td>
+			  <td>
+			  	<c:out value="${headList.get(receiveGroupIds.get(a))[1]}" /> 명
 			  </td>
 			  <td>
 				<c:set var="state" value="${li.matchingState}" />
@@ -49,30 +58,36 @@
 				</c:choose>
 			  </td>
 			  <td>
-				<c:choose>
-				  	<c:when test="${state eq '0'}">
-				  		<form name="form1" method="POST" action="<c:url value='/matching/choose' />">
-				  			<input type="hidden" name="matchingId" value="${li.matchingId}">
-				  			<input type="hidden" name="talentId" value="${li.talentId}">
-				  			<input type="hidden" name="state" value="decideMatching">
-				  			<button type="submit">매칭 수락</button>
-				  		</form>
-				  		<form name="form2" method="POST" action="<c:url value='/matching/choose' />">
-				  			<input type="hidden" name="matchingId" value="${li.matchingId}">
-				  			<input type="hidden" name="talentId" value="${li.talentId}">
-				  			<input type="hidden" name="state" value="denyMatching">
-				  			<button type="submit">매칭 거절</button>
-				  		</form>
-				    </c:when>
-				    <c:when test="${state eq '1'}">
-				  		매칭 성공
-				    </c:when>
-				    <c:when test="${state eq '2'}">
-				  		매칭 거절
-				    </c:when>
-				</c:choose>
+			  	<c:if test="${headList.get(receiveGroupIds.get(a))[0] == headList.get(receiveGroupIds.get(a))[1] }">
+					<c:choose>
+					  	<c:when test="${state eq '0'}">
+					  		<form name="form1" method="POST" action="<c:url value='/matching/choose' />">
+					  			<input type="hidden" name="matchingId" value="${li.matchingId}">
+					  			<input type="hidden" name="talentId" value="${li.talentId}">
+					  			<input type="hidden" name="state" value="decideMatching">
+					  			<button type="submit">매칭 수락</button>
+					  		</form>
+					  		<form name="form2" method="POST" action="<c:url value='/matching/choose' />">
+					  			<input type="hidden" name="matchingId" value="${li.matchingId}">
+					  			<input type="hidden" name="talentId" value="${li.talentId}">
+					  			<input type="hidden" name="state" value="denyMatching">
+					  			<button type="submit">매칭 거절</button>
+					  		</form>
+					    </c:when>
+					    <c:when test="${state eq '1'}">
+					  		매칭 성공
+					    </c:when>
+					    <c:when test="${state eq '2'}">
+					  		매칭 거절
+					    </c:when>
+					</c:choose>
+				</c:if>
+				<c:if test="${headList.get(receiveGroupIds.get(a))[0] != headList.get(receiveGroupIds.get(a))[1] }">
+					아직 매칭 신청 인원이 다 차지 않았습니다.
+				</c:if>
 			  </td>
 			</tr>
+			<c:set var="a" value="${a + 1 }" />
 		 </c:forEach>
 		</tbody>
 	</table>		  	 
