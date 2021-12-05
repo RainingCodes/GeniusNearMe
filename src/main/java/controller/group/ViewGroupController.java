@@ -44,7 +44,6 @@ public class ViewGroupController implements Controller {
 				userIdList.put(groupList.get(i).getGroupId(), id);
 			} 
 		}
-		System.out.println(userIdList.get(0)[0]);
 		request.setAttribute("talentId", talentId);
 		request.setAttribute("groupList", groupList);
 		request.setAttribute("groupMemberList", groupMemberList);
