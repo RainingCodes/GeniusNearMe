@@ -20,7 +20,7 @@
 		  <td>매칭 대표자</td>
 		  <td>신청 인원</td>
 		  <td>그룹 정원</td>
-		  <td>재능 상태</td>
+		  <td>매칭 상태</td>
 		  <td>매칭 결정하기</td>
 		</tr>
       </thead>
@@ -62,12 +62,14 @@
 					<c:choose>
 					  	<c:when test="${state eq '0'}">
 					  		<form name="form1" method="POST" action="<c:url value='/matching/choose' />">
+					  			<input type="hidden" name="group" value="true">
 					  			<input type="hidden" name="matchingId" value="${li.matchingId}">
 					  			<input type="hidden" name="talentId" value="${li.talentId}">
 					  			<input type="hidden" name="state" value="decideMatching">
 					  			<button type="submit">매칭 수락</button>
 					  		</form>
 					  		<form name="form2" method="POST" action="<c:url value='/matching/choose' />">
+					  			<input type="hidden" name="group" value="true">
 					  			<input type="hidden" name="matchingId" value="${li.matchingId}">
 					  			<input type="hidden" name="talentId" value="${li.talentId}">
 					  			<input type="hidden" name="state" value="denyMatching">

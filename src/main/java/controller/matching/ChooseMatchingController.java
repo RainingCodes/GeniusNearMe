@@ -24,6 +24,7 @@ public class ChooseMatchingController implements Controller {
 		//int talentId = Integer.parseInt(request.getParameter("talentId"));
 		int matchingId = Integer.parseInt(request.getParameter("matchingId"));
 		String option = request.getParameter("state");
+		String group = request.getParameter("group");
 		
 		MatchingService mService = new MatchingServiceImpl();
 		int result = -1;
@@ -35,6 +36,9 @@ public class ChooseMatchingController implements Controller {
 		}
 		
 		System.out.println("결과"+result);
+		
+		if(group != null)
+			return "/member/GroupMatching";
 		
 		return "/member/OneMatching";				// 사용자 보기 화면으로 이동
     }

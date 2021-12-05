@@ -15,6 +15,9 @@
 	<thead class="thead-inverse">
       	<tr>
 		  <td>재능 제목</td>
+		  <td>매칭 대표자</td>
+		  <td>신청 인원</td>
+		  <td>그룹 정원</td>
 		  <td>매칭 상태</td>
 		  <td>매칭 정보</td>
 		  <td>리뷰</td>
@@ -29,6 +32,15 @@
 						   <c:param name='talentId' value='${li.talentId}'/>
 				 		 </c:url>">		
 				${li.talentTitle}</a>
+			  </td>
+			  <td>
+			  	${nickList2[status.index] }
+			  </td>
+			  <td>
+			  	<c:out value="${headList2.get(applyGroupIds.get(a))[0]}" /> 명
+			  </td>
+			  <td>
+			  	<c:out value="${headList2.get(applyGroupIds.get(a))[1]}" /> 명
 			  </td>
 			  <td>
 				<c:set var="state" value="${li.matchingState}" />

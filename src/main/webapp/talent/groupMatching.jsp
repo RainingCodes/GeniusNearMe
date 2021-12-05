@@ -15,7 +15,7 @@
 				alert("더 이상 추가할 수 없습니다.");
 			else {
 				inGroup[thisGroup]++;
-				$(this).before("<p>" + "그룹" +inGroup[thisGroup] + "</p>");
+				$(this).before("<p id='info"+ cnt + "'>" + "그룹" +inGroup[thisGroup] + "</p>");
 				if(inGroup[thisGroup] == 1)
 					$(this).before("<input type='hidden' name='group" + head[thisGroup] + "' id='group" + head[thisGroup] + "' value='"+ inGroup[thisGroup] + "'>");
 				else
@@ -36,7 +36,7 @@
 							<c:out value="${price.headCount}" />명 그룹 리스트
 							<script>
 								head[i++] = "${price.headCount}";
-								document.write("<input type='button' name='add' value='추가하기' id='" + cnt +"' >");
+								document.write("<input type='button' name='add' value='추가하기'>");
 								cnt++;
 							</script>
 						</p> 
@@ -97,10 +97,7 @@
 				<a href="<c:url value='/group/update'>
 						<c:param name='talentId' value='${talent.talentId}'/>
 					    <c:param name='userId' value='${talent.writerId }'/>
-					  </c:url>">그룹 수정하기</a>
-			</c:if>
-			<c:if test="${a ne null }">
-				매칭 신청한 사람이 있으므로 그룹 수정이 불가합니다.
+					  </c:url>">그룹 관리하기</a>
 			</c:if>
 		</c:if>
 		</form>
