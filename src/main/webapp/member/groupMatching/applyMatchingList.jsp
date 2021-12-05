@@ -17,6 +17,7 @@
 		  <td>재능 제목</td>
 		  <td>매칭 대표자</td>
 		  <td>신청 인원</td>
+		  <td>그룹원</td>
 		  <td>그룹 정원</td>
 		  <td>매칭 상태</td>
 		  <td>매칭 정보</td>
@@ -25,7 +26,7 @@
       </thead>
       <tbody> 
 		<c:forEach var="li" items="${applyList}" varStatus="status">  	
-	  	
+	  	<c:set var="a" value="0" />
 	  	    <tr>
 			  <td>
 			  	<a href="<c:url value='/talent/view'>
@@ -38,6 +39,22 @@
 			  </td>
 			  <td>
 			  	<c:out value="${headList2.get(applyGroupIds.get(a))[0]}" /> 명
+			  </td>
+			  <td>
+				  <c:set var="b" value="0" />
+				  <c:forEach var="member" items="${groupMemberList2.get(applyGroupIds.get(a)) }">
+					  <c:out value="${member}" />
+					  <br>
+					  <c:if test="${member ne nickname }">
+						  <a href="<c:url value='/message'>
+						  			<c:param name="senderId" value="${userId}" />
+						  			<c:param name="receiverId" value="${userIdList2.get(applyGroupIds.get(a))[b]}" />
+									</c:url>">
+									쪽지 보내기</a>
+						  <br>
+					  </c:if>
+					  <c:set var="b" value="${b + 1 }" />
+				  </c:forEach>
 			  </td>
 			  <td>
 			  	<c:out value="${headList2.get(applyGroupIds.get(a))[1]}" /> 명
@@ -93,6 +110,7 @@
 			  		</c:choose>
 			  </td>
 			</tr>
+			<c:set var="a" value="${a + 1 }" />
 		 </c:forEach>
 		</tbody>
 	</table>		  	 

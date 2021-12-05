@@ -47,6 +47,8 @@ public class MyGroupMatchingListController implements Controller {
 		List<Integer> receiveGroupIds = new ArrayList<Integer>();
 		List<Integer> applyGroupIds = new ArrayList<Integer>();
 		HashMap<Integer, String[]> groupMemberList = new HashMap<Integer, String[]>();
+		HashMap<Integer, Integer[]> userIdList = new HashMap<Integer, Integer[]>();
+		HashMap<Integer, Integer[]> userIdList2 = new HashMap<Integer, Integer[]>();
 		HashMap<Integer, String[]> groupMemberList2 = new HashMap<Integer, String[]>();
 		HashMap<Integer, Integer[]> headList = new HashMap<Integer, Integer[]>(); 
 		HashMap<Integer, Integer[]> headList2 = new HashMap<Integer, Integer[]>(); 
@@ -80,6 +82,7 @@ public class MyGroupMatchingListController implements Controller {
 		    				for(int k = 0; k< id.length; k++) {
 		    					groupMembersNick.add(manager.getNicknameByUserId(id[k]));
 		    				}
+		    				userIdList2.put(groupList.get(j).getGroupId(), id);
 		    				groupMemberList2.put(groupList.get(j).getGroupId(), groupMembersNick.toArray(new String[groupMembersNick.size()]));
 		    				headList2.put(groupList.get(j).getGroupId(), head);;
 		    			} 
@@ -135,6 +138,7 @@ public class MyGroupMatchingListController implements Controller {
 		    				for(int k = 0; k< id.length; k++) {
 		    					groupMembersNick.add(manager.getNicknameByUserId(id[k]));
 		    				}
+		    				userIdList.put(groupList.get(j).getGroupId(), id);
 		    				groupMemberList.put(groupList.get(j).getGroupId(), groupMembersNick.toArray(new String[groupMembersNick.size()]));
 		    				headList.put(groupList.get(j).getGroupId(), head);
 		    			} 
@@ -160,6 +164,7 @@ public class MyGroupMatchingListController implements Controller {
     	request.setAttribute("groupMemberList", groupMemberList);
     	request.setAttribute("headList", headList);
     	request.setAttribute("receiveGroupIds", receiveGroupIds);
+    	request.setAttribute("userIdList", userIdList);
     	
     	//apply 신청
     	request.setAttribute("applyList", myApplyMatchingInfo);		// 사용자 정보 저장	
@@ -168,6 +173,7 @@ public class MyGroupMatchingListController implements Controller {
     	request.setAttribute("groupMemberList2", groupMemberList2);
     	request.setAttribute("matchingWriterInfo", matchingWriterInfo);
     	request.setAttribute("applyGroupIds", applyGroupIds);
+    	request.setAttribute("userIdList2", userIdList2);
     	
     	request.setAttribute("userId", userId);
     	request.setAttribute("writtenReview", writtenReview);

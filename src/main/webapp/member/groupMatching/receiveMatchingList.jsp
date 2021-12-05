@@ -6,8 +6,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>내가 받은 매칭 리스트</title>
 </head>
-<script>
-</script>
 <body>
 <div id="receive">
 <div>   
@@ -19,6 +17,7 @@
 		  <td>재능 제목</td>
 		  <td>매칭 대표자</td>
 		  <td>신청 인원</td>
+		  <td>그룹원</td>
 		  <td>그룹 정원</td>
 		  <td>매칭 상태</td>
 		  <td>매칭 결정하기</td>
@@ -39,6 +38,21 @@
 			  </td>
 			  <td>
 			  	<c:out value="${headList.get(receiveGroupIds.get(a))[0]}" /> 명
+			  </td>
+			  <td>
+			  	<c:set var="b" value="0" />
+				<c:forEach var="member" items="${groupMemberList.get(receiveGroupIds.get(a)) }">
+				  	<c:out value="${member}" />
+				  	<br>
+					<a href="<c:url value='/message'>
+						<c:param name="senderId" value="${userId}" />
+							<c:param name="receiverId" value="${userIdList.get(receiveGroupIds.get(a))[b] }" />
+						</c:url>">
+						쪽지 보내기
+					</a>
+					<br>
+					<c:set var="b" value="${b + 1 }" />
+				</c:forEach>
 			  </td>
 			  <td>
 			  	<c:out value="${headList.get(receiveGroupIds.get(a))[1]}" /> 명
