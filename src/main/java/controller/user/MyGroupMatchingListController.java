@@ -17,6 +17,8 @@ import service.GroupService;
 import service.GroupServiceImpl;
 import service.MemberService;
 import service.MemberServiceImpl;
+import service.ReviewService;
+import service.ReviewServiceImpl;
 import service.dto.GroupDTO;
 import service.dto.MemberDTO;
 import service.dto.MyMatchingDTO;
@@ -31,7 +33,7 @@ public class MyGroupMatchingListController implements Controller {
             return "redirect:/member/login/form";		// login form 요청으로 redirect
         }
     	
-    	
+		ReviewService review = new ReviewServiceImpl();
     	MemberService manager = new MemberServiceImpl();
     	GroupService gService = new GroupServiceImpl();
 		String email = UserSessionUtils.getLoginUserId(request.getSession());
@@ -50,6 +52,7 @@ public class MyGroupMatchingListController implements Controller {
 		HashMap<Integer, Integer[]> headList2 = new HashMap<Integer, Integer[]>(); 
 		Integer[] head = null;
 		List<String> ApplyUserNicekname = null;
+		List<Integer> writtenReview = new ArrayList<>();
 		
     	try {
     		myApplyMatchingInfo =  manager.ListingApplyMyGroupMatchingByUserId(userId);	// 사용자 정보 검색
@@ -91,6 +94,12 @@ public class MyGroupMatchingListController implements Controller {
     			String nickname = manager.getNicknameByUserId(mUserId);
     			ApplyUserNicekname.add(nickname);
     			matchingWriterInfo.add(m);
+    			
+    			int matchingId = myApplyMatchingInfo.get(i).getMatchingId();
+    			   
+    			System.out.println(review.isAlreadyWritten(matchingId, userId));
+    			int result = review.isAlreadyWritten(matchingId, userId);
+    			writtenReview.add(result);
     		}
     		
     		
@@ -160,6 +169,8 @@ public class MyGroupMatchingListController implements Controller {
     	request.setAttribute("matchingWriterInfo", matchingWriterInfo);
     	request.setAttribute("applyGroupIds", applyGroupIds);
     	
+    	request.setAttribute("userId", userId);
+    	request.setAttribute("writtenReview", writtenReview);
     	
 		return "/member/groupMatching/viewGroupMatchingList.jsp";				// 사용자 보기 화면으로 이동
 	}

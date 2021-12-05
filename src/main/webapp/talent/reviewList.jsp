@@ -17,12 +17,12 @@
 		border : 1px solid;
 	}
 </style>
-<div id="review">
+<div id="review" align="center">
 	<h4>리뷰 목록</h4>
-		<c:forEach var="review" items="${reviewList }">
+		<c:forEach var="review" items="${reviewList }" varStatus="status">
 			<div class="view">
 			<p>${review.reviewContent }</p>
-			<p>작성자ID: ${review.writerId }</p>
+			<p>작성자ID: ${nick[status.index] }</p>
 			<p>작성일: ${review.writtenDate }
 			</div>
 		</c:forEach>

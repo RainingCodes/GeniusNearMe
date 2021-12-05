@@ -8,6 +8,8 @@
 <title>리뷰 등록창</title>
 </head>
 <body>
+<div align="center">
+	<h1>리뷰 등록하기</h1>
 		<% 
 			String talentId = request.getParameter("talentId");
 			String matchingId = request.getParameter("matchingId");
@@ -18,5 +20,6 @@
 			 <input type="hidden" name="matchingId" value="<%=matchingId%>">
 			 <input type="button" value="등록" onClick="submit()">
 		</form>
+</div>
 </body>
 </html>
