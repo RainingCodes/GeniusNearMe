@@ -15,7 +15,7 @@
 				alert("더 이상 추가할 수 없습니다.");
 			else {
 				inGroup[thisGroup]++;
-				$(this).before("<p id='info"+ cnt + "'>" + "그룹" +inGroup[thisGroup] + "</p>");
+				$(this).before("<p>" + "그룹" +inGroup[thisGroup] + "</p>");
 				if(inGroup[thisGroup] == 1)
 					$(this).before("<input type='hidden' name='group" + head[thisGroup] + "' id='group" + head[thisGroup] + "' value='"+ inGroup[thisGroup] + "'>");
 				else
@@ -36,14 +36,13 @@
 							<c:out value="${price.headCount}" />명 그룹 리스트
 							<script>
 								head[i++] = "${price.headCount}";
-								document.write("<input type='button' name='add' value='추가하기'>");
+								document.write("<input type='button' name='add' value='추가하기' id='" + cnt +"' >");
 								cnt++;
 							</script>
 						</p> 
 					</c:if>
 				</p>
 			</c:forEach>
-			
 			<script>
 				var inGroup = new Array(cnt);
 				for(var i = 0; i< inGroup.length; i++)
@@ -70,12 +69,10 @@
 							<c:if test="${matchingCheck ne true }">
 								<c:if test="${userId ne talent.writerId}">
 									<c:if test="${a < group.headCount + 1 }">
-										<c:forEach var="b" begin="${a}" end="${group.headCount }">
 											<a href="<c:url value='/group/matching'>
 											<c:param name='talentId' value='${talent.talentId}'/>
 					                        <c:param name='groupId' value='${group.groupId }' />
 					                        </c:url>">그룹 매칭 신청하기 </a>
-										</c:forEach>
 									</c:if>
 								</c:if>
 							</c:if>
@@ -92,14 +89,7 @@
 						</c:if>
 				</p>
 			</c:forEach>
-		<c:if test="${userId eq talent.writerId }">
-			<c:if test="${a eq null}">
-				<a href="<c:url value='/group/update'>
-						<c:param name='talentId' value='${talent.talentId}'/>
-					    <c:param name='userId' value='${talent.writerId }'/>
-					  </c:url>">그룹 관리하기</a>
-			</c:if>
-		</c:if>
+		
 		</form>
 	</c:if>
 </c:if>
