@@ -195,4 +195,36 @@ public class ReviewDAOImpl implements ReviewDAO{
 			jdbcUtil.close();
 		}return null;
 	}
+	
+	public int isAlreadyWritten(int matchingId, int writerId) {
+		int result = 0;
+		String searchQuery = query + "FROM REVIEW WHERE MATCHINGID = ? AND WRITERID = ? ";
+		
+		Object[] param = new Object[] {matchingId, writerId};
+		jdbcUtil.setSql(searchQuery);
+		jdbcUtil.setParameters(param);
+		
+		try {
+			ResultSet rs = jdbcUtil.executeQuery();
+			
+			if(rs.next()) {
+				ReviewDTO dto = new ReviewDTO();
+				dto.setReviewId(rs.getInt("REVIEWID"));
+				dto.setWrittenDate(rs.getDate("WRITTENDATE"));
+				dto.setLikes(rs.getInt("LIKES"));
+				dto.setWriterId(rs.getInt("WRITERID"));
+				dto.setTalentId(rs.getInt("TALENTID"));
+				dto.setReviewContent(rs.getString("REVIEWCONTENT"));
+				dto.setMatchingId(rs.getInt("MATCHINGID"));
+				
+				result = 1;
+			}
+
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			jdbcUtil.close();
+		}
+		return result;
+	}
 }

@@ -45,4 +45,9 @@ public class ReviewServiceImpl implements ReviewService{
 		return dao.getReviewListByTalent(talentId);
 	}
 
+	@Override
+	public int isAlreadyWritten(int matchingId, int writerId) {
+		return dao.isAlreadyWritten(matchingId, writerId);
+	}
+
 }

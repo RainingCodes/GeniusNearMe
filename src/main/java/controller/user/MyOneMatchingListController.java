@@ -14,6 +14,8 @@ import org.slf4j.LoggerFactory;
 import controller.Controller;
 import service.MemberService;
 import service.MemberServiceImpl;
+import service.ReviewService;
+import service.ReviewServiceImpl;
 import service.dto.MemberDTO;
 import service.dto.MyMatchingDTO;
 
@@ -27,7 +29,7 @@ public class MyOneMatchingListController implements Controller {
             return "redirect:/member/login/form";		// login form 요청으로 redirect
         }
     	
-    	
+		ReviewService review = new ReviewServiceImpl();
     	MemberService manager = new MemberServiceImpl();
 		String email = UserSessionUtils.getLoginUserId(request.getSession());
 		
@@ -36,6 +38,7 @@ public class MyOneMatchingListController implements Controller {
 		int userId = manager.getuserIdByEmail(email);
 		List<MyMatchingDTO> myApplyMatchingInfo = null;
 		List<MemberDTO> matchingWriterInfo = null; // 매칭글 작성자 info를 가져오기 위해 이렇게 짬
+		List<Integer> writtenReview = new ArrayList<>();
     	
     	try {
     		myApplyMatchingInfo =  manager.ListingApplyMyOneMatchingByUserId(userId);	// 사용자 정보 검색
@@ -50,6 +53,12 @@ public class MyOneMatchingListController implements Controller {
         		//유저Id 바탕으로 member Info 가져오기
     			MemberDTO m = manager.getMember(writerId);
     			matchingWriterInfo.add(m);
+    			
+    			int matchingId = myApplyMatchingInfo.get(i).getMatchingId();
+   
+    			System.out.println(review.isAlreadyWritten(matchingId, userId));
+    			int result = review.isAlreadyWritten(matchingId, userId);
+    			writtenReview.add(result);
     		}
     		
     		
@@ -92,6 +101,9 @@ public class MyOneMatchingListController implements Controller {
     	//apply 신청
     	request.setAttribute("applyList", myApplyMatchingInfo);		// 사용자 정보 저장	
     	request.setAttribute("matchingWriterInfo", matchingWriterInfo);
+    	
+    	request.setAttribute("userId", userId);
+    	request.setAttribute("writtenReview", writtenReview);
     	
 		return "/member/oneMatching/viewOneMatchingList.jsp";				// 사용자 보기 화면으로 이동
 	}

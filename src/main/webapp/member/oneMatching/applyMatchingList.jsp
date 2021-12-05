@@ -68,7 +68,14 @@
 					  		아직 리뷰 작성이 불가합니다
 					    </c:when>
 					    <c:when test="${state eq '1'}">
-					    	<a href="../talent/registerReviewForm.jsp?talentId=${li.talentId}&matchingId=${li.matchingId}">리뷰하기</a>
+						    <c:choose>
+						    	<c:when test="${writtenReview[status.index] eq '0' }">
+						    		<a href="../talent/registerReviewForm.jsp?talentId=${li.talentId}&matchingId=${li.matchingId}">리뷰하기</a>
+						    	</c:when>
+						    	<c:otherwise>
+						    		리뷰가 이미 작성되었습니다.
+						    	</c:otherwise>
+						    </c:choose>
 					    </c:when>
 					    <c:when test="${state eq '2'}">
 					  		X
