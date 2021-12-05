@@ -30,6 +30,7 @@ public class ViewGroupController implements Controller {
 		List<GroupDTO> groupList = gService.GroupList(talentId);
 		
 		HashMap<Integer, String[]> groupMemberList = new HashMap<Integer, String[]>();
+		HashMap<Integer, Integer[]> userIdList = new HashMap<Integer, Integer[]>();
 		
 		
 		for(int i = 0; i < groupList.size(); i++) {
@@ -40,12 +41,14 @@ public class ViewGroupController implements Controller {
 					groupMembersNick.add(mService.getNicknameByUserId(id[j]));
 				}
 				groupMemberList.put(groupList.get(i).getGroupId(), groupMembersNick.toArray(new String[groupMembersNick.size()]));
+				userIdList.put(groupList.get(i).getGroupId(), id);
 			} 
 		}
-		
+		System.out.println(userIdList.get(0)[0]);
 		request.setAttribute("talentId", talentId);
 		request.setAttribute("groupList", groupList);
 		request.setAttribute("groupMemberList", groupMemberList);
+		request.setAttribute("userIdList",  userIdList);
 		
 		return "/talent/review";
 	}
