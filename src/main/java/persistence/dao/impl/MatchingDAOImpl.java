@@ -215,9 +215,10 @@ public class MatchingDAOImpl implements MatchingDAO {
 		@Override
 		public boolean checkMatching(int talentId, int userId) {
 			// TODO Auto-generated method stub
-			String checkMatchingQuery = "SELECT MATCHINGID FROM MATCHING M, TALENT T "
-					+ "WHERE M.TALENTID=T.TALENTID AND T.WRITERID!=? AND M.TALENTID=? AND M.USERID=? AND MATCHINGSTATE=0 ";
-			Object[] param = new Object[] {userId, talentId, userId};
+			String checkMatchingQuery = "SELECT M.MATCHINGID FROM MATCHING M, TALENT T, GROUPING G, GROUPMEMBERS GM "
+					+ "WHERE M.TALENTID=T.TALENTID AND T.WRITERID!=? AND M.TALENTID=? AND MATCHINGSTATE=0 AND "
+					+ "(M.USERID=? OR (G.MATCHINGID=M.MATCHINGID AND G.GROUPID=GM.GROUPID AND GM.USERID=?))";
+			Object[] param = new Object[] {userId, talentId, userId, userId};
 			jdbcUtil.setSqlAndParameters(checkMatchingQuery, param);
 			try {
 				ResultSet rs = jdbcUtil.executeQuery();
