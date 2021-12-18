@@ -62,13 +62,14 @@ public class MyGroupMatchingListController implements Controller {
     		matchingWriterInfo = new ArrayList<MemberDTO>();
     		
     		ApplyUserNicekname = new ArrayList<String>();
+    		ArrayList<GroupDTO> groupList = new ArrayList<GroupDTO>();
     		
     		for (int i = 0; i < myApplyMatchingInfo.size(); i++) {
     			//탤런트Id로 writerId 불러오기
     			int writerId = manager.getWriterIdByTalentId(myApplyMatchingInfo.get(i).getTalentId());
     			int mId = myApplyMatchingInfo.get(i).getMatchingId();
     			
-    			List<GroupDTO> groupList = gService.GroupList(myApplyMatchingInfo.get(i).getTalentId());
+    			groupList.add(gService.getGroup(myApplyMatchingInfo.get(i).getGroupId()));
     			
     			for(int j = 0; j < groupList.size(); j++) {
 	    			Integer[] id = gService.getGroupMembers(groupList.get(j).getGroupId());
@@ -88,8 +89,9 @@ public class MyGroupMatchingListController implements Controller {
 		    			} 
 	    			}
 	    		}
-    			for(int j = 0; j < headList2.size(); j++)
-        			System.out.println(headList2.get(i) + "오로롤ㄹ");
+    			for(int j = 0; j < applyGroupIds.size(); j++) {
+    				System.out.println(applyGroupIds.get(j));
+    			}
     			
         		//유저Id 바탕으로 member Info 가져오기
     			MemberDTO m = manager.getMember(writerId);
@@ -120,19 +122,21 @@ public class MyGroupMatchingListController implements Controller {
     		myReceiveMatchingInfo =  manager.ListingReceiveMyGroupMatchingByUserId(userId);	// 사용자 정보 검색
     		
     		ReceiveUserNicekname = new ArrayList<String>();
+    		ArrayList<GroupDTO> groupList = new ArrayList<GroupDTO>();
     		
     		for (int i = 0; i < myReceiveMatchingInfo.size(); i++) {
     			int mId = myReceiveMatchingInfo.get(i).getMatchingId();
     			
+    			groupList.add(gService.getGroup(myReceiveMatchingInfo.get(i).getGroupId()));
     			
-    			List<GroupDTO> groupList = gService.GroupList(myReceiveMatchingInfo.get(i).getTalentId());
 	    		for(int j = 0; j < groupList.size(); j++) {
 	    			Integer[] id = gService.getGroupMembers(groupList.get(j).getGroupId());
 	    			head = new Integer[2];
 	    			head[0] = gService.getGroup(groupList.get(j).getGroupId()).getMembers();
 	    			if(head[0] > 0) {
 		        		head[1] = gService.getGroup(groupList.get(j).getGroupId()).getHeadCount();
-		    			receiveGroupIds.add(groupList.get(j).getGroupId());
+		    			if(i == myReceiveMatchingInfo.size() - 1)
+		    				receiveGroupIds.add(groupList.get(j).getGroupId());
 		    			if(id != null) {
 		    				ArrayList<String> groupMembersNick = new ArrayList<String>();
 		    				for(int k = 0; k< id.length; k++) {
@@ -144,6 +148,7 @@ public class MyGroupMatchingListController implements Controller {
 		    			} 
 	    			}
 	    		}
+	    	
     		
     			
     			//매칭 아이디 통해서 userId 구해오고, userNickname 구해오기 (와 진짜 미친 조인)

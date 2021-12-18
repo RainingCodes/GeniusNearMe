@@ -75,7 +75,7 @@ public class MyMatchingDAOImpl implements MyMatchingDAO {
 	}
 	
 	public List<MyMatchingDTO> getApplyMyGroupMatchingListByUserId(int userId) {
-		String searchQuery = query + "FROM MATCHING, TALENT, GROUPING, GROUPMEMBERS "
+		String searchQuery = query + ", MATCHING.GROUPID AS GROUPID FROM MATCHING, TALENT, GROUPING, GROUPMEMBERS "
 				+ "WHERE MATCHING.MATCHINGID=GROUPING.MATCHINGID AND TALENT.TALENTID=GROUPING.TALENTID "
 				+ "AND GROUPING.GROUPID=GROUPMEMBERS.GROUPID "+
 				"AND TALENT.WRITERID != ? AND MATCHING.TALENTID = TALENT.TALENTID AND GROUPMEMBERS.USERID = ? AND MATCHING.GROUPID IS NOT NULL";
@@ -92,7 +92,7 @@ public class MyMatchingDAOImpl implements MyMatchingDAO {
 				dto.setTalentId(rs.getInt("TALENTID"));
 				dto.setTalentTitle(rs.getString("TITLE"));
 				dto.setMatchingState(rs.getInt("MATCHINGSTATE"));
-				
+				dto.setGroupId(rs.getInt("GROUPID"));
 				list.add(dto);
 			}
 			return list;
@@ -104,7 +104,7 @@ public class MyMatchingDAOImpl implements MyMatchingDAO {
 	}
 	
 	public List<MyMatchingDTO> getReceiveMyGroupMatchingListByUserId(int userId) {
-		String searchQuery = query + "FROM MATCHING, TALENT "+
+		String searchQuery = query + ", MATCHING.GROUPID AS GROUPID FROM MATCHING, TALENT "+
 				"WHERE MATCHING.TALENTID = TALENT.TALENTID AND TALENT.WRITERID = ? "
 				+"AND MATCHING.GROUPID IS NOT NULL AND MATCHING.USERID != TALENT.WRITERID";
 		
@@ -120,7 +120,7 @@ public class MyMatchingDAOImpl implements MyMatchingDAO {
 				dto.setTalentId(rs.getInt("TALENTID"));
 				dto.setTalentTitle(rs.getString("TITLE"));
 				dto.setMatchingState(rs.getInt("MATCHINGSTATE"));
-								
+				dto.setGroupId(rs.getInt("GROUPID"));	
 				list.add(dto);
 			}
 			return list;

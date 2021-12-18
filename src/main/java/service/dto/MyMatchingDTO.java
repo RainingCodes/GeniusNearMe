@@ -4,6 +4,13 @@ public class MyMatchingDTO  implements Comparable<MyMatchingDTO> {
 	int matchingId;
 	int talentId;
 	String talentTitle;
+	int groupId;
+	public int getGroupId() {
+		return groupId;
+	}
+	public void setGroupId(int groupId) {
+		this.groupId = groupId;
+	}
 	int matchingState;
 	
 	public int getMatchingId() {

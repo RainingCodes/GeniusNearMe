@@ -19,60 +19,29 @@
 		WHERE comment_no = #{commentNo}
 	</select>
  
-	<select id="selectCommentByCondition" parameterType="hashmap" 
-		resultType="model.Comment">
-		SELECT <include refid="BaseColumns"/>
-		FROM COMMENTS
-		<where>
-			<if test="commentNo != null">
-				comment_no = #{commentNo}
-			</if>
-			<if test="userId != null">
-				AND user_id = #{userId}
-			</if>
-		</where>
-	</select>
-
-	<insert id="insertComment" parameterType="model.Comment">
-		INSERT INTO COMMENTS (comment_no, user_id, comment_content, reg_date)
-		VALUES (#{commentNo}, #{userId}, #{commentContent}, #{regDate})
-	</insert>
-
-	<update id="updateComment" parameterType="model.Comment">
-		UPDATE COMMENTS 
-		SET comment_content = #{commentContent}
-		WHERE comment_no = #{commentNo}
-	</update>
- 
-	<delete id="deleteComment" parameterType="long">
-		DELETE FROM COMMENTS
-		WHERE comment_no = #{commentNo}
-	</delete>
-	
-	<delete id="deleteAllComments">
-		DELETE FROM COMMENTS
-	</delete>
 	
 	
-	<resultMap id="associationResultMap" type="Comment">
-		<id column="comment_no" jdbcType="NUMERIC" property="commentNo" />
-		<result column="user_id" jdbcType="VARCHAR" property="userId" />
-		<result column="comment_content" jdbcType="VARCHAR" property="commentContent" />
-		<result column="reg_date" jdbcType="TIMESTAMP" property="regDate" />
-		<association property="user" column="user_id" javaType="User">
-			<id property="userId" column="user_id" />
-			<result property="userName" column="user_name" />
-			<result property="phone" column="phone" />
-			<result property="address" column="address" />
-		</association>
+	<resultMap id="groupResultMap" type="Group">
+		<id column="GROUPID" jdbcType="NUMERIC" property="groupId" />
+		<result column="TALENTID" jdbcType="NUMERIC" property="talentId" />
+		<result column="MATCHINGID" jdbcType="NUMERIC" property="matchingId" />
+		<result column="HEADCOUNT" jdbcType="NUMERIC" property="headCount" />
+		<result column="CURRENTHEAD" jdbcType="NUMERIC" property="members" />
+		<collection property="users" ofType="User">
+			<id property="userId" column="USERID" />
+			<result property="nickname" column="NICKNAME" />
+		</collection>
 	</resultMap>
 
-	<select id="selectCommentByPrimaryKeyAssociation" parameterType="long" 		
-		resultMap="associationResultMap"> 
-		SELECT c.comment_no, c.user_id, c.comment_content, c.reg_date, u.user_name, u.phone, u.address
-		FROM COMMENTS c, USERS u			
-		WHERE c.user_id = u.user_id  
-		  AND c.comment_no = #{commentNo} 
+	<select id="selectAppliedGroupMatchingList" parameterType="long" 		
+		resultMap="groupResultMap"> 
+		SELECT MATCHING.MATCHINGID AS MATCHINGID, 
+		TALENT.TALENTID AS TALENTID, 
+		TALENT.TITLE AS TITLE, 
+		MATCHING.MATCHINGSTATE AS MATCHINGSTATE 
+		GROUPING.GROUPID AS GROUPID
+		FROM MATCHING, TALENT, GROUPING, GROUPMEMBERS 
+		WHERE MATCHING.MATCHINGID=GROUPING.MATCHINGID AND TALENT.TALENTID=GROUPING.TALENTID AND GROUPING.GROUPID=GROUPMEMBERS.GROUPID 
 	</select>
 	
 	<select id="selectCommentByPrimaryKeyAssociation2" parameterType="long" 		

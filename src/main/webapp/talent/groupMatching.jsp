@@ -78,7 +78,7 @@
 								</span>
 								<c:set var="a"  value="${a + 1 }" />
 							</c:forEach>
-							<c:if test="${matchingCheck ne true }">
+							<c:if test="${matchingCheck ne true and a ne group.headCount}">
 								<c:if test="${userId ne talent.writerId}">
 									<c:if test="${a < group.headCount + 1 }">
 											<a href="<c:url value='/group/matching'>
