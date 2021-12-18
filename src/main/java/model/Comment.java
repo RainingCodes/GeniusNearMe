@@ -8,21 +8,19 @@ public class Comment implements Serializable{
 	private int talentId;
 	private String content;
 	private int writerId;
-	
+
 	public Comment() {
-		this.commentId = -1;
-		this.talentId = -1;
-		this.content = null;
-		this.writerId = -1;
+		commentId = -1;
+		talentId = -1;
+		content = null;
+		writerId = -1;
 	}
 	
 	public Comment(int talentId, String content, int writerId) {
-		super();
 		this.talentId = talentId;
 		this.content = content;
 		this.writerId = writerId;
 	}
-
 	public int getCommentId() {
 		return commentId;
 	}

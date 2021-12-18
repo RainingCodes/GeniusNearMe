@@ -14,15 +14,15 @@ import service.CommentServiceImpl;
 public class RegisterCommentController implements Controller {
 	private static final Logger log = LoggerFactory.getLogger(RegisterCommentController.class);
 	
+	@SuppressWarnings("null")
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 					
-		int talentId = Integer.parseInt(request.getParameter("talentId"));	
-		Comment comment = new Comment(
-			talentId,
-   	    	request.getParameter("content"),
-   	    	Integer.parseInt(request.getParameter("commentWriterId"))
-   		);
+		int talentId = Integer.parseInt(request.getParameter("talentId"));
+		Comment comment = null;
+		comment.setTalentId(talentId);
+		comment.setContent(request.getParameter("content"));
+		comment.setWriterId(Integer.parseInt(request.getParameter("commentWriterId")));
     	  		
     	log.debug("RegisterCommentController Request : {}", comment);
     	    	
