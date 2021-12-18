@@ -394,7 +394,7 @@ public class TalentDAOImpl implements TalentDAO  {
 		}
 		if (t.getPostType() != -1) {		
 			updateQuery += "POSTTYPE = ?, ";
-			tempParam[index++] = t.getPostType();	
+			tempParam[index++] = t.getPostType();
 		}
 	
 		
