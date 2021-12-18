@@ -3,7 +3,7 @@
 	<cache />
 
 	<select id="selectAllWishListByUserId" parameterType="int" resultType="model.Wish" >
-		 SELECT TALENTID, USERID FROM WISH WHERE USERID = #{userId} ";
+		 SELECT TALENTID, USERID FROM WISH WHERE USERID = #{userId}
 	</select>
 	
 	<select id="selectWish" parameterType="model.Wish" resultType="model.Wish">
