@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mapper namespace="model.mapper.GroupMapper">
+	<cache />
+
+	<sql id="BaseColumns">
+		GROUPID AS groupId,
+		MATCHINGID AS matchingId,
+		REPRESENTATIVEID AS representativeId,
+		HEADCOUNT AS headCount
+		CURRENTHEAD AS currentHead
+	</sql>
+	
+	
+	<resultMap id="groupResultMap" type="Group">
+		<id column="GROUPID" jdbcType="NUMERIC" property="groupId" />
+		<result column="TALENTID" jdbcType="NUMERIC" property="talentId" />
+		<result column="MATCHINGID" jdbcType="NUMERIC" property="matchingId" />
+		<result column="HEADCOUNT" jdbcType="NUMERIC" property="headCount" />
+		<result column="CURRENTHEAD" jdbcType="NUMERIC" property="members" />
+		<collection property="users" ofType="Member">
+			<id property="userId" column="USERID" />
+			<result property="nickname" column="NICKNAME" />
+		</collection>
+	</resultMap>
+
+	<select id="selectGroupByTalentId" parameterType="int" 		
+		resultMap="groupResultMap"> 
+		SELECT G.GROUPID, G.TALENTID, G.MATCHINGID, G.HEADCOUNT, G.CURRENTHEAD, GR.USERID
+		FROM GROUPING G, GROUPMEBMERS GR, TALENT T
+		WHERE G.GROUPID=GR.GROUPID AND T.TALENTID = #{talentId} AND T.TALENTID = G.TALENTID
+	</select>
+	
+	
+
+</mapper>
