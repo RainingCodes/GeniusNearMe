@@ -22,7 +22,7 @@ public class ViewGroupController implements Controller {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
-		
+		System.out.println("여긴가?");
 		int talentId = Integer.parseInt(request.getParameter("talentId"));
 		MemberService mService = new MemberServiceImpl();
 		
