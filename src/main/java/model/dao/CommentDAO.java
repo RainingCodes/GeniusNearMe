@@ -1,6 +1,7 @@
 package model.dao;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -26,10 +27,19 @@ public class CommentDAO {
 
 	}
 	
-	public Comment getCommentByCommentId(int commentId) {
+	public List<Comment> getCommentListByTalentId(int talentId){
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		try {
-			return sqlSession.getMapper(CommentMapper.class).getCommentByCommentId(commentId);
+			return sqlSession.getMapper(CommentMapper.class).getCommentListByTalenttId(talentId);
+		}finally {
+			sqlSession.close();
+		}
+	}
+	
+	public List<Comment> getCommentListByUserId(int userId) {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		try {
+			return (List<Comment>)sqlSession.getMapper(CommentMapper.class).getCommentListByUserId(userId);
 		}finally {
 			sqlSession.close();
 		}
