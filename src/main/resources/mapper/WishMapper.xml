@@ -2,20 +2,20 @@
 <mapper namespace="model.mapper.WishMapper">
 	<cache />
 
-	<select id="selectAllWishListByUserId" parameterType="int" resultType="model.Wish" >
+	<select id="selectAllWishListByUserId" parameterType="int" resultType="Wish" >
 		 SELECT TALENTID, USERID FROM WISH WHERE USERID = #{userId}
 	</select>
 	
-	<select id="selectWish" parameterType="model.Wish" resultType="model.Wish">
+	<select id="selectWish" parameterType="Wish" resultType="Wish">
 		SELECT TALENTID, USERID FROM WISH WHERE TALENTID = #{talentId} AND USERID = #{userId}
 	</select>
 	
-	<insert id="insertWish" parameterType="model.Wish">
+	<insert id="insertWish" parameterType="Wish">
 		INSERT INTO WISH (TALENTID, USERID) 
 		VALUES (#{talentId}, #{userId}) 
 	</insert>
 	
-	<delete id="deleteWish" parameterType="model.Wish">
+	<delete id="deleteWish" parameterType="Wish">
 		DELETE FROM WISH WHERE TALENTID = #{talentId} AND USERID = #{userId}
 	</delete>
 </mapper>
