@@ -26,11 +26,8 @@
 		VALUES(#{commentId}, #{talentId}, #{content},#{}, #{writerId})
 	</insert>
 	<delete id="deleteComment" parameterType="int">
-		DELETE FROM COMMENTARY WHERE COMMENTID=#{commentId}
+		DELETE FROM COMMENTARY
+		WHERE COMMENTID=#{commentId}
 	</delete>
 
-
-
-
-	
 </mapper>
