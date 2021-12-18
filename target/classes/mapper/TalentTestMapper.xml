@@ -4,27 +4,27 @@
 <mapper namespace="mapper.TalentTestMapper">
 	<cache />
 
-	<select id="getTalentTestByUserId" parameterType="long" 
+	<select id="getTalentTestByUserId" parameterType="int" 
 		resultType="model.TalentTest">
 		SELECT RESULTCATEGORY, RESULTTYPE, USERID
 		FROM TALENTTEST
-		WHERE USERID = #{USERID}
+		WHERE USERID = #{userId}
 	</select>
  
 	<insert id="insertTalentTest" parameterType="model.TalentTest">
 		INSERT INTO TALENTTEST (RESULTCATEGORY, RESULTTYPE, USERID)
-		VALUES (#{commentNo}, #{userId}, #{commentContent}, #{regDate})
+		VALUES (#{resultCategory}, #{resultType}, #{userId})
 	</insert>
 	
 	<update id="updateTalentTest" parameterType="model.TalentTest">
 		UPDATE TALENTTEST 
-		SET RESULTCATEGORY = #{RESULTCATEGORY}, RESULTTYPE = #{RESULTTYPE}
-		WHERE USERID = #{USERID}
+		SET RESULTCATEGORY = #{resultCategory}, RESULTTYPE = #{resultType}
+		WHERE USERID = #{userId}
 	</update>
  
-	<delete id="deleteTalentTest" parameterType="long">
+	<delete id="deleteTalentTest" parameterType="int">
 		DELETE FROM TALENTTEST
-		WHERE USERID = #{USERID}
+		WHERE USERID = #{userId}
 	</delete>
 
 </mapper>
