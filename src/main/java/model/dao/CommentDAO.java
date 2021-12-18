@@ -30,7 +30,7 @@ public class CommentDAO {
 	public List<Comment> getCommentListByTalentId(int talentId){
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		try {
-			return sqlSession.getMapper(CommentMapper.class).getCommentListByTalenttId(talentId);
+			return sqlSession.getMapper(CommentMapper.class).getCommentListByTalentId(talentId);
 		}finally {
 			sqlSession.close();
 		}
@@ -39,7 +39,7 @@ public class CommentDAO {
 	public List<Comment> getCommentListByUserId(int userId) {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		try {
-			return (List<Comment>)sqlSession.getMapper(CommentMapper.class).getCommentListByUserId(userId);
+			return sqlSession.getMapper(CommentMapper.class).getCommentListByUserId(userId);
 		}finally {
 			sqlSession.close();
 		}

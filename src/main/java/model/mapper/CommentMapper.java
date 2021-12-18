@@ -4,8 +4,8 @@ import model.Comment;
 
 public interface CommentMapper {
 	
-	Comment getCommentListByUserId(int userId);
-	List<Comment> getCommentListByTalenttId(int talentId);	
+	List<Comment> getCommentListByUserId(int userId);
+	List<Comment> getCommentListByTalentId(int talentId);	
 	public int insertComment(Comment comment);
 	public int updateComment(Comment comment);
 	public int deleteComment(int commentId);
