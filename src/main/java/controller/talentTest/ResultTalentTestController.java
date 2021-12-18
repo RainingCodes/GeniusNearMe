@@ -55,15 +55,19 @@ public class ResultTalentTestController implements Controller  {
 				
 		TalentTest newDTO = new TalentTest(myCategory, type, userId);
 		
-		if (lastDTO != null) { // 이전 검색 결과 있을시 update
-			lastType = myTypeToString(lastDTO.getResultType());
-			int update = manager.updateTalent(newDTO);
-			System.out.println("update결과 : "+update);
-		} else { // 이전 검색 결과 없을시 insert
-			int insert = manager.insertTalent(newDTO);
-			System.out.println("insert결과 : "+insert);
-		}
+		System.out.println("로그인여부");
+		System.out.println(userId);
 		
+		if (userId != -1) {
+			if (lastDTO != null) { // 이전 검색 결과 있을시 update
+				lastType = myTypeToString(lastDTO.getResultType());
+				int update = manager.updateTalent(newDTO);
+				System.out.println("update결과 : "+update);
+			} else { // 이전 검색 결과 없을시 insert
+				int insert = manager.insertTalent(newDTO);
+				System.out.println("insert결과 : "+insert);
+			}
+		}
 		request.setAttribute("category", myCategory);
 		request.setAttribute("categoryByKorean", myCategoryByKorean);
 		request.setAttribute("myType", myTypeString);
