@@ -2,28 +2,36 @@ package service;
 
 import java.util.List;
 
-import persistence.DAOFactory;
-import persistence.dao.CommentDAO;
-import service.dto.CommentDTO;
+import model.Comment;
+import model.dao.CommentDAO;
 
 public class CommentServiceImpl implements CommentService {
 private CommentDAO dao = null;
 	
 	public CommentServiceImpl() {
-		DAOFactory factory = new DAOFactory();
-		dao = factory.getCommentDAO();
+		dao = new CommentDAO();
 	}
-	
-	public List<CommentDTO> CommentListByTalentId(int talentId) {
-		return dao.getCommentByTalentId(talentId);
+
+	@Override
+	public List<Comment> CommentListByTalentId(int talentId) {
+		return dao.getCommentListByTalentId(talentId);
 	}
-	public List<CommentDTO> CommentListByUserId(int userId) {
-		return dao.getCommentByUserId(userId);
+
+	@Override
+	public List<Comment> CommentListByUserId(int userId) {
+		return dao.getCommentListByUserId(userId);
 	}
-	public int insertComment(CommentDTO commentDTO) {
-		return dao.insertComment(commentDTO);
+
+	@Override
+	public int insertComment(Comment comment) {
+		return dao.insertComment(comment);
 	}
+
+	@Override
 	public int deleteComment(int commentId) {
 		return dao.deleteComment(commentId);
 	}
+
+
+	
 }

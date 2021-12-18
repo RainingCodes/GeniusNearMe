@@ -1,11 +1,12 @@
 package model.mapper;
+import java.util.List;
 import model.Comment;
 
 public interface CommentMapper {
 	
-	Comment getCommentByUserId(int userId);
-	Comment getCommentByCommentId(int commentId);
+	Comment getCommentListByUserId(int userId);
+	List<Comment> getCommentListByTalenttId(int talentId);	
 	public int insertComment(Comment comment);
 	public int updateComment(Comment comment);
-	public int deleteComment(int commentId);	
+	public int deleteComment(int commentId);
 }
