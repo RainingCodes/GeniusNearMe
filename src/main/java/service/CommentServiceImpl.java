@@ -6,7 +6,7 @@ import model.Comment;
 import model.dao.CommentDAO;
 
 public class CommentServiceImpl implements CommentService {
-private CommentDAO dao = null;
+	private CommentDAO dao = null;
 	
 	public CommentServiceImpl() {
 		dao = new CommentDAO();
