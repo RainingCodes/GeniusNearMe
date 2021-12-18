@@ -7,9 +7,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import controller.Controller;
+import model.Comment;
 import service.CommentService;
 import service.CommentServiceImpl;
-import service.dto.CommentDTO;
 
 public class RegisterCommentController implements Controller {
 	private static final Logger log = LoggerFactory.getLogger(RegisterCommentController.class);
@@ -18,7 +18,7 @@ public class RegisterCommentController implements Controller {
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 					
 		int talentId = Integer.parseInt(request.getParameter("talentId"));	
-		CommentDTO comment = new CommentDTO(
+		Comment comment = new Comment(
 			talentId,
    	    	request.getParameter("content"),
    	    	Integer.parseInt(request.getParameter("commentWriterId"))

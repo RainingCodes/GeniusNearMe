@@ -13,14 +13,13 @@ public class Comment {
 		this.writerId = -1;
 	}
 	
-	public Comment(int commentId, int talentId, String content, int writerId) {
+	public Comment(int talentId, String content, int writerId) {
 		super();
-		this.commentId = commentId;
 		this.talentId = talentId;
 		this.content = content;
 		this.writerId = writerId;
 	}
-	
+
 	public int getCommentId() {
 		return commentId;
 	}
