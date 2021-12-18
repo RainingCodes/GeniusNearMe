@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.CommentMapper">
+	<cache />
+
+	<sql id="">
+		COMMENTID as commentId,
+		TALENTID as talentId,
+		CONTENT as content,
+		WRITERID as writerId
+	</sql>
+	
+	<select id="selectCommentByTalentId" parameterType="int" resultType="model.Comment">
+		SELECT commentId, talentId, content, writerId
+		FROM COMMENTARY
+		WHERE talentID = #{talentId}
+	</select>
+	<select id="selectCommentByuserId" parameterType="int" resultType="model.Comment">
+		SELECT commentId, talentId, content, writerId
+		FROM COMMENTARY
+		WHERE writerID = #{writerId}
+	</select>
+		
+
+
+
+
+	
+</mapper>
