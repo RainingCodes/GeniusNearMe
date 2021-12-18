@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <mapper namespace="model.mapper.WishMapper">
+	<cache />
 
 	<select id="selectAllWishListByUserId" parameterType="int" resultType="model.Wish" >
 		 SELECT TALENTID, USERID FROM WISH WHERE USERID = #{userId} ";
 	</select>
 	
 	<select id="selectWish" parameterType="model.Wish" resultType="model.Wish">
-		SELECT TALENTID, USERID FROM WISH WHERE TALENTID = #{talentId} AND USERID = #{userId} ";
+		SELECT TALENTID, USERID FROM WISH WHERE TALENTID = #{talentId} AND USERID = #{userId}
 	</select>
 	
 	<insert id="insertWish" parameterType="model.Wish">
@@ -15,6 +16,6 @@
 	</insert>
 	
 	<delete id="deleteWish" parameterType="model.Wish">
-		DELETE FROM WISH WHERE TALENTID = #{talentId} AND USERID = #{userId} "
+		DELETE FROM WISH WHERE TALENTID = #{talentId} AND USERID = #{userId}
 	</delete>
 </mapper>
