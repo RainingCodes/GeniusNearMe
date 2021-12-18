@@ -8,9 +8,11 @@
 		 <setting name="cacheEnabled" value="false"/>
 	</settings>
 	<typeAliases>
-		<typeAlias type="model.Comment" alias="Comment" />
+		<typeAlias type="model.Wish" alias="Wish" />
 		<typeAlias type="model.User" alias="User" />
 		<typeAlias type="model.Reply" alias="Reply" />
+		<typeAlias type="model.TalentTest" alias="TalentTest" />
+		<typeAlias type="model.Comment" alias="Comment"/>
 	</typeAliases>
 	<environments default="development">
 		<environment id="development">
@@ -24,6 +26,9 @@
 		</environment>
 	</environments>
 	<mappers>
+		<mapper resource="mapper/CommentMapper.xml" />
+		<mapper resource="mapper/WishMapper.xml" />
+		<mapper resource="mapper/TalentTestMapper.xml" />
 		<mapper resource="mapper/CommentMapper.xml" />
 	</mappers>
 </configuration>

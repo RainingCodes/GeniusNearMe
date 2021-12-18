@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <mapper namespace="mapper.WishMapper">
-public int insertWish(WishDTO wishDto);  //찜 추가
-	public int deleteWish(int talentId, int userId); //찜 삭제
-	public List<WishDTO> getWishListByUserId(int userId); //내가 찜한 목록
-	public WishDTO getWish(int talentId, int userId);
-	<select id="selectAllWishListByUserId" parameterType="long" resultType="" 
+
+	<select id="selectAllWishListByUserId" parameterType="int" resultType="model.Wish" >
+		 SELECT TALENTID, USERID FROM WISH WHERE USERID = #{userId} ";
+	</select>
+	
+	<select id="selectWish" parameterType="model.Wish" resultType="model.Wish">
+		SELECT TALENTID, USERID FROM WISH WHERE TALENTID = #{talentId} AND USERID = #{userId} ";
+	</select>
+	
+	<insert id="insertWish" parameterType="model.Wish">
+		INSERT INTO WISH (TALENTID, USERID) 
+		VALUES (#{talentId}, #{userId}) 
+	</insert>
+	
+	<delete id="deleteWish" parameterType="model.Wish">
+		DELETE FROM WISH WHERE TALENTID = #{talentId} AND USERID = #{userId} "
+	</delete>
+</mapper>
