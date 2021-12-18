@@ -4,13 +4,6 @@
 <mapper namespace="mapper.CommentMapper">
 	<cache />
 
-	<sql id="">
-		COMMENTID as commentId,
-		TALENTID as talentId,
-		CONTENT as content,
-		WRITERID as writerId
-	</sql>
-	
 	<select id="selectCommentByTalentId" parameterType="int" resultType="model.Comment">
 		SELECT commentId, talentId, content, writerId
 		FROM COMMENTARY
@@ -21,10 +14,15 @@
 		FROM COMMENTARY
 		WHERE writerID = #{writerId}
 	</select>
-	<insert id="insertComment" parameterType="model.Comment">
+	<insert id="insertComment" parameterType="Comment">
 		INSERT INTO COMMENTARY (commentId, talentId, content, writerId)
 		VALUES(#{commentId}, #{talentId}, #{content},#{}, #{writerId})
 	</insert>
+	<update id="updateComment" parameterType="Comment">
+		UPDATE COMMENTARY
+		SET CONTENT= #{content}
+		WHERE COMMENTID = #{commentId}
+	</update>
 	<delete id="deleteComment" parameterType="int">
 		DELETE FROM COMMENTARY
 		WHERE COMMENTID=#{commentId}
