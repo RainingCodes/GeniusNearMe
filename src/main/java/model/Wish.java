@@ -4,14 +4,14 @@ import java.io.Serializable;
 
 @SuppressWarnings("serial")
 public class Wish implements Serializable{
-	private int talentID;
+	private int talentId;
 	private int userId;
 	
-	public int getTalentID() {
-		return talentID;
+	public int getTalentId() {
+		return talentId;
 	}
-	public void setTalentID(int talentID) {
-		this.talentID = talentID;
+	public void setTalentId(int talentId) {
+		this.talentId = talentId;
 	}
 	public int getUserId() {
 		return userId;

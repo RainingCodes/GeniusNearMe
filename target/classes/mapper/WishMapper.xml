@@ -6,15 +6,15 @@
 	</select>
 	
 	<select id="selectWish" parameterType="model.Wish" resultType="model.Wish">
-		SELECT TALENTID, USERID FROM WISH WHERE TALENTID = #{talentID} AND USERID = #{userId} ";
+		SELECT TALENTID, USERID FROM WISH WHERE TALENTID = #{talentId} AND USERID = #{userId} ";
 	</select>
 	
 	<insert id="insertWish" parameterType="model.Wish">
 		INSERT INTO WISH (TALENTID, USERID) 
-		VALUES (#{talentID}, #{userId}) 
+		VALUES (#{talentId}, #{userId}) 
 	</insert>
 	
 	<delete id="deleteWish" parameterType="model.Wish">
-		DELETE FROM WISH WHERE TALENTID = #{talentID} AND USERID = #{userId} "
+		DELETE FROM WISH WHERE TALENTID = #{talentId} AND USERID = #{userId} "
 	</delete>
 </mapper>
