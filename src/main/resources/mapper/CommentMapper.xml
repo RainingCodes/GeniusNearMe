@@ -16,7 +16,7 @@
 	</select>
 	<insert id="insertComment" parameterType="Comment">
 		INSERT INTO COMMENTARY (commentId, talentId, content, writerId)
-		VALUES(#{commentId}, #{talentId}, #{content},#{}, #{writerId})
+		VALUES(#{commentId}, #{talentId}, #{content}, #{writerId})
 	</insert>
 	<update id="updateComment" parameterType="Comment">
 		UPDATE COMMENTARY
