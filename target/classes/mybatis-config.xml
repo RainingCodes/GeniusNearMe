@@ -11,6 +11,7 @@
 		<typeAlias type="model.Wish" alias="Wish" />
 		<typeAlias type="model.User" alias="User" />
 		<typeAlias type="model.Reply" alias="Reply" />
+		<typeAlias type="model.TalentTest" alias="TalentTest" />
 	</typeAliases>
 	<environments default="development">
 		<environment id="development">
@@ -26,5 +27,6 @@
 	<mappers>
 		<mapper resource="mapper/CommentMapper.xml" />
 		<mapper resource="mapper/WishMapper.xml" />
+		<mapper resource="mapper/TalentTestMapper.xml" />
 	</mappers>
 </configuration>

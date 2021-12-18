@@ -11,12 +11,12 @@
 		WHERE USERID = #{userId}
 	</select>
  
-	<insert id="insertTalentTest" parameterType="model.TalentTest">
+	<insert id="insertTalentTest" parameterType="TalentTest">
 		INSERT INTO TALENTTEST (RESULTCATEGORY, RESULTTYPE, USERID)
 		VALUES (#{resultCategory}, #{resultType}, #{userId})
 	</insert>
 	
-	<update id="updateTalentTest" parameterType="model.TalentTest">
+	<update id="updateTalentTest" parameterType="TalentTest">
 		UPDATE TALENTTEST 
 		SET RESULTCATEGORY = #{resultCategory}, RESULTTYPE = #{resultType}
 		WHERE USERID = #{userId}
