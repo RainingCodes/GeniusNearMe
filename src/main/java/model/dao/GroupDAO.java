@@ -25,11 +25,11 @@ public class GroupDAO {
 
 	}
 	
-	public Group getGroupByGroupId(int groupId) {
+	public Group getGroupByTalentId(int talentId) {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		try {
 			return (Group) sqlSession.selectOne(
-					namespace + ".selectGroupByGroupId", groupId);
+					namespace + ".selectGroupByTalentId", talentId);
 		}finally {
 			sqlSession.close();
 		}

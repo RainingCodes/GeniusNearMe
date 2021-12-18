@@ -30,5 +30,6 @@
 		<mapper resource="mapper/WishMapper.xml" />
 		<mapper resource="mapper/TalentTestMapper.xml" />
 		<mapper resource="mapper/CommentMapper.xml" />
+		<mapper resource="mapper/GroupMapper.xml" />
 	</mappers>
 </configuration>

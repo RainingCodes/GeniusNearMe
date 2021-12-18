@@ -19,7 +19,7 @@
 			<dataSource type="POOLED">
 				<property name="driver" value="oracle.jdbc.driver.OracleDriver" />
 				<property name="url" value="jdbc:oracle:thin:@202.20.119.117:1521:orcl" />
-				<property name="username" value="dbp0202" />
+				<property name="username" value="dbpro0202" />
 				<property name="password" value="Genius022" />
 			</dataSource>
 		</environment>

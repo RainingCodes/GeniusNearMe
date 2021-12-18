@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import controller.Controller;
+import model.Group;
 import service.GroupService;
 import service.GroupServiceImpl;
 import service.MemberService;
@@ -28,6 +29,7 @@ public class ViewGroupController implements Controller {
 		
 		GroupService gService = new GroupServiceImpl();
 		List<GroupDTO> groupList = gService.GroupList(talentId);
+		
 		
 		HashMap<Integer, String[]> groupMemberList = new HashMap<Integer, String[]>();
 		HashMap<Integer, Integer[]> userIdList = new HashMap<Integer, Integer[]>();
