@@ -4,8 +4,7 @@
 <mapper namespace="model.mapper.TalentTestMapper">
 	<cache />
 
-	<select id="getTalentTestByUserId" parameterType="int" 
-		resultType="model.TalentTest">
+	<select id="getTalentTestByUserId" parameterType="int" resultType="TalentTest">
 		SELECT RESULTCATEGORY, RESULTTYPE, USERID
 		FROM TALENTTEST
 		WHERE USERID = #{userId}

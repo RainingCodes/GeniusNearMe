@@ -1,6 +1,9 @@
 package model;
 
-public class TalentTest {
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class TalentTest implements Serializable {
 	private int userId;
 	private String resultCategory;
 	private String resultType;
