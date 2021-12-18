@@ -1,36 +1,34 @@
 package service;
 
 import model.TalentTest;
-import model.mapper.TalentTestMapper;
+import model.dao.TalentTestDAO;
 
 public class TalentTestServiceImpl implements TalentTestService {
-	
-	private TalentTestMapper TalentTestMapperDAO = null;
+	private TalentTestDAO dao = null;
 	public TalentTestServiceImpl() {
-		TalentTestMapperDAO = new TalentTestMapper();
-		dao = factory.getTalentTestDAO();
+		dao = new TalentTestDAO();
 	}
 
 	@Override
-	public TalentTestDTO talentTestResultByUserId(int userId) {
+	public TalentTest talentTestResultByUserId(int userId) {
 		return dao.getTalentTestByUserId(userId);
 	}
 
 	@Override
-	public int insertTalent(TalentTestDTO t) {
+	public int insertTalent(TalentTest t) {
 		// TODO Auto-generated method stub
-		return dao.insertTalent(t);
+		return dao.insertTalentTest(t);
 	}
 
 	@Override
-	public int updateTalent(TalentTestDTO t) {
-		return dao.updateTalent(t);
+	public int updateTalent(TalentTest t) {
+		return dao.updateTalentTest(t);
 	}
 
 	@Override
 	public int deleteTalent(int userId) {
 		// TODO Auto-generated method stub
-		return dao.deleteTalent(userId);
+		return dao.deleteTalentTest(userId);
 	}
 
 }

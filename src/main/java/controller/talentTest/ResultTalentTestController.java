@@ -9,7 +9,7 @@ import service.MemberService;
 import service.MemberServiceImpl;
 import service.TalentTestService;
 import service.TalentTestServiceImpl;
-import service.dto.TalentTestDTO;
+import model.TalentTest;
 
 public class ResultTalentTestController implements Controller  {
 
@@ -35,7 +35,7 @@ public class ResultTalentTestController implements Controller  {
     	
     	//일단 기존DB 있는지 구해옴
 		TalentTestService manager = new TalentTestServiceImpl();
-		TalentTestDTO lastDTO = manager.talentTestResultByUserId(userId);
+		TalentTest lastDTO = manager.talentTestResultByUserId(userId);
 		String lastType = null;
     	
 		
@@ -53,7 +53,7 @@ public class ResultTalentTestController implements Controller  {
 		String myCategoryByKorean = myCategoryByKorean(type);
 		
 				
-		TalentTestDTO newDTO = new TalentTestDTO(myCategory, type, userId);
+		TalentTest newDTO = new TalentTest(myCategory, type, userId);
 		
 		if (lastDTO != null) { // 이전 검색 결과 있을시 update
 			lastType = myTypeToString(lastDTO.getResultType());
