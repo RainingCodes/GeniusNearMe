@@ -11,6 +11,7 @@
 		<typeAlias type="model.Wish" alias="Wish" />
 		<typeAlias type="model.TalentTest" alias="TalentTest" />
 		<typeAlias type="model.Comment" alias="Comment"/>
+		<typeAlias type="model.Group" alias="Group"/>
 	</typeAliases>
 	<environments default="development">
 		<environment id="development">
