@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="model.mapper.TalentTestMapper">
+	<cache />
+
+	<select id="getTalentTestByUserId" parameterType="int" 
+		resultType="model.TalentTest">
+		SELECT RESULTCATEGORY, RESULTTYPE, USERID
+		FROM TALENTTEST
+		WHERE USERID = #{userId}
+	</select>
+ 
+	<insert id="insertTalentTest" parameterType="TalentTest">
+		INSERT INTO TALENTTEST (RESULTCATEGORY, RESULTTYPE, USERID)
+		VALUES (#{resultCategory}, #{resultType}, #{userId})
+	</insert>
+	
+	<update id="updateTalentTest" parameterType="TalentTest">
+		UPDATE TALENTTEST 
+		SET RESULTCATEGORY = #{resultCategory}, RESULTTYPE = #{resultType}
+		WHERE USERID = #{userId}
+	</update>
+ 
+	<delete id="deleteTalentTest" parameterType="int">
+		DELETE FROM TALENTTEST
+		WHERE USERID = #{userId}
+	</delete>
+
+</mapper>

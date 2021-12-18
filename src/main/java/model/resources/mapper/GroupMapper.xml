@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.GroupMapper">
+	<cache />
+
+	<sql id="BaseColumns">
+		GROUPID AS groupId,
+		MATCHINGID AS matchingId,
+		REPRESENTATIVEID AS representativeId,
+		HEADCOUNT AS headCount
+		CURRENTHEAD AS currentHead
+	</sql>
+	
+	
+	<resultMap id="groupResultMap" type="Group">
+		<id column="GROUPID" jdbcType="NUMERIC" property="groupId" />
+		<result column="TALENTID" jdbcType="NUMERIC" property="talentId" />
+		<result column="MATCHINGID" jdbcType="NUMERIC" property="matchingId" />
+		<result column="HEADCOUNT" jdbcType="NUMERIC" property="headCount" />
+		<result column="CURRENTHEAD" jdbcType="NUMERIC" property="members" />
+		<collection property="users" ofType="Member">
+			<id property="userId" column="USERID" />
+			<result property="nickname" column="NICKNAME" />
+		</collection>
+	</resultMap>
+
+	<select id="selectGroupByGroupId" parameterType="int" 		
+		resultMap="groupResultMap"> 
+		SELECT G.GROUPID, G.TALENTID, G.MATCHINGID, G.HEADCOUNT, G.CURRENTHEAD, GR.USERID
+		FROM GROUPING G, GROUPMEBMERS GR 
+		WHERE G.GROUPID=GR.GROUPID AND G.GROUPID = #{groupId}
+	</select>
+	
+	
+
+</mapper>

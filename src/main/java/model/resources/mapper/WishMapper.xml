@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapper namespace="mapper.WishMapper">
+
+	<select id="selectAllWishListByUserId" parameterType="int" resultType="model.Wish" >
+		 SELECT TALENTID, USERID FROM WISH WHERE USERID = #{userId} ";
+	</select>
+	
+	<select id="selectWish" parameterType="model.Wish" resultType="model.Wish">
+		SELECT TALENTID, USERID FROM WISH WHERE TALENTID = #{talentId} AND USERID = #{userId} ";
+	</select>
+	
+	<insert id="insertWish" parameterType="model.Wish">
+		INSERT INTO WISH (TALENTID, USERID) 
+		VALUES (#{talentId}, #{userId}) 
+	</insert>
+	
+	<delete id="deleteWish" parameterType="model.Wish">
+		DELETE FROM WISH WHERE TALENTID = #{talentId} AND USERID = #{userId} "
+	</delete>
+</mapper>
