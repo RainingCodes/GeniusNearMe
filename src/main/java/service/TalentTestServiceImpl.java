@@ -1,13 +1,13 @@
 package service;
 
-import persistence.DAOFactory;
-import persistence.dao.TalentTestDAO;
-import service.dto.TalentTestDTO;
+import model.TalentTest;
+import model.mapper.TalentTestMapper;
 
 public class TalentTestServiceImpl implements TalentTestService {
-	private TalentTestDAO dao = null;
+	
+	private TalentTestMapper TalentTestMapperDAO = null;
 	public TalentTestServiceImpl() {
-		DAOFactory factory = new DAOFactory();
+		TalentTestMapperDAO = new TalentTestMapper();
 		dao = factory.getTalentTestDAO();
 	}
 
