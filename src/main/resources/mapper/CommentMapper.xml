@@ -14,15 +14,15 @@
 		FROM COMMENTARY
 		WHERE writerID = #{writerId}
 	</select>
-	<insert id="insertComment" parameterType="Comment">
-		INSERT INTO COMMENTARY (commentId, talentId, content, writerId)
-		VALUES(#{commentId}, #{talentId}, #{content}, #{writerId})
+	<insert id="insertComment" parameterType="Comment" useGeneratedKeys="true" keyProperty="commentId">
+		INSERT INTO COMMENTARY (talentId, content, writerId)
+		VALUES(#{talentId}, #{content}, #{writerId})
 	</insert>
-	<update id="updateComment" parameterType="Comment">
+<!-- 	<update id="updateComment" parameterType="Comment">
 		UPDATE COMMENTARY
 		SET CONTENT= #{content}
 		WHERE COMMENTID = #{commentId}
-	</update>
+	</update> -->
 	<delete id="deleteComment" parameterType="int">
 		DELETE FROM COMMENTARY
 		WHERE COMMENTID=#{commentId}
