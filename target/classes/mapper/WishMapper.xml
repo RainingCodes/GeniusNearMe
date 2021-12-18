@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mapper namespace="mapper.WishMapper">
+<mapper namespace="model.mapper.WishMapper">
 
 	<select id="selectAllWishListByUserId" parameterType="int" resultType="model.Wish" >
 		 SELECT TALENTID, USERID FROM WISH WHERE USERID = #{userId} ";

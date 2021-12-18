@@ -7,6 +7,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import controller.Controller;
+import model.Wish;
+import model.WishMapperRepository;
 import service.MemberService;
 import service.MemberServiceImpl;
 import service.WishService;
@@ -33,7 +35,11 @@ public class DeleteWishController implements Controller{
 		System.out.println("talentId : "+request.getParameter("talentId"));
 		int talentId = Integer.parseInt(request.getParameter("talentId"));
 		
-		int result = wishService.deleteWish(talentId, userId);
+		Wish wish = new Wish();
+		wish.setUserId(userId);
+		wish.setTalentId(talentId);
+		WishMapperRepository dao = new WishMapperRepository();
+		int result = dao.deleteWish(wish);	//wishService.deleteWish(talentId, userId);
 		System.out.println(result+"deleteWish: "+ email);
 		return "redirect:/member/wishList";
 	}

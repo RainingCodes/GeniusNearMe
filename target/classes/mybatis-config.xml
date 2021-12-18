@@ -9,7 +9,6 @@
 	</settings>
 	<typeAliases>
 		<typeAlias type="model.Wish" alias="Wish" />
-		<typeAlias type="model.User" alias="User" />
 		<typeAlias type="model.Reply" alias="Reply" />
 		<typeAlias type="model.TalentTest" alias="TalentTest" />
 		<typeAlias type="model.Comment" alias="Comment"/>
