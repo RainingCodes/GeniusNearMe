@@ -1,7 +1,6 @@
 package controller.talent;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,11 +12,11 @@ import org.slf4j.LoggerFactory;
 
 import controller.Controller;
 import controller.user.UserSessionUtils;
+import model.Comment;
 import service.CommentService;
 import service.CommentServiceImpl;
 import service.MemberService;
 import service.MemberServiceImpl;
-import service.dto.CommentDTO;
 
 public class ViewCommentController implements Controller {
 	private static final Logger log = LoggerFactory.getLogger(ViewCommentController.class);
@@ -46,8 +45,8 @@ public class ViewCommentController implements Controller {
     		log.debug("Comment Get Request : {}", talentId);
     		
        		
-			List<CommentDTO> commentList = manager.CommentListByTalentId(talentId);
-			commentList.sort(Comparator.naturalOrder());
+			List<Comment> commentList = manager.CommentListByTalentId(talentId);
+			//commentList.sort(Comparator.naturalOrder());
 			List<String> userNicekname = new ArrayList<String>();
     		
     		for (int i = 0; i < commentList.size(); i++) {
