@@ -9,7 +9,6 @@
 	</settings>
 	<typeAliases>
 		<typeAlias type="model.Wish" alias="Wish" />
-		<typeAlias type="model.Reply" alias="Reply" />
 		<typeAlias type="model.TalentTest" alias="TalentTest" />
 		<typeAlias type="model.Comment" alias="Comment"/>
 	</typeAliases>
@@ -25,7 +24,6 @@
 		</environment>
 	</environments>
 	<mappers>
-		<mapper resource="mapper/CommentMapper.xml" />
 		<mapper resource="mapper/WishMapper.xml" />
 		<mapper resource="mapper/TalentTestMapper.xml" />
 		<mapper resource="mapper/CommentMapper.xml" />
