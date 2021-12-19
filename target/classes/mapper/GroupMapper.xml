@@ -32,6 +32,5 @@
 		WHERE G.GROUPID = GR.GROUPID AND M.USERID=GR.USERID AND G.GROUPID=#{groupId}
 	</select>
 	
-	
 
 </mapper>
