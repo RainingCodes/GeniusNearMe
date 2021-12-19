@@ -55,6 +55,8 @@ public class MyGroupMatchingListController implements Controller {
 		Integer[] head = null;
 		List<String> ApplyUserNicekname = null;
 		List<Integer> writtenReview = new ArrayList<>();
+		ArrayList<GroupDTO> groupList1 = new ArrayList<GroupDTO>();
+		ArrayList<GroupDTO> groupList2 = new ArrayList<GroupDTO>();
 		
     	try {
     		myApplyMatchingInfo =  manager.ListingApplyMyGroupMatchingByUserId(userId);	// 사용자 정보 검색
@@ -62,33 +64,33 @@ public class MyGroupMatchingListController implements Controller {
     		matchingWriterInfo = new ArrayList<MemberDTO>();
     		
     		ApplyUserNicekname = new ArrayList<String>();
-    		ArrayList<GroupDTO> groupList = new ArrayList<GroupDTO>();
+    		
     		
     		for (int i = 0; i < myApplyMatchingInfo.size(); i++) {
     			//탤런트Id로 writerId 불러오기
     			int writerId = manager.getWriterIdByTalentId(myApplyMatchingInfo.get(i).getTalentId());
     			int mId = myApplyMatchingInfo.get(i).getMatchingId();
     			
-    			groupList.add(gService.getGroup(myApplyMatchingInfo.get(i).getGroupId()));
+    			groupList1.add(gService.getGroup(myApplyMatchingInfo.get(i).getGroupId()));
     			System.out.println(myApplyMatchingInfo.get(i).getGroupId() + "와랄ㄹ");
-    			for(int j = 0; j < groupList.size(); j++) {
-	    			Integer[] id = gService.getGroupMembers(groupList.get(j).getGroupId());
+    			for(int j = 0; j < groupList1.size(); j++) {
+	    			Integer[] id = gService.getGroupMembers(groupList1.get(j).getGroupId());
 	    			
 	    			head = new Integer[2];
-	    			head[0] = gService.getGroup(groupList.get(j).getGroupId()).getMembers();
+	    			head[0] = gService.getGroup(groupList1.get(j).getGroupId()).getMembers();
 	    			if(head[0] > 0) {
-		        		head[1] = gService.getGroup(groupList.get(j).getGroupId()).getHeadCount();
+		        		head[1] = gService.getGroup(groupList1.get(j).getGroupId()).getHeadCount();
 		        		if(i == myApplyMatchingInfo.size() - 1)
-		        			applyGroupIds.add(groupList.get(j).getGroupId());
+		        			applyGroupIds.add(groupList1.get(j).getGroupId());
 		    			
 		    			if(id != null) {
 		    				ArrayList<String> groupMembersNick = new ArrayList<String>();
 		    				for(int k = 0; k< id.length; k++) {
 		    					groupMembersNick.add(manager.getNicknameByUserId(id[k]));
 		    				}
-		    				userIdList2.put(groupList.get(j).getGroupId(), id);
-		    				groupMemberList2.put(groupList.get(j).getGroupId(), groupMembersNick.toArray(new String[groupMembersNick.size()]));
-		    				headList2.put(groupList.get(j).getGroupId(), head);;
+		    				userIdList2.put(groupList1.get(j).getGroupId(), id);
+		    				groupMemberList2.put(groupList1.get(j).getGroupId(), groupMembersNick.toArray(new String[groupMembersNick.size()]));
+		    				headList2.put(groupList1.get(j).getGroupId(), head);;
 		    			} 
 	    			}
 	    		}
@@ -125,29 +127,29 @@ public class MyGroupMatchingListController implements Controller {
     		myReceiveMatchingInfo =  manager.ListingReceiveMyGroupMatchingByUserId(userId);	// 사용자 정보 검색
     		
     		ReceiveUserNicekname = new ArrayList<String>();
-    		ArrayList<GroupDTO> groupList = new ArrayList<GroupDTO>();
+   
     		
     		for (int i = 0; i < myReceiveMatchingInfo.size(); i++) {
     			int mId = myReceiveMatchingInfo.get(i).getMatchingId();
     			
-    			groupList.add(gService.getGroup(myReceiveMatchingInfo.get(i).getGroupId()));
+    			groupList2.add(gService.getGroup(myReceiveMatchingInfo.get(i).getGroupId()));
     			
-	    		for(int j = 0; j < groupList.size(); j++) {
-	    			Integer[] id = gService.getGroupMembers(groupList.get(j).getGroupId());
+	    		for(int j = 0; j < groupList2.size(); j++) {
+	    			Integer[] id = gService.getGroupMembers(groupList2.get(j).getGroupId());
 	    			head = new Integer[2];
-	    			head[0] = gService.getGroup(groupList.get(j).getGroupId()).getMembers();
+	    			head[0] = gService.getGroup(groupList2.get(j).getGroupId()).getMembers();
 	    			if(head[0] > 0) {
-		        		head[1] = gService.getGroup(groupList.get(j).getGroupId()).getHeadCount();
+		        		head[1] = gService.getGroup(groupList2.get(j).getGroupId()).getHeadCount();
 		    			if(i == myReceiveMatchingInfo.size() - 1)
-		    				receiveGroupIds.add(groupList.get(j).getGroupId());
+		    				receiveGroupIds.add(groupList2.get(j).getGroupId());
 		    			if(id != null) {
 		    				ArrayList<String> groupMembersNick = new ArrayList<String>();
 		    				for(int k = 0; k< id.length; k++) {
 		    					groupMembersNick.add(manager.getNicknameByUserId(id[k]));
 		    				}
-		    				userIdList.put(groupList.get(j).getGroupId(), id);
-		    				groupMemberList.put(groupList.get(j).getGroupId(), groupMembersNick.toArray(new String[groupMembersNick.size()]));
-		    				headList.put(groupList.get(j).getGroupId(), head);
+		    				userIdList.put(groupList2.get(j).getGroupId(), id);
+		    				groupMemberList.put(groupList2.get(j).getGroupId(), groupMembersNick.toArray(new String[groupMembersNick.size()]));
+		    				headList.put(groupList2.get(j).getGroupId(), head);
 		    			} 
 	    			}
 	    		}
@@ -173,6 +175,7 @@ public class MyGroupMatchingListController implements Controller {
     	request.setAttribute("headList", headList);
     	request.setAttribute("receiveGroupIds", receiveGroupIds);
     	request.setAttribute("userIdList", userIdList);
+    	request.setAttribute("groupList1", groupList1);
     	
     	//apply 신청
     	request.setAttribute("applyList", myApplyMatchingInfo);		// 사용자 정보 저장	

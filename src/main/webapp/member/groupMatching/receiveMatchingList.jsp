@@ -26,6 +26,7 @@
       <tbody> 
       	<c:set var="a" value="0" />
 		<c:forEach var="li" items="${receiveList}" varStatus="status">
+			<c:if test="${a eq 0 or headList.get(receiveGroupIds.get(a))[0] ne  headList.get(receiveGroupIds.get(a - 1))[0]}">
 	  	    <tr>
 			  <td>
 			  	<a href="<c:url value='/talent/view'>
@@ -103,6 +104,7 @@
 				</c:if>
 			  </td>
 			</tr>
+			</c:if>
 			<c:set var="a" value="${a + 1 }" />
 		 </c:forEach>
 		</tbody>
