@@ -70,14 +70,17 @@ public class MyGroupMatchingListController implements Controller {
     			int mId = myApplyMatchingInfo.get(i).getMatchingId();
     			
     			groupList.add(gService.getGroup(myApplyMatchingInfo.get(i).getGroupId()));
-    			
+    			System.out.println(myApplyMatchingInfo.get(i).getGroupId() + "와랄ㄹ");
     			for(int j = 0; j < groupList.size(); j++) {
 	    			Integer[] id = gService.getGroupMembers(groupList.get(j).getGroupId());
+	    			
 	    			head = new Integer[2];
 	    			head[0] = gService.getGroup(groupList.get(j).getGroupId()).getMembers();
 	    			if(head[0] > 0) {
 		        		head[1] = gService.getGroup(groupList.get(j).getGroupId()).getHeadCount();
-		    			applyGroupIds.add(groupList.get(j).getGroupId());
+		        		if(i == myApplyMatchingInfo.size() - 1)
+		        			applyGroupIds.add(groupList.get(j).getGroupId());
+		    			
 		    			if(id != null) {
 		    				ArrayList<String> groupMembersNick = new ArrayList<String>();
 		    				for(int k = 0; k< id.length; k++) {
