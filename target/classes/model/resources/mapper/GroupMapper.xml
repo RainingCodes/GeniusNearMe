@@ -25,11 +25,11 @@
 		</collection>
 	</resultMap>
 
-	<select id="selectGroupByGroupId" parameterType="int" 		
+	<select id="getGroupByGroupId" parameterType="int" 		
 		resultMap="groupResultMap"> 
 		SELECT G.GROUPID, G.TALENTID, G.MATCHINGID, G.HEADCOUNT, G.CURRENTHEAD, GR.USERID, M.NICKNAME
-		FROM GROUPING G, GROUPMEBMERS GR, MEMBERS M
-		WHERE G.GROUPID=GR.GROUPID AND G.GROUPID=#{groupId} AND GR.USERID=M.USERID
+		FROM GROUPING G, GROUPMEMBERS GR, MEMBERS M 
+		WHERE G.GROUPID = GR.GROUPID AND M.USERID=GR.USERID AND G.GROUPID=#{groupId}
 	</select>
 	
 	

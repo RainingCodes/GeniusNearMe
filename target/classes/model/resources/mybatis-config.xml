@@ -13,6 +13,8 @@
 		<typeAlias type="model.Reply" alias="Reply" />
 		<typeAlias type="model.TalentTest" alias="TalentTest" />
 		<typeAlias type="model.Comment" alias="Comment"/>
+		<typeAlias type="model.Group" alias="Group" />
+		<typeAlias type="model.Member" alias="Member"/>
 	</typeAliases>
 	<environments default="development">
 		<environment id="development">
