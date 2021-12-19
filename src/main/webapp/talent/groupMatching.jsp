@@ -59,18 +59,17 @@
 <c:if test="${group ne null }">
 	<c:if test="${userId ne '-1'}"> 
 		<form name="form" method="get" action="<c:url value='/group/matching' />">
-			<c:forEach var="g" items="${group}" varStatus="status">
+			<c:forEach var="g" items="${groupList}" varStatus="status">
 				<div style="width:50%; border: 1px solid blue;">
 					<c:out value="${g.headCount}" />명 그룹 / 그룹 아이디 : <c:out value="${g.groupId }" /> <br>
-						<c:if test="${g.users ne null }">
 							<c:set var="a" value="0" />
-							<c:forEach var="member" items="${g.users }">
+							<c:forEach var="member" items="${groupMemberList.get(g.groupId) }">
 								<span>
-									<div><c:out value="${member.nickname }" /></div>									
+									<div><c:out value="${member }" /></div>									
 									<div>
-									<c:if test="${member.nickname ne nickname }" >
+									<c:if test="${member ne nickname }" >
 										<a href="<c:url value='/message'>
-											<c:param name="senderId" value="${member.userId}" />
+											<c:param name="senderId" value="${userId}" />
 											<c:param name="receiverId" value="${userIdList.get(g.groupId)[a]}" />
 											</c:url>">
 											쪽지 보내기
@@ -90,7 +89,7 @@
 									</c:if>
 								</c:if>
 							</c:if>
-						</c:if>
+						
 						<c:if test="${groupMemberList.get(g.groupId) eq null }">
 							<c:forEach var="a" begin="1" end="${g.headCount}">
 								<c:if test="${userId ne talent.writerId}">
