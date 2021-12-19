@@ -12,6 +12,7 @@
 	<h3 style="text-align: center;">받은 그룹 매칭 리스트</h3>
 	<br>
 	<table border = "1" align="center">
+	<c:set var="a" value="0" />
 	<thead class="thead-inverse">
       	<tr>
 		  <td>재능 제목</td>
@@ -24,8 +25,9 @@
 		</tr>
       </thead>
       <tbody> 
-      	<c:set var="a" value="0" />
+ 
 		<c:forEach var="li" items="${receiveList}" varStatus="status">
+			<c:if test="${a eq 0 or groupList2.get(a).groupId ne groupList2.get(a - 1).groupId}">
 			<c:set var="c" value="0" />
 	  	    <tr>
 			  <td>
@@ -106,6 +108,7 @@
 				</c:if>
 			  </td>
 			</tr>
+			</c:if>
 			<c:set var="a" value="${a + 1 }" />
 		 </c:forEach>
 		</tbody>
