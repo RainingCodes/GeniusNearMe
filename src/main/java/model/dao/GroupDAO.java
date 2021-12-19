@@ -2,7 +2,10 @@ package model.dao;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
+
 import model.Group;
+import model.mapper.GroupMapper;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -25,11 +28,10 @@ public class GroupDAO {
 
 	}
 	
-	public Group getGroupByTalentId(int talentId) {
+	public Group getGroupByGroupId(int groupId) {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		try {
-			return (Group) sqlSession.selectOne(
-					namespace + ".selectGroupByTalentId", talentId);
+			return sqlSession.getMapper(GroupMapper.class).getGroupByGroupId(groupId);
 		}finally {
 			sqlSession.close();
 		}

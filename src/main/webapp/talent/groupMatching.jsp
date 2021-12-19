@@ -26,6 +26,7 @@
 </script>
 <div id='group'>
 <h3>그룹 리스트</h3>
+<c:out value="${group.size() }" /> 홀롤ㄹㄹ
 <c:if test="${groupList.size() eq 0}">
 	<c:if test="${userId eq talent.writerId}"> 
 		<form name="form" method="get" action="<c:url value='/group/register' />" >
