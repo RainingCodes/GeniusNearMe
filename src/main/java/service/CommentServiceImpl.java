@@ -13,12 +13,12 @@ public class CommentServiceImpl implements CommentService {
 	}
 
 	@Override
-	public List<Comment> CommentListByTalentId(int talentId) {
+	public List<Comment> getCommentListByTalentId(int talentId) {
 		return dao.getCommentListByTalentId(talentId);
 	}
 
 	@Override
-	public List<Comment> CommentListByUserId(int userId) {
+	public List<Comment> getCommentListByUserId(int userId) {
 		return dao.getCommentListByUserId(userId);
 	}
 

@@ -4,12 +4,12 @@
 <mapper namespace="model.mapper.CommentMapper">
 	<cache />
 
-	<select id="selectCommentByTalentId" parameterType="int" resultType="Comment">
+	<select id="getCommentByTalentId" parameterType="int" resultType="Comment">
 		SELECT commentId, talentId, content, writerId
 		FROM COMMENTARY
 		WHERE talentID = #{talentId}
 	</select>
-	<select id="selectCommentByuserId" parameterType="int" resultType="Comment">
+	<select id="getCommentByuserId" parameterType="int" resultType="Comment">
 		SELECT commentId, talentId, content, writerId
 		FROM COMMENTARY
 		WHERE writerID = #{writerId}
