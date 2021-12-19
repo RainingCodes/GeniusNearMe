@@ -52,7 +52,7 @@ public class ViewTalentController implements Controller{
     		request.setAttribute("userId", -1);
     		request.setAttribute("nickName", nickName);
     		
-    		return "/talent/view.jsp";				// 사용자 보기 화면으로 이동
+    		return "/talent/comment";			// 사용자 보기 화면으로 이동
         }
 		
 		//로그인 되있을때
