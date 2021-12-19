@@ -44,6 +44,10 @@ public class InsertGroupMemberController implements Controller {
 		}
 		
 		int result = gService.insertGroupMember(groupId, talentId, userId);
+		int result2 = mService.insertMatching(
+				new MatchingDTO(-1, 0, talentId, groupId, userId)
+				);
+		
 		if(result > 0)
 			gService.updateCurrent(groupId);
 
