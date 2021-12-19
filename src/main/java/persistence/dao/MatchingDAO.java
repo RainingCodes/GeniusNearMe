@@ -12,9 +12,11 @@ public interface MatchingDAO {
 
 	//수락
 	public int decideMatching(int matchingId);
+	public int decideGroupMatching(int groupId);
 	
 	//거절
 	public int denyMatching(int matchingId);
+	public int denyGroupMatching(int groupId);
 
 	
 	//매칭 정보 insert

@@ -50,4 +50,14 @@ public class MatchingServiceImpl implements MatchingService{
 	public boolean existWorkOnetoOneMatchingByTalentId(int userId, int talentId) {
 		return dao.existWorkOnetoOneMatchingByTalentId(userId, talentId);
 	}
+	@Override
+	public int decideGroupMatching(int groupId) {
+		// TODO Auto-generated method stub
+		return dao.decideGroupMatching(groupId);
+	}
+	@Override
+	public int denyGroupMatching(int groupId) {
+		// TODO Auto-generated method stub
+		return dao.denyGroupMatching(groupId);
+	}
 }

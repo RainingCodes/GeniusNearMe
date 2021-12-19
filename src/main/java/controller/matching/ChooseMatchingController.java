@@ -23,11 +23,19 @@ public class ChooseMatchingController implements Controller {
 		
 		//int talentId = Integer.parseInt(request.getParameter("talentId"));
 		int matchingId = Integer.parseInt(request.getParameter("matchingId"));
+		int groupId = Integer.parseInt(request.getParameter("groupId"));
 		String option = request.getParameter("state");
 		String group = request.getParameter("group");
 		
 		MatchingService mService = new MatchingServiceImpl();
 		int result = -1;
+		if(group != null) {
+			if (option.equals("decideMatching")) {
+				result = mService.decideGroupMatching(groupId);
+			} else if (option.equals("denyMatching")) {
+				result = mService.denyGroupMatching(groupId);
+			}
+		}
 		
 		if (option.equals("decideMatching")) {
 			result = mService.decideMatching(matchingId);

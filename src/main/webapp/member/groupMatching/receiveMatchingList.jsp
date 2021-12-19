@@ -26,7 +26,7 @@
       <tbody> 
       	<c:set var="a" value="0" />
 		<c:forEach var="li" items="${receiveList}" varStatus="status">
-			<c:if test="${a eq 0 or headList.get(receiveGroupIds.get(a))[0] ne  headList.get(receiveGroupIds.get(a - 1))[0]}">
+			<c:set var="c" value="0" />
 	  	    <tr>
 			  <td>
 			  	<a href="<c:url value='/talent/view'>
@@ -78,12 +78,14 @@
 					  	<c:when test="${state eq '0'}">
 					  		<form name="form1" method="POST" action="<c:url value='/matching/choose' />">
 					  			<input type="hidden" name="group" value="true">
+					  			<input type="hidden" name="groupId" value="${receiveGroupIds.get(a) }" />
 					  			<input type="hidden" name="matchingId" value="${li.matchingId}">
 					  			<input type="hidden" name="talentId" value="${li.talentId}">
 					  			<input type="hidden" name="state" value="decideMatching">
 					  			<button type="submit">매칭 수락</button>
 					  		</form>
 					  		<form name="form2" method="POST" action="<c:url value='/matching/choose' />">
+					  			<input type="hidden" name="groupId" value="${receiveGroupIds.get(a) }" />
 					  			<input type="hidden" name="group" value="true">
 					  			<input type="hidden" name="matchingId" value="${li.matchingId}">
 					  			<input type="hidden" name="talentId" value="${li.talentId}">
@@ -104,7 +106,6 @@
 				</c:if>
 			  </td>
 			</tr>
-			</c:if>
 			<c:set var="a" value="${a + 1 }" />
 		 </c:forEach>
 		</tbody>

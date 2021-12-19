@@ -99,11 +99,50 @@ public class MatchingDAOImpl implements MatchingDAO {
 			return result;			
 		}
 		
+		public int decideGroupMatching(int groupId) {
+			String updateQuery = "UPDATE MATCHING SET MATCHINGSTATE = 1 WHERE GROUPID = ? ";
+		
+			Object[] param = new Object[] { groupId };
+			jdbcUtil.setSql(updateQuery);
+			jdbcUtil.setParameters(param);
+			int result = 0;
+			
+			try {
+				result = jdbcUtil.executeUpdate();
+			}catch(Exception ex) {
+				jdbcUtil.rollback();
+				ex.printStackTrace();
+			}finally {
+				jdbcUtil.commit();
+				jdbcUtil.close();
+			}
+			return result;			
+		}
+		
 	
 		public int denyMatching(int matchingId) {
 			String updateQuery = "UPDATE MATCHING SET MATCHINGSTATE = 2 WHERE MATCHINGID = ? ";
 			
 			Object[] param = new Object[] { matchingId };
+			jdbcUtil.setSql(updateQuery);
+			jdbcUtil.setParameters(param);
+			int result = 0;
+			
+			try {
+				result = jdbcUtil.executeUpdate();
+			}catch(Exception ex) {
+				jdbcUtil.rollback();
+				ex.printStackTrace();
+			}finally {
+				jdbcUtil.commit();
+				jdbcUtil.close();
+			}
+			return result;	
+		}
+		public int denyGroupMatching(int groupId) {
+			String updateQuery = "UPDATE MATCHING SET MATCHINGSTATE = 2 WHERE GROUPID = ? ";
+			
+			Object[] param = new Object[] { groupId };
 			jdbcUtil.setSql(updateQuery);
 			jdbcUtil.setParameters(param);
 			int result = 0;

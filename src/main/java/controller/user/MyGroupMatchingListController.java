@@ -175,7 +175,7 @@ public class MyGroupMatchingListController implements Controller {
     	request.setAttribute("headList", headList);
     	request.setAttribute("receiveGroupIds", receiveGroupIds);
     	request.setAttribute("userIdList", userIdList);
-    	request.setAttribute("groupList1", groupList1);
+    	request.setAttribute("groupList2", groupList2);
     	
     	//apply 신청
     	request.setAttribute("applyList", myApplyMatchingInfo);		// 사용자 정보 저장	
@@ -185,6 +185,7 @@ public class MyGroupMatchingListController implements Controller {
     	request.setAttribute("matchingWriterInfo", matchingWriterInfo);
     	request.setAttribute("applyGroupIds", applyGroupIds);
     	request.setAttribute("userIdList2", userIdList2);
+    	request.setAttribute("groupList1", groupList1);
     	
     	request.setAttribute("userId", userId);
     	request.setAttribute("writtenReview", writtenReview);

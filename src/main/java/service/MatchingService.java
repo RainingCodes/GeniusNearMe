@@ -8,6 +8,8 @@ public interface MatchingService{
 	public MatchingDTO Matching(int matchingId);
 	public int decideMatching(int matchingId);
 	public int denyMatching(int matchingId);
+	public int decideGroupMatching(int groupId);
+	public int denyGroupMatching(int groupId);
 	public int insertMatching(MatchingDTO matchingDto);
 	public int deleteMatching(int matchindId);
 	public int updateGroupId(int matchingId, int groupId);
