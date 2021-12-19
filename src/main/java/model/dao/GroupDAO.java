@@ -2,7 +2,6 @@ package model.dao;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.List;
 
 import model.Group;
 import model.mapper.GroupMapper;
@@ -15,7 +14,6 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 public class GroupDAO {
 	private SqlSessionFactory sqlSessionFactory;
-	private final String namespace = "mapper.GroupMapper";
 	public GroupDAO() {
 		String resource = "mybatis-config.xml";
 		InputStream inputStream;
