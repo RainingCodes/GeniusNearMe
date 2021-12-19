@@ -16,7 +16,7 @@
 	</select>
 	<insert id="insertComment" parameterType="Comment">
 		<selectKey keyProperty="commentId" resultType="int" order="BEFORE">
-			SELECT comment_seq.nextval AS commentId FROM COMMENTARY
+			SELECT comment_seq.nextval AS commentId FROM DUAL
 		</selectKey>
 		INSERT INTO COMMENTARY (commentId, talentId, content, writerId)
 		VALUES(#{commentId}, #{talentId}, #{content}, #{writerId})
