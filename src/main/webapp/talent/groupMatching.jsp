@@ -48,7 +48,7 @@
 				for(var i = 0; i< inGroup.length; i++)
 					inGroup[i] = 0;
 			</script>
-			<c:if test="{prices ne null}">
+			<c:if test="${group ne null}">
 				<input type="hidden" name="talentId" value="<%=talentId %>">
 		    	<input type="submit" value="저장하기">
 		    	<c:set var="priceList" scope="session" value="${prices}" />
