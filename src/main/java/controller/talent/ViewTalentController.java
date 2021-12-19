@@ -13,6 +13,8 @@ import org.slf4j.LoggerFactory;
 
 import controller.Controller;
 import controller.user.UserSessionUtils;
+import model.Wish;
+import model.WishMapperRepository;
 import service.MatchingService;
 import service.MatchingServiceImpl;
 import service.MemberService;
@@ -90,9 +92,15 @@ public class ViewTalentController implements Controller{
 	
 			
 			
-			WishService wService = new WishServiceImpl();
-			WishDTO wish = wService.getWish(talentId, userId);
-			if(wish == null) {
+//			WishService wService = new WishServiceImpl();
+//			WishDTO wish = wService.getWish(talentId, userId);
+		Wish wish = new Wish();
+		wish.setUserId(userId);
+		wish.setTalentId(talentId);
+		WishMapperRepository dao = new WishMapperRepository();
+		Wish wished = dao.selectWish(wish);
+		
+			if(wished == null) {
 				request.setAttribute("isAlreadyInWish", "no");
 			}
 			else {

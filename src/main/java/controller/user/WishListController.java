@@ -10,6 +10,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import controller.Controller;
+import model.Wish;
+import model.WishMapperRepository;
 import service.MemberService;
 import service.MemberServiceImpl;
 import service.TalentService;
@@ -54,10 +56,12 @@ public class WishListController implements Controller{
 			System.out.println(k+"완료");
 		}
 		
-		List<WishDTO> wishList = wishService.getWishListByUserId(userId);
+//		List<WishDTO> wishList = wishService.getWishListByUserId(userId);
+		WishMapperRepository dao = new WishMapperRepository();
+		List<Wish> wishList = dao.selectAllWishListByUserId(userId);
 		List<TalentDTO> talentList = new ArrayList<>();
 		for(int i = 0; i < wishList.size(); i++) {
-			int wishTalentId = wishList.get(i).getTalentID();
+			int wishTalentId = wishList.get(i).getTalentId();
 			TalentDTO dto = talentservice.findTalent(wishTalentId);
 			talentList.add(dto);
 		}
