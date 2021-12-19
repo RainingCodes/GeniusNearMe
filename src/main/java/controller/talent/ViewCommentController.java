@@ -45,7 +45,7 @@ public class ViewCommentController implements Controller {
     		log.debug("Comment Get Request : {}", talentId);
     		
        		
-			List<Comment> commentList = manager.CommentListByTalentId(talentId);
+			List<Comment> commentList = manager.getCommentListByTalentId(talentId);
 			//commentList.sort(Comparator.naturalOrder());
 			List<String> userNicekname = new ArrayList<String>();
     		
