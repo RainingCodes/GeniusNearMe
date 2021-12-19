@@ -2,8 +2,10 @@ package model;
 
 import java.io.Serializable;
 
+import service.dto.CommentDTO;
+
 @SuppressWarnings("serial")
-public class Comment implements Serializable{
+public class Comment implements Serializable, Comparable<Comment>{
 	private int commentId;
 	private int talentId;
 	private String content;
@@ -45,4 +47,10 @@ public class Comment implements Serializable{
 	public void setWriterId(int writerId) {
 		this.writerId = writerId;
 	}
+	
+	@Override
+	public int compareTo(Comment o) {
+		return Integer.compare(this.commentId, o.getCommentId());
+	}
+	
 }
