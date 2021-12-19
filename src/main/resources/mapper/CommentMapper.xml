@@ -18,8 +18,8 @@
 		<selectKey keyProperty="commentId" resultType="int" order="BEFORE">
 			SELECT comment_seq.nextval AS commentId FROM COMMENTARY
 		</selectKey>
-		INSERT INTO COMMENTARY (talentId, content, writerId)
-		VALUES(#{talentId}, #{content}, #{writerId})
+		INSERT INTO COMMENTARY (commentId, talentId, content, writerId)
+		VALUES(#{commentId}, #{talentId}, #{content}, #{writerId})
 	</insert>
 	<delete id="deleteComment" parameterType="int">
 		DELETE FROM COMMENTARY
